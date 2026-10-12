@@ -6,6 +6,7 @@ import sys
 
 groups=collections.defaultdict(lambda:[0,0.0,0,0.0])
 for block in Path(sys.argv[1]).read_text().split('# Time:')[1:]:
+    if len(sys.argv)>2 and block.strip().splitlines()[0] < sys.argv[2]:continue
     m=re.search(r'Query_time: ([\d.]+).*Rows_examined: (\d+)',block)
     if not m:continue
     lines=[line for line in block.splitlines()[1:] if not line.startswith(('#','SET timestamp','use ')) and line.strip()]

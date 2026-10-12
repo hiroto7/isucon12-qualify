@@ -8,4 +8,7 @@ id,label,kind,started,ended,commit,status,passed,score,reported_score,decision
 7,atomic-csv-confirm,scoring,2026-10-12T09:27:17.395410+00:00,2026-10-12T09:28:26Z,25cb69cbca2af57ea80c123714951a449e995ae4,pass,True,7896,7896,confirmation
 8,billing-cover-index,scoring,2026-10-12T09:30:30.663143+00:00,2026-10-12T09:31:37Z,e36a4d5d356680c719e75c1f0b0b6bc02c99682f,pass,True,11178,11178,accepted-provisional
 9,sqlite-partition-index,scoring,2026-10-12T09:33:42.802713+00:00,2026-10-12T09:34:49Z,513f0393d887c9865c2feddf77c9272f4ee3f95c,pass,True,1450,1450,rejected-capacity
-10,sqlite-index-fd-capacity,scoring,2026-10-12T09:37:24.960618+00:00,2026-10-12T09:38:31Z,513f0393d887c9865c2feddf77c9272f4ee3f95c,pass,True,12526,12526,pending
+10,sqlite-index-fd-capacity,scoring,2026-10-12T09:37:24.960618+00:00,2026-10-12T09:38:31Z,513f0393d887c9865c2feddf77c9272f4ee3f95c,pass,True,12526,12526,accepted
+11,indexed-profile,diagnostic,2026-10-12T09:40:15.965458+00:00,2026-10-12T09:41:22Z,9cb458a64a8f4e1e0960503dc3d159be5a54bde0,pass,True,10952,10952,pending
+12,id-blocks-preparation-failed,scoring,2026-10-12T09:44:13.721779+00:00,2026-10-12T09:44:13.721779+00:00,9cb458a64a8f4e1e0960503dc3d159be5a54bde0,preparation-failed,False,,,rejected-preparation
+13,durable-id-blocks,scoring,2026-10-12T09:44:52.412822+00:00,2026-10-12T09:45:58Z,9cb458a64a8f4e1e0960503dc3d159be5a54bde0,pass,True,28258,28258,pending

@@ -1,0 +1,16 @@
+{
+  "id": 12,
+  "label": "id-blocks-preparation-failed",
+  "kind": "scoring",
+  "started": "2026-10-12T09:44:13.721779+00:00",
+  "ended": "2026-10-12T09:44:13.721779+00:00",
+  "time_precision": "failure recorded after unsuccessful deployment; benchmark never started",
+  "commit": "9cb458a64a8f4e1e0960503dc3d159be5a54bde0",
+  "dirty": "M webapp/go/isuports.go",
+  "status": "preparation-failed",
+  "passed": false,
+  "score": null,
+  "reported_score": null,
+  "decision": "rejected-preparation",
+  "failure_reason": "Docker/containerd app image export referenced a missing parent snapshot; source archived and verified but no benchmark started. Rebuilt only guest-generated cache/image."
+}

@@ -32,3 +32,9 @@ H2 outcome: trial 008 official pass, 11178 (raw 11290, one normal heavy-tenant b
 Index (competition_id,player_id,row_num DESC) removes the observed huge full scans. Restoration templates receive the same indexes once and fresh tenant schema agrees; rows/count/sums unchanged. Trial 009 enabled 262 reader workers but hit actual process FD limit 1024: key reads/SQLite opens failed with too many open files. Official pass 1450, 78 errors (1 critical), rejected. Trial 010 retains the index and sets the app container FD limit to 16384; required capacity repair is recorded as part of H3, not attributed solely to the index.
 
 H3 outcome: trial 010 passed 12526 with zero errors. Accepted index + FD capacity; the heavy billing timeout and open-file failures are absent. Index-only trial 009 remains rejected. Next focus is structural ID round-trip elimination and repeated ranking/detail reconstruction.
+
+## H4 — durable ID blocks
+
+Trial 011 observed 36,233 ID reservations and cumulative 186.985 seconds (prepared SQL slow log) under increased workload. Reserve 4096 IDs per durable MySQL row update using LAST_INSERT_ID(expr), then assign locally under a mutex. All processes get disjoint DB-reserved blocks; restart skips unused IDs; initialize resets process allocator after database reset. Preserve hexadecimal ID alphabet. Tests cover parallel unique IDs, restart/unused ranges, failed reservation, and actual MySQL OK-packet/persisted watermark. Trial 012 preparation failed due to Docker missing parent snapshot, not code/benchmark validation.
+
+H4 outcome: unit tests with race detector and actual guest MySQL reservation/persisted watermark passed. Trial 013: 28258, zero errors, 2.26x H3 and 4.46x initial median. Accepted.
