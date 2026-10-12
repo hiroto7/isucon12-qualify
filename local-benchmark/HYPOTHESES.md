@@ -54,3 +54,13 @@ H6 outcome: 017 failed due to proven nginx worker_connections=768 exhaustion (10
 ## H7 — atomic player batches
 
 Trial 019: 8577 individual player INSERTs, 47.493 seconds cumulative execution. Replace them with one prepared transaction per request and form created-player responses from the committed input records. Race tests cover duplicate-key rollback, empty batch, blank and Unicode names. Trial 020 passed 83561, zero errors; +22.2% versus H6. Accepted.
+
+## H8 — single-statement player details (not adopted)
+
+Tests passed latest-row, creation order, empty array and tenant separation. Trial 021: official pass 85534 (raw 91972), 7 dial timeouts; nginx did not emit a new capacity alert and listen drops/overflows were zero. No grounded capacity classification for these errors. Overall gain is small; source reverted to H7 rather than spending retries on it. Candidate retained privately for later only if a new profile makes it a major bottleneck.
+
+## H9 — first-visit persistence
+
+Trial 019 slow log: 14133 visit INSERTs, 42.145 seconds cumulative. Billing only uses per-tenant/competition/player MIN(created_at); no API exposes each duplicate visit. Persist the first visit before returning, consult existing MIN using the covering index on cold cache, then skip redundant later writes. Still persist an earlier timestamp if the clock goes backwards. Reset process cache on initialize; after restart recover from DB. Invalidate billing only when a write actually changes history.
+
+H9 outcome: tests passed concurrent single persistence, cold recovery, earlier-clock minimum, cross-tenant keys and failed-write retry. Trial 022 passed 104623 with zero errors, +25.2% versus H7. Accepted.

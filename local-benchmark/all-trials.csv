@@ -18,4 +18,6 @@ id,label,kind,started,ended,commit,status,passed,score,reported_score,errors,cri
 17,versioned-finished-billing,scoring,2026-10-12T10:05:04.015977+00:00,2026-10-12T10:05:59Z,82850bcff2ca3180a1e9102cf0b8a5e158782bd5,fail,False,,0,100,0,rejected-server-capacity
 18,billing-snapshots-nginx-capacity,scoring,2026-10-12T10:09:52.433471+00:00,2026-10-12T10:10:58Z,82850bcff2ca3180a1e9102cf0b8a5e158782bd5,pass,True,68407,68407,0,0,accepted
 19,billing-ranking-profile,diagnostic,2026-10-12T10:13:34.049701+00:00,2026-10-12T10:14:40Z,b4d94677470d7e94c5b2073cab85540d4c91aea8,pass,True,61305,61305,0,0,pending
-20,atomic-player-batches,scoring,2026-10-12T10:25:56.666769+00:00,2026-10-12T10:27:02Z,b4d94677470d7e94c5b2073cab85540d4c91aea8,pass,True,83561,83561,0,0,pending
+20,atomic-player-batches,scoring,2026-10-12T10:25:56.666769+00:00,2026-10-12T10:27:02Z,b4d94677470d7e94c5b2073cab85540d4c91aea8,pass,True,83561,83561,0,0,accepted
+21,single-query-player-details,scoring,2026-10-12T10:42:58.075602+00:00,2026-10-12T10:44:04Z,b26b03985b26848d93683b182bed175c0774b2db,pass,True,85534,85534,7,0,rejected-small-gain
+22,durable-first-visits,scoring,2026-10-12T10:56:43.845957+00:00,2026-10-12T10:57:49Z,b26b03985b26848d93683b182bed175c0774b2db,pass,True,104623,104623,0,0,pending

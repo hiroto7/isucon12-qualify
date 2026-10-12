@@ -22,3 +22,5 @@
 - H6 billing reuse + nginx connections 8192/worker nofile 16384 accepted: 68407, zero errors. Trial 017 invalid due to nginx capacity. Source and guest match H6. Next: reprofile current workload for the next structural change.
 
 - H7 atomic player batches accepted, trial 020 83561 with zero errors. H6 profiler 019 sampled mid/late load and was analyzed; diagnostics disabled. Next: remove 352790 per-competition score queries in player detail.
+
+- H8 details SQL rejected (small gain and 7 timeouts), source reverted. H9 durable first visits accepted, 104623 zero errors. Next: inspect/reduce repeated SQLite connection/statement setup; no new schema/data shortcuts.
