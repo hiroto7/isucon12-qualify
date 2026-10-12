@@ -1,0 +1,117 @@
+[ADMIN] 09:13:44.068829 TargetURL: https://t.isucon.local, TargetAddr: 192.168.2.8:443, RequestTimeout: 30s, InitializeRequestTimeout: 30s, StrictPrepare: true, ReproduceMode: false
+[ADMIN] 09:13:45.235553 POST /initialize 200 初期化
+09:13:45.235639 初期化リクエストに成功しました 実装言語:go
+09:13:45.235658 整合性チェックを開始します
+[ADMIN] 09:13:45.371427 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 09:13:45.376023 GET /index.html 200 /index.htmlを確認
+[ADMIN] 09:13:45.376741 POST /api/admin/tenants/add 401 新規テナント作成: 不正リクエスト(exp切れのJWT)
+[ADMIN] 09:13:45.379009 GET /js/app.3a4ec98c.js 200 /js/app.3a4ec98c.jsを確認
+09:13:45.379076 error: /js/app.3a4ec98c.jsを確認 file body mismatch. local filepath: ../public/js/app.3a4ec98c.js 
+[ADMIN] 09:13:45.379126 staticFileCheck failed
+[ADMIN] 09:13:45.405876 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 09:13:45.409722 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 09:13:45.419697 POST /api/admin/tenants/add 401 新規テナント作成: 不正リクエスト(不正なRSA鍵)
+[ADMIN] 09:13:45.423342 POST /api/admin/tenants/add 401 新規テナント作成: 不正リクエスト(不正な鍵認証方式)
+[ADMIN] 09:13:45.424145 POST /api/organizer/competitions/add 200 新規大会追加)
+[ADMIN] 09:13:45.451228 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 09:13:45.461323 POST /api/organizer/competitions/add 401 新規大会追加: 不正リクエスト(存在しないテナント)
+[ADMIN] 09:13:45.468034 GET /api/player/competitions 401 テナント内の大会情報取得: 不正なリクエスト(存在しないプレイヤー)
+[ADMIN] 09:13:45.468044 invalidJWTCheck done
+[ADMIN] 09:13:46.074707 POST /api/organizer/players/add 200 テナントへプレイヤー追加
+[ADMIN] 09:13:46.079361 GET /api/organizer/players 200 テナントのプレイヤー一覧取得
+[ADMIN] 09:13:46.085971 POST /api/organizer/players/add 200 テナントへプレイヤー追加
+[ADMIN] 09:13:46.088368 POST /api/admin/tenants/add 400 新規テナント作成 不正リクエスト
+[ADMIN] 09:13:46.092419 POST /api/admin/tenants/add 400 新規テナント作成 不正リクエスト
+[ADMIN] 09:13:46.094102 POST /api/organizer/player/0000000000/disqualified 404 プレイヤーを失格にする: 不正リクエスト(存在しないプレイヤー)
+[ADMIN] 09:13:46.098339 POST /api/organizer/competitions/add 200 新規大会追加
+[ADMIN] 09:13:46.105310 POST /api/organizer/player/9fa52523/disqualified 200 プレイヤーを失格にする
+[ADMIN] 09:13:46.107726 POST /api/organizer/competitions/add 200 新規大会追加
+[ADMIN] 09:13:46.108857 POST /api/organizer/competition/0000000000/score 404 大会結果CSV入稿: 不正リクエスト(存在しない大会)
+[ADMIN] 09:13:46.110534 POST /api/organizer/competition/9fa5252e/score 400 大会結果CSV入稿: 不正リクエスト(存在しないプレイヤー)
+[ADMIN] 09:13:46.111365 POST /api/organizer/competition/9fa5252e/score 400 大会結果CSV入稿: 不正リクエスト(カラムの並び順が違う)
+[ADMIN] 09:13:46.113169 POST /api/organizer/competition/9fa5252e/score 400 大会結果CSV入稿: 不正リクエスト(余計なカラムがあるCSV)
+[ADMIN] 09:13:46.121616 POST /api/organizer/players/add 200 テナントへプレイヤー101人追加
+[ADMIN] 09:13:46.123639 GET /api/player/player/0000000000 404 プレイヤーと戦績情報取得
+[ADMIN] 09:13:46.125167 GET /api/player/competition/0000000000/ranking 404 大会内のランキング取得
+[ADMIN] 09:13:46.130170 POST /api/organizer/player/9fa52528/disqualified 200 プレイヤーを失格にする
+[ADMIN] 09:13:46.134537 GET /api/player/competition/9fa5252e/ranking 403 大会内のランキング取得: 失格済みプレイヤー
+[ADMIN] 09:13:46.135399 POST /api/organizer/competition/0000000000/finish 404 大会終了: 不正リクエスト(存在しない大会)
+[ADMIN] 09:13:46.139486 POST /api/organizer/competition/9fa5252e/finish 200 大会終了
+[ADMIN] 09:13:46.140885 POST /api/organizer/competition/9fa5252e/score 400 大会結果CSV入稿: 不正リクエスト(終了済みの大会)
+[ADMIN] 09:13:46.140890 badRequestCheck done
+[ADMIN] 09:13:46.576056 POST /api/organizer/competition/9fa5252c/score 200 大会結果CSV入稿
+[ADMIN] 09:13:46.677651 POST /api/organizer/competition/9fa52407/score 200 大会結果CSV入稿
+[ADMIN] 09:13:46.683865 GET /api/player/competition/9fa52407/ranking 200 大会内のランキング取得: ページングなし,上限100件
+[ADMIN] 09:13:46.688625 GET /api/player/competition/9fa52407/ranking 200 大会内のランキング取得: ページングあり
+[ADMIN] 09:13:46.689758 GET /api/player/player/9fa52466 200 プレイヤーと戦績情報取得
+[ADMIN] 09:13:46.834842 GET /api/admin/tenants/billing 200 テナント別の請求ダッシュボード: 初期データチェック
+[ADMIN] 09:13:46.834966 billingAPISuccessCheck done
+[ADMIN] 09:13:46.994906 POST /api/organizer/competition/9fa5252c/score 200 大会結果CSV入稿
+[ADMIN] 09:13:46.996410 GET /api/player/competition/9fa5252c/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:13:46.997863 GET /api/player/competition/9fa5252c/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:13:47.000250 GET /api/player/competition/9fa5252c/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:13:47.003449 GET /api/player/competition/9fa5252c/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:13:47.006599 GET /api/player/competition/9fa5252c/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:13:47.008815 GET /api/player/competition/9fa5252c/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:13:47.010339 GET /api/player/competition/9fa5252c/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:13:47.012081 GET /api/player/competition/9fa5252c/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:13:47.013526 GET /api/player/player/9fa52417 200 プレイヤーと戦績情報取得: 入稿後
+[ADMIN] 09:13:47.018695 GET /api/player/competition/9fa5252c/ranking 200 大会内のランキング取得: ページングなし
+[ADMIN] 09:13:47.026740 GET /api/player/competition/9fa5252c/ranking 200 大会内のランキング取得: スコア未登録プレイヤー
+[ADMIN] 09:13:47.030937 POST /api/organizer/competition/9fa5252c/finish 200 大会終了
+[ADMIN] 09:13:47.030945 allAPISuccessCheck sleep 3s
+[ADMIN] 09:13:47.107499 POST /api/organizer/competition/9fa52407/score 200 大会結果CSV入稿
+[ADMIN] 09:13:47.111901 GET /api/player/competition/9fa52407/ranking 200 大会内のランキング取得: ページングなし,上限100件
+[ADMIN] 09:13:47.113084 GET /api/player/player/9fa52466 200 プレイヤーと戦績情報取得
+[ADMIN] 09:13:47.585566 POST /api/organizer/competition/9fa52407/score 200 大会結果CSV入稿
+[ADMIN] 09:13:47.589587 GET /api/player/competition/9fa52407/ranking 200 大会内のランキング取得: ページングなし,上限100件
+[ADMIN] 09:13:47.589876 rankingCheck done
+[ADMIN] 09:13:50.131664 GET /api/player/competition/9fa5252c/ranking 200 大会内のランキング取得: ランキングが正しいことを確認
+[ADMIN] 09:13:50.134143 GET /api/organizer/billing 200 テナント内の請求情報
+[ADMIN] 09:13:50.135486 GET /api/player/competitions 200 テナント内の大会情報取得
+[ADMIN] 09:13:50.136685 GET /api/organizer/competitions 200 テナント管理者API テナント内の大会一覧取得
+[ADMIN] 09:13:51.028190 GET /api/admin/tenants/billing 200 テナント別の請求ダッシュボード(最大10件)
+[ADMIN] 09:13:51.079552 GET /api/organizer/billing 200 テナント内の請求情報
+[ADMIN] 09:13:51.079605 allAPISuccessCheck done
+[ADMIN] 09:13:51.079618 validation error: error: /js/app.3a4ec98c.jsを確認 file body mismatch. local filepath: ../public/js/app.3a4ec98c.js 
+09:13:51.079619 整合性チェックを終了します
+[ADMIN] 09:13:51.079631 Scenario:validation elapsed:5.843973592s
+09:13:51.079632 整合性チェックに失敗しました
+09:13:52.138324 ERROR[0] prepare: load-validation: file body mismatch. local filepath: ../public/js/app.3a4ec98c.js 
+[ADMIN] 09:13:52.138401 ScenarioScoreMap: map[string]int64{
+  "AdminBilling":            0,
+  "AdminBillingValidate":    0,
+  "OrganizerNewTenant":      0,
+  "OrganizerPeacefulTenant": 0,
+  "OrganizerPopularTenant":  0,
+  "Player":                  0,
+  "PlayerValidate":          0,
+  "TenantBillingValidate":   0,
+}
+[ADMIN] 09:13:52.138450 WorkerCount: map[string]int{}
+09:13:52.138455 Error 1 (Critical:0)
+[ADMIN] 09:13:52.138515 ScenarioCount: map[bench.ScenarioTag]string{
+  "AdminBilling":            "count: 0 (error: 0)",
+  "AdminBillingValidate":    "count: 0 (error: 0)",
+  "OrganizerNewTenant":      "count: 0 (error: 0)",
+  "OrganizerPeacefulTenant": "count: 0 (error: 0)",
+  "OrganizerPopularTenant":  "count: 0 (error: 0)",
+  "Player":                  "count: 0 (error: 0)",
+  "PlayerValidate":          "count: 0 (error: 0)",
+  "TenantBillingValidate":   "count: 0 (error: 0)",
+}
+09:13:52.138515 PASSED: false
+09:13:52.138520 SCORE: 0 (+0 0(1%))
+[ADMIN] 09:13:52.138572 score.ScoreTable{
+  "GET /api/admin/tenants/billing":                         0,
+  "GET /api/organizer/billing":                             0,
+  "GET /api/player/competition/:competition_id/ranking":    0,
+  "GET /api/player/competitions":                           0,
+  "GET /api/player/player/:player_name":                    0,
+  "POST /api/admin/tenants/add":                            0,
+  "POST /api/organizer/competition/:competition_id/finish": 0,
+  "POST /api/organizer/competition/:competition_id/score":  0,
+  "POST /api/organizer/competitions/add":                   0,
+  "POST /api/organizer/player/:player_name/disqualified":   0,
+  "POST /api/organizer/players/add":                        0,
+}

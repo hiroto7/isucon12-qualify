@@ -23,10 +23,13 @@ with tempfile.NamedTemporaryFile(suffix='.tar.gz') as f:
             hashes[name]=hashlib.sha256(content).hexdigest()
             info=tarfile.TarInfo(name);info.size=len(content);info.mode=0o755 if p.suffix=='.sh' else 0o644
             archive.addfile(info,io.BytesIO(content))
+    f.flush()
     subprocess.run(['multipass','transfer',f.name,f'{vm}:/tmp/deploy.tar.gz'],check=True)
-    remote('set -eu; ! pgrep -x bench; systemctl stop isuports; find /home/isucon/webapp/go -name "*.go" -delete; tar xzf /tmp/deploy.tar.gz -C /home/isucon/webapp; chown -R isucon:isucon /home/isucon/webapp/go; cd /home/isucon/webapp; sudo -u isucon docker compose -f docker-compose-go.yml build > /tmp/deploy-build.log 2>&1; systemctl reset-failed isuports; systemctl start isuports')
+    remote('set -eu; tar tzf /tmp/deploy.tar.gz >/dev/null; ! pgrep -x bench; systemctl stop isuports; find /home/isucon/webapp/go -name "*.go" -delete; tar xzf /tmp/deploy.tar.gz -C /home/isucon/webapp; chown -R isucon:isucon /home/isucon/webapp/go; cd /home/isucon/webapp; sudo -u isucon docker compose -f docker-compose-go.yml build > /tmp/deploy-build.log 2>&1; systemctl reset-failed isuports; systemctl start isuports')
 with tempfile.NamedTemporaryFile(mode='w',suffix='.json') as f:
     json.dump(hashes,f);f.flush()
     subprocess.run(['multipass','transfer',f.name,f'{vm}:/tmp/deploy-manifest.json'],check=True)
 remote("python3 - <<'PY'\nimport hashlib,json,pathlib\nexpected=json.load(open('/tmp/deploy-manifest.json'))\nbase=pathlib.Path('/home/isucon/webapp')\nactual={str(p.relative_to(base)) for p in (base/'go').rglob('*.go')}\nassert actual=={p for p in expected if p.endswith('.go')}\nfor name,digest in expected.items():\n assert hashlib.sha256((base/name).read_bytes()).hexdigest()==digest,name\nprint('Managed source set verified')\nPY")
 print('Deployed source; verify running container readiness before starting the benchmark.')
+
+remote("for n in $(seq 1 30); do curl -fsS -H 'Host: admin.t.isucon.local' http://127.0.0.1:3000/api/me >/dev/null && exit 0; sleep 1; done; exit 1")

@@ -1,0 +1,3 @@
+id,label,kind,started,ended,commit,status,passed,score,reported_score,decision
+1,baseline-1,scoring,2026-10-12T09:13:43.948597+00:00,2026-10-12T09:13:52Z,5438f931640c07da575a403e61bea03c25804542,fail,False,,0,environment-mismatch
+2,baseline-2,scoring,2026-10-12T09:15:04.328185+00:00,,5438f931640c07da575a403e61bea03c25804542,running,False,,,pending
