@@ -22,5 +22,9 @@
   "status": "pass",
   "decision": "rejected-capacity",
   "ended": "2026-10-12T09:34:49Z",
-  "failure_reason": "Official pass but 78 errors (1 critical), FD soft limit 1024 exhausted; no acceptance of reported raw improvement"
+  "failure_reason": "Official pass but 78 errors (1 critical), FD soft limit 1024 exhausted; no acceptance of reported raw improvement",
+  "errors": 78,
+  "critical_errors": 1,
+  "raw_score": 11148,
+  "deduction_percent": 87
 }

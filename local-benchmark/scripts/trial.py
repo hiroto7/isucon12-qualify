@@ -62,5 +62,5 @@ else:
     rows = [json.loads(p.read_text()) for p in sorted((OUT/'results').glob('*/meta.json'))]
     fields = ['id','label','kind','started','ended','commit','status','passed','score','reported_score','errors','critical_errors','decision']
     with (OUT/'all-trials.csv').open('w') as f:
-        w=csv.DictWriter(f, fieldnames=fields, extrasaction='ignore'); w.writeheader(); w.writerows(rows)
+        w=csv.DictWriter(f, fieldnames=fields, extrasaction='ignore',lineterminator='\n'); w.writeheader(); w.writerows(rows)
     print(json.dumps({k:meta.get(k) for k in fields}, ensure_ascii=False))

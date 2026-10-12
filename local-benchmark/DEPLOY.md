@@ -11,3 +11,11 @@
 - Plot: `/private/tmp/isucon12-plot/bin/python local-benchmark/scripts/graphs.py` (matplotlib 3.9.4); PNG and SVG from every meta.json, including failures.
 - Rollback requires restoring Go sources, SQL init/schema, runtime configuration and affected DB structures, then initialization/restart verification. A Git checkout alone does not restore deployed state.
 - Provisioning encountered an initial shell heredoc indentation error, unset cloud-init Go cache environment, obsolete Compose API, double mysql-client substitution and retired Debian security URLs. None produced a scored benchmark. A deployment archive flush error was detected before benchmarking and corrected.
+
+- Deployment now also installs the tracked nginx.conf and checks it; `--keep-nginx` is reserved for exact baseline comparisons. The deploy tool checks for a live official bench process in the bench guest before mutating the app guest.
+- From attempt 015 the detached benchmark process has LimitNOFILE=65536. Attempt 016 repeats the exact H4 source, and attempt 031 repeats baseline 002 with matching source hashes and pristine official initial data under that corrected harness.
+- Final/reference trials capture compiled app SHA256, Docker image ID, nginx/Compose config hashes and source manifest. Earlier trials have source manifests plus diagnostic/build records; do not infer unrecorded runtime hashes.
+- Source-only rollback from a WAL experiment is insufficient: stop app, remove database WAL/SHM sidecars before initial-data restoration, and verify template versus restored journal modes. Attempt 029 records the discovered contamination.
+- Initial-data archive URL is the official data/20220712_1505-745a3fdfb5783afc048ecaebd054acd20151872d release; SHA256 024fc58d1468ac827caf023d0bfdf0e7375fe1d0ce9dea78a2fb3bedf5786506.
+- Run the guest-only `reboot-check.py create` after a final benchmark, normally restart the app VM, then run `reboot-check.py check` BEFORE any next `/initialize`. It exercises actual blackauth cookies and production HTTPS APIs. Tokens stay in guest memory and are not saved in the report.
+- Portable graph reproduction: create a Python virtual environment, install matplotlib==3.9.4, then run `python local-benchmark/scripts/graphs.py`.

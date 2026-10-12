@@ -43,5 +43,7 @@
   "decision": "rejected-contaminated-WAL-restore",
   "errors": 1,
   "critical_errors": 1,
-  "ended": "2026-10-12T14:33:10Z"
+  "ended": "2026-10-12T14:33:10Z",
+  "raw_score": 111357,
+  "deduction_percent": 10
 }

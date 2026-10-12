@@ -22,5 +22,9 @@
   "status": "pass",
   "decision": "accepted-provisional",
   "ended": "2026-10-12T09:31:37Z",
-  "limitation": "One normal timeout on heavy-tenant billing after new heavy workload was enabled; next change must resolve it"
+  "limitation": "One normal timeout on heavy-tenant billing after new heavy workload was enabled; next change must resolve it",
+  "errors": 1,
+  "critical_errors": 0,
+  "raw_score": 11290,
+  "deduction_percent": 1
 }

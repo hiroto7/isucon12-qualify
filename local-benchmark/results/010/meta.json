@@ -27,5 +27,9 @@
     "profile": false,
     "sqlite_trace": false
   },
-  "ended": "2026-10-12T09:38:31Z"
+  "ended": "2026-10-12T09:38:31Z",
+  "errors": 0,
+  "critical_errors": 0,
+  "raw_score": 12526,
+  "deduction_percent": 0
 }

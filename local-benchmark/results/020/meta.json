@@ -36,5 +36,7 @@
   "decision": "accepted",
   "errors": 0,
   "critical_errors": 0,
-  "ended": "2026-10-12T10:27:02Z"
+  "ended": "2026-10-12T10:27:02Z",
+  "raw_score": 83561,
+  "deduction_percent": 0
 }

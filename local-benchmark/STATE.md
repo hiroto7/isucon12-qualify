@@ -1,30 +1,11 @@
-# Current state
+# Current verified state
 
-- Official initial commit: 95958774bde66d47fd26cc820fd2fbfbece798f1.
-- Read allowed sources only: supplied ISUCON14/13 playbooks, ISUCON12 official manuals/source, matsuu provisioning. No ISUCON12 commentary, solutions, or participant reports.
-- Existing local ISUCON12-related directories are not inspected.
-- Fork: hiroto7/isucon12-qualify; PR must target this fork, never upstream.
-- Old isucon13-app and isucon13-bench deleted.
-- New Multipass QEMU ARM64 guests: app 2 CPUs/4 GiB/30 GB, bench 4 CPUs/8 GiB/15 GB; no host mounts.
-- Initial valid scores: 6334, 6308, 6365. Baseline median 6334; goal 633400. All three zero errors. Trial 001 failed static expectation due to hostname setup; not a valid score.
-- H1 atomic CSV replacement accepted: 8165/7896, zero errors; initial profiling 005 collected/analyzed and settings disabled.
-- Next: cover MySQL visit grouping with an index; remeasure shifted bottlenecks after acceptance.
-- Goal: 100 times initial three successful scoring runs' median; stop if grounded major improvements are exhausted.
-
-- H2 visit covering index provisionally accepted, 11178. New heavy tenant billing timeout remains; final state must resolve it.
-
-- H3 accepted: SQLite score partition index + app nofile 16384; trial 010 12526, zero errors. Next: profile higher load, then remove per-row durable ID round trips.
-
-- H4 durable block ID reservation accepted, 28258 with zero errors (trial 013). MySQL/race integration tests passed. Trial 012 records failed deployment only; Docker guest-generated cache/image was rebuilt.
-
-- H5 ranking snapshots accepted: 40420 zero errors; same-condition exact H4 control 28828. Bench process FD soft limit explicitly 65536 from trial 015. Candidate source restored; guest is temporarily still H4 control, so deploy next candidate before measuring.
-
-- H6 billing reuse + nginx connections 8192/worker nofile 16384 accepted: 68407, zero errors. Trial 017 invalid due to nginx capacity. Source and guest match H6. Next: reprofile current workload for the next structural change.
-
-- H7 atomic player batches accepted, trial 020 83561 with zero errors. H6 profiler 019 sampled mid/late load and was analyzed; diagnostics disabled. Next: remove 352790 per-competition score queries in player detail.
-
-- H8 details SQL rejected (small gain and 7 timeouts), source reverted. H9 durable first visits accepted, 104623 zero errors. Next: inspect/reduce repeated SQLite connection/statement setup; no new schema/data shortcuts.
-
-- H10 tenant pools + prepared reads accepted, 120445 zero errors. All source and deployment match. Next: eliminate repeated per-player/per-competition score reads with immutable latest-score snapshots.
-
-- H11 latest-score snapshots accepted, 137684 zero errors. Current best valid scoring state ~21.7x initial. Next reprofile: authorization/metadata/serialization or demand-limited workload, then choose only grounded major remaining changes.
+- Work complete; 100x goal not reached. Official source pinned 95958774bde66d47fd26cc820fd2fbfbece798f1. Allowed supplied playbooks + official initial code/manuals/data/provisioning only; no ISUCON12 solutions/postmortems/participant articles read. Existing local ISUCON12-related code was not inspected.
+- Initial valid scores 6334/6308/6365, median6334; target633400. Corrected-harness pristine reference031=5935, zero errors, exact original managed hashes/configs/data.
+- Highest zero-error scoring observation024=137684 (21.74x); before namespace/restore correctness repairs. Final validation030/032/033=114131/105255/120983, all zero errors, median114131 (18.02x). Final after normal restart=120983 (19.10x). Reboot-before032=105255; after is114.94%, passing85% criterion.
+- Adopted H1-H7, H9-H11 plus ID namespace2^62 and SQLite WAL/SHM restore cleanup. H8 small/errorful SQL, H13 shared readers, H14 WAL and H15 log/debug candidate are reverted. H15 trial029 is contaminated and not a performance comparison. See HYPOTHESES.md/REPORT.md for evidence and limits.
+- Final Go source at fb6ba7d; correctness implementation in a719dd8. Later commits record artifacts only. Deployed whole managed source set verified after reboot. No dirty app sources. Final trial033 hashes equal032 and current source. Runtime binary SHA256 69295a44cdfa9d81431a12a625b14d3e8af1cc13734a7c0e779ce77da1ea27d3.
+- Guest app2vCPU/4GiB/30GB and bench4vCPU/8GiB/15GB kept fixed. No host mounts/agent forwarding. Both normal reboot and firewall autostart verified. Old isucon13-app/bench deleted. Diagnostics off, profiler6060 absent; normal nginx/app configuration restored.
+- Go race suite + live MySQL ID integration + go vet passed in production container. Real blackauth/HTTPS persistence checks passed BEFORE post-reboot initialize; synthetic before data preserved in validation/reboot-data-before.json. Official strict prepare/static asset validation passed. Browser visual inspection not performed.
+- All33 attempts retained, including preparation failure012 and contaminated029; graphs/CSV rebuilt from raw logs.
+- Repository fork hiroto7/isucon12-qualify, branch codex/local-benchmark. Draft PR targets fork main, never upstream. Publication/CI state is recorded in final delivery; no merge performed.

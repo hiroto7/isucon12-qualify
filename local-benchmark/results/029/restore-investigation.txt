@@ -1,0 +1,7 @@
+At 2026-10-12T14:32:11.61058972Z app logged: insert score row: UNIQUE constraint failed: player_score.id.
+mysql tenant name isucon is id 1.
+After run: initial_data/1.db PRAGMA journal_mode => delete; tenant_db/1.db => wal.
+Numerous tenant_db/*.db-wal files remained. 1.db-wal size 3872832; 1.db-shm 32768.
+Original restored init.sh removed *.db only. Rejected H14 had enabled WAL.
+The 2^62 namespace cannot collide with verified original IDs; leftover high-ID WAL rows invalidate this comparison.
+Fix: close pooled connections before initialize; delete *.db, *.db-wal and *.db-shm before copying pristine templates.

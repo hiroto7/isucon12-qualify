@@ -20,5 +20,9 @@
   "status": "fail",
   "decision": "environment-mismatch",
   "ended": "2026-10-12T09:13:52Z",
-  "failure_reason": "Local hostname replacement in app public assets missing from bench expected assets; fixed before valid baseline"
+  "failure_reason": "Local hostname replacement in app public assets missing from bench expected assets; fixed before valid baseline",
+  "errors": 1,
+  "critical_errors": 0,
+  "raw_score": 0,
+  "deduction_percent": 1
 }

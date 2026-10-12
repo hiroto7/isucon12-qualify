@@ -33,5 +33,7 @@
   "errors": 104,
   "critical_errors": 0,
   "ended": "2026-10-12T09:52:00Z",
-  "failure_reason": "Bench guest process default soft FD limit exhausted; official benchmark failed. No functional mismatch attributed to ranking snapshot yet."
+  "failure_reason": "Bench guest process default soft FD limit exhausted; official benchmark failed. No functional mismatch attributed to ranking snapshot yet.",
+  "raw_score": 29359,
+  "deduction_percent": 104
 }

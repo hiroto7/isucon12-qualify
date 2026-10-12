@@ -35,5 +35,7 @@
   "errors": 100,
   "critical_errors": 0,
   "ended": "2026-10-12T10:05:59Z",
-  "failure_reason": "nginx worker_connections=768 exhausted; 100 connection resets, no accepted score"
+  "failure_reason": "nginx worker_connections=768 exhausted; 100 connection resets, no accepted score",
+  "raw_score": 48797,
+  "deduction_percent": 100
 }

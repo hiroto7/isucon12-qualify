@@ -44,5 +44,7 @@
   "errors": 6,
   "critical_errors": 0,
   "ended": "2026-10-12T11:40:37Z",
-  "limitation": "No critical/ID error; 6 ranking body decode failures remain at higher load. Not a new performance record."
+  "limitation": "No critical/ID error; 6 ranking body decode failures remain at higher load. Not a new performance record.",
+  "raw_score": 136148,
+  "deduction_percent": 6
 }

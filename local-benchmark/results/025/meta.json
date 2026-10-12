@@ -39,8 +39,10 @@
   "score": 116512,
   "reported_score": 116512,
   "status": "pass",
-  "decision": "pending",
+  "decision": "diagnostic",
   "errors": 1,
   "critical_errors": 1,
-  "ended": "2026-10-12T11:25:10Z"
+  "ended": "2026-10-12T11:25:10Z",
+  "raw_score": 129457,
+  "deduction_percent": 10
 }

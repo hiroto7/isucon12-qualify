@@ -1,0 +1,10 @@
+Production app container: Go 1.18.4 ARM64
+ISUCON_ID_INTEGRATION=1 go test -race -timeout 30s ./... : PASS (package 0.115s)
+go vet ./... : PASS (exit 0)
+Includes real MySQL two disjoint durable reservations/high-watermark verification; full parallel/rollback/cold-reopen/invalidation suite. Tests ran with benchmark idle.
+Baseline 031: exact 002 tracked managed source hashes, original configs and pristine official initial data; score 5935, errors 0, critical 0.
+Real production HTTPS API persistence check: PASS before reboot and identical ranking/detail/billing after app reboot BEFORE /initialize. New ID is beyond pre-reboot IDs. Disqualification, wrong role, no authentication and wrong tenant rejected as expected. 210 yen total = two scored players + one distinct spectator.
+App new boot at 2026-10-12 23:46:50 JST, bench new boot at 23:48:19 JST. Both isolation units active after restart, private/link-local reject rules restored, IPv6 disabled, no 6060 profiler listener.
+Multipass restart CLI twice reported SSH connection refused while the requested guest was restarting; verified new boot IDs/time and service health rather than treating CLI exit as proof of restart failure or success.
+App compiled binary SHA256 before/after reboot identical: 69295a44cdfa9d81431a12a625b14d3e8af1cc13734a7c0e779ce77da1ea27d3. nginx/Compose hashes also identical. Image IDs differ because existing systemd starts docker compose with build; actual managed source and compiled binary are verified.
+Final 033 PASS score120983, errors0, critical0; before032=105255, ratio1.149427 >=0.85. Source manifests equal before/after and current files.

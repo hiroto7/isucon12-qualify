@@ -5,7 +5,8 @@ import json
 import re
 from pathlib import Path
 import os
-os.environ.setdefault("MPLCONFIGDIR", "/private/tmp/isucon12-matplotlib")
+import tempfile
+os.environ.setdefault("MPLCONFIGDIR", str(Path(tempfile.gettempdir()) / "isucon12-matplotlib"))
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -23,7 +24,7 @@ for r in rows:
         (logpath.parent/'meta.json').write_text(json.dumps(r,indent=2)+'\n')
 fields = ['id','label','kind','started','ended','commit','status','passed','score','reported_score','raw_score','deduction_percent','errors','critical_errors','decision']
 with (root/'all-trials.csv').open('w') as f:
-    w=csv.DictWriter(f,fieldnames=fields,extrasaction='ignore');w.writeheader();w.writerows(rows)
+    w=csv.DictWriter(f,fieldnames=fields,extrasaction='ignore',lineterminator='\n');w.writeheader();w.writerows(rows)
 baseline_rows = [r['score'] for r in rows if r['label'].startswith('baseline') and r['kind']=='scoring' and r['passed']][:3]
 baseline = sorted(baseline_rows)[len(baseline_rows)//2] if baseline_rows else None
 record = 0
@@ -53,9 +54,15 @@ for name,selected in [('all-trials',rows),('record-highs',highs)]:
         ax.axhline(baseline,color='gray',linestyle=':',label=f'initial median {baseline:,}; goal {baseline*100:,}')
     for r in selected:
         if r.get('decision')=='accepted' or r['label'].startswith('final'):
-            ax.annotate(r['label'],(r['id'],r['score'] or 0),xytext=(3,8),textcoords='offset points',fontsize=8,rotation=15)
+            ax.annotate(f"#{r['id']:02d} {r['score'] or 0:,}",(r['id'],r['score'] or 0),xytext=(3,8),textcoords='offset points',fontsize=8,rotation=20)
     ax.set(title=f'ISUCON12 qualify — {name}',xlabel='Attempt number (all attempts retained)',ylabel='Official valid score')
+    ax.set_xlim(min(r['id'] for r in selected)-1,max(r['id'] for r in selected)+3)
+    ax.set_ylim(-max(record,1)*.04,max(record,1)*1.16)
+    ax.set_xticks([r['id'] for r in selected]);ax.tick_params(axis='x',labelsize=8)
     ax.grid(alpha=.2);ax.legend(fontsize=8,loc='upper left');fig.tight_layout()
     for ext in ['png','svg']:
-        fig.savefig(root/f'score-{name}.{ext}',dpi=160)
+        output=root/f'score-{name}.{ext}'
+        fig.savefig(output,dpi=160)
+        if ext=='svg':
+            output.write_text('\n'.join(line.rstrip() for line in output.read_text().splitlines())+'\n')
     plt.close(fig)

@@ -39,5 +39,7 @@
   "errors": 7,
   "critical_errors": 0,
   "ended": "2026-10-12T10:44:04Z",
-  "failure_reason": "85534 after 7 connection timeouts vs accepted 83561; no clear major score gain. No nginx cap alert or listen-drop evidence for these timeouts. Reverted, not chased."
+  "failure_reason": "85534 after 7 connection timeouts vs accepted 83561; no clear major score gain. No nginx cap alert or listen-drop evidence for these timeouts. Reverted, not chased.",
+  "raw_score": 91972,
+  "deduction_percent": 7
 }

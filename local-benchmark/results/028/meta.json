@@ -43,5 +43,7 @@
   "decision": "rejected-regression",
   "errors": 0,
   "critical_errors": 0,
-  "ended": "2026-10-12T14:30:49Z"
+  "ended": "2026-10-12T14:30:49Z",
+  "raw_score": 115336,
+  "deduction_percent": 0
 }

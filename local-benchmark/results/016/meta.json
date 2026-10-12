@@ -30,5 +30,7 @@
   "decision": "control",
   "errors": 0,
   "critical_errors": 0,
-  "ended": "2026-10-12T09:59:39Z"
+  "ended": "2026-10-12T09:59:39Z",
+  "raw_score": 28828,
+  "deduction_percent": 0
 }

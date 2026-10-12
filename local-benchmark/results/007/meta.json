@@ -21,5 +21,9 @@
   "reported_score": 7896,
   "status": "pass",
   "decision": "confirmation",
-  "ended": "2026-10-12T09:28:26Z"
+  "ended": "2026-10-12T09:28:26Z",
+  "errors": 0,
+  "critical_errors": 0,
+  "raw_score": 7896,
+  "deduction_percent": 0
 }

@@ -40,5 +40,7 @@
     "nginx_worker_nofile": 16384,
     "app_nofile": 16384,
     "bench_nofile": 65536
-  }
+  },
+  "raw_score": 68407,
+  "deduction_percent": 0
 }
