@@ -10,3 +10,5 @@
 - H1 atomic CSV replacement accepted: 8165/7896, zero errors; initial profiling 005 collected/analyzed and settings disabled.
 - Next: cover MySQL visit grouping with an index; remeasure shifted bottlenecks after acceptance.
 - Goal: 100 times initial three successful scoring runs' median; stop if grounded major improvements are exhausted.
+
+- H2 visit covering index provisionally accepted, 11178. New heavy tenant billing timeout remains; final state must resolve it.

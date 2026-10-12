@@ -3,6 +3,8 @@
 import csv
 import json
 from pathlib import Path
+import os
+os.environ.setdefault("MPLCONFIGDIR", "/private/tmp/isucon12-matplotlib")
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt

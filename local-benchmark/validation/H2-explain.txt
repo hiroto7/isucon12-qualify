@@ -1,0 +1,2 @@
+id	select_type	table	partitions	type	possible_keys	key	key_len	ref	rows	filtered	Extra
+1	SIMPLE	visit_history	NULL	ref	tenant_id_idx,visit_competition_player	visit_competition_player	1030	const,const	2326	100.00	Using index

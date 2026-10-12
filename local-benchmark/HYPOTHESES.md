@@ -20,3 +20,9 @@ Not accepted findings: priority and expected score effect require load measureme
 - The initial heavy tenant contains 1,674,797 score rows and 5,001 players; player-score lookups use full scans without indexes.
 - Admin billing mean 6.0 seconds per request, repeatedly groups MySQL visit_history per competition. Existing index covers tenant_id only. Inspect slow query rows/time to determine whether a competition/player covering index unlocks more admin cycles and additional organizer/reader workers.
 - Trial 005 digest summary omits prepared statements, so it is not complete DB analysis. Use slow query data to fill this gap; do not treat summary collection as completion.
+
+## H2 — covering visit-history index
+
+Trial 005 slow log confirms 2465 visit grouping calls, 102.182 seconds cumulative and 43,915,092 rows examined. Add (tenant_id, competition_id, player_id, created_at) to partition each group by competition and cover player/MIN(created_at). Keep existing semantics and old index. Schema creation and idempotent initialize migration agree. Build migration once outside the measured benchmark; subsequent initialize keeps it.
+
+H2 outcome: trial 008 official pass, 11178 (raw 11290, one normal heavy-tenant billing timeout). Provisional adoption as a major workload-unlocking change; not a zero-error final state. Follow-on fix targets proven full scans of the 1.67M-row SQLite table.
