@@ -7,8 +7,11 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-// Readers retain the tenant lock. A failed upload leaves the previous version intact.
+// The competition lock covers the durable commit and derived cache publication.
 func replaceCompetitionScores(ctx context.Context, db *sqlx.DB, tenantID int64, competitionID string, rows []PlayerScoreRow) error {
+	lock := scoreLock(tenantID, competitionID)
+	lock.Lock()
+	defer lock.Unlock()
 	tx, err := db.BeginTxx(ctx, nil)
 	if err != nil {
 		return err

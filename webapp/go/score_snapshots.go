@@ -11,8 +11,11 @@ func resetLatestScores() {
 	latestScores.Range(func(key, _ interface{}) bool { latestScores.Delete(key); return true })
 }
 
-// The caller holds the tenant lock, shared with successful score replacement.
+// Capture an immutable score version under the competition read lock.
 func competitionScores(ctx context.Context, db dbOrTx, tenantID int64, competitionID string) (map[string]int64, error) {
+	lock := scoreLock(tenantID, competitionID)
+	lock.RLock()
+	defer lock.RUnlock()
 	key := competitionCacheKey{tenantID, competitionID}
 	if cached, ok := latestScores.Load(key); ok {
 		return cached.(map[string]int64), nil

@@ -18,9 +18,11 @@ func resetRankSnapshots() {
 	rankSnapshots.Range(func(key, _ interface{}) bool { rankSnapshots.Delete(key); return true })
 }
 
-// Called under the same tenant lock used by score replacement. Entries are
-// immutable derived data, and a restart simply reloads the persisted rows.
+// Cache entries are immutable. A restart reloads persisted rows.
 func competitionRanks(ctx context.Context, db *sqlx.DB, tenantID int64, competitionID string) ([]CompetitionRank, error) {
+	lock := scoreLock(tenantID, competitionID)
+	lock.RLock()
+	defer lock.RUnlock()
 	key := competitionCacheKey{tenantID, competitionID}
 	if cached, ok := rankSnapshots.Load(key); ok {
 		return cached.([]CompetitionRank), nil
