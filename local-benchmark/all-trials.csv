@@ -45,4 +45,5 @@ id,label,kind,started,ended,commit,status,passed,score,reported_score,errors,cri
 44,metadata-and-signing-key-cache,scoring,2026-10-12T16:03:44.607896+00:00,2026-10-12T16:04:49Z,42c202006feba97228fbf98c5d77630144c95af4,pass,True,200605,200605,0,0,accepted
 45,eager-durable-snapshot-warmup,scoring,2026-10-12T16:07:33.277012+00:00,2026-10-12T16:08:39Z,80a1b7b705704ceb8adf155592502e5d04a429dc,pass,True,202159,202159,0,0,rejected-inconclusive
 46,metadata-cpu-profile,diagnostic,2026-10-12T16:10:07.032030+00:00,2026-10-12T16:11:12Z,5870bb5ceb21c1bceae577c56e36e1b2f6f475d6,pass,True,200627,200627,0,0,diagnostic
-47,verified-jwt-cache-with-live-time-checks,scoring,2026-10-12T16:14:23.005630+00:00,2026-10-12T16:15:28Z,5870bb5ceb21c1bceae577c56e36e1b2f6f475d6,pass,True,220263,220263,0,0,pending
+47,verified-jwt-cache-with-live-time-checks,scoring,2026-10-12T16:14:23.005630+00:00,2026-10-12T16:15:28Z,5870bb5ceb21c1bceae577c56e36e1b2f6f475d6,pass,True,220263,220263,0,0,accepted
+48,cached-player-details-and-competition-lists,scoring,2026-10-12T16:19:36.078388+00:00,2026-10-12T16:20:41Z,2d35089861c5fcfcd987fd31d1b829f6cc117749,pass,True,238239,238239,0,0,pending

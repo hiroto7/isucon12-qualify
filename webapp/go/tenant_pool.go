@@ -4,14 +4,17 @@ import (
 	"context"
 	"fmt"
 	"github.com/jmoiron/sqlx"
+	"strings"
 	"sync"
 )
 
 type tenantConnection struct {
 	*sqlx.DB
-	mu           sync.Mutex
-	reads        map[string]*sqlx.Stmt
-	metadataRows sync.Map
+	mu                sync.Mutex
+	reads             map[string]*sqlx.Stmt
+	metadataRows      sync.Map
+	competitionListMu sync.RWMutex
+	competitionLists  map[string][]CompetitionRow
 }
 
 var tenantConnections = struct {
@@ -47,6 +50,11 @@ func (db *tenantConnection) GetContext(ctx context.Context, dest interface{}, qu
 	return stmt.GetContext(ctx, dest, args...)
 }
 func (db *tenantConnection) SelectContext(ctx context.Context, dest interface{}, query string, args ...interface{}) error {
+	if strings.HasPrefix(query, "SELECT * FROM competition WHERE tenant_id") {
+		if rows, ok := dest.(*[]CompetitionRow); ok {
+			return db.competitionList(ctx, rows, query, args...)
+		}
+	}
 	stmt, err := db.prepare(ctx, query)
 	if err != nil {
 		return err

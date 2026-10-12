@@ -4,6 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"os"
+	"strings"
 	"sync"
 
 	"github.com/lestrrat-go/jwx/v2/jwk"
@@ -53,6 +54,11 @@ func (db *tenantConnection) getMetadata(ctx context.Context, dest interface{}, q
 }
 
 func (db *tenantConnection) ExecContext(ctx context.Context, query string, args ...interface{}) (sql.Result, error) {
+	competitionWrite := strings.HasPrefix(query, "INSERT INTO competition ") || query == "UPDATE competition SET finished_at = ?, updated_at = ? WHERE id = ?"
+	if competitionWrite {
+		db.competitionListMu.Lock()
+		defer db.competitionListMu.Unlock()
+	}
 	var cachedQuery string
 	switch query {
 	case "UPDATE player SET is_disqualified = ?, updated_at = ? WHERE id = ?":
@@ -61,7 +67,11 @@ func (db *tenantConnection) ExecContext(ctx context.Context, query string, args 
 		cachedQuery = "SELECT * FROM competition WHERE id = ?"
 	}
 	if cachedQuery == "" {
-		return db.DB.ExecContext(ctx, query, args...)
+		result, err := db.DB.ExecContext(ctx, query, args...)
+		if err == nil && competitionWrite {
+			db.competitionLists = nil
+		}
+		return result, err
 	}
 	entry := db.metadata(cachedQuery, args[len(args)-1].(string))
 	entry.mu.Lock()
@@ -69,6 +79,9 @@ func (db *tenantConnection) ExecContext(ctx context.Context, query string, args 
 	result, err := db.DB.ExecContext(ctx, query, args...)
 	if err == nil {
 		entry.value = nil
+		if competitionWrite {
+			db.competitionLists = nil
+		}
 	}
 	return result, err
 }

@@ -1108,25 +1108,9 @@ func playerHandler(c echo.Context) error {
 		}
 		return fmt.Errorf("error retrievePlayer: %w", err)
 	}
-	cs := []CompetitionRow{}
-	if err := tenantDB.SelectContext(
-		ctx,
-		&cs,
-		"SELECT * FROM competition WHERE tenant_id = ? ORDER BY created_at ASC",
-		v.tenantID,
-	); err != nil && !errors.Is(err, sql.ErrNoRows) {
-		return fmt.Errorf("error Select competition: %w", err)
-	}
-
-	psds := make([]PlayerScoreDetail, 0, len(cs))
-	for _, comp := range cs {
-		values, err := competitionScores(ctx, tenantDB, v.tenantID, comp.ID)
-		if err != nil {
-			return err
-		}
-		if score, ok := values[p.ID]; ok {
-			psds = append(psds, PlayerScoreDetail{CompetitionTitle: comp.Title, Score: score})
-		}
+	psds, err := playerScoreDetails(ctx, tenantDB, v.tenantID, p.ID)
+	if err != nil {
+		return err
 	}
 
 	res := SuccessResult{
@@ -1420,6 +1404,7 @@ func initializeHandler(c echo.Context) error {
 	resetLatestScores()
 	resetScoreLocks()
 	resetTenantMetadata()
+	resetPlayerScoreSnapshots()
 	res := InitializeHandlerResult{
 		Lang: "go",
 	}

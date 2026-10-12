@@ -17,3 +17,5 @@ Knowledge boundary: ISUCON12 postmortems were first read after the user's explic
 
 - 046 CPU diagnostic200627, zero errors, not a scoring adoption.25s profile:jwt.Parse19.14%, CGO17.65%, JSON14.91% (pretty indentation10.38%). Raw profile and system process samples retained; profiler then disabled.
 - H22 bounded32768-entry cache of successfully verified immutable JWTs; exp/nbf/iat validation remains live on every request, including hits. Role, tenant and player authorization unchanged.047220263, zero errors (+9.80% vs044). Accepted with profiler evidence and expiry/not-before/forged-payload/race tests. No nginx or JSON settings changed in047.
+
+- H23 cache immutable competition lists, invalidate successful insert/finish; cache player detail score lists and invalidate only the union of old/new scorers after score commit. A tenant RW lock protects cold detail construction versus commit/invalidation, released before JSON; rank reads retain per-competition locks.048238239, zero errors (+8.16% vs047), accepted. Empty replacement, removed scorer, failed transaction, cold restoration, list insert/finish and tenant isolation/race tests passed.
