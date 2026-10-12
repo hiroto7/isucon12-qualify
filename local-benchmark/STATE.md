@@ -16,3 +16,5 @@
 - H3 accepted: SQLite score partition index + app nofile 16384; trial 010 12526, zero errors. Next: profile higher load, then remove per-row durable ID round trips.
 
 - H4 durable block ID reservation accepted, 28258 with zero errors (trial 013). MySQL/race integration tests passed. Trial 012 records failed deployment only; Docker guest-generated cache/image was rebuilt.
+
+- H5 ranking snapshots accepted: 40420 zero errors; same-condition exact H4 control 28828. Bench process FD soft limit explicitly 65536 from trial 015. Candidate source restored; guest is temporarily still H4 control, so deploy next candidate before measuring.

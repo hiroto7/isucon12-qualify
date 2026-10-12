@@ -41,7 +41,7 @@ if a.action == 'start':
     meta = dict(id=a.id, label=a.label, kind=a.kind, started=datetime.datetime.now(datetime.timezone.utc).isoformat(), commit=run('git', '-C', str(ROOT), 'rev-parse', 'HEAD'), dirty=run('git', '-C', str(ROOT), 'status', '--porcelain', '--', 'webapp'), manifest=manifest(), target=app_ip, passed=False, score=None, reported_score=None, status='running', decision='pending')
     (trial / 'meta.json').write_text(json.dumps(meta, indent=2)+'\n')
     command = f'cd /home/ubuntu/isucon12-qualify/bench; date -u +%FT%TZ > {guest}/start; ./bench -target-addr {app_ip}:443 -exit-error-on-fail > {guest}/bench.log 2>&1; rc=$?; date -u +%FT%TZ > {guest}/end; echo $rc > {guest}/exit'
-    remote('isucon12q-bench', f'mkdir -p {guest}; chown ubuntu:ubuntu {guest}; systemd-run --quiet --unit=isucon-trial-{a.id:03d} --uid=ubuntu /bin/bash -lc {shlex.quote(command)}')
+    remote('isucon12q-bench', f'mkdir -p {guest}; chown ubuntu:ubuntu {guest}; systemd-run --quiet --unit=isucon-trial-{a.id:03d} --uid=ubuntu --property=LimitNOFILE=65536 /bin/bash -lc {shlex.quote(command)}')
     print(f'Started trial {a.id:03d}: {a.label}')
 else:
     meta = json.loads((trial / 'meta.json').read_text())
@@ -51,11 +51,14 @@ else:
         subprocess.run(['multipass', 'transfer', f'isucon12q-bench:{guest}/{name}', str(trial / name)], check=True)
     log = (trial / 'bench.log').read_text()
     score = re.search(r'SCORE: (\d+)', log)
+    errors = re.search(r'Error (\d+) \(Critical:(\d+)\)', log)
+    meta['errors'] = int(errors[1]) if errors else None
+    meta['critical_errors'] = int(errors[2]) if errors else None
     passed = 'PASSED: true' in log and (trial/'exit').read_text().strip() == '0'
     meta.update(passed=passed, score=int(score[1]) if passed and score else None, reported_score=int(score[1]) if score else None, status='pass' if passed else 'fail', ended=(trial/'end').read_text().strip())
     (trial / 'meta.json').write_text(json.dumps(meta, indent=2)+'\n')
     rows = [json.loads(p.read_text()) for p in sorted((OUT/'results').glob('*/meta.json'))]
-    fields = ['id','label','kind','started','ended','commit','status','passed','score','reported_score','decision']
+    fields = ['id','label','kind','started','ended','commit','status','passed','score','reported_score','errors','critical_errors','decision']
     with (OUT/'all-trials.csv').open('w') as f:
         w=csv.DictWriter(f, fieldnames=fields, extrasaction='ignore'); w.writeheader(); w.writerows(rows)
     print(json.dumps({k:meta.get(k) for k in fields}, ensure_ascii=False))

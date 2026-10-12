@@ -27,5 +27,9 @@ func replaceCompetitionScores(ctx context.Context, db *sqlx.DB, tenantID int64, 
 			return fmt.Errorf("insert score row: %w", err)
 		}
 	}
-	return tx.Commit()
+	if err := tx.Commit(); err != nil {
+		return err
+	}
+	rankSnapshots.Delete(competitionCacheKey{tenantID, competitionID})
+	return nil
 }
