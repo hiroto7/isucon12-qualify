@@ -1,0 +1,68 @@
+diff --git a/local-benchmark/nginx-site.conf b/local-benchmark/nginx-site.conf
+index 322c1dd..80689bd 100644
+--- a/local-benchmark/nginx-site.conf
++++ b/local-benchmark/nginx-site.conf
+@@ -1,5 +1,5 @@
+ upstream isuports_app {
+-  server 127.0.0.1:3000;
++  server unix:/home/isucon/tmp/isuports.sock;
+   keepalive 64;
+ }
+ 
+diff --git a/local-benchmark/scripts/deploy.py b/local-benchmark/scripts/deploy.py
+index e7f0f9d..6e9d593 100644
+--- a/local-benchmark/scripts/deploy.py
++++ b/local-benchmark/scripts/deploy.py
+@@ -44,4 +44,4 @@ if not args.keep_nginx:
+     remote('install -m 644 /tmp/deploy-nginx.conf /etc/nginx/nginx.conf; nginx -t; systemctl reload nginx')
+ print('Deployed source; verify running container readiness before starting the benchmark.')
+ 
+-remote("for n in $(seq 1 30); do curl -fsS -H 'Host: admin.t.isucon.local' http://127.0.0.1:3000/api/me >/dev/null 2>&1 && exit 0; sleep 1; done; exit 1")
++remote("for n in $(seq 1 30); do curl -kfsS -H 'Host: admin.t.isucon.local' https://127.0.0.1/api/me >/dev/null 2>&1 && exit 0; sleep 1; done; exit 1")
+diff --git a/webapp/docker-compose-go.yml b/webapp/docker-compose-go.yml
+index 56afa22..ae13d8a 100644
+--- a/webapp/docker-compose-go.yml
++++ b/webapp/docker-compose-go.yml
+@@ -2,6 +2,7 @@ services:
+   webapp:
+     build: ./go
+     environment:
++      ISUCON_HTTP_SOCKET: /home/isucon/tmp/isuports.sock
+       ISUCON_DB_HOST: 127.0.0.1
+       ISUCON_DB_PORT: 3306
+       ISUCON_DB_USER: isucon
+diff --git a/webapp/go/isuports.go b/webapp/go/isuports.go
+index b7ee89e..51a22c4 100644
+--- a/webapp/go/isuports.go
++++ b/webapp/go/isuports.go
+@@ -7,6 +7,7 @@ import (
+ 	"errors"
+ 	"fmt"
+ 	"io"
++	"net"
+ 	"net/http"
+ 	"os"
+ 	"os/exec"
+@@ -163,6 +164,22 @@ func Run() {
+ 	port := getEnv("SERVER_APP_PORT", "3000")
+ 	e.Logger.Infof("starting isuports server on : %s ...", port)
+ 	serverPort := fmt.Sprintf(":%s", port)
++	if socket := os.Getenv("ISUCON_HTTP_SOCKET"); socket != "" {
++		if err := os.Remove(socket); err != nil && !os.IsNotExist(err) {
++			e.Logger.Fatal(err)
++		}
++		listener, err := net.Listen("unix", socket)
++		if err != nil {
++			e.Logger.Fatal(err)
++			return
++		}
++		if err := os.Chmod(socket, 0666); err != nil {
++			listener.Close()
++			e.Logger.Fatal(err)
++			return
++		}
++		e.Listener = listener
++	}
+ 	e.Logger.Fatal(e.Start(serverPort))
+ }
+ 
