@@ -1,0 +1,8 @@
+# Postmortem-informed experiments (2026-10-13)
+
+Knowledge boundary: ISUCON12 postmortems were first read after the user's explicit permission, after trial038. This phase uses the official commentary https://isucon.net/archives/56850281.html and the previously reviewed participant accounts. Trials001-038 were completed without those articles. Fixed app2CPU/4GiB and bench4CPU/8GiB remain unchanged.
+
+- 039 control:143301, zero errors, original application and full initial data.
+- H17: offline initial SQLite score compaction keeps the last row_num per competition/player, retaining every column of that row. Initial MySQL visits keep MIN(created_at) and MIN(updated_at) per tenant/competition/player. Scores3725307→180525; visits3224839→200474. Canonical semantic SHA256 matches in every tenant and MySQL. Originals preserved in guest `/home/isucon/uncompressed-initial-data` and MySQL `visit_history_uncompressed`. Run `scripts/compact-seed.py` in the stopped app guest before deployment/benchmark; it is an offline preparation, not timed initialization. Audit in compact-seed-audit.json.
+- 040 preparation failure: service active before compose had created the container. No official benchmark started. Recorded, not scored.
+- 041 H17:152802, zero errors (+6.63% vs039). Small standalone change, not claimed as a robust throughput gain. Provisionally retain the semantic-equivalent structural reduction for the following experiments rather than spending trials tuning it.
