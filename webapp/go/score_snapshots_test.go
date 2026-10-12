@@ -27,7 +27,9 @@ func TestLatestScoreSnapshotCommitAndCold(t *testing.T) {
 	if err != nil || values["p"] != 10 {
 		t.Fatal("cold DB restoration failed")
 	}
-	if err := replaceCompetitionScores(ctx, db, 1, "a", []PlayerScoreRow{rows[0], rows[0]}); err == nil {
+	conflict := rows[0]
+	conflict.PlayerID = "q"
+	if err := replaceCompetitionScores(ctx, db, 1, "a", []PlayerScoreRow{rows[0], conflict}); err == nil {
 		t.Fatal("expected failed transaction")
 	}
 	values, err = competitionScores(ctx, db, 1, "a")

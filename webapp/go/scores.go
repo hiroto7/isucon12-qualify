@@ -22,6 +22,7 @@ func replaceCompetitionScores(ctx context.Context, db *sqlx.DB, tenantID int64, 
 		return err
 	}
 	defer stmt.Close()
+	rows = latestScoreRows(rows)
 	for _, row := range rows {
 		if _, err := stmt.ExecContext(ctx, row); err != nil {
 			return fmt.Errorf("insert score row: %w", err)

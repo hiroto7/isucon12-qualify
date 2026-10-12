@@ -40,6 +40,11 @@ func TestReplaceScoresAtomic(t *testing.T) {
 	if err := db.Get(&score, "SELECT score FROM player_score WHERE competition_id='a' AND player_id='p' ORDER BY row_num DESC LIMIT 1"); err != nil || score != 30 {
 		t.Fatalf("last row must win: %d %v", score, err)
 	}
+	var retained int
+	db.Get(&retained, "SELECT count(*) FROM player_score WHERE competition_id='a'")
+	if retained != 1 {
+		t.Fatalf("overwritten rows retained: %d", retained)
+	}
 	if err := replaceCompetitionScores(ctx, db, 1, "a", nil); err != nil {
 		t.Fatal(err)
 	}
