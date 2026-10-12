@@ -1,0 +1,4 @@
+ISUCON_ID_INTEGRATION=1 ISUCON_TENANT_MYSQL_TEST=1 go test -race -timeout 30s ./...: PASS (0.228s), go vet: PASS
+Real MySQL: text with quote/Unicode/backslash/NUL, binary NO PAD ID lookup, tenant isolation, latest/tie ranking, pagination,310 yen billing, failure in second >200-row INSERT batch rolls whole replacement back, cold cache reconstruction,empty replacement,other competition preserved,disqualification.
+Verified original data:100 tenants,15903 players,1196 competitions,3725307 scores. Every column of every row digest matched SQLite.
+Clean full-MySQL seed size2.9GiB. Initial administrative reset measurement8.215891758 seconds. 1GiB buffer pool and1024 max connections, InnoDB commit synchronization unchanged.

@@ -1,0 +1,54 @@
+time="2026-10-13T00:15:36+09:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [webapp internal] load build definition from Dockerfile
+#1 transferring dockerfile: 653B done
+#1 DONE 0.0s
+
+#2 [webapp internal] load metadata for docker.io/library/golang:1.18.4-bullseye
+#2 DONE 0.9s
+
+#3 [webapp internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [webapp internal] load build context
+#4 transferring context: 10.48kB done
+#4 DONE 0.0s
+
+#5 [webapp 1/7] FROM docker.io/library/golang:1.18.4-bullseye@sha256:6689996f4aa27bdb565677edd0914f8147e699a8b613e9c6623c34cce6d0eac6
+#5 resolve docker.io/library/golang:1.18.4-bullseye@sha256:6689996f4aa27bdb565677edd0914f8147e699a8b613e9c6623c34cce6d0eac6 0.0s done
+#5 DONE 0.0s
+
+#6 [webapp 2/7] WORKDIR /tmp
+#6 CACHED
+
+#7 [webapp 3/7] RUN sed -i -e 's|http://|https://|g' -e '/bullseye-security/d' -e '/bullseye-updates/d' /etc/apt/sources.list && apt-get update &&   apt-get install -y wget gcc g++ make sqlite3 &&   apt-get -y update &&   apt-get -y install default-mysql-client
+#7 CACHED
+
+#8 [webapp 5/7] RUN mkdir -p /home/isucon/webapp/go
+#8 CACHED
+
+#9 [webapp 4/7] RUN useradd --uid=1001 --create-home isucon
+#9 CACHED
+
+#10 [webapp 6/7] WORKDIR /home/isucon/webapp/go
+#10 CACHED
+
+#11 [webapp 7/7] COPY --chown=isucon:isucon ./ /home/isucon/webapp/go/
+#11 DONE 0.0s
+
+#12 [webapp] exporting to image
+#12 exporting layers 0.0s done
+#12 exporting manifest sha256:d3d51463890e8c61d58e971d81c59c5828dcb576c921cef4b4b000408f5f42c0 done
+#12 exporting config sha256:1d574b5c5810ae7bd94332bc4f6359daabd1a0abf46a1a2d792ad0c5a9291918 done
+#12 exporting attestation manifest sha256:4ad84539de5ca158e84be5b2fb2428c3ef2c5662f374ac42b6f615bdbd81e022
+#12 exporting attestation manifest sha256:4ad84539de5ca158e84be5b2fb2428c3ef2c5662f374ac42b6f615bdbd81e022 done
+#12 exporting manifest list sha256:93b66131cd29fe8d3b9753f3072ec19acde6cf553917c1010c26f5d959cd082d done
+#12 naming to docker.io/library/webapp-webapp:latest done
+#12 unpacking to docker.io/library/webapp-webapp:latest 0.0s done
+#12 ERROR: failed to prepare extraction snapshot "extract-159903004-nhD9 sha256:bbcb6c4bc4f5d0093cfdda42e84fe52b36356f40f18f4830e56bf4d0dd12ea96": parent snapshot sha256:958b62a0b25dc61df3b3f971a0294967b8dcdea064db0aa43b74ac0e16376688 does not exist: not found
+------
+ > [webapp] exporting to image:
+------
+failed to solve: failed to prepare extraction snapshot "extract-159903004-nhD9 sha256:bbcb6c4bc4f5d0093cfdda42e84fe52b36356f40f18f4830e56bf4d0dd12ea96": parent snapshot sha256:958b62a0b25dc61df3b3f971a0294967b8dcdea064db0aa43b74ac0e16376688 does not exist: not found

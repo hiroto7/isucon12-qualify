@@ -9,3 +9,10 @@
 - Go race suite + live MySQL ID integration + go vet passed in production container. Real blackauth/HTTPS persistence checks passed BEFORE post-reboot initialize; synthetic before data preserved in validation/reboot-data-before.json. Official strict prepare/static asset validation passed. Browser visual inspection not performed.
 - All33 attempts retained, including preparation failure012 and contaminated029; graphs/CSV rebuilt from raw logs.
 - Repository fork hiroto7/isucon12-qualify, branch codex/local-benchmark. Draft PR targets fork main, never upstream. Publication/CI state is recorded in final delivery; no merge performed.
+
+## Follow-up SQLite replacement experiment (2026-10-13)
+
+- H16 MySQL runtime tenant databases +200-row bulk inserts:037103150, zero errors. Same compiled binary with backendSQLite and sameMySQL1GiB/1024 configuration:036142942, zero errors. MySQL72.16% of control, rejected. Original configuration/control034147252, zero errors.035Docker preparation failure, no official bench.
+- All3,742,406 seed rows digest matched; real MySQL race/vet and normal-reboot API persistence passed. Runtime mysql backend and274 tenant connections verified. Official initialization reset8.85s. Candidate source saved in experiments/mysql-tenants.patch.
+- All managed app files restored byte-for-byte to ccd78e7, extra tenant DBs/grants removed, MySQL capacity restored128MiB/151, snapshot service stopped/disabled.038restoration official benchmark144735, zero errors. App CPU/RAM and benchmark settings unchanged. No MySQL runtime implementation adopted.
+- Updated total38 attempts and graphs. Existing fork Draft PR#1 receives documentation/experiment records only; app implementation unchanged. See MYSQL_EXPERIMENT.md.

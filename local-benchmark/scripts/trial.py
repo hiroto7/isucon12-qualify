@@ -40,6 +40,7 @@ if a.action == 'start':
     app_ip = json.loads(run('multipass', 'info', 'isucon12q-app', '--format', 'json'))['info']['isucon12q-app']['ipv4'][0]
     meta = dict(id=a.id, label=a.label, kind=a.kind, started=datetime.datetime.now(datetime.timezone.utc).isoformat(), commit=run('git', '-C', str(ROOT), 'rev-parse', 'HEAD'), dirty=run('git', '-C', str(ROOT), 'status', '--porcelain', '--', 'webapp'), manifest=manifest(), target=app_ip, passed=False, score=None, reported_score=None, status='running', decision='pending')
     meta['runtime'] = remote('isucon12q-app', "pid=$(pgrep -x main | head -1); test -n \"$pid\"; sha256sum /proc/$pid/exe /etc/nginx/nginx.conf /home/isucon/webapp/docker-compose-go.yml; docker inspect --format '{{.Image}}' webapp-webapp-1")
+    meta['mysql_environment'] = remote('isucon12q-app', "mysql -N -uisucon -pisucon isuports -e \"SHOW VARIABLES WHERE Variable_name IN ('innodb_buffer_pool_size','max_connections','innodb_flush_log_at_trx_commit','sync_binlog')\"; test ! -f /etc/mysql/mysql.conf.d/isucon-tenant-experiment.cnf || sha256sum /etc/mysql/mysql.conf.d/isucon-tenant-experiment.cnf")
     meta['bench_nofile'] = 65536
     (trial / 'meta.json').write_text(json.dumps(meta, indent=2)+'\n')
     command = f'cd /home/ubuntu/isucon12-qualify/bench; date -u +%FT%TZ > {guest}/start; ./bench -target-addr {app_ip}:443 -exit-error-on-fail > {guest}/bench.log 2>&1; rc=$?; date -u +%FT%TZ > {guest}/end; echo $rc > {guest}/exit'

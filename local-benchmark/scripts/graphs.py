@@ -42,7 +42,7 @@ for name,selected in [('all-trials',rows),('record-highs',highs)]:
         ax.scatter([r['id'] for r in adopted],[r['score'] for r in adopted],facecolors='none',edgecolors='#188038',s=130,linewidths=2,label='adopted (provisional noted in CSV)')
     rejected=[r for r in selected if r['passed'] and r.get('decision','').startswith('rejected')]
     if rejected:
-        ax.scatter([r['id'] for r in rejected],[r['score'] for r in rejected],marker='x',color='#c62828',s=70,label='official pass, rejected quality')
+        ax.scatter([r['id'] for r in rejected],[r['score'] for r in rejected],marker='x',color='#c62828',s=70,label='official pass, not adopted')
     invalid=[r for r in selected if not r['passed']]
     if invalid:
         ax.scatter([r['id'] for r in invalid],[0]*len(invalid),marker='x',color='#c62828',label='failed / interrupted / incomplete',s=70)
@@ -50,10 +50,12 @@ for name,selected in [('all-trials',rows),('record-highs',highs)]:
         ax.step([r['id'] for r in highs],[r['score'] for r in highs],where='post',color='#1769aa',alpha=.4,label='observed scoring record (not adopted state)')
     if name=='all-trials' and any(r['id']>=15 for r in rows):
         ax.axvline(14.5,color='gray',linestyle='--',alpha=.5,label='bench FD limit corrected (control 16)')
+    if name=='all-trials' and any(r['id']>=36 for r in rows):
+        ax.axvspan(35.5,37.5,color='gray',alpha=.08,label='same MySQL capacity for 36/37')
     if baseline:
         ax.axhline(baseline,color='gray',linestyle=':',label=f'initial median {baseline:,}; goal {baseline*100:,}')
     for r in selected:
-        if r.get('decision')=='accepted' or r['label'].startswith('final'):
+        if r.get('decision')=='accepted' or r['label'].startswith('final') or (r['id']>=34 and r.get('score') is not None):
             ax.annotate(f"#{r['id']:02d} {r['score'] or 0:,}",(r['id'],r['score'] or 0),xytext=(3,8),textcoords='offset points',fontsize=8,rotation=20)
     ax.set(title=f'ISUCON12 qualify — {name}',xlabel='Attempt number (all attempts retained)',ylabel='Official valid score')
     ax.set_xlim(min(r['id'] for r in selected)-1,max(r['id'] for r in selected)+3)
