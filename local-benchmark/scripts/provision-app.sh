@@ -1,4 +1,5 @@
 set -e
+export GOPATH=/opt/isucon-go GOCACHE=/opt/isucon-go/cache
 
 GITDIR="/tmp/isucon12-qualify"
 MYARCH=`uname -m`
@@ -24,7 +25,7 @@ git -C ${GITDIR} checkout --detach 95958774bde66d47fd26cc820fd2fbfbece798f1
   sed -i -e "s/x86_64/${MYARCH}/" cookbooks/users/isucon.rb
   sed -i -e "s/192\.168/127.0/" cookbooks/common/default.rb
   if [ "${MYARCH}" != "x86_64" ] ; then
-    sed -i -e "s/mysql-client/default-mysql-client/" ${GITDIR}/webapp/*/Dockerfile
+    sed -i -e "s/default-default-mysql-client/default-mysql-client/" ${GITDIR}/webapp/*/Dockerfile
   fi
   # Avoid the obsolete MySQL APT repository; use Ubuntu's native client.
   python3 - <<'FIXDOCKER'
@@ -61,4 +62,8 @@ FIXDOCKER
   systemctl restart nginx
 )
 rm -rf ${GITDIR}
+apt-get install -y docker-compose-v2
+rm -f /home/isucon/.docker/cli-plugins/docker-compose
+systemctl reset-failed isuports
+systemctl restart isuports
 echo ok

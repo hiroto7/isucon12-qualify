@@ -1,0 +1,10 @@
+[Unit]
+Description=ISUCON practice guest outbound isolation
+After=network-online.target docker.service
+Wants=network-online.target
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/isolate-guest 192.168.2.9
+RemainAfterExit=yes
+[Install]
+WantedBy=multi-user.target
