@@ -59,7 +59,8 @@ for name,selected in [('all-trials',rows),('record-highs',highs)]:
             ax.annotate(f"#{r['id']:02d} {r['score'] or 0:,}",(r['id'],r['score'] or 0),xytext=(3,8),textcoords='offset points',fontsize=8,rotation=20)
     ax.set(title=f'ISUCON12 qualify — {name}',xlabel='Attempt number (all attempts retained)',ylabel='Official valid score')
     ax.set_xlim(min(r['id'] for r in selected)-1,max(r['id'] for r in selected)+3)
-    ax.set_ylim(-max(record,1)*.04,max(record,1)*1.16)
+    plot_max=max([r.get('score') or 0 for r in selected]+[1])
+    ax.set_ylim(-plot_max*.04,plot_max*1.18)
     ax.set_xticks([r['id'] for r in selected]);ax.tick_params(axis='x',labelsize=8)
     ax.grid(alpha=.2);ax.legend(fontsize=8,loc='upper left');fig.tight_layout()
     for ext in ['png','svg']:
