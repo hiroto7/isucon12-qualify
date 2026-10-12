@@ -11,7 +11,7 @@ import (
 
 func TestIDsConcurrentAndRestart(t *testing.T) {
 	var alloc idBlockAllocator
-	high := int64(2678400000)
+	high := int64(4611686018427387904)
 	reservations := 0
 	reserve := func(_ context.Context, size int64) (int64, error) { high += size; reservations++; return high, nil }
 	ids := make(chan string, 16384)
@@ -50,7 +50,7 @@ func TestIDsConcurrentAndRestart(t *testing.T) {
 		t.Fatal(err)
 	}
 	value, _ := strconv.ParseInt(id, 16, 64)
-	if value <= 2678400000+16384 {
+	if value <= 4611686018427387904+16384 {
 		t.Fatalf("restart reused ID: %s", id)
 	}
 	alloc.reset()
