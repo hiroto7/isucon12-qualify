@@ -1,0 +1,18 @@
+#cloud-config
+timezone: Asia/Tokyo
+packages:
+  - git
+  - golang
+  - make
+  - jq
+runcmd:
+  - |
+    set -eu
+    export GOPATH=/opt/isucon-go GOCACHE=/opt/isucon-go/cache
+    git clone https://github.com/isucon/isucon12-qualify.git /home/ubuntu/isucon12-qualify
+    cd /home/ubuntu/isucon12-qualify
+    git checkout --detach 95958774bde66d47fd26cc820fd2fbfbece798f1
+    find bench -type f -exec sed -i 's/t\.isucon\.dev/t.isucon.local/g' {} +
+    cd bench
+    make
+    chown -R ubuntu:ubuntu /home/ubuntu/isucon12-qualify
