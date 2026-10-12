@@ -20,12 +20,20 @@ func resetRankSnapshots() {
 
 // Cache entries are immutable. A restart reloads persisted rows.
 func competitionRanks(ctx context.Context, db *sqlx.DB, tenantID int64, competitionID string) ([]CompetitionRank, error) {
+	snapshot, err := competitionRankData(ctx, db, tenantID, competitionID)
+	if err != nil {
+		return nil, err
+	}
+	return snapshot.ranks, nil
+}
+
+func competitionRankData(ctx context.Context, db *sqlx.DB, tenantID int64, competitionID string) (*rankSnapshot, error) {
 	lock := scoreLock(tenantID, competitionID)
 	lock.RLock()
 	defer lock.RUnlock()
 	key := competitionCacheKey{tenantID, competitionID}
 	if cached, ok := rankSnapshots.Load(key); ok {
-		return cached.([]CompetitionRank), nil
+		return cached.(*rankSnapshot), nil
 	}
 	ranks := make([]CompetitionRank, 0)
 	err := db.SelectContext(ctx, &ranks, `SELECT ps.player_id, p.display_name AS player_display_name, ps.score, ps.row_num
@@ -41,8 +49,9 @@ ORDER BY ps.score DESC, ps.row_num ASC`, competitionID, tenantID, competitionID,
 	for i := range ranks {
 		ranks[i].Rank = int64(i + 1)
 	}
-	rankSnapshots.Store(key, ranks)
-	return ranks, nil
+	snapshot := &rankSnapshot{ranks: ranks}
+	rankSnapshots.Store(key, snapshot)
+	return snapshot, nil
 }
 
 func pageRanks(ranks []CompetitionRank, after int64) []CompetitionRank {

@@ -37,6 +37,10 @@ with tempfile.NamedTemporaryFile(mode='w',suffix='.json') as f:
 remote("python3 - <<'PY'\nimport hashlib,json,pathlib\nexpected=json.load(open('/tmp/deploy-manifest.json'))\nbase=pathlib.Path('/home/isucon/webapp')\nactual={str(p.relative_to(base)) for p in (base/'go').rglob('*.go')}\nassert actual=={p for p in expected if p.endswith('.go')}\nfor name,digest in expected.items():\n assert hashlib.sha256((base/name).read_bytes()).hexdigest()==digest,name\nprint('Managed source set verified')\nPY")
 if not args.keep_nginx:
     subprocess.run(['multipass','transfer',str(root/'local-benchmark/nginx.conf'),f'{vm}:/tmp/deploy-nginx.conf'],check=True)
+    site = root/'local-benchmark/nginx-site.conf'
+    if site.exists():
+        subprocess.run(['multipass','transfer',str(site),f'{vm}:/tmp/deploy-nginx-site.conf'],check=True)
+        remote('install -m 644 /tmp/deploy-nginx-site.conf /etc/nginx/sites-available/isuports.conf')
     remote('install -m 644 /tmp/deploy-nginx.conf /etc/nginx/nginx.conf; nginx -t; systemctl reload nginx')
 print('Deployed source; verify running container readiness before starting the benchmark.')
 

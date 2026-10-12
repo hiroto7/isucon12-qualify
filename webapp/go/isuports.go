@@ -103,7 +103,7 @@ func SetCacheControlPrivate(next echo.HandlerFunc) echo.HandlerFunc {
 // Run は cmd/isuports/main.go から呼ばれるエントリーポイントです
 func Run() {
 	e := echo.New()
-	e.Debug = true
+	e.Debug = false
 	e.Logger.SetLevel(log.DEBUG)
 
 	var (
@@ -1194,11 +1194,18 @@ func competitionRankingHandler(c echo.Context) error {
 		}
 	}
 
-	ranks, err := competitionRanks(ctx, tenantDB.DB, v.tenantID, competitionID)
+	snapshot, err := competitionRankData(ctx, tenantDB.DB, v.tenantID, competitionID)
 	if err != nil {
 		return err
 	}
-	pagedRanks := pageRanks(ranks, rankAfter)
+	if rankAfter <= 0 {
+		payload, err := snapshot.firstPage(competition)
+		if err != nil {
+			return err
+		}
+		return c.Blob(http.StatusOK, echo.MIMEApplicationJSONCharsetUTF8, payload)
+	}
+	pagedRanks := pageRanks(snapshot.ranks, rankAfter)
 
 	res := SuccessResult{
 		Status: true,
