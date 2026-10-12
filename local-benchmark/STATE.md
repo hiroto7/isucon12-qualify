@@ -12,3 +12,5 @@
 - Goal: 100 times initial three successful scoring runs' median; stop if grounded major improvements are exhausted.
 
 - H2 visit covering index provisionally accepted, 11178. New heavy tenant billing timeout remains; final state must resolve it.
+
+- H3 accepted: SQLite score partition index + app nofile 16384; trial 010 12526, zero errors. Next: profile higher load, then remove per-row durable ID round trips.

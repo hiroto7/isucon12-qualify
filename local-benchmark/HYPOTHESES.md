@@ -26,3 +26,9 @@ Not accepted findings: priority and expected score effect require load measureme
 Trial 005 slow log confirms 2465 visit grouping calls, 102.182 seconds cumulative and 43,915,092 rows examined. Add (tenant_id, competition_id, player_id, created_at) to partition each group by competition and cover player/MIN(created_at). Keep existing semantics and old index. Schema creation and idempotent initialize migration agree. Build migration once outside the measured benchmark; subsequent initialize keeps it.
 
 H2 outcome: trial 008 official pass, 11178 (raw 11290, one normal heavy-tenant billing timeout). Provisional adoption as a major workload-unlocking change; not a zero-error final state. Follow-on fix targets proven full scans of the 1.67M-row SQLite table.
+
+## H3 — partition SQLite score lookup and match FD capacity
+
+Index (competition_id,player_id,row_num DESC) removes the observed huge full scans. Restoration templates receive the same indexes once and fresh tenant schema agrees; rows/count/sums unchanged. Trial 009 enabled 262 reader workers but hit actual process FD limit 1024: key reads/SQLite opens failed with too many open files. Official pass 1450, 78 errors (1 critical), rejected. Trial 010 retains the index and sets the app container FD limit to 16384; required capacity repair is recorded as part of H3, not attributed solely to the index.
+
+H3 outcome: trial 010 passed 12526 with zero errors. Accepted index + FD capacity; the heavy billing timeout and open-file failures are absent. Index-only trial 009 remains rejected. Next focus is structural ID round-trip elimination and repeated ranking/detail reconstruction.

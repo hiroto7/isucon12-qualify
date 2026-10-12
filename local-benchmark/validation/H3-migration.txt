@@ -1,0 +1,215 @@
+++ dirname /home/isucon/webapp/sql/init.sh
++ cd /home/isucon/webapp/sql
++ ISUCON_DB_HOST=127.0.0.1
++ ISUCON_DB_PORT=3306
++ ISUCON_DB_USER=isucon
++ ISUCON_DB_PASSWORD=isucon
++ ISUCON_DB_NAME=isuports
++ mysql -uisucon -pisucon --host 127.0.0.1 --port 3306 isuports
+mysql: [Warning] Using a password on the command line interface can be insecure.
+++ mysql_admin -N -s -e 'SELECT COUNT(*) FROM information_schema.statistics WHERE table_schema=DATABASE() AND table_name='\''visit_history'\'' AND index_name='\''visit_competition_player'\'''
+++ mysql -uisucon -pisucon --host 127.0.0.1 --port 3306 isuports -N -s -e 'SELECT COUNT(*) FROM information_schema.statistics WHERE table_schema=DATABASE() AND table_name='\''visit_history'\'' AND index_name='\''visit_competition_player'\'''
+mysql: [Warning] Using a password on the command line interface can be insecure.
++ '[' 4 = 0 ']'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/1.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/10.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/100.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/11.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/12.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/13.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/14.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/15.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/16.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/17.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/18.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/19.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/2.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/20.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/21.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/22.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/23.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/24.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/25.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/26.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/27.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/28.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/29.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/3.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/30.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/31.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/32.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/33.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/34.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/35.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/36.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/37.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/38.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/39.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/4.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/40.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/41.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/42.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/43.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/44.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/45.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/46.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/47.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/48.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/49.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/5.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/50.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/51.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/52.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/53.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/54.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/55.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/56.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/57.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/58.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/59.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/6.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/60.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/61.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/62.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/63.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/64.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/65.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/66.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/67.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/68.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/69.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/7.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/70.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/71.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/72.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/73.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/74.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/75.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/76.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/77.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/78.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/79.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/8.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/80.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/81.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/82.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/83.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/84.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/85.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/86.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/87.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/88.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/89.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/9.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/90.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/91.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/92.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/93.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/94.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/95.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/96.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/97.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/98.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ for db in ../../initial_data/*.db
++ sqlite3 ../../initial_data/99.db 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
++ rm -f ../tenant_db/1.db ../tenant_db/10.db ../tenant_db/100.db ../tenant_db/11.db ../tenant_db/12.db ../tenant_db/13.db ../tenant_db/14.db ../tenant_db/148.db ../tenant_db/149.db ../tenant_db/15.db ../tenant_db/150.db ../tenant_db/151.db ../tenant_db/153.db ../tenant_db/154.db ../tenant_db/155.db ../tenant_db/16.db ../tenant_db/17.db ../tenant_db/18.db ../tenant_db/19.db ../tenant_db/2.db ../tenant_db/20.db ../tenant_db/21.db ../tenant_db/22.db ../tenant_db/23.db ../tenant_db/24.db ../tenant_db/25.db ../tenant_db/26.db ../tenant_db/27.db ../tenant_db/28.db ../tenant_db/29.db ../tenant_db/3.db ../tenant_db/30.db ../tenant_db/31.db ../tenant_db/32.db ../tenant_db/33.db ../tenant_db/34.db ../tenant_db/35.db ../tenant_db/36.db ../tenant_db/37.db ../tenant_db/38.db ../tenant_db/39.db ../tenant_db/4.db ../tenant_db/40.db ../tenant_db/41.db ../tenant_db/42.db ../tenant_db/43.db ../tenant_db/44.db ../tenant_db/45.db ../tenant_db/46.db ../tenant_db/47.db ../tenant_db/48.db ../tenant_db/49.db ../tenant_db/5.db ../tenant_db/50.db ../tenant_db/51.db ../tenant_db/52.db ../tenant_db/53.db ../tenant_db/54.db ../tenant_db/55.db ../tenant_db/56.db ../tenant_db/57.db ../tenant_db/58.db ../tenant_db/59.db ../tenant_db/6.db ../tenant_db/60.db ../tenant_db/61.db ../tenant_db/62.db ../tenant_db/63.db ../tenant_db/64.db ../tenant_db/65.db ../tenant_db/66.db ../tenant_db/67.db ../tenant_db/68.db ../tenant_db/69.db ../tenant_db/7.db ../tenant_db/70.db ../tenant_db/71.db ../tenant_db/72.db ../tenant_db/73.db ../tenant_db/74.db ../tenant_db/75.db ../tenant_db/76.db ../tenant_db/77.db ../tenant_db/78.db ../tenant_db/79.db ../tenant_db/8.db ../tenant_db/80.db ../tenant_db/81.db ../tenant_db/82.db ../tenant_db/83.db ../tenant_db/84.db ../tenant_db/85.db ../tenant_db/86.db ../tenant_db/87.db ../tenant_db/88.db ../tenant_db/89.db ../tenant_db/9.db ../tenant_db/90.db ../tenant_db/91.db ../tenant_db/92.db ../tenant_db/93.db ../tenant_db/94.db ../tenant_db/95.db ../tenant_db/96.db ../tenant_db/97.db ../tenant_db/98.db ../tenant_db/99.db
++ cp -r ../../initial_data/1.db ../../initial_data/10.db ../../initial_data/100.db ../../initial_data/11.db ../../initial_data/12.db ../../initial_data/13.db ../../initial_data/14.db ../../initial_data/15.db ../../initial_data/16.db ../../initial_data/17.db ../../initial_data/18.db ../../initial_data/19.db ../../initial_data/2.db ../../initial_data/20.db ../../initial_data/21.db ../../initial_data/22.db ../../initial_data/23.db ../../initial_data/24.db ../../initial_data/25.db ../../initial_data/26.db ../../initial_data/27.db ../../initial_data/28.db ../../initial_data/29.db ../../initial_data/3.db ../../initial_data/30.db ../../initial_data/31.db ../../initial_data/32.db ../../initial_data/33.db ../../initial_data/34.db ../../initial_data/35.db ../../initial_data/36.db ../../initial_data/37.db ../../initial_data/38.db ../../initial_data/39.db ../../initial_data/4.db ../../initial_data/40.db ../../initial_data/41.db ../../initial_data/42.db ../../initial_data/43.db ../../initial_data/44.db ../../initial_data/45.db ../../initial_data/46.db ../../initial_data/47.db ../../initial_data/48.db ../../initial_data/49.db ../../initial_data/5.db ../../initial_data/50.db ../../initial_data/51.db ../../initial_data/52.db ../../initial_data/53.db ../../initial_data/54.db ../../initial_data/55.db ../../initial_data/56.db ../../initial_data/57.db ../../initial_data/58.db ../../initial_data/59.db ../../initial_data/6.db ../../initial_data/60.db ../../initial_data/61.db ../../initial_data/62.db ../../initial_data/63.db ../../initial_data/64.db ../../initial_data/65.db ../../initial_data/66.db ../../initial_data/67.db ../../initial_data/68.db ../../initial_data/69.db ../../initial_data/7.db ../../initial_data/70.db ../../initial_data/71.db ../../initial_data/72.db ../../initial_data/73.db ../../initial_data/74.db ../../initial_data/75.db ../../initial_data/76.db ../../initial_data/77.db ../../initial_data/78.db ../../initial_data/79.db ../../initial_data/8.db ../../initial_data/80.db ../../initial_data/81.db ../../initial_data/82.db ../../initial_data/83.db ../../initial_data/84.db ../../initial_data/85.db ../../initial_data/86.db ../../initial_data/87.db ../../initial_data/88.db ../../initial_data/89.db ../../initial_data/9.db ../../initial_data/90.db ../../initial_data/91.db ../../initial_data/92.db ../../initial_data/93.db ../../initial_data/94.db ../../initial_data/95.db ../../initial_data/96.db ../../initial_data/97.db ../../initial_data/98.db ../../initial_data/99.db ../tenant_db/

@@ -27,5 +27,10 @@ if [ "$(mysql_admin -N -s -e "SELECT COUNT(*) FROM information_schema.statistics
 fi
 
 # SQLiteのデータベースを初期化
+# Index the restoration templates once without changing their rows. This avoids
+# rebuilding the large tenant's index inside every 30-second initialization.
+for db in ../../initial_data/*.db; do
+  sqlite3 "$db" 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
+done
 rm -f ../tenant_db/*.db
 cp -r ../../initial_data/*.db ../tenant_db/

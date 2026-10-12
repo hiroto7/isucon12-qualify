@@ -13,7 +13,7 @@ vm = 'isucon12q-app'
 def remote(command):
     subprocess.run(['multipass','exec',vm,'--','sudo','bash','-lc',command],check=True)
 
-managed = sorted((root/'webapp/go').rglob('*.go')) + [root/'webapp/go/go.mod',root/'webapp/go/go.sum',root/'webapp/go/Dockerfile',root/'webapp/sql/init.sh',root/'webapp/sql/tenant/10_schema.sql',root/'webapp/sql/admin/10_schema.sql']
+managed = sorted((root/'webapp/go').rglob('*.go')) + [root/'webapp/go/go.mod',root/'webapp/go/go.sum',root/'webapp/go/Dockerfile',root/'webapp/sql/init.sh',root/'webapp/sql/tenant/10_schema.sql',root/'webapp/sql/admin/10_schema.sql',root/'webapp/docker-compose-go.yml']
 hashes={}
 with tempfile.NamedTemporaryFile(suffix='.tar.gz') as f:
     with tarfile.open(fileobj=f,mode='w:gz') as archive:
@@ -32,4 +32,4 @@ with tempfile.NamedTemporaryFile(mode='w',suffix='.json') as f:
 remote("python3 - <<'PY'\nimport hashlib,json,pathlib\nexpected=json.load(open('/tmp/deploy-manifest.json'))\nbase=pathlib.Path('/home/isucon/webapp')\nactual={str(p.relative_to(base)) for p in (base/'go').rglob('*.go')}\nassert actual=={p for p in expected if p.endswith('.go')}\nfor name,digest in expected.items():\n assert hashlib.sha256((base/name).read_bytes()).hexdigest()==digest,name\nprint('Managed source set verified')\nPY")
 print('Deployed source; verify running container readiness before starting the benchmark.')
 
-remote("for n in $(seq 1 30); do curl -fsS -H 'Host: admin.t.isucon.local' http://127.0.0.1:3000/api/me >/dev/null && exit 0; sleep 1; done; exit 1")
+remote("for n in $(seq 1 30); do curl -fsS -H 'Host: admin.t.isucon.local' http://127.0.0.1:3000/api/me >/dev/null 2>&1 && exit 0; sleep 1; done; exit 1")

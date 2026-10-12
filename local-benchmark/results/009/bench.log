@@ -1,0 +1,368 @@
+[ADMIN] 09:33:42.898972 TargetURL: https://t.isucon.local, TargetAddr: 192.168.2.8:443, RequestTimeout: 30s, InitializeRequestTimeout: 30s, StrictPrepare: true, ReproduceMode: false
+[ADMIN] 09:33:43.994363 POST /initialize 200 初期化
+09:33:43.994412 初期化リクエストに成功しました 実装言語:go
+09:33:43.994418 整合性チェックを開始します
+[ADMIN] 09:33:44.129877 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 09:33:44.134844 GET /index.html 200 /index.htmlを確認
+[ADMIN] 09:33:44.136450 GET /js/app.3a4ec98c.js 200 /js/app.3a4ec98c.jsを確認
+[ADMIN] 09:33:44.137248 POST /api/admin/tenants/add 401 新規テナント作成: 不正リクエスト(exp切れのJWT)
+[ADMIN] 09:33:44.137364 GET /css/app.83b4c321.css 200 /css/app.83b4c321.cssを確認
+[ADMIN] 09:33:44.137429 staticFileCheck done
+[ADMIN] 09:33:44.166437 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 09:33:44.171865 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 09:33:44.179442 POST /api/organizer/competitions/add 200 新規大会追加)
+[ADMIN] 09:33:44.257733 POST /api/admin/tenants/add 401 新規テナント作成: 不正リクエスト(不正なRSA鍵)
+[ADMIN] 09:33:44.263164 POST /api/admin/tenants/add 401 新規テナント作成: 不正リクエスト(不正な鍵認証方式)
+[ADMIN] 09:33:44.303836 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 09:33:44.310653 POST /api/organizer/competitions/add 401 新規大会追加: 不正リクエスト(存在しないテナント)
+[ADMIN] 09:33:44.323368 GET /api/player/competitions 401 テナント内の大会情報取得: 不正なリクエスト(存在しないプレイヤー)
+[ADMIN] 09:33:44.323383 invalidJWTCheck done
+[ADMIN] 09:33:44.402558 GET /api/admin/tenants/billing 200 テナント別の請求ダッシュボード: 初期データチェック
+[ADMIN] 09:33:44.402676 billingAPISuccessCheck done
+[ADMIN] 09:33:44.831303 POST /api/organizer/players/add 200 テナントへプレイヤー追加
+[ADMIN] 09:33:44.835560 GET /api/organizer/players 200 テナントのプレイヤー一覧取得
+[ADMIN] 09:33:44.843914 POST /api/organizer/competitions/add 200 新規大会追加
+[ADMIN] 09:33:44.849416 POST /api/organizer/player/9fa5251d/disqualified 200 プレイヤーを失格にする
+[ADMIN] 09:33:44.860771 POST /api/organizer/players/add 200 テナントへプレイヤー追加
+[ADMIN] 09:33:44.865164 POST /api/admin/tenants/add 400 新規テナント作成 不正リクエスト
+[ADMIN] 09:33:44.866090 POST /api/admin/tenants/add 400 新規テナント作成 不正リクエスト
+[ADMIN] 09:33:44.867325 POST /api/organizer/player/0000000000/disqualified 404 プレイヤーを失格にする: 不正リクエスト(存在しないプレイヤー)
+[ADMIN] 09:33:44.873639 POST /api/organizer/competitions/add 200 新規大会追加
+[ADMIN] 09:33:44.874591 POST /api/organizer/competition/0000000000/score 404 大会結果CSV入稿: 不正リクエスト(存在しない大会)
+[ADMIN] 09:33:44.875893 POST /api/organizer/competition/9fa52530/score 400 大会結果CSV入稿: 不正リクエスト(存在しないプレイヤー)
+[ADMIN] 09:33:44.876887 POST /api/organizer/competition/9fa52530/score 400 大会結果CSV入稿: 不正リクエスト(カラムの並び順が違う)
+[ADMIN] 09:33:44.877997 POST /api/organizer/competition/9fa52530/score 400 大会結果CSV入稿: 不正リクエスト(余計なカラムがあるCSV)
+[ADMIN] 09:33:44.882010 GET /api/player/player/0000000000 404 プレイヤーと戦績情報取得
+[ADMIN] 09:33:44.883102 GET /api/player/competition/0000000000/ranking 404 大会内のランキング取得
+[ADMIN] 09:33:44.887690 POST /api/organizer/player/9fa52527/disqualified 200 プレイヤーを失格にする
+[ADMIN] 09:33:44.893785 GET /api/player/competition/9fa52530/ranking 403 大会内のランキング取得: 失格済みプレイヤー
+[ADMIN] 09:33:44.894794 POST /api/organizer/competition/0000000000/finish 404 大会終了: 不正リクエスト(存在しない大会)
+[ADMIN] 09:33:44.898535 POST /api/organizer/competition/9fa52530/finish 200 大会終了
+[ADMIN] 09:33:44.900261 POST /api/organizer/players/add 200 テナントへプレイヤー101人追加
+[ADMIN] 09:33:44.901094 POST /api/organizer/competition/9fa52530/score 400 大会結果CSV入稿: 不正リクエスト(終了済みの大会)
+[ADMIN] 09:33:44.901099 badRequestCheck done
+[ADMIN] 09:33:45.113882 POST /api/organizer/competition/9fa52523/score 200 大会結果CSV入稿
+[ADMIN] 09:33:45.163348 POST /api/organizer/competition/9fa52404/score 200 大会結果CSV入稿
+[ADMIN] 09:33:45.169596 GET /api/player/competition/9fa52404/ranking 200 大会内のランキング取得: ページングなし,上限100件
+[ADMIN] 09:33:45.175940 GET /api/player/competition/9fa52404/ranking 200 大会内のランキング取得: ページングあり
+[ADMIN] 09:33:45.177553 GET /api/player/player/9fa52468 200 プレイヤーと戦績情報取得
+[ADMIN] 09:33:45.342971 POST /api/organizer/competition/9fa52523/score 200 大会結果CSV入稿
+[ADMIN] 09:33:45.345648 GET /api/player/competition/9fa52523/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:33:45.345970 GET /api/player/competition/9fa52523/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:33:45.347163 GET /api/player/competition/9fa52523/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:33:45.348709 GET /api/player/competition/9fa52523/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:33:45.352549 GET /api/player/competition/9fa52523/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:33:45.354037 GET /api/player/competition/9fa52523/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:33:45.355367 GET /api/player/competition/9fa52523/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:33:45.356842 GET /api/player/competition/9fa52523/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:33:45.358339 GET /api/player/player/9fa5241c 200 プレイヤーと戦績情報取得: 入稿後
+[ADMIN] 09:33:45.361924 GET /api/player/competition/9fa52523/ranking 200 大会内のランキング取得: ページングなし
+[ADMIN] 09:33:45.368616 GET /api/player/competition/9fa52523/ranking 200 大会内のランキング取得: スコア未登録プレイヤー
+[ADMIN] 09:33:45.372606 POST /api/organizer/competition/9fa52523/finish 200 大会終了
+[ADMIN] 09:33:45.372615 allAPISuccessCheck sleep 3s
+[ADMIN] 09:33:45.390008 POST /api/organizer/competition/9fa52404/score 200 大会結果CSV入稿
+[ADMIN] 09:33:45.394023 GET /api/player/competition/9fa52404/ranking 200 大会内のランキング取得: ページングなし,上限100件
+[ADMIN] 09:33:45.395164 GET /api/player/player/9fa52468 200 プレイヤーと戦績情報取得
+[ADMIN] 09:33:45.621359 POST /api/organizer/competition/9fa52404/score 200 大会結果CSV入稿
+[ADMIN] 09:33:45.625258 GET /api/player/competition/9fa52404/ranking 200 大会内のランキング取得: ページングなし,上限100件
+[ADMIN] 09:33:45.625526 rankingCheck done
+[ADMIN] 09:33:48.452693 GET /api/player/competition/9fa52523/ranking 200 大会内のランキング取得: ランキングが正しいことを確認
+[ADMIN] 09:33:48.457474 GET /api/organizer/billing 200 テナント内の請求情報
+[ADMIN] 09:33:48.460958 GET /api/player/competitions 200 テナント内の大会情報取得
+[ADMIN] 09:33:48.463900 GET /api/organizer/competitions 200 テナント管理者API テナント内の大会一覧取得
+[ADMIN] 09:33:48.546027 GET /api/admin/tenants/billing 200 テナント別の請求ダッシュボード(最大10件)
+[ADMIN] 09:33:48.557845 GET /api/organizer/billing 200 テナント内の請求情報
+[ADMIN] 09:33:48.557898 allAPISuccessCheck done
+09:33:48.557903 整合性チェックを終了します
+[ADMIN] 09:33:48.557909 Scenario:validation elapsed:4.563486339s
+09:33:48.557910 整合性チェックに成功しました
+09:33:48.557927 負荷走行を開始します
+[ADMIN] 09:33:48.558904 OrganizerPopularTenant jbj-wq-8
+[ADMIN] 09:33:48.600757 [TenantBillingValidate] [tenant:cjv-cghn-1791797628] Playerを追加します players: 100
+[ADMIN] 09:33:53.158451 OrganizerPopularTenantHeavyTenant isucon
+09:33:53.561344 参加者が31人増えました
+09:33:53.561448 大会「目黒教室杯」を作成しました。参加者が増えます。 (類似のログ計7件)
+[ADMIN] 09:33:53.561454 workerを追加しました [PopularTenantScenarioWorker](num:2)
+[ADMIN] 09:33:53.561457 workerを追加しました [AdminBillingScenarioWorker](num:1)
+[ADMIN] 09:33:53.561458 workerを追加しました [PlayerValidateScenarioWorker](num:1)
+[ADMIN] 09:33:53.561459 workerを追加しました [NewTenantScenarioWorker](num:2)
+[ADMIN] 09:33:53.561459 workerを追加しました [PlayerScenarioWorker](num:31)
+[ADMIN] 09:33:53.561461 workerを追加しました [AdminBillingValidateWorker](num:1)
+[ADMIN] 09:33:53.561461 workerを追加しました [TenantBillingValidateWorker](num:1)
+09:33:53.561455 テナント「炎のアメリカンチェリー王国」を作成しました (類似のログ計2件)
+09:33:58.577261 大会「ネギ王国」を作成しました (類似のログ計7件)
+[ADMIN] 09:33:58.577294 workerを追加しました [PlayerScenarioWorker](num:25)
+09:33:58.577300 参加者が25人増えました
+09:34:03.558218 大会「ふつうみなとみらい単推しカップ」を作成しました。参加者が増えます。 (類似のログ計7件)
+09:34:03.558247 テナント「ニュー相撲部」を作成しました (類似のログ計1件)
+[ADMIN] 09:34:03.558251 workerを追加しました [PlayerScenarioWorker](num:31)
+[ADMIN] 09:34:03.558254 workerを追加しました [NewTenantScenarioWorker](num:1)
+09:34:03.558255 参加者が31人増えました
+09:34:08.558386 大会「ラガーようちえん」を作成しました。参加者が増えます。 (類似のログ計10件)
+09:34:08.558422 テナント「チーム異世界荻窪乃風」を作成しました (類似のログ計1件)
+[ADMIN] 09:34:08.558425 workerを追加しました [PlayerScenarioWorker](num:43)
+[ADMIN] 09:34:08.558429 workerを追加しました [NewTenantScenarioWorker](num:1)
+09:34:08.558428 参加者が43人増えました
+09:34:13.576365 leaderboardの表示に1秒以上かかったため2人の参加者が離脱しました。
+[ADMIN] 09:34:13.576399 workerを追加しました [PlayerScenarioWorker](num:36)
+09:34:13.576396 大会「三度の飯より焼酎商事杯」を作成しました。参加者が増えます。 (類似のログ計7件)
+09:34:13.576435 参加者が36人増えました
+09:34:18.574776 大会「平面的ベンチマーク本部大会」を作成しました。参加者が増えます。 (類似のログ計8件)
+09:34:18.574837 参加者が37人増えました
+[ADMIN] 09:34:18.574789 workerを追加しました [PlayerScenarioWorker](num:37)
+09:34:23.558620 leaderboardの表示に1秒以上かかったため8人の参加者が離脱しました。
+[ADMIN] 09:34:23.558676 workerを追加しました [NewTenantScenarioWorker](num:1)
+[ADMIN] 09:34:23.558716 workerを追加しました [PlayerScenarioWorker](num:31)
+09:34:23.558678 テナント「大統一餃子海岸」を作成しました (類似のログ計1件)
+09:34:23.558686 大会「ハードウェア賛歌 #5」を作成しました (類似のログ計8件)
+09:34:23.558696 参加者が31人増えました
+09:34:28.561281 leaderboardの表示に1秒以上かかったため4人の参加者が離脱しました。
+09:34:28.561303 大会「第4回 ハンバーガー激アツ」を作成しました。参加者が増えます。 (類似のログ計10件)
+[ADMIN] 09:34:28.561307 workerを追加しました [PlayerScenarioWorker](num:49)
+09:34:28.561310 参加者が49人増えました
+09:34:33.558659 leaderboardの表示に1秒以上かかったため7人の参加者が離脱しました。
+[ADMIN] 09:34:33.558676 workerを追加しました [PlayerScenarioWorker](num:31)
+09:34:33.558674 大会「いっけな〜いインスタンスの音杯」を作成しました (類似のログ計8件)
+09:34:33.558695 参加者が31人増えました
+09:34:38.558476 leaderboardの表示に1秒以上かかったため8人の参加者が離脱しました。
+[ADMIN] 09:34:38.558493 workerを追加しました [PlayerScenarioWorker](num:36)
+09:34:38.558489 テナント「チームパワー事務所」を作成しました (類似のログ計1件)
+[ADMIN] 09:34:38.558513 workerを追加しました [NewTenantScenarioWorker](num:1)
+09:34:38.558491 大会「異世界fastのプロ vol.4」を作成しました。参加者が増えます。 (類似のログ計7件)
+09:34:38.558517 参加者が36人増えました
+09:34:38.680812 error: 大会参加者追加 POST /api/organizer/players/add : expected([200]) != actual(500) tenant:x-ywvqj-1791797677 role:organizer playerID:organizer playerDisplayNames length:208
+[ADMIN] 09:34:38.680950 Critical Error
+09:34:38.710971 error: 参加者と戦績情報取得 GET /api/player/player/616e39f7a : expected([200]) != actual(500) tenant:gv-lsbnw-86 role:player playerID:62f3a1797 playerID:616e39f7a
+[ADMIN] 09:34:38.711006 Normal Error
+09:34:38.717058 error: 参加者と戦績情報取得 GET /api/player/player/9fa52919 : expected([200]) != actual(500) tenant:mxho-y-1791797628 role:player playerID:9fa52908 playerID:9fa52919
+[ADMIN] 09:34:38.717127 Normal Error
+09:34:38.761541 error: 大会内のランキング取得 GET /api/player/competition/9fa5415e/ranking : expected([200]) != actual(500) tenant:aj-lhugnk-54 role:player playerID:60f0576a8 competitionID:9fa5415e rankAfter:
+[ADMIN] 09:34:38.761580 Normal Error
+09:34:38.762227 error: 参加者と戦績情報取得 GET /api/player/player/61c1c9923 : expected([200]) != actual(500) tenant:isucon role:player playerID:9fa53fc4 playerID:61c1c9923
+[ADMIN] 09:34:38.762244 Normal Error
+09:34:38.766792 error: 参加者と戦績情報取得 GET /api/player/player/9fa53cdd : expected([200]) != actual(500) tenant:isucon role:player playerID:9fa573bc playerID:9fa53cdd
+[ADMIN] 09:34:38.766819 Normal Error
+09:34:38.806625 error: 参加者と戦績情報取得 GET /api/player/player/9fa53dbb : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53dc1 playerID:9fa53dbb
+[ADMIN] 09:34:38.806652 Normal Error
+09:34:38.813654 error: 参加者と戦績情報取得 GET /api/player/player/9fa52c97 : expected([200]) != actual(500) tenant:jbj-wq-8 role:player playerID:9fa54a44 playerID:9fa52c97
+[ADMIN] 09:34:38.813796 Normal Error
+09:34:38.819894 error: 参加者と戦績情報取得 GET /api/player/player/3e8b6b5b3 : expected([200]) != actual(500) tenant:bwoij-asuc-56 role:player playerID:63b2f2868 playerID:3e8b6b5b3
+[ADMIN] 09:34:38.819916 Normal Error
+09:34:38.854896 error: 参加者と戦績情報取得 GET /api/player/player/9fa53acb : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53ac5 playerID:9fa53acb
+[ADMIN] 09:34:38.854963 Normal Error
+09:34:38.876806 error: 大会内のランキング取得 GET /api/player/competition/9fa555d3/ranking : expected([200]) != actual(500) tenant:isucon role:player playerID:9fa55578 competitionID:9fa555d3 rankAfter:0
+[ADMIN] 09:34:38.876844 Normal Error
+09:34:38.906595 error: 参加者と戦績情報取得 GET /api/player/player/540a60b06 : expected([200]) != actual(500) tenant:iu-gzy-60 role:player playerID:63a9d6fe2 playerID:540a60b06
+[ADMIN] 09:34:38.906633 Normal Error
+09:34:38.921839 error: 大会内のランキング取得 GET /api/player/competition/9fa52eee/ranking : expected([200]) != actual(500) tenant:isucon role:player playerID:63b0e0be4 competitionID:9fa52eee rankAfter:
+[ADMIN] 09:34:38.921866 Normal Error
+09:34:38.941324 error: 大会内のランキング取得 GET /api/player/competition/9fa53ff7/ranking : expected([200]) != actual(500) tenant:isucon role:player playerID:9fa53fbf competitionID:9fa53ff7 rankAfter:
+[ADMIN] 09:34:38.941345 Normal Error
+09:34:39.090072 error: 大会内のランキング取得 GET /api/player/competition/9fa57470/ranking : expected([200]) != actual(500) tenant:isucon role:player playerID:9fa573d7 competitionID:9fa57470 rankAfter:
+[ADMIN] 09:34:39.090123 Normal Error
+09:34:39.119243 error: 参加者と戦績情報取得 GET /api/player/player/235851a57 : expected([200]) != actual(500) tenant:njlpk-mws-47 role:player playerID:62d97d974 playerID:235851a57
+[ADMIN] 09:34:39.119276 Normal Error
+09:34:39.124129 error: 参加者と戦績情報取得 GET /api/player/player/9fa55442 : expected([200]) != actual(500) tenant:isucon role:player playerID:9fa55583 playerID:9fa55442
+[ADMIN] 09:34:39.124149 Normal Error
+09:34:39.133314 error: 参加者と戦績情報取得 GET /api/player/player/622164a93 : expected([200]) != actual(500) tenant:isucon role:player playerID:9fa573e0 playerID:622164a93
+[ADMIN] 09:34:39.133377 Normal Error
+09:34:43.577208 leaderboardの表示に1秒以上かかったため16人の参加者が離脱しました。
+09:34:43.577216 大会「キレ鎮魂歌大会」を作成しました。参加者が増えます。 (類似のログ計6件)
+09:34:43.577235 参加者が25人増えました
+[ADMIN] 09:34:43.577218 workerを追加しました [PlayerScenarioWorker](num:25)
+09:34:45.057565 error: 参加者と戦績情報取得 GET /api/player/player/9fa54ffc : expected([200]) != actual(500) tenant:viub-whc-1791797646 role:player playerID:9fa54e92 playerID:9fa54ffc
+[ADMIN] 09:34:45.057625 Normal Error
+09:34:45.058682 error: 大会内のランキング取得 GET /api/player/competition/9fa54f29/ranking : expected([200]) != actual(500) tenant:mxho-y-1791797628 role:player playerID:9fa5292f competitionID:9fa54f29 rankAfter:
+[ADMIN] 09:34:45.058739 Normal Error
+09:34:45.061737 error: 参加者と戦績情報取得 GET /api/player/player/9fa529b3 : expected([200]) != actual(500) tenant:mxho-y-1791797628 role:player playerID:9fa5287c playerID:9fa529b3
+[ADMIN] 09:34:45.061757 Normal Error
+09:34:45.066621 error: テナント別の請求ダッシュボード GET /api/admin/tenants/billing : expected([200]) != actual(500) tenant:admin role:admin playerID:admin beforeTenantID:42
+[ADMIN] 09:34:45.066645 Normal Error
+09:34:45.085308 error: 大会内のランキング取得 GET /api/player/competition/9fa55758/ranking : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53dce competitionID:9fa55758 rankAfter:
+[ADMIN] 09:34:45.085381 Normal Error
+09:34:45.085652 error: 参加者と戦績情報取得 GET /api/player/player/9fa53d08 : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53d99 playerID:9fa53d08
+[ADMIN] 09:34:45.085679 Normal Error
+09:34:45.092112 error: 参加者と戦績情報取得 GET /api/player/player/9fa52833 : expected([200]) != actual(500) tenant:mxho-y-1791797628 role:player playerID:9fa52865 playerID:9fa52833
+[ADMIN] 09:34:45.092142 Normal Error
+09:34:45.093139 error: 大会内のランキング取得 GET /api/player/competition/9fa5326d/ranking : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa5313d competitionID:9fa5326d rankAfter:
+[ADMIN] 09:34:45.093154 Normal Error
+09:34:45.094153 error: 参加者と戦績情報取得 GET /api/player/player/9fa53131 : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa5316a playerID:9fa53131
+[ADMIN] 09:34:45.094168 Normal Error
+09:34:45.108490 error: 参加者と戦績情報取得 GET /api/player/player/9fa53bcb : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53af0 playerID:9fa53bcb
+[ADMIN] 09:34:45.108604 Normal Error
+09:34:45.110365 error: 参加者と戦績情報取得 GET /api/player/player/9fa54f92 : expected([200]) != actual(500) tenant:viub-whc-1791797646 role:player playerID:9fa550c3 playerID:9fa54f92
+[ADMIN] 09:34:45.110392 Normal Error
+09:34:45.116426 error: 大会内のランキング取得 GET /api/player/competition/9fa586c8/ranking : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53b62 competitionID:9fa586c8 rankAfter:
+[ADMIN] 09:34:45.116518 Normal Error
+09:34:45.124680 error: 大会内のランキング取得 GET /api/player/competition/9fa56fcc/ranking : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53b21 competitionID:9fa56fcc rankAfter:
+[ADMIN] 09:34:45.124755 Normal Error
+09:34:45.126392 error: 参加者と戦績情報取得 GET /api/player/player/9fa54c96 : expected([200]) != actual(500) tenant:viub-whc-1791797646 role:player playerID:9fa54ec9 playerID:9fa54c96
+[ADMIN] 09:34:45.126415 Normal Error
+09:34:45.127664 error: 参加者と戦績情報取得 GET /api/player/player/9fa539ec : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53b50 playerID:9fa539ec
+[ADMIN] 09:34:45.127689 Normal Error
+09:34:45.277993 error: 参加者と戦績情報取得 GET /api/player/player/9fa5324c : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa531ac playerID:9fa5324c
+[ADMIN] 09:34:45.278032 Normal Error
+09:34:45.283980 error: 大会内のランキング取得 GET /api/player/competition/9fa54e03/ranking : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa53164 competitionID:9fa54e03 rankAfter:
+[ADMIN] 09:34:45.283997 Normal Error
+09:34:45.292413 error: 参加者と戦績情報取得 GET /api/player/player/9fa54de0 : expected([200]) != actual(500) tenant:viub-whc-1791797646 role:player playerID:9fa55095 playerID:9fa54de0
+[ADMIN] 09:34:45.292477 Normal Error
+09:34:45.294921 error: 参加者と戦績情報取得 GET /api/player/player/9fa53c4b : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53b4b playerID:9fa53c4b
+[ADMIN] 09:34:45.294950 Normal Error
+09:34:45.301714 error: 参加者と戦績情報取得 GET /api/player/player/9fa5296c : expected([200]) != actual(500) tenant:mxho-y-1791797628 role:player playerID:9fa52872 playerID:9fa5296c
+[ADMIN] 09:34:45.301737 Normal Error
+09:34:45.301754 error: 参加者と戦績情報取得 GET /api/player/player/9fa54da0 : expected([200]) != actual(500) tenant:viub-whc-1791797646 role:player playerID:9fa54ecf playerID:9fa54da0
+[ADMIN] 09:34:45.301765 Normal Error
+09:34:45.306717 error: 参加者と戦績情報取得 GET /api/player/player/9fa52993 : expected([200]) != actual(500) tenant:mxho-y-1791797628 role:player playerID:9fa528f8 playerID:9fa52993
+[ADMIN] 09:34:45.306733 Normal Error
+09:34:45.306749 error: テナント別の請求ダッシュボード GET /api/admin/tenants/billing : expected([200]) != actual(500) tenant:admin role:admin playerID:admin beforeTenantID:42
+[ADMIN] 09:34:45.306759 Normal Error
+09:34:45.312745 error: 大会内のランキング取得 GET /api/player/competition/9fa537d6/ranking : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa53129 competitionID:9fa537d6 rankAfter:
+[ADMIN] 09:34:45.312776 Normal Error
+09:34:45.312781 error: 参加者と戦績情報取得 GET /api/player/player/9fa5321f : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa531ea playerID:9fa5321f
+[ADMIN] 09:34:45.312790 Normal Error
+09:34:45.318045 error: 参加者と戦績情報取得 GET /api/player/player/9fa528a9 : expected([200]) != actual(500) tenant:mxho-y-1791797628 role:player playerID:9fa528c9 playerID:9fa528a9
+[ADMIN] 09:34:45.318061 Normal Error
+09:34:45.320517 error: 参加者と戦績情報取得 GET /api/player/player/9fa53213 : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa531e7 playerID:9fa53213
+[ADMIN] 09:34:45.320532 Normal Error
+09:34:45.323674 error: 参加者と戦績情報取得 GET /api/player/player/9fa5306d : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa531a9 playerID:9fa5306d
+[ADMIN] 09:34:45.323744 Normal Error
+09:34:45.324564 error: 参加者と戦績情報取得 GET /api/player/player/9fa52fa2 : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa531c1 playerID:9fa52fa2
+[ADMIN] 09:34:45.324577 Normal Error
+09:34:45.328785 error: 参加者と戦績情報取得 GET /api/player/player/9fa531bb : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa53188 playerID:9fa531bb
+[ADMIN] 09:34:45.328816 Normal Error
+09:34:45.337009 error: 大会内のランキング取得 GET /api/player/competition/9fa54785/ranking : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa53145 competitionID:9fa54785 rankAfter:
+[ADMIN] 09:34:45.337058 Normal Error
+09:34:45.344485 error: 参加者と戦績情報取得 GET /api/player/player/9fa54d5d : expected([200]) != actual(500) tenant:viub-whc-1791797646 role:player playerID:9fa54eda playerID:9fa54d5d
+[ADMIN] 09:34:45.344506 Normal Error
+09:34:45.346927 error: 参加者と戦績情報取得 GET /api/player/player/9fa55089 : expected([200]) != actual(500) tenant:viub-whc-1791797646 role:player playerID:9fa550c8 playerID:9fa55089
+[ADMIN] 09:34:45.346947 Normal Error
+09:34:45.350671 error: 参加者と戦績情報取得 GET /api/player/player/9fa54e58 : expected([200]) != actual(500) tenant:viub-whc-1791797646 role:player playerID:9fa54eaa playerID:9fa54e58
+[ADMIN] 09:34:45.350711 Normal Error
+09:34:45.352039 error: 参加者と戦績情報取得 GET /api/player/player/9fa53183 : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa5311e playerID:9fa53183
+[ADMIN] 09:34:45.352055 Normal Error
+09:34:45.355715 error: 参加者と戦績情報取得 GET /api/player/player/9fa53c79 : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53b72 playerID:9fa53c79
+[ADMIN] 09:34:45.355737 Normal Error
+09:34:45.356930 error: 参加者と戦績情報取得 GET /api/player/player/9fa527f9 : expected([200]) != actual(500) tenant:mxho-y-1791797628 role:player playerID:9fa528b6 playerID:9fa527f9
+[ADMIN] 09:34:45.356944 Normal Error
+09:34:45.360793 error: 参加者と戦績情報取得 GET /api/player/player/9fa530ca : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa5311b playerID:9fa530ca
+[ADMIN] 09:34:45.360822 Normal Error
+09:34:45.362232 error: 参加者と戦績情報取得 GET /api/player/player/2e2df2761 : expected([200]) != actual(500) tenant:tnrc-dwtp-63 role:player playerID:6340693e3 playerID:2e2df2761
+[ADMIN] 09:34:45.362249 Normal Error
+09:34:45.366430 error: 大会内のランキング取得 GET /api/player/competition/9fa56da8/ranking : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa531b7 competitionID:9fa56da8 rankAfter:
+[ADMIN] 09:34:45.366446 Normal Error
+09:34:45.368044 error: 参加者と戦績情報取得 GET /api/player/player/9fa54d54 : expected([200]) != actual(500) tenant:viub-whc-1791797646 role:player playerID:9fa54e86 playerID:9fa54d54
+[ADMIN] 09:34:45.368114 Normal Error
+09:34:45.460385 error: 参加者と戦績情報取得 GET /api/player/player/9fa54d3a : expected([200]) != actual(500) tenant:viub-whc-1791797646 role:player playerID:9fa54ed2 playerID:9fa54d3a
+[ADMIN] 09:34:45.460429 Normal Error
+09:34:45.463589 error: テナント別の請求ダッシュボード GET /api/admin/tenants/billing : expected([200]) != actual(500) tenant:admin role:admin playerID:admin beforeTenantID:42
+[ADMIN] 09:34:45.463614 Normal Error
+09:34:45.465230 error: 参加者と戦績情報取得 GET /api/player/player/9fa54dba : expected([200]) != actual(500) tenant:viub-whc-1791797646 role:player playerID:9fa54e3d playerID:9fa54dba
+[ADMIN] 09:34:45.465250 Normal Error
+09:34:45.470617 error: 大会内のランキング取得 GET /api/player/competition/9fa585da/ranking : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa531de competitionID:9fa585da rankAfter:
+[ADMIN] 09:34:45.470639 Normal Error
+09:34:45.470669 error: 参加者と戦績情報取得 GET /api/player/player/9fa550a1 : expected([200]) != actual(500) tenant:viub-whc-1791797646 role:player playerID:9fa55082 playerID:9fa550a1
+[ADMIN] 09:34:45.470686 Normal Error
+09:34:45.477512 error: 参加者と戦績情報取得 GET /api/player/player/9fa52f4f : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa53134 playerID:9fa52f4f
+[ADMIN] 09:34:45.477549 Normal Error
+09:34:45.601596 error: 参加者と戦績情報取得 GET /api/player/player/9fa53c41 : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53ad5 playerID:9fa53c41
+[ADMIN] 09:34:45.601663 Normal Error
+09:34:45.604700 error: テナント別の請求ダッシュボード GET /api/admin/tenants/billing : expected([200]) != actual(500) tenant:admin role:admin playerID:admin beforeTenantID:42
+[ADMIN] 09:34:45.604720 Normal Error
+09:34:45.606372 error: 参加者と戦績情報取得 GET /api/player/player/9fa52f87 : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa5312d playerID:9fa52f87
+[ADMIN] 09:34:45.606389 Normal Error
+09:34:45.608804 error: 参加者と戦績情報取得 GET /api/player/player/9fa53d91 : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53d86 playerID:9fa53d91
+[ADMIN] 09:34:45.608861 Normal Error
+09:34:45.612367 error: 参加者と戦績情報取得 GET /api/player/player/9fa53af4 : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53d95 playerID:9fa53af4
+09:34:45.612375 error: 参加者と戦績情報取得 GET /api/player/player/9fa52faa : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa531f5 playerID:9fa52faa
+[ADMIN] 09:34:45.612391 Normal Error
+[ADMIN] 09:34:45.612451 Normal Error
+09:34:45.619270 error: 参加者と戦績情報取得 GET /api/player/player/9fa54db5 : expected([200]) != actual(500) tenant:viub-whc-1791797646 role:player playerID:9fa54e67 playerID:9fa54db5
+[ADMIN] 09:34:45.619303 Normal Error
+09:34:45.799418 error: 参加者と戦績情報取得 GET /api/player/player/9fa52fd0 : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa531e1 playerID:9fa52fd0
+[ADMIN] 09:34:45.799498 Normal Error
+09:34:45.802851 error: テナント内の請求情報 GET /api/organizer/billing : expected([200]) != actual(500) tenant:cjv-cghn-1791797628 role:organizer playerID:organizer 
+[ADMIN] 09:34:45.802889 Normal Error
+09:34:45.805221 error: 参加者と戦績情報取得 GET /api/player/player/9fa52f21 : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa53180 playerID:9fa52f21
+[ADMIN] 09:34:45.805240 Normal Error
+09:34:45.806101 error: 参加者と戦績情報取得 GET /api/player/player/9fa52f30 : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa531ef playerID:9fa52f30
+[ADMIN] 09:34:45.806125 Normal Error
+09:34:45.814712 error: テナント別の請求ダッシュボード GET /api/admin/tenants/billing : expected([200]) != actual(500) tenant:admin role:admin playerID:admin beforeTenantID:42
+[ADMIN] 09:34:45.814730 Normal Error
+09:34:45.860034 error: 大会内のランキング取得 GET /api/player/competition/427323170/ranking : expected([200]) != actual(500) tenant:l-qmuow-46 role:player playerID:6298b78da competitionID:427323170 rankAfter:
+[ADMIN] 09:34:45.860078 Normal Error
+[ADMIN] 09:34:46.844469 [TenantBillingValidate] [tenant:r-otzqr-1791797686] Playerを追加します players: 100
+09:34:48.558186 leaderboardの表示に1秒以上かかったため17人の参加者が離脱しました。
+09:34:48.558234 大会「鏡同盟カップ」を作成しました。参加者が増えます。 (類似のログ計4件)
+09:34:48.558261 参加者が19人増えました
+09:34:48.558269 負荷走行を終了します
+[ADMIN] 09:34:48.558270 workerを追加しました [PlayerScenarioWorker](num:19)
+[ADMIN] 09:34:48.560341 負荷走行を終了しました
+09:34:49.586449 ERROR[0] load: load-validation: POST /api/organizer/players/add : expected([200]) != actual(500) tenant:x-ywvqj-1791797677 role:organizer playerID:organizer playerDisplayNames length:208
+09:34:49.586466 ERROR[1] load: load-validation: GET /api/player/player/616e39f7a : expected([200]) != actual(500) tenant:gv-lsbnw-86 role:player playerID:62f3a1797 playerID:616e39f7a
+09:34:49.586467 ERROR[2] load: load-validation: GET /api/player/player/9fa52919 : expected([200]) != actual(500) tenant:mxho-y-1791797628 role:player playerID:9fa52908 playerID:9fa52919
+09:34:49.586470 ERROR[3] load: load-validation: GET /api/player/competition/9fa5415e/ranking : expected([200]) != actual(500) tenant:aj-lhugnk-54 role:player playerID:60f0576a8 competitionID:9fa5415e rankAfter:
+09:34:49.586478 ERROR[4] load: load-validation: GET /api/player/player/61c1c9923 : expected([200]) != actual(500) tenant:isucon role:player playerID:9fa53fc4 playerID:61c1c9923
+09:34:49.586479 ERROR[5] load: load-validation: GET /api/player/player/9fa53cdd : expected([200]) != actual(500) tenant:isucon role:player playerID:9fa573bc playerID:9fa53cdd
+09:34:49.586481 ERROR[6] load: load-validation: GET /api/player/player/9fa53dbb : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53dc1 playerID:9fa53dbb
+09:34:49.586482 ERROR[7] load: load-validation: GET /api/player/player/9fa52c97 : expected([200]) != actual(500) tenant:jbj-wq-8 role:player playerID:9fa54a44 playerID:9fa52c97
+09:34:49.586483 ERROR[8] load: load-validation: GET /api/player/player/3e8b6b5b3 : expected([200]) != actual(500) tenant:bwoij-asuc-56 role:player playerID:63b2f2868 playerID:3e8b6b5b3
+09:34:49.586484 ERROR[9] load: load-validation: GET /api/player/player/9fa53acb : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53ac5 playerID:9fa53acb
+09:34:49.586485 ERROR[10] load: load-validation: GET /api/player/competition/9fa555d3/ranking : expected([200]) != actual(500) tenant:isucon role:player playerID:9fa55578 competitionID:9fa555d3 rankAfter:0
+09:34:49.586486 ERROR[11] load: load-validation: GET /api/player/player/540a60b06 : expected([200]) != actual(500) tenant:iu-gzy-60 role:player playerID:63a9d6fe2 playerID:540a60b06
+09:34:49.586487 ERROR[12] load: load-validation: GET /api/player/competition/9fa52eee/ranking : expected([200]) != actual(500) tenant:isucon role:player playerID:63b0e0be4 competitionID:9fa52eee rankAfter:
+09:34:49.586488 ERROR[13] load: load-validation: GET /api/player/competition/9fa53ff7/ranking : expected([200]) != actual(500) tenant:isucon role:player playerID:9fa53fbf competitionID:9fa53ff7 rankAfter:
+09:34:49.586490 ERROR[14] load: load-validation: GET /api/player/competition/9fa57470/ranking : expected([200]) != actual(500) tenant:isucon role:player playerID:9fa573d7 competitionID:9fa57470 rankAfter:
+09:34:49.586491 ERROR[15] load: load-validation: GET /api/player/player/235851a57 : expected([200]) != actual(500) tenant:njlpk-mws-47 role:player playerID:62d97d974 playerID:235851a57
+09:34:49.586492 ERROR[16] load: load-validation: GET /api/player/player/9fa55442 : expected([200]) != actual(500) tenant:isucon role:player playerID:9fa55583 playerID:9fa55442
+09:34:49.586492 ERROR[17] load: load-validation: GET /api/player/player/622164a93 : expected([200]) != actual(500) tenant:isucon role:player playerID:9fa573e0 playerID:622164a93
+09:34:49.586494 ERROR[18] load: load-validation: GET /api/player/player/9fa54ffc : expected([200]) != actual(500) tenant:viub-whc-1791797646 role:player playerID:9fa54e92 playerID:9fa54ffc
+09:34:49.586495 ERROR[19] load: load-validation: GET /api/player/competition/9fa54f29/ranking : expected([200]) != actual(500) tenant:mxho-y-1791797628 role:player playerID:9fa5292f competitionID:9fa54f29 rankAfter:
+09:34:49.586496 ERROR[20] load: load-validation: GET /api/player/player/9fa529b3 : expected([200]) != actual(500) tenant:mxho-y-1791797628 role:player playerID:9fa5287c playerID:9fa529b3
+09:34:49.586497 ERROR[21] load: load-validation: GET /api/admin/tenants/billing : expected([200]) != actual(500) tenant:admin role:admin playerID:admin beforeTenantID:42
+09:34:49.586498 ERROR[22] load: load-validation: GET /api/player/competition/9fa55758/ranking : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53dce competitionID:9fa55758 rankAfter:
+09:34:49.586499 ERROR[23] load: load-validation: GET /api/player/player/9fa53d08 : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53d99 playerID:9fa53d08
+09:34:49.586500 ERROR[24] load: load-validation: GET /api/player/player/9fa52833 : expected([200]) != actual(500) tenant:mxho-y-1791797628 role:player playerID:9fa52865 playerID:9fa52833
+09:34:49.586502 ERROR[25] load: load-validation: GET /api/player/competition/9fa5326d/ranking : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa5313d competitionID:9fa5326d rankAfter:
+09:34:49.586503 ERROR[26] load: load-validation: GET /api/player/player/9fa53131 : expected([200]) != actual(500) tenant:c-vxe-1791797633 role:player playerID:9fa5316a playerID:9fa53131
+09:34:49.586504 ERROR[27] load: load-validation: GET /api/player/player/9fa53bcb : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53af0 playerID:9fa53bcb
+09:34:49.586505 ERROR[28] load: load-validation: GET /api/player/player/9fa54f92 : expected([200]) != actual(500) tenant:viub-whc-1791797646 role:player playerID:9fa550c3 playerID:9fa54f92
+09:34:49.586506 ERROR[29] load: load-validation: GET /api/player/competition/9fa586c8/ranking : expected([200]) != actual(500) tenant:mnjt-zri-1791797638 role:player playerID:9fa53b62 competitionID:9fa586c8 rankAfter:
+09:34:49.586508 ERRORは最大30件まで表示しています
+[ADMIN] 09:34:49.586567 ScenarioScoreMap: map[string]int64{
+  "AdminBilling":                      119,
+  "AdminBillingValidate":              529,
+  "OrganizerNewTenant":                2577,
+  "OrganizerPeacefulTenant":           0,
+  "OrganizerPopularTenant":            378,
+  "OrganizerPopularTenantHeavyTenant": 255,
+  "Player":                            5026,
+  "PlayerHeavyTenant":                 460,
+  "PlayerValidate":                    872,
+  "TenantBillingValidate":             932,
+}
+[ADMIN] 09:34:49.586599 WorkerCount: map[string]int{
+  "AdminBillingScenarioWorker":   1,
+  "AdminBillingValidateWorker":   1,
+  "NewTenantScenarioWorker":      6,
+  "PlayerScenarioWorker":         262,
+  "PlayerValidateScenarioWorker": 1,
+  "PopularTenantScenarioWorker":  2,
+  "TenantBillingValidateWorker":  1,
+}
+09:34:49.586605 Error 78 (Critical:1)
+09:34:49.586606 PASSED: true
+09:34:49.586607 SCORE: 1450 (+11148 -9698(87%))
+[ADMIN] 09:34:49.586650 score.ScoreTable{
+  "GET /api/admin/tenants/billing":                         88,
+  "GET /api/organizer/billing":                             70,
+  "GET /api/organizer/players/list":                        90,
+  "GET /api/player/competition/:competition_id/ranking":    2488,
+  "GET /api/player/competitions":                           460,
+  "GET /api/player/player/:player_name":                    3846,
+  "POST /api/admin/tenants/add":                            8,
+  "POST /api/organizer/competition/:competition_id/finish": 97,
+  "POST /api/organizer/competition/:competition_id/score":  119,
+  "POST /api/organizer/competitions/add":                   105,
+  "POST /api/organizer/player/:player_name/disqualified":   16,
+  "POST /api/organizer/players/add":                        17,
+}

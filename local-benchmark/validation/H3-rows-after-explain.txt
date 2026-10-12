@@ -1,0 +1,3 @@
+1674797|209199897798|71650359009
+QUERY PLAN
+`--SEARCH player_score USING INDEX score_competition_player (competition_id=? AND player_id=?)
