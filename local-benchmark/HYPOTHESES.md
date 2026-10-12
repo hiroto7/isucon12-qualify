@@ -68,3 +68,7 @@ H9 outcome: tests passed concurrent single persistence, cold recovery, earlier-c
 ## H10 — shared SQLite connection/read statement lifetime
 
 Saved profile 019 focus on sqlite3_prepare/SQLiteDriver.Open/database/sql.Prepare accounts for 17.96% of late Go CPU samples. Use four connections per tenant and retain prepared read statements. Handler Close is a no-op; initialize closes statements/DB handles before restoration. Data values/authorization remain live, not cached. Tests passed shared concurrent read, statement reuse and file replacement/cold reopen. Trial 023 passed 120445, zero errors, +15.1% over H9; adopted as resource-work reduction, without repeated small-gain tuning.
+
+## H11 — latest-score snapshots for player detail
+
+Eliminate the 352790 per-competition score queries and subsequent title refetches observed in 019. Publish immutable per-competition player->last-score maps only after successful atomic commit, using maximum CSV row number; cold snapshots rebuild from authoritative SQLite under the existing tenant lock. Use already listed competition titles and order. Tests passed latest-row, cold load, failed-write non-publication and empty replacement. Trial 024 passed 137684, zero errors (+14.3%). Accepted without extra micro-variance runs; next profiling must establish remaining major work.

@@ -26,3 +26,5 @@
 - H8 details SQL rejected (small gain and 7 timeouts), source reverted. H9 durable first visits accepted, 104623 zero errors. Next: inspect/reduce repeated SQLite connection/statement setup; no new schema/data shortcuts.
 
 - H10 tenant pools + prepared reads accepted, 120445 zero errors. All source and deployment match. Next: eliminate repeated per-player/per-competition score reads with immutable latest-score snapshots.
+
+- H11 latest-score snapshots accepted, 137684 zero errors. Current best valid scoring state ~21.7x initial. Next reprofile: authorization/metadata/serialization or demand-limited workload, then choose only grounded major remaining changes.
