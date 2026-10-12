@@ -2,6 +2,7 @@
 """Regenerate complete attempt history and observed record highs from meta.json."""
 import csv
 import json
+import re
 from pathlib import Path
 import os
 os.environ.setdefault("MPLCONFIGDIR", "/private/tmp/isucon12-matplotlib")
@@ -11,7 +12,16 @@ import matplotlib.pyplot as plt
 
 root = Path(__file__).resolve().parents[1]
 rows = [json.loads(p.read_text()) for p in sorted((root/'results').glob('*/meta.json'))]
-fields = ['id','label','kind','started','ended','commit','status','passed','score','reported_score','decision']
+for r in rows:
+    logpath=root/'results'/f"{r['id']:03d}"/'bench.log'
+    if logpath.exists():
+        log=logpath.read_text()
+        errors=re.search(r'Error (\d+) \(Critical:(\d+)\)',log)
+        raw=re.search(r'SCORE: \d+ \(\+(\d+) -?\d+\((\d+)%\)\)',log)
+        if errors:r.update(errors=int(errors[1]),critical_errors=int(errors[2]))
+        if raw:r.update(raw_score=int(raw[1]),deduction_percent=int(raw[2]))
+        (logpath.parent/'meta.json').write_text(json.dumps(r,indent=2)+'\n')
+fields = ['id','label','kind','started','ended','commit','status','passed','score','reported_score','raw_score','deduction_percent','errors','critical_errors','decision']
 with (root/'all-trials.csv').open('w') as f:
     w=csv.DictWriter(f,fieldnames=fields,extrasaction='ignore');w.writeheader();w.writerows(rows)
 baseline_rows = [r['score'] for r in rows if r['label'].startswith('baseline') and r['kind']=='scoring' and r['passed']][:3]
@@ -24,13 +34,21 @@ for r in rows:
 for name,selected in [('all-trials',rows),('record-highs',highs)]:
     fig,ax=plt.subplots(figsize=(13,6))
     for kind,marker,color in [('scoring','o','#1769aa'),('diagnostic','s','#d57b00'),('validation','D','#7b42a8')]:
-        valid=[r for r in selected if r['passed'] and r['kind']==kind]
+        valid=[r for r in selected if r['passed'] and r['kind']==kind and not r.get('decision','').startswith('rejected')]
         ax.scatter([r['id'] for r in valid],[r['score'] for r in valid],marker=marker,color=color,label=kind,s=50)
+    adopted=[r for r in selected if r['passed'] and r.get('decision') in ['accepted','accepted-provisional']]
+    if adopted:
+        ax.scatter([r['id'] for r in adopted],[r['score'] for r in adopted],facecolors='none',edgecolors='#188038',s=130,linewidths=2,label='adopted (provisional noted in CSV)')
+    rejected=[r for r in selected if r['passed'] and r.get('decision','').startswith('rejected')]
+    if rejected:
+        ax.scatter([r['id'] for r in rejected],[r['score'] for r in rejected],marker='x',color='#c62828',s=70,label='official pass, rejected quality')
     invalid=[r for r in selected if not r['passed']]
     if invalid:
         ax.scatter([r['id'] for r in invalid],[0]*len(invalid),marker='x',color='#c62828',label='failed / interrupted / incomplete',s=70)
     if highs:
         ax.step([r['id'] for r in highs],[r['score'] for r in highs],where='post',color='#1769aa',alpha=.4,label='observed scoring record (not adopted state)')
+    if name=='all-trials' and any(r['id']>=15 for r in rows):
+        ax.axvline(14.5,color='gray',linestyle='--',alpha=.5,label='bench FD limit corrected (control 16)')
     if baseline:
         ax.axhline(baseline,color='gray',linestyle=':',label=f'initial median {baseline:,}; goal {baseline*100:,}')
     for r in selected:

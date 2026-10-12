@@ -16,4 +16,6 @@ id,label,kind,started,ended,commit,status,passed,score,reported_score,errors,cri
 15,ranking-bench-fd-capacity,scoring,2026-10-12T09:55:32.644824+00:00,2026-10-12T09:56:38Z,fded28c6295fd9129ef9c172fb4166e8536e1c78,pass,True,40420,40420,0,0,accepted
 16,id-blocks-new-bench-limit-control,scoring,2026-10-12T09:58:33.013690+00:00,2026-10-12T09:59:39Z,fded28c6295fd9129ef9c172fb4166e8536e1c78,pass,True,28828,28828,0,0,control
 17,versioned-finished-billing,scoring,2026-10-12T10:05:04.015977+00:00,2026-10-12T10:05:59Z,82850bcff2ca3180a1e9102cf0b8a5e158782bd5,fail,False,,0,100,0,rejected-server-capacity
-18,billing-snapshots-nginx-capacity,scoring,2026-10-12T10:09:52.433471+00:00,2026-10-12T10:10:58Z,82850bcff2ca3180a1e9102cf0b8a5e158782bd5,pass,True,68407,68407,0,0,pending
+18,billing-snapshots-nginx-capacity,scoring,2026-10-12T10:09:52.433471+00:00,2026-10-12T10:10:58Z,82850bcff2ca3180a1e9102cf0b8a5e158782bd5,pass,True,68407,68407,0,0,accepted
+19,billing-ranking-profile,diagnostic,2026-10-12T10:13:34.049701+00:00,2026-10-12T10:14:40Z,b4d94677470d7e94c5b2073cab85540d4c91aea8,pass,True,61305,61305,0,0,pending
+20,atomic-player-batches,scoring,2026-10-12T10:25:56.666769+00:00,2026-10-12T10:27:02Z,b4d94677470d7e94c5b2073cab85540d4c91aea8,pass,True,83561,83561,0,0,pending

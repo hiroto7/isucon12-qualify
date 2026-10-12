@@ -1,0 +1,177 @@
+[ADMIN] 10:13:34.155244 TargetURL: https://t.isucon.local, TargetAddr: 192.168.2.8:443, RequestTimeout: 30s, InitializeRequestTimeout: 30s, StrictPrepare: true, ReproduceMode: false
+[ADMIN] 10:13:35.426723 POST /initialize 200 初期化
+10:13:35.426769 初期化リクエストに成功しました 実装言語:go
+10:13:35.426776 整合性チェックを開始します
+[ADMIN] 10:13:35.503611 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 10:13:35.506642 GET /index.html 200 /index.htmlを確認
+[ADMIN] 10:13:35.509455 GET /js/app.3a4ec98c.js 200 /js/app.3a4ec98c.jsを確認
+[ADMIN] 10:13:35.510245 GET /css/app.83b4c321.css 200 /css/app.83b4c321.cssを確認
+[ADMIN] 10:13:35.510267 staticFileCheck done
+[ADMIN] 10:13:35.511710 POST /api/admin/tenants/add 401 新規テナント作成: 不正リクエスト(exp切れのJWT)
+[ADMIN] 10:13:35.533288 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 10:13:35.539248 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 10:13:35.547822 POST /api/organizer/competitions/add 200 新規大会追加)
+[ADMIN] 10:13:35.611194 POST /api/admin/tenants/add 401 新規テナント作成: 不正リクエスト(不正なRSA鍵)
+[ADMIN] 10:13:35.611808 GET /api/admin/tenants/billing 200 テナント別の請求ダッシュボード: 初期データチェック
+[ADMIN] 10:13:35.611934 billingAPISuccessCheck done
+[ADMIN] 10:13:35.615037 POST /api/admin/tenants/add 401 新規テナント作成: 不正リクエスト(不正な鍵認証方式)
+[ADMIN] 10:13:35.641945 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 10:13:35.646842 POST /api/organizer/competitions/add 401 新規大会追加: 不正リクエスト(存在しないテナント)
+[ADMIN] 10:13:35.650865 GET /api/player/competitions 401 テナント内の大会情報取得: 不正なリクエスト(存在しないプレイヤー)
+[ADMIN] 10:13:35.650871 invalidJWTCheck done
+[ADMIN] 10:13:35.829183 POST /api/organizer/players/add 200 テナントへプレイヤー追加
+[ADMIN] 10:13:35.830945 GET /api/organizer/players 200 テナントのプレイヤー一覧取得
+[ADMIN] 10:13:35.835593 POST /api/organizer/competitions/add 200 新規大会追加
+[ADMIN] 10:13:35.840513 POST /api/organizer/player/9fa5251d/disqualified 200 プレイヤーを失格にする
+[ADMIN] 10:13:35.845807 POST /api/organizer/players/add 200 テナントへプレイヤー追加
+[ADMIN] 10:13:35.847002 POST /api/admin/tenants/add 400 新規テナント作成 不正リクエスト
+[ADMIN] 10:13:35.853426 POST /api/admin/tenants/add 400 新規テナント作成 不正リクエスト
+[ADMIN] 10:13:35.854298 POST /api/organizer/competition/9fa52525/score 200 大会結果CSV入稿
+[ADMIN] 10:13:35.859638 POST /api/organizer/player/0000000000/disqualified 404 プレイヤーを失格にする: 不正リクエスト(存在しないプレイヤー)
+[ADMIN] 10:13:35.864708 POST /api/organizer/competitions/add 200 新規大会追加
+[ADMIN] 10:13:35.866386 POST /api/organizer/competition/0000000000/score 404 大会結果CSV入稿: 不正リクエスト(存在しない大会)
+[ADMIN] 10:13:35.866940 POST /api/organizer/competition/9fa52525/score 200 大会結果CSV入稿
+[ADMIN] 10:13:35.867840 GET /api/player/competition/9fa52525/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 10:13:35.868348 POST /api/organizer/competition/9fa52598/score 400 大会結果CSV入稿: 不正リクエスト(存在しないプレイヤー)
+[ADMIN] 10:13:35.868861 GET /api/player/competition/9fa52525/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 10:13:35.869179 GET /api/player/competition/9fa52525/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 10:13:35.869281 GET /api/player/competition/9fa52525/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 10:13:35.871347 POST /api/organizer/competition/9fa52598/score 400 大会結果CSV入稿: 不正リクエスト(カラムの並び順が違う)
+[ADMIN] 10:13:35.872000 POST /api/organizer/players/add 200 テナントへプレイヤー101人追加
+[ADMIN] 10:13:35.874018 POST /api/organizer/competition/9fa52598/score 400 大会結果CSV入稿: 不正リクエスト(余計なカラムがあるCSV)
+[ADMIN] 10:13:35.874567 GET /api/player/competition/9fa52525/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 10:13:35.879267 GET /api/player/player/0000000000 404 プレイヤーと戦績情報取得
+[ADMIN] 10:13:35.879378 GET /api/player/competition/9fa52525/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 10:13:35.880207 GET /api/player/competition/9fa52525/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 10:13:35.880544 GET /api/player/competition/9fa52525/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 10:13:35.881439 GET /api/player/competition/0000000000/ranking 404 大会内のランキング取得
+[ADMIN] 10:13:35.882635 GET /api/player/player/9fa52415 200 プレイヤーと戦績情報取得: 入稿後
+[ADMIN] 10:13:35.882731 POST /api/organizer/competition/9fa52409/score 200 大会結果CSV入稿
+[ADMIN] 10:13:35.886431 POST /api/organizer/player/9fa52528/disqualified 200 プレイヤーを失格にする
+[ADMIN] 10:13:35.886460 GET /api/player/competition/9fa52525/ranking 200 大会内のランキング取得: ページングなし
+[ADMIN] 10:13:35.890150 GET /api/player/competition/9fa52409/ranking 200 大会内のランキング取得: ページングなし,上限100件
+[ADMIN] 10:13:35.891165 GET /api/player/competition/9fa52598/ranking 403 大会内のランキング取得: 失格済みプレイヤー
+[ADMIN] 10:13:35.892181 POST /api/organizer/competition/0000000000/finish 404 大会終了: 不正リクエスト(存在しない大会)
+[ADMIN] 10:13:35.894896 GET /api/player/competition/9fa52409/ranking 200 大会内のランキング取得: ページングあり
+[ADMIN] 10:13:35.895824 GET /api/player/competition/9fa52525/ranking 200 大会内のランキング取得: スコア未登録プレイヤー
+[ADMIN] 10:13:35.896623 GET /api/player/player/9fa52469 200 プレイヤーと戦績情報取得
+[ADMIN] 10:13:35.897218 POST /api/organizer/competition/9fa52598/finish 200 大会終了
+[ADMIN] 10:13:35.898584 POST /api/organizer/competition/9fa52598/score 400 大会結果CSV入稿: 不正リクエスト(終了済みの大会)
+[ADMIN] 10:13:35.898588 badRequestCheck done
+[ADMIN] 10:13:35.899818 POST /api/organizer/competition/9fa52525/finish 200 大会終了
+[ADMIN] 10:13:35.899825 allAPISuccessCheck sleep 3s
+[ADMIN] 10:13:35.903161 POST /api/organizer/competition/9fa52409/score 200 大会結果CSV入稿
+[ADMIN] 10:13:35.906157 GET /api/player/competition/9fa52409/ranking 200 大会内のランキング取得: ページングなし,上限100件
+[ADMIN] 10:13:35.907735 GET /api/player/player/9fa52469 200 プレイヤーと戦績情報取得
+[ADMIN] 10:13:35.913607 POST /api/organizer/competition/9fa52409/score 200 大会結果CSV入稿
+[ADMIN] 10:13:35.916138 GET /api/player/competition/9fa52409/ranking 200 大会内のランキング取得: ページングなし,上限100件
+[ADMIN] 10:13:35.916603 rankingCheck done
+[ADMIN] 10:13:38.916234 GET /api/player/competition/9fa52525/ranking 200 大会内のランキング取得: ランキングが正しいことを確認
+[ADMIN] 10:13:38.919559 GET /api/organizer/billing 200 テナント内の請求情報
+[ADMIN] 10:13:38.921275 GET /api/player/competitions 200 テナント内の大会情報取得
+[ADMIN] 10:13:38.922057 GET /api/organizer/competitions 200 テナント管理者API テナント内の大会一覧取得
+[ADMIN] 10:13:38.961884 GET /api/admin/tenants/billing 200 テナント別の請求ダッシュボード(最大10件)
+[ADMIN] 10:13:38.970950 GET /api/organizer/billing 200 テナント内の請求情報
+[ADMIN] 10:13:38.971023 allAPISuccessCheck done
+10:13:38.971027 整合性チェックを終了します
+[ADMIN] 10:13:38.971032 Scenario:validation elapsed:3.544253985s
+10:13:38.971033 整合性チェックに成功しました
+10:13:38.971044 負荷走行を開始します
+[ADMIN] 10:13:38.971923 OrganizerPopularTenant x-cktf-27
+[ADMIN] 10:13:39.026454 [TenantBillingValidate] [tenant:wvcku-zr-1791800018] Playerを追加します players: 100
+[ADMIN] 10:13:40.410453 OrganizerPopularTenantHeavyTenant isucon
+10:13:43.971112 大会「目白団杯」を作成しました。参加者が増えます。 (類似のログ計21件)
+10:13:43.971130 テナント「酸味高校」を作成しました (類似のログ計9件)
+[ADMIN] 10:13:43.971133 workerを追加しました [PlayerScenarioWorker](num:109)
+[ADMIN] 10:13:43.971135 workerを追加しました [PopularTenantScenarioWorker](num:2)
+[ADMIN] 10:13:43.971136 workerを追加しました [AdminBillingScenarioWorker](num:1)
+[ADMIN] 10:13:43.971137 workerを追加しました [AdminBillingValidateWorker](num:1)
+[ADMIN] 10:13:43.971137 workerを追加しました [TenantBillingValidateWorker](num:1)
+[ADMIN] 10:13:43.971138 workerを追加しました [NewTenantScenarioWorker](num:9)
+[ADMIN] 10:13:43.971138 workerを追加しました [PlayerValidateScenarioWorker](num:1)
+10:13:43.971140 参加者が109人増えました
+10:13:48.971493 大会「鏡.rs #9」を作成しました。参加者が増えます。 (類似のログ計43件)
+[ADMIN] 10:13:48.971504 workerを追加しました [NewTenantScenarioWorker](num:10)
+10:13:48.971510 参加者が247人増えました
+[ADMIN] 10:13:48.971512 workerを追加しました [PlayerScenarioWorker](num:247)
+10:13:48.971513 テナント「ベスト筋肉協奏曲」を作成しました (類似のログ計10件)
+10:13:53.971884 大会「チーズクラブ」を作成しました。参加者が増えます。 (類似のログ計49件)
+10:13:53.971901 テナント「エビ事務所」を作成しました (類似のログ計1件)
+[ADMIN] 10:13:53.971903 workerを追加しました [PlayerScenarioWorker](num:277)
+[ADMIN] 10:13:53.971906 workerを追加しました [NewTenantScenarioWorker](num:1)
+10:13:53.971907 参加者が277人増えました
+10:13:58.971090 大会「IPAのプロ vol.1」を作成しました。参加者が増えます。 (類似のログ計45件)
+10:13:58.971128 テナント「-rf甘み海岸」を作成しました (類似のログ計1件)
+10:13:58.971297 参加者が259人増えました
+[ADMIN] 10:13:58.971117 workerを追加しました [PlayerScenarioWorker](num:259)
+[ADMIN] 10:13:58.971837 workerを追加しました [NewTenantScenarioWorker](num:1)
+10:14:03.972119 大会「第1回 大宮山」を作成しました。参加者が増えます。 (類似のログ計39件)
+10:14:03.972137 テナント「モディファイドモリス野郎」を作成しました (類似のログ計1件)
+[ADMIN] 10:14:03.972140 workerを追加しました [PlayerScenarioWorker](num:223)
+[ADMIN] 10:14:03.972142 workerを追加しました [NewTenantScenarioWorker](num:1)
+10:14:03.972144 参加者が223人増えました
+10:14:08.971140 大会「アポカリプティックアワビ出張所カップ」を作成しました。参加者が増えます。 (類似のログ計27件)
+[ADMIN] 10:14:08.971160 workerを追加しました [PlayerScenarioWorker](num:151)
+10:14:08.971163 参加者が151人増えました
+[ADMIN] 10:14:13.971608 workerを追加しました [PlayerScenarioWorker](num:115)
+10:14:13.971608 大会「プロセスタウンカップ」を作成しました。参加者が増えます。 (類似のログ計20件)
+10:14:13.971627 参加者が115人増えました
+10:14:18.971065 大会「第4回 ノーコード教室」を作成しました。参加者が増えます。 (類似のログ計13件)
+[ADMIN] 10:14:18.971083 workerを追加しました [PlayerScenarioWorker](num:78)
+10:14:18.971086 参加者が78人増えました
+10:14:23.971279 大会「クライアントTHAN」を作成しました。参加者が増えます。 (類似のログ計18件)
+[ADMIN] 10:14:23.971310 workerを追加しました [PlayerScenarioWorker](num:103)
+10:14:23.971323 参加者が103人増えました
+10:14:28.971090 大会「バンバンジー食べたいカップ」を作成しました。参加者が増えます。 (類似のログ計10件)
+[ADMIN] 10:14:28.971154 workerを追加しました [PlayerScenarioWorker](num:60)
+10:14:28.971174 参加者が60人増えました
+10:14:33.971242 leaderboardの表示に1秒以上かかったため6人の参加者が離脱しました。
+10:14:33.971261 大会「DJ自由が丘方式カップ」を作成しました。参加者が増えます。 (類似のログ計11件)
+[ADMIN] 10:14:33.971265 workerを追加しました [PlayerScenarioWorker](num:61)
+10:14:33.971268 参加者が61人増えました
+10:14:38.971434 leaderboardの表示に1秒以上かかったため14人の参加者が離脱しました。
+10:14:38.971488 大会「令和柏の5秒前」を作成しました。参加者が増えます。 (類似のログ計9件)
+[ADMIN] 10:14:38.971502 workerを追加しました [PlayerScenarioWorker](num:54)
+[ADMIN] 10:14:38.971508 workerを追加しました [NewTenantScenarioWorker](num:1)
+10:14:38.971441 テナント「パッと見ポーク教室」を作成しました (類似のログ計1件)
+10:14:38.971511 参加者が54人増えました
+10:14:38.972071 負荷走行を終了します
+[ADMIN] 10:14:38.989214 負荷走行を終了しました
+[ADMIN] 10:14:39.976863 ScenarioScoreMap: map[string]int64{
+  "AdminBilling":                      507,
+  "AdminBillingValidate":              465,
+  "OrganizerNewTenant":                13749,
+  "OrganizerPeacefulTenant":           0,
+  "OrganizerPopularTenant":            541,
+  "OrganizerPopularTenantHeavyTenant": 457,
+  "Player":                            43245,
+  "PlayerHeavyTenant":                 1144,
+  "PlayerValidate":                    684,
+  "TenantBillingValidate":             513,
+}
+[ADMIN] 10:14:39.977075 WorkerCount: map[string]int{
+  "AdminBillingScenarioWorker":   1,
+  "AdminBillingValidateWorker":   1,
+  "NewTenantScenarioWorker":      23,
+  "PlayerScenarioWorker":         1717,
+  "PlayerValidateScenarioWorker": 1,
+  "PopularTenantScenarioWorker":  2,
+  "TenantBillingValidateWorker":  1,
+}
+10:14:39.977096 Error 0 (Critical:0)
+10:14:39.977102 PASSED: true
+10:14:39.977107 SCORE: 61305 (+61305 0(0%))
+[ADMIN] 10:14:39.977301 score.ScoreTable{
+  "GET /api/admin/tenants/billing":                         304,
+  "GET /api/organizer/billing":                             274,
+  "GET /api/organizer/players/list":                        311,
+  "GET /api/player/competition/:competition_id/ranking":    13816,
+  "GET /api/player/competitions":                           1857,
+  "GET /api/player/player/:player_name":                    32105,
+  "POST /api/admin/tenants/add":                            24,
+  "POST /api/organizer/competition/:competition_id/finish": 306,
+  "POST /api/organizer/competition/:competition_id/score":  330,
+  "POST /api/organizer/competitions/add":                   318,
+  "POST /api/organizer/player/:player_name/disqualified":   12,
+  "POST /api/organizer/players/add":                        38,
+}

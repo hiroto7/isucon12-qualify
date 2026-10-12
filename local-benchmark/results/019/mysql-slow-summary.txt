@@ -1,0 +1,12 @@
+calls sum_seconds rows_examined max_seconds SQL
+14133 42.145 0 0.092 INSERT INTO visit_history (player_id, tenant_id, competition_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?);
+50238 1.784 50237 0.003 SELECT * FROM tenant WHERE name = ?;
+2856 1.12 2162961 0.056 SELECT player_id, MIN(created_at) AS min_created_at FROM visit_history WHERE tenant_id = ? AND competition_id = ? GROUP BY player_id;
+1 0.816 3240589 0.816 DELETE FROM visit_history WHERE created_at >= ?;
+14133 0.467 14133 0.004 SELECT * FROM tenant WHERE id = ?;
+29 0.143 0 0.062 INSERT INTO tenant (name, display_name, created_at, updated_at) VALUES (?, ?, ?, ?);
+28 0.079 28 0.007 UPDATE id_generator SET id=LAST_INSERT_ID(id+?) WHERE stub=?;
+307 0.037 35976 0.001 SELECT * FROM tenant ORDER BY id DESC;
+1 0.005 29 0.005 DELETE FROM tenant WHERE id > ?;
+1 0.002 1 0.002 UPDATE id_generator SET id=? WHERE stub=?;
+1 0.001 14 0.001 SELECT COUNT(*) FROM information_schema.statistics WHERE table_schema=DATABASE() AND table_name=? AND index_name=?;

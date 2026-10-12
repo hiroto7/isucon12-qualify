@@ -1,0 +1,22 @@
+SQLite trace: cumulative query start/exec time; excludes Rows.Next consumption and lock acquisition.
+    8577 calls     47.493s total   0.6366s max  INSERT INTO player (id, tenant_id, display_name, is_disqualified, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)
+  352790 calls     17.689s total   0.0553s max  SELECT * FROM player_score WHERE tenant_id = ? AND competition_id = ? AND player_id = ? ORDER BY row_num DESC LIMIT 1
+  363839 calls      5.128s total   0.0543s max  SELECT * FROM competition WHERE id = ?
+  192038 calls      3.555s total   0.0501s max  SELECT * FROM player WHERE id = ?
+     308 calls      2.702s total   0.0762s max  UPDATE competition SET finished_at = ?, updated_at = ? WHERE id = ?
+     322 calls      2.614s total   0.0702s max  INSERT INTO competition (id, tenant_id, title, finished_at, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)
+  102257 calls      1.106s total   0.0848s max  INSERT INTO player_score (id, tenant_id, player_id, competition_id, score, row_num, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+   32581 calls      0.897s total   0.0774s max  SELECT * FROM competition WHERE tenant_id = ? ORDER BY created_at ASC
+    2856 calls      0.322s total   0.0157s max  SELECT DISTINCT(player_id) FROM player_score WHERE tenant_id = ? AND competition_id = ?
+     441 calls      0.146s total   0.0111s max  SELECT ps.player_id, p.display_name AS player_display_name, ps.score, ps.row_num
+FROM player_score ps
+JOIN (SELECT player_id, MAX(row_num) AS row_num FROM player_score WHERE competition_id=? AND tenant_id=? GROUP BY player_id) latest
+ON latest.player_id=ps.player_id AND latest.row_num=ps.row_num
+JOIN player p ON p.id=ps.player_id
+WHERE ps.competition_id=? AND ps.tenant_id=?
+ORDER BY ps.score DESC, ps.row_num ASC
+      15 calls      0.089s total   0.0155s max  UPDATE player SET is_disqualified = ?, updated_at = ? WHERE id = ?
+    2141 calls      0.088s total   0.0157s max  SELECT * FROM competition WHERE tenant_id=? ORDER BY created_at DESC
+     335 calls      0.038s total   0.0089s max  DELETE FROM player_score WHERE tenant_id = ? AND competition_id = ?
+    2756 calls      0.027s total   0.0128s max  SELECT * FROM competition WHERE tenant_id=?
+     313 calls      0.008s total   0.0034s max  SELECT * FROM player WHERE tenant_id=? ORDER BY created_at DESC
