@@ -41,4 +41,5 @@ id,label,kind,started,ended,commit,status,passed,score,reported_score,errors,cri
 40,compact-initial-preparation,scoring,2026-10-12T15:53:36.449856+00:00,2026-10-12T15:53:36.449960+00:00,d37062273b535947f7719ab916c10fded6d76295,fail,False,,,,,preparation-failed
 41,compact-initial-score-and-visits,scoring,2026-10-12T15:53:51.494439+00:00,2026-10-12T15:54:56Z,d37062273b535947f7719ab916c10fded6d76295,pass,True,152802,152802,0,0,accepted-provisional
 42,csv-last-row-and-batch-validation,scoring,2026-10-12T15:56:04.325860+00:00,2026-10-12T15:57:09Z,4fbacbf8b97efba29095def278a16fb36c350b40,pass,True,158032,158032,0,0,accepted-provisional
-43,competition-locks-without-flock,scoring,2026-10-12T16:00:10.256937+00:00,2026-10-12T16:01:15Z,bb8d1585f58d43ad9b67ef2b964084e5eb779fc0,pass,True,160011,160011,0,0,pending
+43,competition-locks-without-flock,scoring,2026-10-12T16:00:10.256937+00:00,2026-10-12T16:01:15Z,bb8d1585f58d43ad9b67ef2b964084e5eb779fc0,pass,True,160011,160011,0,0,accepted-provisional
+44,metadata-and-signing-key-cache,scoring,2026-10-12T16:03:44.607896+00:00,2026-10-12T16:04:49Z,42c202006feba97228fbf98c5d77630144c95af4,pass,True,200605,200605,0,0,pending

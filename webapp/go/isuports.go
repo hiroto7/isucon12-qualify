@@ -23,7 +23,6 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/gommon/log"
 	"github.com/lestrrat-go/jwx/v2/jwa"
-	"github.com/lestrrat-go/jwx/v2/jwk"
 	"github.com/lestrrat-go/jwx/v2/jwt"
 )
 
@@ -215,13 +214,9 @@ func parseViewer(c echo.Context) (*Viewer, error) {
 	tokenStr := cookie.Value
 
 	keyFilename := getEnv("ISUCON_JWT_KEY_FILE", "../public.pem")
-	keysrc, err := os.ReadFile(keyFilename)
+	key, err := signingKey(keyFilename)
 	if err != nil {
-		return nil, fmt.Errorf("error os.ReadFile: keyFilename=%s: %w", keyFilename, err)
-	}
-	key, _, err := jwk.DecodePEM(keysrc)
-	if err != nil {
-		return nil, fmt.Errorf("error jwk.DecodePEM: %w", err)
+		return nil, fmt.Errorf("read signing key: %w", err)
 	}
 
 	token, err := jwt.Parse(
@@ -303,7 +298,11 @@ func retrieveTenantRowFromHeader(c echo.Context) (*TenantRow, error) {
 		}, nil
 	}
 
-	// テナントの存在確認
+	// Tenant names and display names are immutable until initialization.
+	if cached, ok := tenantsByName.Load(tenantName); ok {
+		tenant := cached.(TenantRow)
+		return &tenant, nil
+	}
 	var tenant TenantRow
 	if err := adminDB.GetContext(
 		context.Background(),
@@ -313,6 +312,7 @@ func retrieveTenantRowFromHeader(c echo.Context) (*TenantRow, error) {
 	); err != nil {
 		return nil, fmt.Errorf("failed to Select tenant: name=%s, %w", tenantName, err)
 	}
+	tenantsByName.Store(tenantName, tenant)
 	return &tenant, nil
 }
 
@@ -1199,12 +1199,7 @@ func competitionRankingHandler(c echo.Context) error {
 	}
 
 	now := time.Now().Unix()
-	var tenant TenantRow
-	if err := adminDB.GetContext(ctx, &tenant, "SELECT * FROM tenant WHERE id = ?", v.tenantID); err != nil {
-		return fmt.Errorf("error Select tenant: id=%d, %w", v.tenantID, err)
-	}
-
-	changed, err := recordFirstVisit(ctx, adminDB, tenant.ID, competitionID, v.playerID, now)
+	changed, err := recordFirstVisit(ctx, adminDB, v.tenantID, competitionID, v.playerID, now)
 	if err != nil {
 		return err
 	}
@@ -1429,6 +1424,7 @@ func initializeHandler(c echo.Context) error {
 	resetFirstVisits()
 	resetLatestScores()
 	resetScoreLocks()
+	resetTenantMetadata()
 	res := InitializeHandlerResult{
 		Lang: "go",
 	}

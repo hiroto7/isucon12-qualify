@@ -9,8 +9,9 @@ import (
 
 type tenantConnection struct {
 	*sqlx.DB
-	mu    sync.Mutex
-	reads map[string]*sqlx.Stmt
+	mu           sync.Mutex
+	reads        map[string]*sqlx.Stmt
+	metadataRows sync.Map
 }
 
 var tenantConnections = struct {
@@ -36,6 +37,9 @@ func (db *tenantConnection) prepare(ctx context.Context, query string) (*sqlx.St
 }
 
 func (db *tenantConnection) GetContext(ctx context.Context, dest interface{}, query string, args ...interface{}) error {
+	if query == "SELECT * FROM player WHERE id = ?" || query == "SELECT * FROM competition WHERE id = ?" {
+		return db.getMetadata(ctx, dest, query, args[0].(string))
+	}
 	stmt, err := db.prepare(ctx, query)
 	if err != nil {
 		return err
