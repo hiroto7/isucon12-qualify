@@ -43,7 +43,7 @@ func recordFirstVisit(ctx context.Context, db dbOrTx, tenantID int64, competitio
 	if state.known && state.at <= now {
 		return false, nil
 	}
-	if _, err := db.ExecContext(ctx, "INSERT INTO visit_history (player_id,tenant_id,competition_id,created_at,updated_at) VALUES (?,?,?,?,?)", playerID, tenantID, competitionID, now, now); err != nil {
+	if err := writeDurableVisit(ctx, db, VisitHistoryRow{PlayerID: playerID, TenantID: tenantID, CompetitionID: competitionID, CreatedAt: now, UpdatedAt: now}); err != nil {
 		return false, err
 	}
 	state.known = true
