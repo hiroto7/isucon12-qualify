@@ -32,7 +32,7 @@ highs=[]
 for r in rows:
     if r['passed'] and r['kind']=='scoring' and r['score']>record:
         record=r['score'];highs.append(r)
-for name,selected in [('all-trials',rows),('record-highs',highs)]:
+for name,selected in [('all-trials',rows),('record-highs',highs),('postmortem',[r for r in rows if r['id']>=39])]:
     fig,ax=plt.subplots(figsize=(13,6))
     for kind,marker,color in [('scoring','o','#1769aa'),('diagnostic','s','#d57b00'),('validation','D','#7b42a8')]:
         valid=[r for r in selected if r['passed'] and r['kind']==kind and not r.get('decision','').startswith('rejected')]
@@ -46,12 +46,15 @@ for name,selected in [('all-trials',rows),('record-highs',highs)]:
     invalid=[r for r in selected if not r['passed']]
     if invalid:
         ax.scatter([r['id'] for r in invalid],[0]*len(invalid),marker='x',color='#c62828',label='failed / interrupted / incomplete',s=70)
-    if highs:
-        ax.step([r['id'] for r in highs],[r['score'] for r in highs],where='post',color='#1769aa',alpha=.4,label='observed scoring record (not adopted state)')
+    shown_highs = [r for r in highs if name!='postmortem' or r['id']>=39]
+    if shown_highs:
+        ax.step([r['id'] for r in shown_highs],[r['score'] for r in shown_highs],where='post',color='#1769aa',alpha=.4,label='observed scoring record (not adopted state)')
     if name=='all-trials' and any(r['id']>=15 for r in rows):
         ax.axvline(14.5,color='gray',linestyle='--',alpha=.5,label='bench FD limit corrected (control 16)')
     if name=='all-trials' and any(r['id']>=36 for r in rows):
         ax.axvspan(35.5,37.5,color='gray',alpha=.08,label='same MySQL capacity for 36/37')
+    if name=='all-trials' and any(r['id']>=39 for r in rows):
+        ax.axvline(38.5,color='#c36b00',linestyle='--',alpha=.6,label='postmortems first read after 38')
     if baseline:
         ax.axhline(baseline,color='gray',linestyle=':',label=f'initial median {baseline:,}; goal {baseline*100:,}')
     for r in selected:

@@ -44,6 +44,8 @@ if a.action == 'start':
     meta['bench_nofile'] = 65536
     if a.id >= 40:
         meta['data_environment'] = remote('isucon12q-app', "sha256sum /home/isucon/initial_data/*.db; mysql -N -uisucon -pisucon isuports -e 'SELECT COUNT(*) FROM visit_history WHERE created_at<1654041600'; test ! -f /home/ubuntu/compact-seed-audit.json || sha256sum /home/ubuntu/compact-seed-audit.json")
+    if a.id >= 47:
+        meta['nginx_site'] = remote('isucon12q-app', 'sha256sum /etc/nginx/sites-available/isuports.conf')
     (trial / 'meta.json').write_text(json.dumps(meta, indent=2)+'\n')
     command = f'cd /home/ubuntu/isucon12-qualify/bench; date -u +%FT%TZ > {guest}/start; ./bench -target-addr {app_ip}:443 -exit-error-on-fail > {guest}/bench.log 2>&1; rc=$?; date -u +%FT%TZ > {guest}/end; echo $rc > {guest}/exit'
     remote('isucon12q-bench', f'mkdir -p {guest}; chown ubuntu:ubuntu {guest}; systemd-run --quiet --unit=isucon-trial-{a.id:03d} --uid=ubuntu --property=LimitNOFILE=65536 /bin/bash -lc {shlex.quote(command)}')

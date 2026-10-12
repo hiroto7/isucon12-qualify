@@ -22,8 +22,6 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/gommon/log"
-	"github.com/lestrrat-go/jwx/v2/jwa"
-	"github.com/lestrrat-go/jwx/v2/jwt"
 )
 
 const (
@@ -219,10 +217,7 @@ func parseViewer(c echo.Context) (*Viewer, error) {
 		return nil, fmt.Errorf("read signing key: %w", err)
 	}
 
-	token, err := jwt.Parse(
-		[]byte(tokenStr),
-		jwt.WithKey(jwa.RS256, key),
-	)
+	token, err := verifiedJWT(tokenStr, keyFilename, key, time.Now())
 	if err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnauthorized, fmt.Errorf("error jwt.Parse: %s", err.Error()))
 	}
