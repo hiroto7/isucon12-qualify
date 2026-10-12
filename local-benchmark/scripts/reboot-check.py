@@ -62,7 +62,8 @@ if sys.argv[1] == 'create':
     boundary = 'isucon-reboot-test'
     csv = 'player_id,score\n'+ids[0]+',100\n'+ids[1]+',100\n'+ids[0]+',50\n'
     body = ('--'+boundary+'\r\nContent-Disposition: form-data; name="scores"; filename="scores.csv"\r\nContent-Type: text/csv\r\n\r\n'+csv+'\r\n--'+boundary+'--\r\n').encode()
-    request(tenant, '/api/organizer/competition/'+comp+'/score', organizer, body=body, content_type='multipart/form-data; boundary='+boundary)
+    uploaded, _ = request(tenant, '/api/organizer/competition/'+comp+'/score', organizer, body=body, content_type='multipart/form-data; boundary='+boundary)
+    assert uploaded['data']['rows'] == 3, 'CSV response must count all input rows, not retained distinct players'
     request(tenant, '/api/player/competition/'+comp+'/ranking', login(tenant, 'player', ids[2]))
     request(tenant, '/api/organizer/competition/'+comp+'/finish', organizer, body=b'')
     request(tenant, '/api/organizer/player/'+ids[1]+'/disqualified', organizer, body=b'')

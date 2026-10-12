@@ -46,6 +46,8 @@ if a.action == 'start':
         meta['data_environment'] = remote('isucon12q-app', "sha256sum /home/isucon/initial_data/*.db; mysql -N -uisucon -pisucon isuports -e 'SELECT COUNT(*) FROM visit_history WHERE created_at<1654041600'; test ! -f /home/ubuntu/compact-seed-audit.json || sha256sum /home/ubuntu/compact-seed-audit.json")
     if a.id >= 47:
         meta['nginx_site'] = remote('isucon12q-app', 'sha256sum /etc/nginx/sites-available/isuports.conf')
+    if a.id >= 56:
+        meta['network_capacity'] = remote('isucon12q-app', 'sysctl net.core.somaxconn net.ipv4.tcp_max_syn_backlog; sha256sum /etc/sysctl.d/99-isucon12-capacity.conf; ss -lnt; nstat -az | grep -E "ListenOverflows|ListenDrops|TCPReqQFull"')
     (trial / 'meta.json').write_text(json.dumps(meta, indent=2)+'\n')
     command = f'cd /home/ubuntu/isucon12-qualify/bench; date -u +%FT%TZ > {guest}/start; ./bench -target-addr {app_ip}:443 -exit-error-on-fail > {guest}/bench.log 2>&1; rc=$?; date -u +%FT%TZ > {guest}/end; echo $rc > {guest}/exit'
     remote('isucon12q-bench', f'mkdir -p {guest}; chown ubuntu:ubuntu {guest}; systemd-run --quiet --unit=isucon-trial-{a.id:03d} --uid=ubuntu --property=LimitNOFILE=65536 /bin/bash -lc {shlex.quote(command)}')
@@ -54,6 +56,8 @@ else:
     meta = json.loads((trial / 'meta.json').read_text())
     if remote('isucon12q-bench', f'if test -f {guest}/exit; then echo done; else echo running; fi') != 'done':
         raise SystemExit('Trial still running; no result collected')
+    if a.id >= 56:
+        meta['network_after'] = remote('isucon12q-app', 'nstat -az | grep -E "ListenOverflows|ListenDrops|TCPReqQFull"')
     for name in ['bench.log', 'start', 'end', 'exit']:
         subprocess.run(['multipass', 'transfer', f'isucon12q-bench:{guest}/{name}', str(trial / name)], check=True)
     log = (trial / 'bench.log').read_text()

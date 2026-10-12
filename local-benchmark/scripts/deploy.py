@@ -18,6 +18,10 @@ subprocess.run(['multipass','exec','isucon12q-bench','--','sudo','bash','-lc','!
 def remote(command):
     subprocess.run(['multipass','exec',vm,'--','sudo','bash','-lc',command],check=True)
 
+capacity = root/'local-benchmark/sysctl-capacity.conf'
+if capacity.exists():
+    subprocess.run(['multipass','transfer',str(capacity),f'{vm}:/tmp/deploy-sysctl.conf'],check=True)
+    remote('install -m 644 /tmp/deploy-sysctl.conf /etc/sysctl.d/99-isucon12-capacity.conf; sysctl -p /etc/sysctl.d/99-isucon12-capacity.conf')
 managed = sorted((root/'webapp/go').rglob('*.go')) + [root/'webapp/go/go.mod',root/'webapp/go/go.sum',root/'webapp/go/Dockerfile',root/'webapp/sql/init.sh',root/'webapp/sql/init.sql',root/'webapp/sql/tenant/10_schema.sql',root/'webapp/sql/admin/10_schema.sql',root/'webapp/docker-compose-go.yml']
 hashes={}
 with tempfile.NamedTemporaryFile(suffix='.tar.gz') as f:
@@ -41,7 +45,7 @@ if not args.keep_nginx:
     if site.exists():
         subprocess.run(['multipass','transfer',str(site),f'{vm}:/tmp/deploy-nginx-site.conf'],check=True)
         remote('install -m 644 /tmp/deploy-nginx-site.conf /etc/nginx/sites-available/isuports.conf')
-    remote('install -m 644 /tmp/deploy-nginx.conf /etc/nginx/nginx.conf; nginx -t; systemctl reload nginx')
+    remote('install -m 644 /tmp/deploy-nginx.conf /etc/nginx/nginx.conf; nginx -t; systemctl restart nginx')
 print('Deployed source; verify running container readiness before starting the benchmark.')
 
-remote("for n in $(seq 1 30); do curl -fsS -H 'Host: admin.t.isucon.local' http://127.0.0.1:3000/api/me >/dev/null 2>&1 && exit 0; sleep 1; done; exit 1")
+remote("for n in $(seq 1 30); do curl -kfsS -H 'Host: admin.t.isucon.local' https://127.0.0.1/api/me >/dev/null 2>&1 && exit 0; sleep 1; done; exit 1")

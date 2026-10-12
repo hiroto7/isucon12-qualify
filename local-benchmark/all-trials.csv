@@ -51,4 +51,7 @@ id,label,kind,started,ended,commit,status,passed,score,reported_score,errors,cri
 50,durable-grouped-first-visit-writes,scoring,2026-10-12T16:26:42.573964+00:00,2026-10-12T16:27:47Z,e0fcde479db535aa9ef6f32cffa396c480cce77f,pass,True,322647,322647,1,0,accepted-provisional
 51,logging-off-and-json-gzip,scoring,2026-10-12T16:31:35.146605+00:00,2026-10-12T16:32:40Z,aedc4fef69c23e7534364e53718a9d5a3561a3a6,pass,True,403777,403777,0,0,accepted
 52,bounded-billing-input-and-cutoff-invalidation,scoring,2026-10-12T16:36:42.323711+00:00,2026-10-12T16:37:47Z,9da4202551a3413479dd3ef3e4b87b65b3843686,fail,False,,0,232,1,rejected-failed
-53,unix-socket-upstream,scoring,2026-10-12T16:41:59.035682+00:00,2026-10-12T16:43:04Z,1a7652c1e5e7877ba9dfd46bb2df6dfba1cb5574,pass,True,383406,383406,7,0,pending
+53,unix-socket-upstream,scoring,2026-10-12T16:41:59.035682+00:00,2026-10-12T16:43:04Z,1a7652c1e5e7877ba9dfd46bb2df6dfba1cb5574,pass,True,383406,383406,7,0,rejected-no-gain
+54,final-postmortem-adopted-control,validation,2026-10-12T16:44:45.929491+00:00,2026-10-12T16:45:51Z,e223379aea8c077025821c265607ed2a23365017,pass,True,399265,399265,0,0,final-control
+55,final-postmortem-after-normal-reboot,validation,2026-10-12T16:51:51.472905+00:00,2026-10-12T16:52:57Z,e223379aea8c077025821c265607ed2a23365017,fail,False,,0,198,0,failed-reboot-validation
+56,accept-queue-capacity-repair,scoring,2026-10-12T17:00:09.106816+00:00,2026-10-12T17:01:14Z,e223379aea8c077025821c265607ed2a23365017,pass,True,412822,412822,0,0,pending
