@@ -72,3 +72,9 @@ Saved profile 019 focus on sqlite3_prepare/SQLiteDriver.Open/database/sql.Prepar
 ## H11 — latest-score snapshots for player detail
 
 Eliminate the 352790 per-competition score queries and subsequent title refetches observed in 019. Publish immutable per-competition player->last-score maps only after successful atomic commit, using maximum CSV row number; cold snapshots rebuild from authoritative SQLite under the existing tenant lock. Use already listed competition titles and order. Tests passed latest-row, cold load, failed-write non-publication and empty replacement. Trial 024 passed 137684, zero errors (+14.3%). Accepted without extra micro-variance runs; next profiling must establish remaining major work.
+
+## H12 — separate the generated ID namespace (correctness)
+
+Profiler trial 025 passed with one critical score insertion error. Server log proves UNIQUE player_score.id; initial tenant 1 has existing ID 9fa74710 above old reset value 9fa52400. At higher volume the original reset seed itself enters provided IDs. Inspect every initial player/competition/score ID and reserve from 2^62, beyond their verified maximum while fitting signed BIGINT and preserving hexadecimal strings. Durable blocks remain authoritative; this is correctness repair, not a performance score claim.
+
+H12 validation: all 3,742,406 initial player/competition/score IDs inspected, max 26783990078 (63c73413e), invalid hex 0, far below 2^62. Trial 026 no critical/ID insertion error, 127980 after 6 ranking body decode errors. Keep namespace correctness fix; do not claim new performance record or classify remaining decode errors as officially allowed.

@@ -1,0 +1,39 @@
+File: main
+Build ID: fcf94ab51adcb45650dc4d5deae738e4769761c5
+Type: cpu
+Time: Oct 12, 2026 at 8:24pm (JST)
+Duration: 40.12s, Total samples = 29.41s (73.30%)
+Showing nodes accounting for 21.04s, 71.54% of 29.41s total
+Dropped 703 nodes (cum <= 0.15s)
+Showing top 30 nodes out of 313
+      flat  flat%   sum%        cum   cum%
+     6.78s 23.05% 23.05%      7.09s 24.11%  runtime.cgocall
+     5.17s 17.58% 40.63%      5.29s 17.99%  syscall.Syscall
+     0.97s  3.30% 43.93%      2.53s  8.60%  runtime.mallocgc
+     0.76s  2.58% 46.51%      0.78s  2.65%  syscall.Syscall6
+     0.58s  1.97% 48.49%      1.45s  4.93%  math/big.nat.divBasic
+     0.51s  1.73% 50.22%      0.51s  1.73%  math/big.mulAddVWW
+     0.46s  1.56% 51.79%      0.46s  1.56%  runtime.heapBitsSetType
+     0.45s  1.53% 53.32%      0.45s  1.53%  runtime.epollctl
+     0.44s  1.50% 54.81%      1.88s  6.39%  encoding/json.Indent
+     0.43s  1.46% 56.27%      0.63s  2.14%  bytes.(*Buffer).WriteByte
+     0.40s  1.36% 57.63%      0.40s  1.36%  runtime.memmove
+     0.36s  1.22% 58.86%      0.36s  1.22%  math/big.addMulVVW
+     0.33s  1.12% 59.98%      0.33s  1.12%  runtime.memclrNoHeapPointers
+     0.32s  1.09% 61.07%      0.39s  1.33%  runtime.mapaccess2_faststr
+     0.29s  0.99% 62.05%      0.31s  1.05%  encoding/json.stateInString
+     0.29s  0.99% 63.04%      0.36s  1.22%  runtime.findObject
+     0.26s  0.88% 63.92%      0.32s  1.09%  runtime.step
+     0.25s  0.85% 64.77%      0.42s  1.43%  bytes.(*Buffer).WriteString
+     0.24s  0.82% 65.59%      0.26s  0.88%  runtime.heapBits.next (inline)
+     0.23s  0.78% 66.37%      0.23s  0.78%  math/big.subVV
+     0.23s  0.78% 67.15%      0.31s  1.05%  runtime.greyobject
+     0.23s  0.78% 67.94%      1.14s  3.88%  runtime.scanobject
+     0.16s  0.54% 68.48%      0.16s  0.54%  runtime.nanotime
+     0.15s  0.51% 68.99%      0.15s  0.51%  indexbytebody
+     0.15s  0.51% 69.50%      0.16s  0.54%  runtime.casgstatus
+     0.15s  0.51% 70.01%      0.20s  0.68%  runtime.mapaccess2
+     0.14s  0.48% 70.49%      0.17s  0.58%  encoding/json.(*encodeState).string
+     0.12s  0.41% 70.89%      0.69s  2.35%  encoding/json.structEncoder.encode
+     0.10s  0.34% 71.23%      0.45s  1.53%  runtime.pcvalue
+     0.09s  0.31% 71.54%      0.17s  0.58%  runtime.gcWriteBarrier

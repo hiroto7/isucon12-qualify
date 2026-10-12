@@ -1,0 +1,211 @@
+[ADMIN] 11:39:31.313873 TargetURL: https://t.isucon.local, TargetAddr: 192.168.2.8:443, RequestTimeout: 30s, InitializeRequestTimeout: 30s, StrictPrepare: true, ReproduceMode: false
+[ADMIN] 11:39:33.229963 POST /initialize 200 初期化
+11:39:33.230018 初期化リクエストに成功しました 実装言語:go
+11:39:33.230032 整合性チェックを開始します
+[ADMIN] 11:39:33.310306 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 11:39:33.313409 GET /index.html 200 /index.htmlを確認
+[ADMIN] 11:39:33.315401 GET /js/app.3a4ec98c.js 200 /js/app.3a4ec98c.jsを確認
+[ADMIN] 11:39:33.316684 POST /api/admin/tenants/add 401 新規テナント作成: 不正リクエスト(exp切れのJWT)
+[ADMIN] 11:39:33.318047 GET /css/app.83b4c321.css 200 /css/app.83b4c321.cssを確認
+[ADMIN] 11:39:33.318208 staticFileCheck done
+[ADMIN] 11:39:33.328767 POST /api/organizer/players/add 200 テナントへプレイヤー追加
+[ADMIN] 11:39:33.332129 GET /api/organizer/players 200 テナントのプレイヤー一覧取得
+[ADMIN] 11:39:33.337950 POST /api/organizer/competitions/add 200 新規大会追加
+[ADMIN] 11:39:33.339901 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 11:39:33.343538 POST /api/organizer/player/4000000000000063/disqualified 200 プレイヤーを失格にする
+[ADMIN] 11:39:33.351496 POST /api/organizer/competitions/add 200 新規大会追加)
+[ADMIN] 11:39:33.355534 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 11:39:33.359460 POST /api/organizer/players/add 200 テナントへプレイヤー101人追加
+[ADMIN] 11:39:33.359466 POST /api/organizer/competition/4000000000000065/score 200 大会結果CSV入稿
+[ADMIN] 11:39:33.366662 POST /api/organizer/players/add 200 テナントへプレイヤー追加
+[ADMIN] 11:39:33.368397 POST /api/admin/tenants/add 400 新規テナント作成 不正リクエスト
+[ADMIN] 11:39:33.372397 POST /api/admin/tenants/add 400 新規テナント作成 不正リクエスト
+[ADMIN] 11:39:33.374137 POST /api/organizer/competition/4000000000000065/score 200 大会結果CSV入稿
+[ADMIN] 11:39:33.376346 POST /api/admin/tenants/add 401 新規テナント作成: 不正リクエスト(不正なRSA鍵)
+[ADMIN] 11:39:33.377155 POST /api/organizer/player/0000000000/disqualified 404 プレイヤーを失格にする: 不正リクエスト(存在しないプレイヤー)
+[ADMIN] 11:39:33.378694 GET /api/player/competition/4000000000000065/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 11:39:33.379739 GET /api/player/competition/4000000000000065/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 11:39:33.379889 GET /api/player/competition/4000000000000065/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 11:39:33.380191 POST /api/admin/tenants/add 401 新規テナント作成: 不正リクエスト(不正な鍵認証方式)
+[ADMIN] 11:39:33.380288 GET /api/player/competition/4000000000000065/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 11:39:33.381210 POST /api/organizer/competition/4000000000000066/score 200 大会結果CSV入稿
+[ADMIN] 11:39:33.381357 GET /api/player/competition/4000000000000065/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 11:39:33.384186 GET /api/player/competition/4000000000000065/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 11:39:33.385965 POST /api/organizer/competitions/add 200 新規大会追加
+[ADMIN] 11:39:33.390346 GET /api/player/competition/4000000000000066/ranking 200 大会内のランキング取得: ページングなし,上限100件
+[ADMIN] 11:39:33.390988 POST /api/organizer/competition/0000000000/score 404 大会結果CSV入稿: 不正リクエスト(存在しない大会)
+[ADMIN] 11:39:33.391614 GET /api/player/competition/4000000000000065/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 11:39:33.392535 POST /api/organizer/competition/400000000000025b/score 400 大会結果CSV入稿: 不正リクエスト(存在しないプレイヤー)
+[ADMIN] 11:39:33.393240 POST /api/organizer/competition/400000000000025b/score 400 大会結果CSV入稿: 不正リクエスト(カラムの並び順が違う)
+[ADMIN] 11:39:33.393335 GET /api/player/competition/4000000000000066/ranking 200 大会内のランキング取得: ページングあり
+[ADMIN] 11:39:33.393938 GET /api/player/player/40000000000000e8 200 プレイヤーと戦績情報取得
+[ADMIN] 11:39:33.394436 POST /api/organizer/competition/400000000000025b/score 400 大会結果CSV入稿: 不正リクエスト(余計なカラムがあるCSV)
+[ADMIN] 11:39:33.395916 GET /api/player/competition/4000000000000065/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 11:39:33.398453 GET /api/player/player/400000000000000b 200 プレイヤーと戦績情報取得: 入稿後
+[ADMIN] 11:39:33.398908 GET /api/player/player/0000000000 404 プレイヤーと戦績情報取得
+[ADMIN] 11:39:33.400965 GET /api/player/competition/4000000000000065/ranking 200 大会内のランキング取得: ページングなし
+[ADMIN] 11:39:33.401590 GET /api/player/competition/0000000000/ranking 404 大会内のランキング取得
+[ADMIN] 11:39:33.402278 POST /api/organizer/competition/4000000000000066/score 200 大会結果CSV入稿
+[ADMIN] 11:39:33.405098 GET /api/player/competition/4000000000000066/ranking 200 大会内のランキング取得: ページングなし,上限100件
+[ADMIN] 11:39:33.406850 POST /api/organizer/player/4000000000000191/disqualified 200 プレイヤーを失格にする
+[ADMIN] 11:39:33.408174 GET /api/player/player/40000000000000e8 200 プレイヤーと戦績情報取得
+[ADMIN] 11:39:33.410662 GET /api/player/competition/4000000000000065/ranking 200 大会内のランキング取得: スコア未登録プレイヤー
+[ADMIN] 11:39:33.411023 GET /api/player/competition/400000000000025b/ranking 403 大会内のランキング取得: 失格済みプレイヤー
+[ADMIN] 11:39:33.411963 POST /api/organizer/competition/0000000000/finish 404 大会終了: 不正リクエスト(存在しない大会)
+[ADMIN] 11:39:33.415293 POST /api/organizer/competition/400000000000025b/finish 200 大会終了
+[ADMIN] 11:39:33.416159 POST /api/organizer/competition/400000000000025b/score 400 大会結果CSV入稿: 不正リクエスト(終了済みの大会)
+[ADMIN] 11:39:33.416163 badRequestCheck done
+[ADMIN] 11:39:33.418188 POST /api/organizer/competition/4000000000000065/finish 200 大会終了
+[ADMIN] 11:39:33.418197 allAPISuccessCheck sleep 3s
+[ADMIN] 11:39:33.420995 POST /api/organizer/competition/4000000000000066/score 200 大会結果CSV入稿
+[ADMIN] 11:39:33.424462 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 11:39:33.427669 GET /api/player/competition/4000000000000066/ranking 200 大会内のランキング取得: ページングなし,上限100件
+[ADMIN] 11:39:33.428769 POST /api/organizer/competitions/add 401 新規大会追加: 不正リクエスト(存在しないテナント)
+[ADMIN] 11:39:33.428843 rankingCheck done
+[ADMIN] 11:39:33.434789 GET /api/player/competitions 401 テナント内の大会情報取得: 不正なリクエスト(存在しないプレイヤー)
+[ADMIN] 11:39:33.434808 invalidJWTCheck done
+[ADMIN] 11:39:33.464498 GET /api/admin/tenants/billing 200 テナント別の請求ダッシュボード: 初期データチェック
+[ADMIN] 11:39:33.464613 billingAPISuccessCheck done
+[ADMIN] 11:39:36.436381 GET /api/player/competition/4000000000000065/ranking 200 大会内のランキング取得: ランキングが正しいことを確認
+[ADMIN] 11:39:36.442180 GET /api/organizer/billing 200 テナント内の請求情報
+[ADMIN] 11:39:36.445207 GET /api/player/competitions 200 テナント内の大会情報取得
+[ADMIN] 11:39:36.448627 GET /api/organizer/competitions 200 テナント管理者API テナント内の大会一覧取得
+[ADMIN] 11:39:36.496316 GET /api/admin/tenants/billing 200 テナント別の請求ダッシュボード(最大10件)
+[ADMIN] 11:39:36.503955 GET /api/organizer/billing 200 テナント内の請求情報
+[ADMIN] 11:39:36.504074 allAPISuccessCheck done
+11:39:36.504110 整合性チェックを終了します
+[ADMIN] 11:39:36.504114 Scenario:validation elapsed:3.274080199s
+11:39:36.504115 整合性チェックに成功しました
+11:39:36.504126 負荷走行を開始します
+[ADMIN] 11:39:36.505129 OrganizerPopularTenant jjsjx-tdwrrx-10
+[ADMIN] 11:39:36.552611 [TenantBillingValidate] [tenant:anpv-rguq-1791805176] Playerを追加します players: 100
+[ADMIN] 11:39:37.802587 OrganizerPopularTenantHeavyTenant isucon
+11:39:41.505775 大会「ペペロンチーノ屋カップ」を作成しました。参加者が増えます。 (類似のログ計58件)
+11:39:41.505791 テナント「カメラなら負けない」を作成しました (類似のログ計31件)
+[ADMIN] 11:39:41.505793 workerを追加しました [PlayerValidateScenarioWorker](num:1)
+[ADMIN] 11:39:41.505795 workerを追加しました [NewTenantScenarioWorker](num:31)
+[ADMIN] 11:39:41.505797 workerを追加しました [PlayerScenarioWorker](num:329)
+[ADMIN] 11:39:41.505798 workerを追加しました [AdminBillingValidateWorker](num:1)
+[ADMIN] 11:39:41.505798 workerを追加しました [TenantBillingValidateWorker](num:1)
+[ADMIN] 11:39:41.505799 workerを追加しました [PopularTenantScenarioWorker](num:2)
+[ADMIN] 11:39:41.505799 workerを追加しました [AdminBillingScenarioWorker](num:1)
+11:39:41.505800 参加者が331人増えました
+11:39:46.504803 大会「無農薬ぶどうのお茶会杯」を作成しました。参加者が増えます。 (類似のログ計102件)
+11:39:46.504840 テナント「マッスル製作所」を作成しました (類似のログ計12件)
+11:39:46.504845 参加者が595人増えました
+[ADMIN] 11:39:46.504850 workerを追加しました [PlayerScenarioWorker](num:597)
+[ADMIN] 11:39:46.504856 workerを追加しました [NewTenantScenarioWorker](num:12)
+11:39:51.504791 大会「Buffers通信社杯」を作成しました。参加者が増えます。 (類似のログ計97件)
+11:39:51.504820 参加者が571人増えました
+11:39:51.504826 テナント「よくわかる三鷹THAN」を作成しました (類似のログ計3件)
+[ADMIN] 11:39:51.504847 workerを追加しました [PlayerScenarioWorker](num:571)
+[ADMIN] 11:39:51.504861 workerを追加しました [NewTenantScenarioWorker](num:3)
+11:39:56.504201 大会「立川しかねえ」を作成しました。参加者が増えます。 (類似のログ計81件)
+11:39:56.504224 テナント「チーム昭和ドラゴンフルーツ道場」を作成しました (類似のログ計1件)
+[ADMIN] 11:39:56.504227 workerを追加しました [PlayerScenarioWorker](num:481)
+[ADMIN] 11:39:56.504229 workerを追加しました [NewTenantScenarioWorker](num:1)
+11:39:56.504230 参加者が481人増えました
+11:40:01.504190 大会「やわやわベンチマーク人生 #0」を作成しました。参加者が増えます。 (類似のログ計68件)
+11:40:01.504237 テナント「実用段階CPU症候群」を作成しました (類似のログ計1件)
+11:40:01.504242 参加者が397人増えました
+[ADMIN] 11:40:01.504245 workerを追加しました [PlayerScenarioWorker](num:397)
+[ADMIN] 11:40:01.504251 workerを追加しました [NewTenantScenarioWorker](num:1)
+11:40:06.504364 大会「静的トンポーロー風カップ」を作成しました。参加者が増えます。 (類似のログ計51件)
+[ADMIN] 11:40:06.504382 workerを追加しました [PlayerScenarioWorker](num:301)
+11:40:06.504405 参加者が301人増えました
+11:40:11.504280 大会「第4回 さあパパイヤ店」を作成しました。参加者が増えます。 (類似のログ計38件)
+[ADMIN] 11:40:11.504300 workerを追加しました [PlayerScenarioWorker](num:222)
+11:40:11.504303 参加者が222人増えました
+11:40:16.505187 大会「FPGAマニアカップ」を作成しました。参加者が増えます。 (類似のログ計42件)
+11:40:16.505205 テナント「日本のりんごください」を作成しました (類似のログ計1件)
+[ADMIN] 11:40:16.505208 workerを追加しました [PlayerScenarioWorker](num:241)
+[ADMIN] 11:40:16.505215 workerを追加しました [NewTenantScenarioWorker](num:1)
+11:40:16.505216 参加者が241人増えました
+11:40:21.504860 大会「デコポンの彼方カップ」を作成しました。参加者が増えます。 (類似のログ計33件)
+[ADMIN] 11:40:21.504877 workerを追加しました [PlayerScenarioWorker](num:198)
+11:40:21.504881 参加者が198人増えました
+11:40:26.504166 leaderboardの表示に1秒以上かかったため2人の参加者が離脱しました。
+11:40:26.504197 大会「がんばれりんごから始めるXSUCON杯」を作成しました。参加者が増えます。 (類似のログ計28件)
+[ADMIN] 11:40:26.504201 workerを追加しました [PlayerScenarioWorker](num:157)
+11:40:26.504232 参加者が157人増えました
+11:40:31.504929 大会「はやくも家オンライン vol.9」を作成しました。参加者が増えます。 (類似のログ計33件)
+11:40:31.504999 leaderboardの表示に1秒以上かかったため14人の参加者が離脱しました。
+[ADMIN] 11:40:31.505006 workerを追加しました [PlayerScenarioWorker](num:198)
+11:40:31.505009 参加者が198人増えました
+11:40:36.505062 leaderboardの表示に1秒以上かかったため6人の参加者が離脱しました。
+11:40:36.505960 大会「桃システム #8」を作成しました。参加者が増えます。 (類似のログ計7件)
+[ADMIN] 11:40:36.505988 workerを追加しました [PlayerScenarioWorker](num:42)
+11:40:36.505994 参加者が42人増えました
+11:40:36.506095 負荷走行を終了します
+11:40:36.507968 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/4000000000022420/ranking status 200 tenant:z-vziv-1791805183 role:player playerID:4000000000009601 competitionID:4000000000022420 rankAfter:
+11:40:36.508400 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/400000000001a736/ranking status 200 tenant:kyofh-klxe-1791805179 role:player playerID:40000000000032aa competitionID:400000000001a736 rankAfter:
+11:40:36.509870 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/400000000000eb45/ranking status 200 tenant:aaia-jp-1791805180 role:player playerID:400000000000478d competitionID:400000000000eb45 rankAfter:49
+11:40:36.510173 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/4000000000018932/ranking status 200 tenant:jjsjx-tdwrrx-10 role:player playerID:400000000001844a competitionID:4000000000018932 rankAfter:
+11:40:36.510521 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/4000000000033025/ranking status 200 tenant:x-zagcz-1791805180 role:player playerID:4000000000004d66 competitionID:4000000000033025 rankAfter:
+11:40:36.511458 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/40000000000326a2/ranking status 200 tenant:aaia-jp-1791805180 role:player playerID:40000000000047c2 competitionID:40000000000326a2 rankAfter:
+11:40:36.512001 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/4000000000012e54/ranking status 200 tenant:f-xz-1791805178 role:player playerID:4000000000001a46 competitionID:4000000000012e54 rankAfter:
+11:40:36.512561 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/400000000000d57d/ranking status 200 tenant:gxuim-z-1791805181 role:player playerID:4000000000006c86 competitionID:400000000000d57d rankAfter:
+11:40:36.512694 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/400000000000502b/ranking status 200 tenant:yjh-xncglz-1791805178 role:player playerID:4000000000002197 competitionID:400000000000502b rankAfter:
+11:40:36.512719 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/4000000000012e55/ranking status 200 tenant:wqo-mcvw-1791805178 role:player playerID:40000000000015b8 competitionID:4000000000012e55 rankAfter:
+11:40:36.513214 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/4000000000026abc/ranking status 200 tenant:odo-yq-1791805182 role:player playerID:40000000000071e8 competitionID:4000000000026abc rankAfter:
+11:40:36.513302 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/400000000000e862/ranking status 200 tenant:vevj-gnzfpe-1791805184 role:player playerID:400000000000ac6f competitionID:400000000000e862 rankAfter:
+11:40:36.515447 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/400000000000134b/ranking status 200 tenant:b-n-1791805178 role:player playerID:400000000000127c competitionID:400000000000134b rankAfter:41
+11:40:36.515899 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/4000000000002d3a/ranking status 200 tenant:rsr-y-1791805177 role:player playerID:400000000000085c competitionID:4000000000002d3a rankAfter:
+11:40:36.518609 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/4000000000008449/ranking status 200 tenant:x-zagcz-1791805180 role:player playerID:4000000000004d07 competitionID:4000000000008449 rankAfter:
+11:40:36.518733 error: テナントのプレイヤー一覧取得 JSONのdecodeに失敗しました GET /api/organizer/players status 200 tenant:fprob-poturm-1791805181 role:organizer playerID:organizer 
+11:40:36.519031 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/4000000000019e94/ranking status 200 tenant:t-psije-1791805178 role:player playerID:4000000000000e6a competitionID:4000000000019e94 rankAfter:32
+11:40:36.519497 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/400000000000890a/ranking status 200 tenant:yjh-xncglz-1791805178 role:player playerID:40000000000021a0 competitionID:400000000000890a rankAfter:
+11:40:36.520273 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/400000000001acea/ranking status 200 tenant:do-o-1791805182 role:player playerID:40000000000078b0 competitionID:400000000001acea rankAfter:
+11:40:36.520391 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/40000000000147de/ranking status 200 tenant:fprob-poturm-1791805181 role:player playerID:400000000000592d competitionID:40000000000147de rankAfter:
+11:40:36.520566 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/4000000000002614/ranking status 200 tenant:xw-gnqvpm-1791805179 role:player playerID:4000000000002556 competitionID:4000000000002614 rankAfter:
+11:40:36.520871 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/4000000000030845/ranking status 200 tenant:z-vziv-1791805183 role:player playerID:4000000000009615 competitionID:4000000000030845 rankAfter:
+11:40:36.521222 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/400000000002012b/ranking status 200 tenant:fprob-poturm-1791805181 role:player playerID:400000000000593e competitionID:400000000002012b rankAfter:
+11:40:36.521382 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/400000000001b7e4/ranking status 200 tenant:x-zagcz-1791805180 role:player playerID:4000000000004d21 competitionID:400000000001b7e4 rankAfter:
+11:40:36.521725 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/400000000001e9a7/ranking status 200 tenant:afqxk-cth-1791805179 role:player playerID:4000000000002b20 competitionID:400000000001e9a7 rankAfter:
+11:40:36.522171 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/4000000000002614/ranking status 200 tenant:xw-gnqvpm-1791805179 role:player playerID:4000000000002554 competitionID:4000000000002614 rankAfter:
+11:40:36.523744 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/40000000000222e7/ranking status 200 tenant:bgb-pynpmx-1791805177 role:player playerID:4000000000000c30 competitionID:40000000000222e7 rankAfter:
+11:40:36.526184 error: 大会内のランキング取得 JSONのdecodeに失敗しました GET /api/player/competition/40000000000104ab/ranking status 200 tenant:fb-tgbw-1791805178 role:player playerID:400000000000237a competitionID:40000000000104ab rankAfter:
+11:40:37.510408 ERROR[0] load: load-validation: JSONのdecodeに失敗しました GET /api/player/competition/4000000000022420/ranking status 200 tenant:z-vziv-1791805183 role:player playerID:4000000000009601 competitionID:4000000000022420 rankAfter:
+11:40:37.510422 ERROR[1] load: load-validation: JSONのdecodeに失敗しました GET /api/player/competition/400000000001a736/ranking status 200 tenant:kyofh-klxe-1791805179 role:player playerID:40000000000032aa competitionID:400000000001a736 rankAfter:
+11:40:37.510423 ERROR[2] load-validation: JSONのdecodeに失敗しました GET /api/player/competition/400000000000eb45/ranking status 200 tenant:aaia-jp-1791805180 role:player playerID:400000000000478d competitionID:400000000000eb45 rankAfter:49
+11:40:37.510424 ERROR[3] load-validation: JSONのdecodeに失敗しました GET /api/player/competition/4000000000018932/ranking status 200 tenant:jjsjx-tdwrrx-10 role:player playerID:400000000001844a competitionID:4000000000018932 rankAfter:
+11:40:37.510425 ERROR[4] load-validation: JSONのdecodeに失敗しました GET /api/player/competition/4000000000033025/ranking status 200 tenant:x-zagcz-1791805180 role:player playerID:4000000000004d66 competitionID:4000000000033025 rankAfter:
+11:40:37.510427 ERROR[5] load-validation: JSONのdecodeに失敗しました GET /api/player/competition/40000000000326a2/ranking status 200 tenant:aaia-jp-1791805180 role:player playerID:40000000000047c2 competitionID:40000000000326a2 rankAfter:
+[ADMIN] 11:40:37.510504 ScenarioScoreMap: map[string]int64{
+  "AdminBilling":                      1172,
+  "AdminBillingValidate":              423,
+  "OrganizerNewTenant":                30619,
+  "OrganizerPeacefulTenant":           0,
+  "OrganizerPopularTenant":            783,
+  "OrganizerPopularTenantHeavyTenant": 651,
+  "Player":                            99836,
+  "PlayerHeavyTenant":                 1643,
+  "PlayerValidate":                    572,
+  "TenantBillingValidate":             449,
+}
+[ADMIN] 11:40:37.510544 WorkerCount: map[string]int{
+  "AdminBillingScenarioWorker":   1,
+  "AdminBillingValidateWorker":   1,
+  "NewTenantScenarioWorker":      49,
+  "PlayerScenarioWorker":         3712,
+  "PlayerValidateScenarioWorker": 1,
+  "PopularTenantScenarioWorker":  2,
+  "TenantBillingValidateWorker":  1,
+}
+11:40:37.510548 Error 6 (Critical:0)
+11:40:37.510549 PASSED: true
+11:40:37.510550 SCORE: 127980 (+136148 -8168(6%))
+[ADMIN] 11:40:37.510593 score.ScoreTable{
+  "GET /api/admin/tenants/billing":                         707,
+  "GET /api/organizer/billing":                             605,
+  "GET /api/organizer/players/list":                        663,
+  "GET /api/player/competition/:competition_id/ranking":    30496,
+  "GET /api/player/competitions":                           3917,
+  "GET /api/player/player/:player_name":                    73675,
+  "POST /api/admin/tenants/add":                            50,
+  "POST /api/organizer/competition/:competition_id/finish": 633,
+  "POST /api/organizer/competition/:competition_id/score":  659,
+  "POST /api/organizer/competitions/add":                   649,
+  "POST /api/organizer/player/:player_name/disqualified":   10,
+  "POST /api/organizer/players/add":                        72,
+}

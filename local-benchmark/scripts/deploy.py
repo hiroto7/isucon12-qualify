@@ -13,7 +13,7 @@ vm = 'isucon12q-app'
 def remote(command):
     subprocess.run(['multipass','exec',vm,'--','sudo','bash','-lc',command],check=True)
 
-managed = sorted((root/'webapp/go').rglob('*.go')) + [root/'webapp/go/go.mod',root/'webapp/go/go.sum',root/'webapp/go/Dockerfile',root/'webapp/sql/init.sh',root/'webapp/sql/tenant/10_schema.sql',root/'webapp/sql/admin/10_schema.sql',root/'webapp/docker-compose-go.yml']
+managed = sorted((root/'webapp/go').rglob('*.go')) + [root/'webapp/go/go.mod',root/'webapp/go/go.sum',root/'webapp/go/Dockerfile',root/'webapp/sql/init.sh',root/'webapp/sql/init.sql',root/'webapp/sql/tenant/10_schema.sql',root/'webapp/sql/admin/10_schema.sql',root/'webapp/docker-compose-go.yml']
 hashes={}
 with tempfile.NamedTemporaryFile(suffix='.tar.gz') as f:
     with tarfile.open(fileobj=f,mode='w:gz') as archive:

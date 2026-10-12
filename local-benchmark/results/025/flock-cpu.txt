@@ -1,0 +1,22 @@
+File: main
+Build ID: fcf94ab51adcb45650dc4d5deae738e4769761c5
+Type: cpu
+Time: Oct 12, 2026 at 8:24pm (JST)
+Duration: 40.12s, Total samples = 29.41s (73.30%)
+Active filters:
+   focus=flock|Flock
+Showing nodes accounting for 0.03s, 0.1% of 29.41s total
+Showing top 12 nodes out of 69
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%      0.62s  2.11%  github.com/isucon/isucon12-qualify/webapp/go.SetCacheControlPrivate.func1
+         0     0%     0%      0.62s  2.11%  github.com/labstack/echo/v4.(*Echo).ServeHTTP
+         0     0%     0%      0.62s  2.11%  github.com/labstack/echo/v4.(*Echo).add.func1
+         0     0%     0%      0.62s  2.11%  github.com/labstack/echo/v4/middleware.LoggerWithConfig.func2.1
+         0     0%     0%      0.62s  2.11%  github.com/labstack/echo/v4/middleware.RecoverWithConfig.func1.1
+         0     0%     0%      0.62s  2.11%  net/http.(*conn).serve
+         0     0%     0%      0.62s  2.11%  net/http.serverHandler.ServeHTTP
+     0.01s 0.034% 0.034%      0.44s  1.50%  github.com/isucon/isucon12-qualify/webapp/go.flockByTenantID
+         0     0% 0.034%      0.38s  1.29%  github.com/gofrs/flock.(*Flock).Lock (inline)
+     0.01s 0.034% 0.068%      0.38s  1.29%  github.com/gofrs/flock.(*Flock).lock
+         0     0% 0.068%      0.31s  1.05%  github.com/isucon/isucon12-qualify/webapp/go.competitionRankingHandler
+     0.01s 0.034%   0.1%      0.30s  1.02%  github.com/gofrs/flock.(*Flock).setFh

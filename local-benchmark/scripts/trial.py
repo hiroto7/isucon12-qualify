@@ -20,7 +20,7 @@ def remote(vm, command):
     return run('multipass', 'exec', vm, '--', 'sudo', 'bash', '-lc', command)
 
 def manifest():
-    paths = sorted((ROOT / 'webapp/go').rglob('*.go')) + [ROOT / 'webapp/sql/init.sh', ROOT / 'webapp/sql/tenant/10_schema.sql', ROOT / 'webapp/sql/admin/10_schema.sql', ROOT / 'webapp/docker-compose-go.yml', ROOT / 'webapp/go/Dockerfile', ROOT / 'webapp/go/go.mod', ROOT / 'webapp/go/go.sum']
+    paths = sorted((ROOT / 'webapp/go').rglob('*.go')) + [ROOT / 'webapp/sql/init.sh',ROOT / 'webapp/sql/init.sql', ROOT / 'webapp/sql/tenant/10_schema.sql', ROOT / 'webapp/sql/admin/10_schema.sql', ROOT / 'webapp/docker-compose-go.yml', ROOT / 'webapp/go/Dockerfile', ROOT / 'webapp/go/go.mod', ROOT / 'webapp/go/go.sum']
     return {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
 
 parser = argparse.ArgumentParser()

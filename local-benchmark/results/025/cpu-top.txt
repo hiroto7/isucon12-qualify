@@ -1,0 +1,59 @@
+File: main
+Build ID: fcf94ab51adcb45650dc4d5deae738e4769761c5
+Type: cpu
+Time: Oct 12, 2026 at 8:24pm (JST)
+Duration: 40.12s, Total samples = 29.41s (73.30%)
+Showing nodes accounting for 13.32s, 45.29% of 29.41s total
+Dropped 703 nodes (cum <= 0.15s)
+Showing top 50 nodes out of 313
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%     26.04s 88.54%  net/http.(*conn).serve
+         0     0%     0%     23.56s 80.11%  net/http.serverHandler.ServeHTTP
+         0     0%     0%     23.55s 80.07%  github.com/labstack/echo/v4.(*Echo).ServeHTTP
+         0     0%     0%     23.49s 79.87%  github.com/labstack/echo/v4/middleware.LoggerWithConfig.func2.1
+         0     0%     0%     22.95s 78.03%  github.com/labstack/echo/v4.(*Echo).add.func1
+         0     0%     0%     22.83s 77.63%  github.com/isucon/isucon12-qualify/webapp/go.SetCacheControlPrivate.func1
+         0     0%     0%     22.83s 77.63%  github.com/labstack/echo/v4/middleware.RecoverWithConfig.func1.1
+     0.02s 0.068% 0.068%      9.89s 33.63%  github.com/isucon/isucon12-qualify/webapp/go.playerHandler
+     0.01s 0.034%   0.1%      8.72s 29.65%  database/sql.withLock
+         0     0%   0.1%      8.63s 29.34%  github.com/isucon/isucon12-qualify/webapp/go.competitionRankingHandler
+     0.01s 0.034%  0.14%      7.41s 25.20%  github.com/jmoiron/sqlx.GetContext
+         0     0%  0.14%      7.12s 24.21%  database/sql.(*Rows).Next
+     6.78s 23.05% 23.19%      7.09s 24.11%  runtime.cgocall
+     0.01s 0.034% 23.22%      7.01s 23.84%  database/sql.(*Rows).Next.func1
+     0.05s  0.17% 23.39%         7s 23.80%  database/sql.(*Rows).nextLocked
+     0.01s 0.034% 23.43%      6.84s 23.26%  github.com/mattn/go-sqlite3.(*SQLiteRows).Next
+     0.07s  0.24% 23.67%      6.82s 23.19%  github.com/mattn/go-sqlite3.(*SQLiteRows).nextSyncLocked
+     0.02s 0.068% 23.73%      6.74s 22.92%  github.com/isucon/isucon12-qualify/webapp/go.parseViewer
+         0     0% 23.73%      5.51s 18.74%  github.com/jmoiron/sqlx.SelectContext
+     0.03s   0.1% 23.84%      5.42s 18.43%  github.com/mattn/go-sqlite3.(*SQLiteRows).nextSyncLocked.func1
+         0     0% 23.84%      5.35s 18.19%  github.com/mattn/go-sqlite3._Cfunc__sqlite3_step_internal
+     5.17s 17.58% 41.41%      5.29s 17.99%  syscall.Syscall
+         0     0% 41.41%      5.13s 17.44%  github.com/jmoiron/sqlx.scanAll
+     0.01s 0.034% 41.45%      4.61s 15.67%  github.com/isucon/isucon12-qualify/webapp/go.(*tenantConnection).GetContext
+         0     0% 41.45%      4.58s 15.57%  github.com/jmoiron/sqlx.(*Stmt).GetContext (inline)
+     0.03s   0.1% 41.55%      4.33s 14.72%  internal/poll.ignoringEINTRIO (inline)
+         0     0% 41.55%      4.16s 14.14%  github.com/isucon/isucon12-qualify/webapp/go.retrievePlayer
+     0.01s 0.034% 41.58%      4.01s 13.63%  github.com/jmoiron/sqlx.(*Row).scanAny
+     0.04s  0.14% 41.72%      3.99s 13.57%  internal/poll.(*FD).Write
+         0     0% 41.72%      3.88s 13.19%  encoding/json.(*Encoder).Encode
+         0     0% 41.72%      3.82s 12.99%  syscall.Write (inline)
+         0     0% 41.72%      3.82s 12.99%  syscall.write
+         0     0% 41.72%      3.57s 12.14%  github.com/lestrrat-go/jwx/v2/jwt.Parse (inline)
+     0.01s 0.034% 41.75%      3.57s 12.14%  github.com/lestrrat-go/jwx/v2/jwt.parseBytes
+     0.04s  0.14% 41.89%      3.55s 12.07%  github.com/jmoiron/sqlx.(*Row).Scan
+     0.01s 0.034% 41.92%      3.54s 12.04%  github.com/lestrrat-go/jwx/v2/jwt.parse
+         0     0% 41.92%      2.98s 10.13%  github.com/labstack/echo/v4.(*context).JSON
+         0     0% 41.92%      2.98s 10.13%  github.com/labstack/echo/v4.(*context).json
+         0     0% 41.92%      2.96s 10.06%  github.com/isucon/isucon12-qualify/webapp/go.(*tenantConnection).SelectContext
+         0     0% 41.92%      2.95s 10.03%  github.com/jmoiron/sqlx.(*Stmt).SelectContext (inline)
+         0     0% 41.92%      2.89s  9.83%  github.com/labstack/echo/v4.DefaultJSONSerializer.Serialize
+         0     0% 41.92%      2.89s  9.83%  net.(*conn).Write
+         0     0% 41.92%      2.89s  9.83%  net.(*netFD).Write
+         0     0% 41.92%      2.85s  9.69%  github.com/jmoiron/sqlx.(*DB).GetContext (partial-inline)
+     0.02s 0.068% 41.99%      2.76s  9.38%  github.com/lestrrat-go/jwx/v2/jws.Verify
+         0     0% 41.99%      2.76s  9.38%  github.com/lestrrat-go/jwx/v2/jwt.verifyJWS
+         0     0% 41.99%      2.56s  8.70%  github.com/jmoiron/sqlx.(*DB).SelectContext (inline)
+     0.97s  3.30% 45.29%      2.53s  8.60%  runtime.mallocgc
+         0     0% 45.29%      2.50s  8.50%  github.com/isucon/isucon12-qualify/webapp/go.competitionRanks
+         0     0% 45.29%      2.31s  7.85%  github.com/lestrrat-go/jwx/v2/jws.(*rsaVerifier).Verify
