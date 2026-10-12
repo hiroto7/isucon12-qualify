@@ -1,0 +1,125 @@
+diff --git a/webapp/go/isuports.go b/webapp/go/isuports.go
+index b7ee89e..795cc40 100644
+--- a/webapp/go/isuports.go
++++ b/webapp/go/isuports.go
+@@ -610,8 +610,8 @@ func tenantsBillingHandler(c echo.Context) error {
+ 	//     scoreが登録されていないplayerでアクセスした人 * 10
+ 	//   を合計したものを
+ 	// テナントの課金とする
+-	ts := []TenantRow{}
+-	if err := adminDB.SelectContext(ctx, &ts, "SELECT * FROM tenant ORDER BY id DESC"); err != nil {
++	ts, err := billingTenants(ctx, adminDB, beforeID)
++	if err != nil {
+ 		return fmt.Errorf("error Select tenant: %w", err)
+ 	}
+ 	tenantBillings := make([]TenantWithBilling, 0, len(ts))
+@@ -1182,7 +1182,9 @@ func competitionRankingHandler(c echo.Context) error {
+ 		return err
+ 	}
+ 	if changed {
+-		invalidateBilling(v.tenantID, competitionID)
++		if err := invalidateBillingForVisit(ctx, tenantDB, v.tenantID, competitionID, now); err != nil {
++			return err
++		}
+ 	}
+ 
+ 	var rankAfter int64
+diff --git a/webapp/go/billing_inputs.go b/webapp/go/billing_inputs.go
+new file mode 100644
+index 0000000..ded7d61
+--- /dev/null
++++ b/webapp/go/billing_inputs.go
+@@ -0,0 +1,30 @@
++package isuports
++
++import "context"
++
++func billingTenants(ctx context.Context, db dbOrTx, beforeID int64) ([]TenantRow, error) {
++	rows := make([]TenantRow, 0, 10)
++	query := "SELECT * FROM tenant ORDER BY id DESC LIMIT 10"
++	var args []interface{}
++	if beforeID != 0 {
++		query = "SELECT * FROM tenant WHERE id < ? ORDER BY id DESC LIMIT 10"
++		args = []interface{}{beforeID}
++	}
++	if err := db.SelectContext(ctx, &rows, query, args...); err != nil {
++		return nil, err
++	}
++	return rows, nil
++}
++
++func invalidateBillingForVisit(ctx context.Context, db dbOrTx, tenantID int64, competitionID string, createdAt int64) error {
++	// Reload after durable visit commit: a concurrent/repeated finish may have
++	// advanced the cutoff since the ranking handler's initial competition read.
++	comp, err := retrieveCompetition(ctx, db, competitionID)
++	if err != nil {
++		return err
++	}
++	if !comp.FinishedAt.Valid || createdAt <= comp.FinishedAt.Int64 {
++		invalidateBilling(tenantID, competitionID)
++	}
++	return nil
++}
+diff --git a/webapp/go/billing_inputs_test.go b/webapp/go/billing_inputs_test.go
+new file mode 100644
+index 0000000..913b17a
+--- /dev/null
++++ b/webapp/go/billing_inputs_test.go
+@@ -0,0 +1,57 @@
++package isuports
++
++import (
++	"context"
++	"testing"
++
++	"github.com/jmoiron/sqlx"
++)
++
++func TestBillingTenantPagesAndVisitCutoff(t *testing.T) {
++	db := sqlx.MustOpen("sqlite3", ":memory:")
++	db.SetMaxOpenConns(1)
++	defer db.Close()
++	db.MustExec(`CREATE TABLE tenant(id INTEGER PRIMARY KEY,name TEXT,display_name TEXT,created_at INTEGER,updated_at INTEGER);
++ CREATE TABLE competition(id TEXT PRIMARY KEY,tenant_id INTEGER,title TEXT,finished_at INTEGER,created_at INTEGER,updated_at INTEGER);
++ INSERT INTO competition VALUES('cutoff',706,'C',100,1,100);`)
++	for i := 1; i <= 23; i++ {
++		db.MustExec("INSERT INTO tenant VALUES(?,'a','A',0,0)", i)
++	}
++	ctx := context.Background()
++	for _, test := range []struct {
++		before int64
++		count  int
++		first  int64
++	}{{0, 10, 23}, {14, 10, 13}, {4, 3, 3}, {-1, 0, 0}} {
++		rows, err := billingTenants(ctx, db, test.before)
++		if err != nil || len(rows) != test.count {
++			t.Fatal(rows, err)
++		}
++		if len(rows) > 0 && rows[0].ID != test.first {
++			t.Fatal(rows)
++		}
++	}
++	state := billingState(competitionCacheKey{706, "cutoff"})
++	state.report = &BillingReport{VisitorCount: 1}
++	state.finishedAt = 100
++	if err := invalidateBillingForVisit(ctx, db, 706, "cutoff", 101); err != nil {
++		t.Fatal(err)
++	}
++	if state.report == nil {
++		t.Fatal("late visit invalidated fixed billing")
++	}
++	if err := invalidateBillingForVisit(ctx, db, 706, "cutoff", 100); err != nil {
++		t.Fatal(err)
++	}
++	if state.report != nil {
++		t.Fatal("equal-cutoff visit retained stale billing")
++	}
++	state.report = &BillingReport{}
++	db.MustExec("UPDATE competition SET finished_at=200 WHERE id='cutoff'")
++	if err := invalidateBillingForVisit(ctx, db, 706, "cutoff", 150); err != nil {
++		t.Fatal(err)
++	}
++	if state.report != nil {
++		t.Fatal("advanced finish cutoff was ignored")
++	}
++}
