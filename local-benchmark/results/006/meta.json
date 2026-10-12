@@ -1,0 +1,25 @@
+{
+  "id": 6,
+  "label": "atomic-csv",
+  "kind": "scoring",
+  "started": "2026-10-12T09:24:49.897597+00:00",
+  "commit": "25cb69cbca2af57ea80c123714951a449e995ae4",
+  "dirty": "M webapp/go/isuports.go",
+  "manifest": {
+    "webapp/go/cmd/isuports/main.go": "4a606dc3c00ceaedb4120b00ccfad5818e0ffa88af0abcd4c674de1c9edd93f2",
+    "webapp/go/isuports.go": "dbc2c31c3c85ba7dcf43dc150b0f44f5e5677eb0374f9e5b97f841c0e5f77337",
+    "webapp/go/profile.go": "26d03d194cc7ede9bdb9108ffb8aa6f93b48d0d31b4c24218856141d82150eea",
+    "webapp/go/scores.go": "a27763055a24a24bd0aa462aac7aecce86f75dd554076503777cf302d5f430e0",
+    "webapp/go/scores_test.go": "d98e63254eb14a29242b1fa70ed0a39e2ac412730b331b4876d5e85aafea542f",
+    "webapp/go/sqltrace.go": "ae24baeb6b39b4bee1d554ecc68c9f8fb129580225483d4f4202b32f1b4abf66",
+    "webapp/sql/init.sh": "dab02f2a8c9e870aaa0c133d1e8702cdd56e26147ec0251bff4fd5e487a2cd6a",
+    "webapp/sql/tenant/10_schema.sql": "550a2378b5a0c8762ade3590049b5337fca9d7f5ce704a3db1fc054811f19973"
+  },
+  "target": "192.168.2.8",
+  "passed": true,
+  "score": 8165,
+  "reported_score": 8165,
+  "status": "pass",
+  "decision": "accepted",
+  "ended": "2026-10-12T09:25:59Z"
+}

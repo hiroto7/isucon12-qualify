@@ -1,0 +1,4 @@
+Variable_name	Value
+slow_query_log_file	/var/lib/mysql/isucon12q-app-slow.log
+sha256:59402030c32a382385e275a6579c2ab9ae246e7c78262a04fef04f7eba5bc947 69863
+7ec4ea394eaf0bc292c33f63b07b3a36f4c5bda5cb984e4f6e15b59c35823efd  /proc/69930/exe

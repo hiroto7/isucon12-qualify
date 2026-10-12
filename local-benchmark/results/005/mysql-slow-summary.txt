@@ -1,0 +1,13 @@
+calls sum_seconds rows_examined max_seconds SQL
+2465 102.182 43915092 0.322 SELECT player_id, MIN(created_at) AS min_created_at FROM visit_history WHERE tenant_id = ? AND competition_id = ? GROUP BY player_id;
+18257 44.712 0 0.025 REPLACE INTO id_generator (stub) VALUES (?);
+1521 4.566 0 0.023 INSERT INTO visit_history (player_id, tenant_id, competition_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?);
+4005 1.331 4004 0.011 SELECT * FROM tenant WHERE name = ?;
+1 0.873 3226304 0.873 DELETE FROM visit_history WHERE created_at >= ?;
+7 0.131 0 0.105 INSERT INTO tenant (name, display_name, created_at, updated_at) VALUES (?, ?, ?, ?);
+1521 0.118 1521 0.013 SELECT * FROM tenant WHERE id = ?;
+18 0.007 1897 0.001 SELECT * FROM tenant ORDER BY id DESC;
+1 0.004 10 0.004 SELECT DIGEST_TEXT,COUNT_STAR,ROUND(SUM_TIMER_WAIT/1e12,?) AS seconds, SUM_ROWS_EXAMINED FROM performance_schema.events_statements_summary_by_digest WHERE SCHEMA_NAME="isuports" ORDER BY SUM_TIMER_WAIT DESC LIMIT ?;
+1 0.003 6 0.003 DELETE FROM tenant WHERE id > ?;
+1 0.002 1 0.002 UPDATE id_generator SET id=? WHERE stub=?;
+1 0.001 20 0.001 SELECT SCHEMA_NAME,DIGEST_TEXT,COUNT_STAR,ROUND(SUM_TIMER_WAIT/1e12,?) AS seconds,SUM_ROWS_EXAMINED FROM performance_schema.events_statements_summary_by_digest ORDER BY SUM_TIMER_WAIT DESC LIMIT ?;

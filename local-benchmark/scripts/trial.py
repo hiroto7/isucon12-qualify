@@ -45,7 +45,8 @@ if a.action == 'start':
     print(f'Started trial {a.id:03d}: {a.label}')
 else:
     meta = json.loads((trial / 'meta.json').read_text())
-    remote('isucon12q-bench', f'test -f {guest}/exit')
+    if remote('isucon12q-bench', f'if test -f {guest}/exit; then echo done; else echo running; fi') != 'done':
+        raise SystemExit('Trial still running; no result collected')
     for name in ['bench.log', 'start', 'end', 'exit']:
         subprocess.run(['multipass', 'transfer', f'isucon12q-bench:{guest}/{name}', str(trial / name)], check=True)
     log = (trial / 'bench.log').read_text()

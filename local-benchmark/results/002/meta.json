@@ -14,9 +14,10 @@
     "webapp/sql/tenant/10_schema.sql": "550a2378b5a0c8762ade3590049b5337fca9d7f5ce704a3db1fc054811f19973"
   },
   "target": "192.168.2.8",
-  "passed": false,
-  "score": null,
-  "reported_score": null,
-  "status": "running",
-  "decision": "pending"
+  "passed": true,
+  "score": 6334,
+  "reported_score": 6334,
+  "status": "pass",
+  "decision": "baseline",
+  "ended": "2026-10-12T09:16:12Z"
 }
