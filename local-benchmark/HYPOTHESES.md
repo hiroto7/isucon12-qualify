@@ -102,3 +102,7 @@ Remaining candidates reviewed: RSA signature verification, live authorization/me
 User requested this previously untested major alternative. Migrate all runtime tenant tables to separate MySQL databases, preserve binary NO PAD ID semantics, cached snapshots/transactions, and use200-row parameterized INSERT chunks. Digest-check all3,742,406 original rows. Restore a cleanly stopped2.9GiB full-MySQL seed for initialization (8.22s precheck,8.85s official). Real MySQL race/vet and normal-reboot API persistence passed.
 
 034 old SQLite control147252 zero errors.035 deployment preparation failed with Docker/containerd missing parent snapshot, no bench.036 same candidate binary/backendSQLite and same1GiB/1024 MySQL settings142942 zero errors.037 backendMySQL103150 zero errors (72.16% of same-condition control), rejected. Retain patch and audit, restore original adopted implementation/configuration.038 verifies rollback. This is evidence against this port, not proof that every SQLite alternative fails or that the current architecture has reached its limit. See MYSQL_EXPERIMENT.md.
+
+## H17-H29 postmortem-informed follow-up
+
+See POSTMORTEM_EXPERIMENTS.md for all13 structural/capacity candidates, measured039-057, patches for rejected candidates and final reboot proof. Article permission begins after038. Fixed CPU/RAM and official load unchanged.57 after capacity repair415120, zero errors;100x remains unmet.

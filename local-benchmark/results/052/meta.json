@@ -67,5 +67,7 @@
   "errors": 232,
   "critical_errors": 1,
   "ended": "2026-10-12T16:37:47Z",
-  "note": "Official score0;232errors including1critical, principally late connection dial timeouts. Raw409969 is not a valid score. Small raw improvement does not justify preserving candidate; full patch reverted. Failure attribution still requires system evidence."
+  "note": "Official score0;232errors including1critical, principally late connection dial timeouts. Raw409969 is not a valid score. Small raw improvement does not justify preserving candidate; full patch reverted. Failure attribution still requires system evidence.",
+  "raw_score": 409969,
+  "deduction_percent": 241
 }

@@ -54,5 +54,7 @@
   "errors": 0,
   "critical_errors": 0,
   "ended": "2026-10-12T16:11:12Z",
-  "note": "Profile only (no SQLite trace),25seconds: parseViewer20.93%, jwt.Parse19.14%, SQLite/CGO17.65%, JSON14.91% (Indent10.38%). Not a scoring adoption."
+  "note": "Profile only (no SQLite trace),25seconds: parseViewer20.93%, jwt.Parse19.14%, SQLite/CGO17.65%, JSON14.91% (Indent10.38%). Not a scoring adoption.",
+  "raw_score": 200627,
+  "deduction_percent": 0
 }

@@ -61,5 +61,7 @@
   "errors": 0,
   "critical_errors": 0,
   "ended": "2026-10-12T16:20:41Z",
-  "note": "8.16% vs047. Cached competition lists invalidated on insert/finish, immutable player-score results invalidated for union of old/new scorers under commit/read lock; empty replacement and rollback tested."
+  "note": "8.16% vs047. Cached competition lists invalidated on insert/finish, immutable player-score results invalidated for union of old/new scorers under commit/read lock; empty replacement and rollback tested.",
+  "raw_score": 238239,
+  "deduction_percent": 0
 }

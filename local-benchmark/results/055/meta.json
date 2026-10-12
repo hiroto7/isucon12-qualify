@@ -65,5 +65,7 @@
   "errors": 198,
   "critical_errors": 0,
   "ended": "2026-10-12T16:52:57Z",
-  "note": "Persisted API state, fresh boot IDs, isolation and full source/config/binary hashes passed before initialization; official postboot load FAILED198 dial timeouts, raw412261 not a valid score. Fresh boot kernel ListenOverflows/ListenDrops610. Requires capacity repair and another reboot validation."
+  "note": "Persisted API state, fresh boot IDs, isolation and full source/config/binary hashes passed before initialization; official postboot load FAILED198 dial timeouts, raw412261 not a valid score. Fresh boot kernel ListenOverflows/ListenDrops610. Requires capacity repair and another reboot validation.",
+  "raw_score": 412261,
+  "deduction_percent": 198
 }

@@ -10,6 +10,7 @@ os.environ.setdefault("MPLCONFIGDIR", str(Path(tempfile.gettempdir()) / "isucon1
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.ticker import StrMethodFormatter
 
 root = Path(__file__).resolve().parents[1]
 rows = [json.loads(p.read_text()) for p in sorted((root/'results').glob('*/meta.json'))]
@@ -55,17 +56,22 @@ for name,selected in [('all-trials',rows),('record-highs',highs),('postmortem',[
         ax.axvspan(35.5,37.5,color='gray',alpha=.08,label='same MySQL capacity for 36/37')
     if name=='all-trials' and any(r['id']>=39 for r in rows):
         ax.axvline(38.5,color='#c36b00',linestyle='--',alpha=.6,label='postmortems first read after 38')
+    if name=='all-trials' and any(r['id']>=56 for r in rows):
+        ax.axvline(55.5,color='#188038',linestyle='--',alpha=.6,label='connection capacity repaired at 56')
     if baseline:
-        ax.axhline(baseline,color='gray',linestyle=':',label=f'initial median {baseline:,}; goal {baseline*100:,}')
+        ax.axhline(baseline,color='gray',linestyle=':',label=f'initial median {baseline:,}')
+        ax.axhline(baseline*100,color='#b05a00',linestyle='--',alpha=.7,label=f'100x goal {baseline*100:,}')
     for r in selected:
-        if r.get('decision')=='accepted' or r['label'].startswith('final') or (r['id']>=34 and r.get('score') is not None):
-            ax.annotate(f"#{r['id']:02d} {r['score'] or 0:,}",(r['id'],r['score'] or 0),xytext=(3,8),textcoords='offset points',fontsize=8,rotation=20)
+        if r['passed'] and (r.get('decision')=='accepted' or r['label'].startswith('final') or (r['id'] in [34,36,37,38,39] and r.get('score') is not None)):
+            ax.annotate(f"#{r['id']:02d} {r['score'] or 0:,}",(r['id'],r['score'] or 0),xytext={47:(-5,15),48:(3,36),49:(3,12),51:(-16,36),54:(-20,-28),56:(-10,28),57:(3,62)}.get(r['id'],(3,8)),textcoords='offset points',fontsize=8,rotation=20)
     ax.set(title=f'ISUCON12 qualify — {name}',xlabel='Attempt number (all attempts retained)',ylabel='Official valid score')
     ax.set_xlim(min(r['id'] for r in selected)-1,max(r['id'] for r in selected)+3)
     plot_max=max([r.get('score') or 0 for r in selected]+[1])
-    ax.set_ylim(-plot_max*.04,plot_max*1.18)
+    ax.set_ylim(-plot_max*.04,max(plot_max*1.18,baseline*100*1.05 if baseline else 0))
     ax.set_xticks([r['id'] for r in selected]);ax.tick_params(axis='x',labelsize=8)
-    ax.grid(alpha=.2);ax.legend(fontsize=8,loc='upper left');fig.tight_layout()
+    ax.yaxis.set_major_formatter(StrMethodFormatter('{x:,.0f}'))
+    ax.grid(alpha=.2);ax.legend(fontsize=8,loc='upper left')
+    fig.subplots_adjust(left=.105,right=.97,bottom=.12,top=.92)
     for ext in ['png','svg']:
         output=root/f'score-{name}.{ext}'
         fig.savefig(output,dpi=160)

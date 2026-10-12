@@ -63,5 +63,7 @@
   "errors": 0,
   "critical_errors": 0,
   "ended": "2026-10-12T16:24:12Z",
-  "note": "21.41% vs048: first ranking page JSON cached per immutable score snapshot and finished flag; compact JSON all APIs; nginx HTTP/1.1 upstream keepalive64. Combined trial, individual effects not isolated."
+  "note": "21.41% vs048: first ranking page JSON cached per immutable score snapshot and finished flag; compact JSON all APIs; nginx HTTP/1.1 upstream keepalive64. Combined trial, individual effects not isolated.",
+  "raw_score": 289238,
+  "deduction_percent": 0
 }

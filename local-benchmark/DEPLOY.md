@@ -19,3 +19,9 @@
 - Initial-data archive URL is the official data/20220712_1505-745a3fdfb5783afc048ecaebd054acd20151872d release; SHA256 024fc58d1468ac827caf023d0bfdf0e7375fe1d0ce9dea78a2fb3bedf5786506.
 - Run the guest-only `reboot-check.py create` after a final benchmark, normally restart the app VM, then run `reboot-check.py check` BEFORE any next `/initialize`. It exercises actual blackauth cookies and production HTTPS APIs. Tokens stay in guest memory and are not saved in the report.
 - Portable graph reproduction: create a Python virtual environment, install matplotlib==3.9.4, then run `python local-benchmark/scripts/graphs.py`.
+
+## Postmortem-informed adopted state
+
+Before first deployment, stop isuports and run compact-seed.py as root inside the isolated app guest. This is one-time offline preparation on official initial_data templates/native admin DB, preserving originals and verifying canonical row hashes; do not rerun after completed compaction or overwrite backups. Save the returned audit. The runtime init.sh restores these compressed templates and clears later visit rows. CSV processing still reports the original input count and validates all rows/IDs.
+
+Deploy copies the tracked nginx-site.conf and sysctl-capacity.conf, persists sysctl settings before restarting Go, checks nginx syntax, and restarts nginx to create per-worker reuseport queues. Readiness now tests actual HTTPS443 with the local practice certificate; Go backend remains TCP3000. Application/benchmark CPU and memory remain2CPU/4GiB and4CPU/8GiB. Include sysctl/site hashes and listen-drop counter deltas in the runtime audit. Normal reboot verification must check data BEFORE next initialize and confirm zero errors/queue drops in a subsequent official benchmark.

@@ -1,0 +1,7 @@
+555cf4b5-15cd-4df2-b69c-4a9d6de81c28
+active
+active
+active
+active
+net.core.somaxconn = 8192
+net.ipv4.tcp_max_syn_backlog = 8192

@@ -73,5 +73,7 @@
     "TcpExtTCPReqQFullDoCookies": 0,
     "TcpExtTCPReqQFullDrop": 0
   },
-  "note": "Capacity repair: frontend per-worker reuseport queues8192, guest somaxconn/syn8192, nginx connections32768/workerFD65536.412822 zero errors; ListenDrops/Overflows delta0. Same CPU/RAM and unchanged Go binary. Reboot verification still pending."
+  "note": "Capacity repair: frontend per-worker reuseport queues8192, guest somaxconn/syn8192, nginx connections32768/workerFD65536.412822 zero errors; ListenDrops/Overflows delta0. Same CPU/RAM and unchanged Go binary. Reboot verification still pending.",
+  "raw_score": 412822,
+  "deduction_percent": 0
 }

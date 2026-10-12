@@ -65,5 +65,7 @@
   "errors": 7,
   "critical_errors": 0,
   "ended": "2026-10-12T16:43:04Z",
-  "note": "383406 with7noncritical errors, below zero-error403777 control051. Rawscore does not show a material improvement either. Restored TCP implementation/configs; socket patch preserved."
+  "note": "383406 with7noncritical errors, below zero-error403777 control051. Rawscore does not show a material improvement either. Restored TCP implementation/configs; socket patch preserved.",
+  "raw_score": 412264,
+  "deduction_percent": 7
 }

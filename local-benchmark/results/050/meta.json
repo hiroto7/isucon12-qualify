@@ -65,5 +65,7 @@
   "errors": 1,
   "critical_errors": 0,
   "ended": "2026-10-12T16:27:47Z",
-  "note": "11.55% vs049 after error deduction; one late client dial timeout (no critical). Durability/atomic failure tested on actual MySQL. Requires subsequent zero-error validation. App last10 CPU97.5% busy (1.2%iowait), bench47.7% busy; benchmark VM is not the current bottleneck."
+  "note": "11.55% vs049 after error deduction; one late client dial timeout (no critical). Durability/atomic failure tested on actual MySQL. Requires subsequent zero-error validation. App last10 CPU97.5% busy (1.2%iowait), bench47.7% busy; benchmark VM is not the current bottleneck.",
+  "raw_score": 325906,
+  "deduction_percent": 1
 }

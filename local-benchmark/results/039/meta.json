@@ -46,5 +46,7 @@
   "bench_nofile": 65536,
   "errors": 0,
   "critical_errors": 0,
-  "ended": "2026-10-12T15:52:04Z"
+  "ended": "2026-10-12T15:52:04Z",
+  "raw_score": 143301,
+  "deduction_percent": 0
 }

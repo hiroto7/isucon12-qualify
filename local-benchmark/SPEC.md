@@ -1,6 +1,6 @@
 # Specification and score path
 
-Sources: official contest/application manuals saved here, official initial source 9595877. No solutions or retrospectives.
+Sources: official contest/application manuals saved here, official initial source 9595877. No solutions or retrospectives were read through trial038. They were first read after explicit user permission;039 onward is the postmortem-informed phase.
 
 - Each successful player detail/ranking/competition-list request scores 1. Organizer/admin requests score 10.
 - Critical errors deduct 10% each, other validation errors 1% each; 100% deduction stops the run. Initialization has a 30-second deadline; official load lasts 60 seconds.

@@ -1,0 +1,2 @@
+ok  	github.com/isucon/isucon12-qualify/webapp/go	(cached)
+?   	github.com/isucon/isucon12-qualify/webapp/go/cmd/isuports	[no test files]

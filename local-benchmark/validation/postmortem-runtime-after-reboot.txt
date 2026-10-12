@@ -1,0 +1,25 @@
+isolate-guest.service                                                         enabled         enabled
+-N ISUCON_OUTPUT
+-A ISUCON_OUTPUT -o lo -j ACCEPT
+-A ISUCON_OUTPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+-A ISUCON_OUTPUT -d 192.168.2.9/32 -j ACCEPT
+-A ISUCON_OUTPUT -p udp -m udp --dport 53 -j ACCEPT
+-A ISUCON_OUTPUT -p udp -m udp --dport 67 -j ACCEPT
+-A ISUCON_OUTPUT -d 10.0.0.0/8 -j REJECT --reject-with icmp-port-unreachable
+-A ISUCON_OUTPUT -d 172.16.0.0/12 -j REJECT --reject-with icmp-port-unreachable
+-A ISUCON_OUTPUT -d 192.168.0.0/16 -j REJECT --reject-with icmp-port-unreachable
+-A ISUCON_OUTPUT -d 169.254.0.0/16 -j REJECT --reject-with icmp-port-unreachable
+net.ipv6.conf.all.disable_ipv6 = 1
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+LISTEN 0      511          0.0.0.0:443        0.0.0.0:*          
+LISTEN 0      4096   127.0.0.53%lo:53         0.0.0.0:*          
+LISTEN 0      128          0.0.0.0:22         0.0.0.0:*          
+LISTEN 0      511        127.0.0.1:6379       0.0.0.0:*          
+LISTEN 0      4096       127.0.0.1:45319      0.0.0.0:*          
+LISTEN 0      70         127.0.0.1:33060      0.0.0.0:*          
+LISTEN 0      151        127.0.0.1:3306       0.0.0.0:*          
+LISTEN 0      511            [::1]:6379          [::]:*          
+LISTEN 0      128             [::]:22            [::]:*          
+LISTEN 0      4096               *:3000             *:*          
+LISTEN 0      4096               *:3001             *:*          
+1877c1897b13fab1eff07c51ad36c4542c16dac73f747f07ae404dfcde81d9b5  /proc/1608/exe

@@ -48,5 +48,7 @@
   "errors": 0,
   "critical_errors": 0,
   "ended": "2026-10-12T15:54:56Z",
-  "note": "6.63% vs039 is not strong standalone performance evidence; retained as verified structural data reduction for following candidates"
+  "note": "6.63% vs039 is not strong standalone performance evidence; retained as verified structural data reduction for following candidates",
+  "raw_score": 152802,
+  "deduction_percent": 0
 }

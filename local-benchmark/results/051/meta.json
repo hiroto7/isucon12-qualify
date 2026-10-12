@@ -65,5 +65,7 @@
   "errors": 0,
   "critical_errors": 0,
   "ended": "2026-10-12T16:32:40Z",
-  "note": "25.15% vs050 (50 had1dial timeout); zero-error403777 validates H25 provisional durability candidate as part of combined adopted state. Disable routine Echo/nginx access logging, retain error logs; enable gzip JSON level1/Vary, metrics support CPU reason."
+  "note": "25.15% vs050 (50 had1dial timeout); zero-error403777 validates H25 provisional durability candidate as part of combined adopted state. Disable routine Echo/nginx access logging, retain error logs; enable gzip JSON level1/Vary, metrics support CPU reason.",
+  "raw_score": 403777,
+  "deduction_percent": 0
 }

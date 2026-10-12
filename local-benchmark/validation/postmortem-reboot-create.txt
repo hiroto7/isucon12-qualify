@@ -1,0 +1,1 @@
+PASS: real blackauth login, writes, duplicate last-score semantics, ranking, detail, 210 yen billing, disqualification and role/tenant isolation; saved before reboot

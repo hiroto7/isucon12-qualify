@@ -33,3 +33,11 @@ Knowledge boundary: ISUCON12 postmortems were first read after the user's explic
 - 054 adopted-state control399265, zero errors. Normal app+bench restart preserved actual APIs before initialize and identical full managed source/compiled binary/configs.055 official postboot load FAILED198 noncritical dial timeouts (reported0, raw412261 not valid). Fresh-boot app kernel ListenOverflows/ListenDrops610; nginx443 accept backlog511, syn backlog256. Capacity repair now required; do not call051/054 stable final results.
 
 - H29 measured network capacity repair: nginx per-worker reuseport accept queues8192, connections32768/workerFD65536; guest persistent somaxconn and syn backlog8192.056412822, zero errors; ListenOverflows/ListenDrops delta0 vs610 accumulated before repair. Accepted as required reliability repair, not a standalone2.24% speed claim. Go application binary and CPU/RAM unchanged. Another normal-reboot validation follows.
+
+## Final verification
+
+057 after normal app+bench reboot:415120, zero errors (65.54x initial median6334; 2.90x039 control143301). Reboot score100.56% of056412822, passing85% criterion; both had ListenDrops/Overflows delta0. Before initialization, actual blackauth/HTTPS persisted rank/detail/billing210/disqualification/role/tenant checks and new non-overlapping IDs passed. CSV response retained3 input rows while persisting2 score rows. Gzip100-rank body9244→2984 bytes, valid JSON/Vary. Full source/SQL/Compose/nginx/sysctl manifests and compiled executable1877c1897b13fab1eff07c51ad36c4542c16dac73f747f07ae404dfcde81d9b5 match across reboot. Race/vet plus native MySQL ID and visit-batch integration passed. Goal633400 remains unmet. All57 attempts retained, including failures040/052/055.
+
+Unsuccessful eager precomputation, billing-input and Unix candidates remain reproducible patches. MySQL tenant replacement remains rejected. No new VMs/CPU/RAM and no upstream PR/merge. Small foundational improvements are not claimed as individually robust gains; adopted combined state is validated above.
+
+Saved patch bases (git apply --check verified in isolated temporary trees): precompute80a1b7b, billing-inputs9da4202, Unix1a7652c; prior MySQL portccd78e7. Apply to the recorded base, not the latest combined application.

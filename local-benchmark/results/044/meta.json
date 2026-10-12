@@ -54,5 +54,7 @@
   "errors": 0,
   "critical_errors": 0,
   "ended": "2026-10-12T16:04:49Z",
-  "note": "25.37% over043; per-request metadata SQL and redundant tenant lookup eliminated; key decode cached, signature verification retained. Warm/cold/update race tests passed."
+  "note": "25.37% over043; per-request metadata SQL and redundant tenant lookup eliminated; key decode cached, signature verification retained. Warm/cold/update race tests passed.",
+  "raw_score": 200605,
+  "deduction_percent": 0
 }

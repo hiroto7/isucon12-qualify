@@ -57,5 +57,7 @@
   "errors": 0,
   "critical_errors": 0,
   "ended": "2026-10-12T16:15:28Z",
-  "note": "9.80% vs044 normal control (46 profiling excluded); cache of verified immutable JWTs, clock claims validated each request, live role/tenant/disqualification checks retained; bounded32768 cache. Race/vet expiry,not-before,signature forgery tests passed."
+  "note": "9.80% vs044 normal control (46 profiling excluded); cache of verified immutable JWTs, clock claims validated each request, live role/tenant/disqualification checks retained; bounded32768 cache. Race/vet expiry,not-before,signature forgery tests passed.",
+  "raw_score": 220263,
+  "deduction_percent": 0
 }

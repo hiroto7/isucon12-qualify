@@ -50,5 +50,7 @@
   "errors": 0,
   "critical_errors": 0,
   "ended": "2026-10-12T15:57:09Z",
-  "note": "Preserves raw CSV count, final row/tie position, validation and rollback. Small score increase not pursued with tuning. Race/vet passed after adapting rollback fixture to retained distinct players."
+  "note": "Preserves raw CSV count, final row/tie position, validation and rollback. Small score increase not pursued with tuning. Race/vet passed after adapting rollback fixture to retained distinct players.",
+  "raw_score": 158032,
+  "deduction_percent": 0
 }

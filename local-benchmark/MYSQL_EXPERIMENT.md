@@ -45,3 +45,5 @@ VMのapp 2 vCPU/4GiB、bench 4 vCPU/8GiBを維持。公式ベンチのstrictPrep
 5. 同じMySQL設定のままbackendフラグを切り替えて対照/候補を測る。試行中の配備を避け、全試行を保存する。
 
 サービスとseedは隔離guest専用。停止/コピー/起動を行うrootサービスをホストへ設置していない。ISUCON12の講評・解説・参加記は今回も参照していない。
+
+After later postmortem-informed changes, reproduce this archived patch on baseccd78e7 rather than the latest application; its apply-check on that exact base was verified.
