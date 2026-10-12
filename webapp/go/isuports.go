@@ -76,13 +76,8 @@ func tenantDBPath(id int64) string {
 }
 
 // テナントDBに接続する
-func connectToTenantDB(id int64) (*sqlx.DB, error) {
-	p := tenantDBPath(id)
-	db, err := sqlx.Open(sqliteDriverName, fmt.Sprintf("file:%s?mode=rw", p))
-	if err != nil {
-		return nil, fmt.Errorf("failed to open tenant DB: %w", err)
-	}
-	return db, nil
+func connectToTenantDB(id int64) (*tenantConnection, error) {
+	return pooledTenantDB(id)
 }
 
 // テナントDBを新規に作成する
@@ -791,7 +786,7 @@ func playersAddHandler(c echo.Context) error {
 		rows = append(rows, PlayerRow{ID: id, TenantID: v.tenantID, DisplayName: displayName, CreatedAt: now, UpdatedAt: now})
 		pds = append(pds, PlayerDetail{ID: id, DisplayName: displayName, IsDisqualified: false})
 	}
-	if err := insertPlayers(ctx, tenantDB, rows); err != nil {
+	if err := insertPlayers(ctx, tenantDB.DB, rows); err != nil {
 		return err
 	}
 
@@ -1075,7 +1070,7 @@ func competitionScoreHandler(c echo.Context) error {
 		})
 	}
 
-	if err := replaceCompetitionScores(ctx, tenantDB, v.tenantID, competitionID, playerScoreRows); err != nil {
+	if err := replaceCompetitionScores(ctx, tenantDB.DB, v.tenantID, competitionID, playerScoreRows); err != nil {
 		return err
 	}
 
@@ -1321,7 +1316,7 @@ func competitionRankingHandler(c echo.Context) error {
 		return fmt.Errorf("error flockByTenantID: %w", err)
 	}
 	defer fl.Close()
-	ranks, err := competitionRanks(ctx, tenantDB, v.tenantID, competitionID)
+	ranks, err := competitionRanks(ctx, tenantDB.DB, v.tenantID, competitionID)
 	if err != nil {
 		return err
 	}
@@ -1519,6 +1514,7 @@ type InitializeHandlerResult struct {
 // ベンチマーカーが起動したときに最初に呼ぶ
 // データベースの初期化などが実行されるため、スキーマを変更した場合などは適宜改変すること
 func initializeHandler(c echo.Context) error {
+	resetTenantConnections()
 	out, err := exec.Command(initializeScript).CombinedOutput()
 	if err != nil {
 		return fmt.Errorf("error exec.Command: %s %e", string(out), err)

@@ -64,3 +64,7 @@ Tests passed latest-row, creation order, empty array and tenant separation. Tria
 Trial 019 slow log: 14133 visit INSERTs, 42.145 seconds cumulative. Billing only uses per-tenant/competition/player MIN(created_at); no API exposes each duplicate visit. Persist the first visit before returning, consult existing MIN using the covering index on cold cache, then skip redundant later writes. Still persist an earlier timestamp if the clock goes backwards. Reset process cache on initialize; after restart recover from DB. Invalidate billing only when a write actually changes history.
 
 H9 outcome: tests passed concurrent single persistence, cold recovery, earlier-clock minimum, cross-tenant keys and failed-write retry. Trial 022 passed 104623 with zero errors, +25.2% versus H7. Accepted.
+
+## H10 — shared SQLite connection/read statement lifetime
+
+Saved profile 019 focus on sqlite3_prepare/SQLiteDriver.Open/database/sql.Prepare accounts for 17.96% of late Go CPU samples. Use four connections per tenant and retain prepared read statements. Handler Close is a no-op; initialize closes statements/DB handles before restoration. Data values/authorization remain live, not cached. Tests passed shared concurrent read, statement reuse and file replacement/cold reopen. Trial 023 passed 120445, zero errors, +15.1% over H9; adopted as resource-work reduction, without repeated small-gain tuning.

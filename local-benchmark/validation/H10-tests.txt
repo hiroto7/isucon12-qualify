@@ -1,0 +1,2 @@
+ok  	github.com/isucon/isucon12-qualify/webapp/go	0.125s
+?   	github.com/isucon/isucon12-qualify/webapp/go/cmd/isuports	[no test files]

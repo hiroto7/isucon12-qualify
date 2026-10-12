@@ -24,3 +24,5 @@
 - H7 atomic player batches accepted, trial 020 83561 with zero errors. H6 profiler 019 sampled mid/late load and was analyzed; diagnostics disabled. Next: remove 352790 per-competition score queries in player detail.
 
 - H8 details SQL rejected (small gain and 7 timeouts), source reverted. H9 durable first visits accepted, 104623 zero errors. Next: inspect/reduce repeated SQLite connection/statement setup; no new schema/data shortcuts.
+
+- H10 tenant pools + prepared reads accepted, 120445 zero errors. All source and deployment match. Next: eliminate repeated per-player/per-competition score reads with immutable latest-score snapshots.
