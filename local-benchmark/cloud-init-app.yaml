@@ -44,7 +44,10 @@ runcmd:
     from pathlib import Path
     for p in Path('/tmp/isucon12-qualify/webapp').glob('*/Dockerfile'):
         lines = p.read_text().splitlines(True)
-        p.write_text(''.join(line for line in lines if 'dev.mysql.com/get/mysql-apt-config' not in line and 'install ./mysql-apt-config_' not in line))
+        text = ''.join(line for line in lines if 'dev.mysql.com/get/mysql-apt-config' not in line and 'install ./mysql-apt-config_' not in line)
+        text = text.replace('  apt-get -y upgrade && \\\n', '')
+        text = text.replace('RUN apt-get update', "RUN sed -i -e 's|http://|https://|g' -e '/bullseye-security/d' -e '/bullseye-updates/d' /etc/apt/sources.list && apt-get update")
+        p.write_text(text)
     FIXDOCKER
       # devドメインはHSTSが強制有効でブラウザでの動作確認が難しいためドメインを書き換える
       sed -i -e "s/t\.isucon\.dev/t.isucon.local/g" ${GITDIR}/docker-compose.yml ${GITDIR}/frontend/src/views/admin/AdminView.vue

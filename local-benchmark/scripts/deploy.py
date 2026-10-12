@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+"""Deploy a managed source set; stop immediately on failed build or verification."""
+import hashlib
+import io
+import json
+from pathlib import Path
+import subprocess
+import tarfile
+import tempfile
+
+root = Path(__file__).resolve().parents[2]
+vm = 'isucon12q-app'
+def remote(command):
+    subprocess.run(['multipass','exec',vm,'--','sudo','bash','-lc',command],check=True)
+
+managed = sorted((root/'webapp/go').rglob('*.go')) + [root/'webapp/go/go.mod',root/'webapp/go/go.sum',root/'webapp/go/Dockerfile',root/'webapp/sql/init.sh',root/'webapp/sql/tenant/10_schema.sql']
+hashes={}
+with tempfile.NamedTemporaryFile(suffix='.tar.gz') as f:
+    with tarfile.open(fileobj=f,mode='w:gz') as archive:
+        for p in managed:
+            content=p.read_bytes().replace(b't.isucon.dev',b't.isucon.local')
+            name=str(p.relative_to(root/'webapp'))
+            hashes[name]=hashlib.sha256(content).hexdigest()
+            info=tarfile.TarInfo(name);info.size=len(content);info.mode=0o755 if p.suffix=='.sh' else 0o644
+            archive.addfile(info,io.BytesIO(content))
+    subprocess.run(['multipass','transfer',f.name,f'{vm}:/tmp/deploy.tar.gz'],check=True)
+    remote('set -eu; ! pgrep -x bench; systemctl stop isuports; find /home/isucon/webapp/go -name "*.go" -delete; tar xzf /tmp/deploy.tar.gz -C /home/isucon/webapp; chown -R isucon:isucon /home/isucon/webapp/go; cd /home/isucon/webapp; sudo -u isucon docker compose -f docker-compose-go.yml build > /tmp/deploy-build.log 2>&1; systemctl reset-failed isuports; systemctl start isuports')
+with tempfile.NamedTemporaryFile(mode='w',suffix='.json') as f:
+    json.dump(hashes,f);f.flush()
+    subprocess.run(['multipass','transfer',f.name,f'{vm}:/tmp/deploy-manifest.json'],check=True)
+remote("python3 - <<'PY'\nimport hashlib,json,pathlib\nexpected=json.load(open('/tmp/deploy-manifest.json'))\nbase=pathlib.Path('/home/isucon/webapp')\nactual={str(p.relative_to(base)) for p in (base/'go').rglob('*.go')}\nassert actual=={p for p in expected if p.endswith('.go')}\nfor name,digest in expected.items():\n assert hashlib.sha256((base/name).read_bytes()).hexdigest()==digest,name\nprint('Managed source set verified')\nPY")
+print('Deployed source; verify running container readiness before starting the benchmark.')
