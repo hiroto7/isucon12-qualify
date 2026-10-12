@@ -522,6 +522,17 @@ func billingReportByCompetition(ctx context.Context, tenantDB dbOrTx, tenantID i
 		return nil, fmt.Errorf("error retrieveCompetition: %w", err)
 	}
 
+	if !comp.FinishedAt.Valid {
+		return &BillingReport{CompetitionID: comp.ID, CompetitionTitle: comp.Title}, nil
+	}
+	state := billingState(competitionCacheKey{tenantID, competitonID})
+	return state.get(comp.FinishedAt.Int64, func() (*BillingReport, error) {
+		return computeFinishedBilling(ctx, tenantDB, tenantID, competitonID, comp)
+	})
+}
+
+func computeFinishedBilling(ctx context.Context, tenantDB dbOrTx, tenantID int64, competitonID string, comp *CompetitionRow) (*BillingReport, error) {
+
 	// ランキングにアクセスした参加者のIDを取得する
 	vhs := []VisitHistorySummaryRow{}
 	if err := adminDB.SelectContext(
@@ -956,6 +967,8 @@ func competitionFinishHandler(c echo.Context) error {
 			now, now, id, err,
 		)
 	}
+	invalidateBilling(v.tenantID, id)
+
 	return c.JSON(http.StatusOK, SuccessResult{Status: true})
 }
 
@@ -1311,6 +1324,9 @@ func competitionRankingHandler(c echo.Context) error {
 		)
 	}
 
+	// Invalidate after every persisted visit, including visits concurrent with a repeated finish.
+	invalidateBilling(v.tenantID, competitionID)
+
 	var rankAfter int64
 	rankAfterStr := c.QueryParam("rank_after")
 	if rankAfterStr != "" {
@@ -1529,6 +1545,7 @@ func initializeHandler(c echo.Context) error {
 	}
 	generatedIDs.reset()
 	resetRankSnapshots()
+	resetBillingSnapshots()
 	res := InitializeHandlerResult{
 		Lang: "go",
 	}

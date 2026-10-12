@@ -30,6 +30,7 @@ func replaceCompetitionScores(ctx context.Context, db *sqlx.DB, tenantID int64, 
 	if err := tx.Commit(); err != nil {
 		return err
 	}
+	invalidateBilling(tenantID, competitionID)
 	rankSnapshots.Delete(competitionCacheKey{tenantID, competitionID})
 	return nil
 }

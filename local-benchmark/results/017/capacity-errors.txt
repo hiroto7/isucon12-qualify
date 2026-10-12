@@ -1,0 +1,21 @@
+2026/10/12 19:05:56 [alert] 98518#98518: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: *236689 768 worker_connections are not enough while connecting to upstream, client: 192.168.2.9, server: *.t.isucon.dev, request: "GET /api/player/player/9fa52d92 HTTP/2.0", upstream: "http://127.0.0.1:3000/api/player/player/9fa52d92", host: "dj-tyfiau-1791799510.t.isucon.local"
+2026/10/12 19:05:58 [alert] 98519#98519: *236737 768 worker_connections are not enough while connecting to upstream, client: 192.168.2.9, server: *.t.isucon.dev, request: "GET /api/player/player/9fa55276 HTTP/2.0", upstream: "http://127.0.0.1:3000/api/player/player/9fa55276", host: "isucon.t.isucon.local"
+2026/10/12 19:05:58 [alert] 98519#98519: *236746 768 worker_connections are not enough while connecting to upstream, client: 192.168.2.9, server: *.t.isucon.dev, request: "GET /api/player/player/9fa5b605 HTTP/2.0", upstream: "http://127.0.0.1:3000/api/player/player/9fa5b605", host: "wiq-uommcm-1791799521.t.isucon.local"
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: *236765 768 worker_connections are not enough while connecting to upstream, client: 192.168.2.9, server: *.t.isucon.dev, request: "GET /api/player/player/9fa5944b HTTP/2.0", upstream: "http://127.0.0.1:3000/api/player/player/9fa5944b", host: "awzac-za-1791799519.t.isucon.local"
+2026/10/12 19:05:58 [alert] 98519#98519: *236777 768 worker_connections are not enough while connecting to upstream, client: 192.168.2.9, server: *.t.isucon.dev, request: "GET /api/player/player/9fa62d3a HTTP/2.0", upstream: "http://127.0.0.1:3000/api/player/player/9fa62d3a", host: "isucon.t.isucon.local"
+2026/10/12 19:05:58 [alert] 98519#98519: *236781 768 worker_connections are not enough while connecting to upstream, client: 192.168.2.9, server: *.t.isucon.dev, request: "GET /api/player/player/9fa5406b HTTP/2.0", upstream: "http://127.0.0.1:3000/api/player/player/9fa5406b", host: "tq-lamda-1791799512.t.isucon.local"
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+worker_processes auto;
+	worker_connections 768;
+Max open files            16384                16384                files     

@@ -18,3 +18,5 @@
 - H4 durable block ID reservation accepted, 28258 with zero errors (trial 013). MySQL/race integration tests passed. Trial 012 records failed deployment only; Docker guest-generated cache/image was rebuilt.
 
 - H5 ranking snapshots accepted: 40420 zero errors; same-condition exact H4 control 28828. Bench process FD soft limit explicitly 65536 from trial 015. Candidate source restored; guest is temporarily still H4 control, so deploy next candidate before measuring.
+
+- H6 billing reuse + nginx connections 8192/worker nofile 16384 accepted: 68407, zero errors. Trial 017 invalid due to nginx capacity. Source and guest match H6. Next: reprofile current workload for the next structural change.
