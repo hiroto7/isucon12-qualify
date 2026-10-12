@@ -1,0 +1,1 @@
+PASS: complete managed Go/SQL/Compose/nginx/sysctl hashes after normal reboot

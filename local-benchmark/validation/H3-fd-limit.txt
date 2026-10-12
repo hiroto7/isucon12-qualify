@@ -1,0 +1,3 @@
+Max open files            1024                 524288               files     
+9
+null

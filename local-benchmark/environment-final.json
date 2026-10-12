@@ -1,0 +1,63 @@
+{
+    "errors": [
+    ],
+    "info": {
+        "isucon12q-app": {
+            "cpu_count": "2",
+            "disks": {
+                "sda1": {
+                    "total": "31132040192",
+                    "used": "10131028480"
+                }
+            },
+            "image_hash": "86e13258765945ad792dac75fac7f02f4db9fa73a4a535ffa472266e7041fa19",
+            "image_release": "22.04 LTS",
+            "ipv4": [
+                "192.168.2.8",
+                "172.17.0.1"
+            ],
+            "load": [
+                0.26,
+                0.18,
+                0.07
+            ],
+            "memory": {
+                "total": 4100493312,
+                "used": 693342208
+            },
+            "mounts": {
+            },
+            "release": "Ubuntu 22.04.5 LTS",
+            "snapshot_count": "0",
+            "state": "Running"
+        },
+        "isucon12q-bench": {
+            "cpu_count": "4",
+            "disks": {
+                "sda1": {
+                    "total": "15525858304",
+                    "used": "3052845568"
+                }
+            },
+            "image_hash": "86e13258765945ad792dac75fac7f02f4db9fa73a4a535ffa472266e7041fa19",
+            "image_release": "22.04 LTS",
+            "ipv4": [
+                "192.168.2.9"
+            ],
+            "load": [
+                0.18,
+                0.06,
+                0.01
+            ],
+            "memory": {
+                "total": 8313401344,
+                "used": 177123328
+            },
+            "mounts": {
+            },
+            "release": "Ubuntu 22.04.5 LTS",
+            "snapshot_count": "0",
+            "state": "Running"
+        }
+    }
+}

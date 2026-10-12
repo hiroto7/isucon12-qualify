@@ -1,0 +1,67 @@
+{
+  "tenant": "reboot-check-1791823694",
+  "players": [
+    "400000000006c92a",
+    "400000000006c92b",
+    "400000000006c92c"
+  ],
+  "competition": "400000000006c92d",
+  "before": {
+    "ranking": {
+      "status": true,
+      "data": {
+        "competition": {
+          "id": "400000000006c92d",
+          "title": "Persistent API test",
+          "is_finished": true
+        },
+        "ranks": [
+          {
+            "rank": 1,
+            "score": 100,
+            "player_id": "400000000006c92b",
+            "player_display_name": "beta"
+          },
+          {
+            "rank": 2,
+            "score": 50,
+            "player_id": "400000000006c92a",
+            "player_display_name": "alpha"
+          }
+        ]
+      }
+    },
+    "detail": {
+      "status": true,
+      "data": {
+        "player": {
+          "id": "400000000006c92a",
+          "display_name": "alpha",
+          "is_disqualified": false
+        },
+        "scores": [
+          {
+            "competition_title": "Persistent API test",
+            "score": 50
+          }
+        ]
+      }
+    },
+    "billing": {
+      "status": true,
+      "data": {
+        "reports": [
+          {
+            "competition_id": "400000000006c92d",
+            "competition_title": "Persistent API test",
+            "player_count": 2,
+            "visitor_count": 1,
+            "billing_player_yen": 200,
+            "billing_visitor_yen": 10,
+            "billing_yen": 210
+          }
+        ]
+      }
+    }
+  }
+}

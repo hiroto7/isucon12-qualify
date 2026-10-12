@@ -1,0 +1,44 @@
+File: main
+Build ID: f845af88a0703baca22c0e49af771c784c86793b
+Type: cpu
+Time: Oct 12, 2026 at 7:14pm (JST)
+Duration: 20.12s, Total samples = 15.26s (75.84%)
+Showing nodes accounting for 8.65s, 56.68% of 15.26s total
+Dropped 521 nodes (cum <= 0.08s)
+Showing top 35 nodes out of 270
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%     14.44s 94.63%  net/http.(*conn).serve
+         0     0%     0%     13.81s 90.50%  github.com/labstack/echo/v4.(*Echo).ServeHTTP
+         0     0%     0%     13.81s 90.50%  net/http.serverHandler.ServeHTTP
+         0     0%     0%     13.77s 90.24%  github.com/labstack/echo/v4/middleware.LoggerWithConfig.func2.1
+         0     0%     0%     13.68s 89.65%  github.com/labstack/echo/v4.(*Echo).add.func1
+         0     0%     0%     13.63s 89.32%  github.com/isucon/isucon12-qualify/webapp/go.SetCacheControlPrivate.func1
+         0     0%     0%     13.63s 89.32%  github.com/labstack/echo/v4/middleware.RecoverWithConfig.func1.1
+         0     0%     0%      9.94s 65.14%  github.com/isucon/isucon12-qualify/webapp/go.playerHandler
+         0     0%     0%      8.81s 57.73%  github.com/jmoiron/sqlx.(*DB).GetContext (partial-inline)
+         0     0%     0%      8.81s 57.73%  github.com/jmoiron/sqlx.GetContext
+     0.04s  0.26%  0.26%      8.49s 55.64%  database/sql.withLock
+     6.72s 44.04% 44.30%         7s 45.87%  runtime.cgocall
+         0     0% 44.30%      4.73s 31.00%  database/sql.(*DB).QueryContext
+     0.02s  0.13% 44.43%      4.72s 30.93%  database/sql.(*DB).query
+     0.01s 0.066% 44.50%      4.57s 29.95%  github.com/jmoiron/sqlx.(*DB).QueryRowxContext
+         0     0% 44.50%      4.24s 27.79%  github.com/jmoiron/sqlx.(*Row).scanAny
+         0     0% 44.50%      4.22s 27.65%  database/sql.(*Rows).Next
+         0     0% 44.50%      4.19s 27.46%  database/sql.(*Rows).Next.func1
+         0     0% 44.50%      4.19s 27.46%  database/sql.(*Rows).nextLocked
+     0.01s 0.066% 44.56%      4.14s 27.13%  github.com/mattn/go-sqlite3.(*SQLiteRows).Next
+     0.03s   0.2% 44.76%      4.13s 27.06%  github.com/mattn/go-sqlite3.(*SQLiteRows).nextSyncLocked
+         0     0% 44.76%      3.64s 23.85%  github.com/jmoiron/sqlx.(*Row).Scan
+     0.03s   0.2% 44.95%      3.27s 21.43%  database/sql.(*DB).queryDC
+         0     0% 44.95%      3.22s 21.10%  github.com/mattn/go-sqlite3.(*SQLiteRows).nextSyncLocked.func1
+         0     0% 44.95%      3.20s 20.97%  github.com/mattn/go-sqlite3._Cfunc__sqlite3_step_internal
+     0.02s  0.13% 45.09%      2.65s 17.37%  database/sql.(*DB).queryDC.func1
+         0     0% 45.09%      2.59s 16.97%  database/sql.ctxDriverQuery
+         0     0% 45.09%      2.59s 16.97%  github.com/shogo82148/go-sql-proxy.(*Conn).QueryContext
+         0     0% 45.09%      2.42s 15.86%  github.com/isucon/isucon12-qualify/webapp/go.retrievePlayer
+         0     0% 45.09%      2.32s 15.20%  github.com/isucon/isucon12-qualify/webapp/go.competitionRankingHandler
+         0     0% 45.09%      2.17s 14.22%  github.com/isucon/isucon12-qualify/webapp/go.retrieveCompetition
+         0     0% 45.09%      1.92s 12.58%  github.com/isucon/isucon12-qualify/webapp/go.authorizePlayer
+     1.77s 11.60% 56.68%      1.79s 11.73%  syscall.Syscall
+         0     0% 56.68%      1.67s 10.94%  github.com/isucon/isucon12-qualify/webapp/go.parseViewer
+         0     0% 56.68%      1.58s 10.35%  github.com/mattn/go-sqlite3.(*SQLiteConn).QueryContext

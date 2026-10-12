@@ -1,0 +1,16 @@
+SQLite trace: cumulative query start/exec time; excludes Rows.Next consumption and lock acquisition.
+    3865 calls     16.029s total   0.5490s max  INSERT INTO player (id, tenant_id, display_name, is_disqualified, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)
+  678010 calls      3.171s total   0.0281s max  SELECT * FROM player WHERE id = ?
+   35795 calls      0.620s total   0.0147s max  SELECT * FROM player_score WHERE tenant_id = ? AND competition_id = ? AND player_id = ? ORDER BY row_num DESC LIMIT 1
+     100 calls      0.608s total   0.1313s max  UPDATE competition SET finished_at = ?, updated_at = ? WHERE id = ?
+     110 calls      0.393s total   0.0246s max  INSERT INTO competition (id, tenant_id, title, finished_at, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)
+   40557 calls      0.293s total   0.0108s max  SELECT * FROM competition WHERE id = ?
+    2743 calls      0.210s total   0.0162s max  SELECT * FROM player_score WHERE tenant_id = ? AND competition_id = ? ORDER BY row_num DESC
+   31152 calls      0.160s total   0.0092s max  INSERT INTO player_score (id, tenant_id, player_id, competition_id, score, row_num, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    9697 calls      0.137s total   0.0088s max  SELECT DISTINCT(player_id) FROM player_score WHERE tenant_id = ? AND competition_id = ?
+      19 calls      0.067s total   0.0129s max  UPDATE player SET is_disqualified = ?, updated_at = ? WHERE id = ?
+    3600 calls      0.048s total   0.0052s max  SELECT * FROM competition WHERE tenant_id = ? ORDER BY created_at ASC
+     128 calls      0.011s total   0.0044s max  DELETE FROM player_score WHERE tenant_id = ? AND competition_id = ?
+     531 calls      0.008s total   0.0028s max  SELECT * FROM competition WHERE tenant_id=? ORDER BY created_at DESC
+     783 calls      0.006s total   0.0010s max  SELECT * FROM competition WHERE tenant_id=?
+      92 calls      0.001s total   0.0001s max  SELECT * FROM player WHERE tenant_id=? ORDER BY created_at DESC

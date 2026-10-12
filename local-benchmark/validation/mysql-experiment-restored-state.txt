@@ -1,0 +1,13 @@
+active
+active
+active
+active
+active
+disabled
+inactive
+State Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
+GRANT USAGE ON *.* TO `isucon`@`%`
+GRANT ALL PRIVILEGES ON `isuports`.* TO `isucon`@`%`
+innodb_buffer_pool_size	134217728
+max_connections	151
+0

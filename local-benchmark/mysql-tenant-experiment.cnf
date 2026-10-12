@@ -1,0 +1,4 @@
+[mysqld]
+innodb_buffer_pool_size=1G
+max_connections=1024
+local_infile=ON

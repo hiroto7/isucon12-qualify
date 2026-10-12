@@ -1,0 +1,361 @@
+diff --git a/webapp/docker-compose-go.yml b/webapp/docker-compose-go.yml
+index 56afa22..7a82423 100644
+--- a/webapp/docker-compose-go.yml
++++ b/webapp/docker-compose-go.yml
+@@ -2,6 +2,7 @@ services:
+   webapp:
+     build: ./go
+     environment:
++      ISUCON_TENANT_BACKEND: mysql
+       ISUCON_DB_HOST: 127.0.0.1
+       ISUCON_DB_PORT: 3306
+       ISUCON_DB_USER: isucon
+diff --git a/webapp/go/isuports.go b/webapp/go/isuports.go
+index b70a8bd..ee66879 100644
+--- a/webapp/go/isuports.go
++++ b/webapp/go/isuports.go
+@@ -82,6 +82,9 @@ func connectToTenantDB(id int64) (*tenantConnection, error) {
+ 
+ // テナントDBを新規に作成する
+ func createTenantDB(id int64) error {
++	if usesMySQLTenants() {
++		return createMySQLTenantDB(id)
++	}
+ 	p := tenantDBPath(id)
+ 
+ 	cmd := exec.Command("sh", "-c", fmt.Sprintf("sqlite3 %s < %s", p, tenantDBSchemaFilePath))
+@@ -1497,6 +1500,17 @@ func initializeHandler(c echo.Context) error {
+ 	if err != nil {
+ 		return fmt.Errorf("error exec.Command: %s %e", string(out), err)
+ 	}
++	if usesMySQLTenants() {
++		adminDB.Close()
++		adminDB, err = connectAdminDB()
++		if err != nil {
++			return err
++		}
++		adminDB.SetMaxOpenConns(10)
++		if err := adminDB.PingContext(context.Background()); err != nil {
++			return err
++		}
++	}
+ 	generatedIDs.reset()
+ 	resetRankSnapshots()
+ 	resetBillingSnapshots()
+diff --git a/webapp/go/players.go b/webapp/go/players.go
+index fa2ebf1..6ecd021 100644
+--- a/webapp/go/players.go
++++ b/webapp/go/players.go
+@@ -14,6 +14,15 @@ func insertPlayers(ctx context.Context, db *sqlx.DB, rows []PlayerRow) error {
+ 		return err
+ 	}
+ 	defer tx.Rollback()
++	if db.DriverName() == "mysql" {
++		if err := insertMySQLChunks(ctx, tx, "player", "id,tenant_id,display_name,is_disqualified,created_at,updated_at", 6, len(rows), func(i int) []interface{} {
++			r := rows[i]
++			return []interface{}{r.ID, r.TenantID, r.DisplayName, r.IsDisqualified, r.CreatedAt, r.UpdatedAt}
++		}); err != nil {
++			return err
++		}
++		return tx.Commit()
++	}
+ 	stmt, err := tx.PrepareNamedContext(ctx, `INSERT INTO player (id,tenant_id,display_name,is_disqualified,created_at,updated_at) VALUES (:id,:tenant_id,:display_name,:is_disqualified,:created_at,:updated_at)`)
+ 	if err != nil {
+ 		return err
+diff --git a/webapp/go/scores.go b/webapp/go/scores.go
+index 1be5c5c..38d4cc4 100644
+--- a/webapp/go/scores.go
++++ b/webapp/go/scores.go
+@@ -17,14 +17,23 @@ func replaceCompetitionScores(ctx context.Context, db *sqlx.DB, tenantID int64,
+ 	if _, err := tx.ExecContext(ctx, "DELETE FROM player_score WHERE tenant_id = ? AND competition_id = ?", tenantID, competitionID); err != nil {
+ 		return err
+ 	}
+-	stmt, err := tx.PrepareNamedContext(ctx, "INSERT INTO player_score (id, tenant_id, player_id, competition_id, score, row_num, created_at, updated_at) VALUES (:id, :tenant_id, :player_id, :competition_id, :score, :row_num, :created_at, :updated_at)")
+-	if err != nil {
+-		return err
+-	}
+-	defer stmt.Close()
+-	for _, row := range rows {
+-		if _, err := stmt.ExecContext(ctx, row); err != nil {
+-			return fmt.Errorf("insert score row: %w", err)
++	if db.DriverName() == "mysql" {
++		if err := insertMySQLChunks(ctx, tx, "player_score", "id,tenant_id,player_id,competition_id,score,row_num,created_at,updated_at", 8, len(rows), func(i int) []interface{} {
++			r := rows[i]
++			return []interface{}{r.ID, r.TenantID, r.PlayerID, r.CompetitionID, r.Score, r.RowNum, r.CreatedAt, r.UpdatedAt}
++		}); err != nil {
++			return fmt.Errorf("insert score rows: %w", err)
++		}
++	} else {
++		stmt, err := tx.PrepareNamedContext(ctx, "INSERT INTO player_score (id, tenant_id, player_id, competition_id, score, row_num, created_at, updated_at) VALUES (:id, :tenant_id, :player_id, :competition_id, :score, :row_num, :created_at, :updated_at)")
++		if err != nil {
++			return err
++		}
++		defer stmt.Close()
++		for _, row := range rows {
++			if _, err := stmt.ExecContext(ctx, row); err != nil {
++				return fmt.Errorf("insert score row: %w", err)
++			}
+ 		}
+ 	}
+ 	if err := tx.Commit(); err != nil {
+diff --git a/webapp/go/tenant_pool.go b/webapp/go/tenant_pool.go
+index fd569df..45462e2 100644
+--- a/webapp/go/tenant_pool.go
++++ b/webapp/go/tenant_pool.go
+@@ -56,7 +56,13 @@ func pooledTenantDB(id int64) (*tenantConnection, error) {
+ 	if db, ok := tenantConnections.dbs[id]; ok {
+ 		return db, nil
+ 	}
+-	db, err := sqlx.Open(sqliteDriverName, fmt.Sprintf("file:%s?mode=rw", tenantDBPath(id)))
++	var db *sqlx.DB
++	var err error
++	if usesMySQLTenants() {
++		db, err = openMySQLDatabase(mysqlTenantName(id))
++	} else {
++		db, err = sqlx.Open(sqliteDriverName, fmt.Sprintf("file:%s?mode=rw", tenantDBPath(id)))
++	}
+ 	if err != nil {
+ 		return nil, err
+ 	}
+diff --git a/webapp/go/tenant_pool_test.go b/webapp/go/tenant_pool_test.go
+index bee0b46..f6adeab 100644
+--- a/webapp/go/tenant_pool_test.go
++++ b/webapp/go/tenant_pool_test.go
+@@ -9,6 +9,7 @@ import (
+ )
+ 
+ func TestTenantPoolLifetimeAndReplacement(t *testing.T) {
++	t.Setenv("ISUCON_TENANT_BACKEND", "sqlite")
+ 	resetTenantConnections()
+ 	defer resetTenantConnections()
+ 	t.Setenv("ISUCON_TENANT_DB_DIR", t.TempDir())
+diff --git a/webapp/sql/init.sh b/webapp/sql/init.sh
+index 0078525..e42513d 100755
+--- a/webapp/sql/init.sh
++++ b/webapp/sql/init.sh
+@@ -3,6 +3,13 @@
+ set -ex
+ cd `dirname $0`
+ 
++if [ "${ISUCON_TENANT_BACKEND:-sqlite}" = mysql ]; then
++  # Guest-only loopback administrative service restores a cleanly stopped
++  # MySQL snapshot. It returns only after MySQL is ready; never changes load.
++  wget -q -O - --post-data='' http://127.0.0.1:3002/reset
++  exit 0
++fi
++
+ ISUCON_DB_HOST=${ISUCON_DB_HOST:-127.0.0.1}
+ ISUCON_DB_PORT=${ISUCON_DB_PORT:-3306}
+ ISUCON_DB_USER=${ISUCON_DB_USER:-isucon}
+diff --git a/webapp/go/mysql_tenants.go b/webapp/go/mysql_tenants.go
+new file mode 100644
+index 0000000..9c12f4e
+--- /dev/null
++++ b/webapp/go/mysql_tenants.go
+@@ -0,0 +1,80 @@
++package isuports
++
++import (
++	"context"
++	"fmt"
++	"os"
++	"strings"
++
++	"github.com/go-sql-driver/mysql"
++	"github.com/jmoiron/sqlx"
++)
++
++func usesMySQLTenants() bool {
++	return getEnv("ISUCON_TENANT_BACKEND", "sqlite") == "mysql"
++}
++
++func mysqlTenantName(id int64) string { return fmt.Sprintf("t12_tenant_%d", id) }
++
++func openMySQLDatabase(name string) (*sqlx.DB, error) {
++	config := mysql.NewConfig()
++	config.Net = "tcp"
++	config.Addr = getEnv("ISUCON_DB_HOST", "127.0.0.1") + ":" + getEnv("ISUCON_DB_PORT", "3306")
++	config.User = getEnv("ISUCON_DB_USER", "isucon")
++	config.Passwd = getEnv("ISUCON_DB_PASSWORD", "isucon")
++	config.DBName = name
++	config.ParseTime = true
++	return sqlx.Open("mysql", config.FormatDSN())
++}
++
++func createMySQLTenantDB(id int64) error {
++	if id <= 0 {
++		return fmt.Errorf("invalid tenant ID %d", id)
++	}
++	name := mysqlTenantName(id)
++	// The database name is constructed only from a positive integer. Binary,
++	// NO PAD collation preserves SQLite's case/space-sensitive ID lookup.
++	if _, err := adminDB.ExecContext(context.Background(), "CREATE DATABASE `"+name+"` CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_bin"); err != nil {
++		return err
++	}
++	db, err := openMySQLDatabase(name)
++	if err != nil {
++		return err
++	}
++	defer db.Close()
++	schema, err := os.ReadFile(tenantDBSchemaFilePath)
++	if err != nil {
++		return err
++	}
++	for _, query := range strings.Split(string(schema), ";") {
++		if strings.TrimSpace(query) == "" {
++			continue
++		}
++		if _, err := db.Exec(query); err != nil {
++			return err
++		}
++	}
++	return nil
++}
++
++// Keep an atomic transaction while avoiding one network round trip per CSV
++// row. Table/columns are internal constants; every value remains a parameter.
++func insertMySQLChunks(ctx context.Context, tx *sqlx.Tx, table, columns string, width, count int, row func(int) []interface{}) error {
++	const batch = 200
++	tuple := "(" + strings.TrimSuffix(strings.Repeat("?,", width), ",") + ")"
++	for first := 0; first < count; first += batch {
++		end := first + batch
++		if end > count {
++			end = count
++		}
++		args := make([]interface{}, 0, (end-first)*width)
++		for i := first; i < end; i++ {
++			args = append(args, row(i)...)
++		}
++		query := "INSERT INTO " + table + " (" + columns + ") VALUES " + strings.TrimSuffix(strings.Repeat(tuple+",", end-first), ",")
++		if _, err := tx.ExecContext(ctx, query, args...); err != nil {
++			return err
++		}
++	}
++	return nil
++}
+diff --git a/webapp/go/mysql_tenants_test.go b/webapp/go/mysql_tenants_test.go
+new file mode 100644
+index 0000000..d8770bc
+--- /dev/null
++++ b/webapp/go/mysql_tenants_test.go
+@@ -0,0 +1,120 @@
++package isuports
++
++import (
++	"context"
++	"database/sql"
++	"errors"
++	"os"
++	"strconv"
++	"testing"
++)
++
++func TestMySQLTenantSemantics(t *testing.T) {
++	if os.Getenv("ISUCON_TENANT_MYSQL_TEST") != "1" {
++		t.Skip("requires isolated guest MySQL")
++	}
++	t.Setenv("ISUCON_TENANT_BACKEND", "mysql")
++	t.Setenv("ISUCON_TENANT_DB_DIR", t.TempDir())
++	ctx := context.Background()
++	admin, err := connectAdminDB()
++	if err != nil {
++		t.Fatal(err)
++	}
++	defer admin.Close()
++	old := adminDB
++	adminDB = admin
++	defer func() { adminDB = old }()
++	resetTenantConnections()
++	resetRankSnapshots()
++	resetLatestScores()
++	resetBillingSnapshots()
++	resetFirstVisits()
++	defer resetTenantConnections()
++	for _, id := range []int64{9910001, 9910002} {
++		admin.MustExec("DROP DATABASE IF EXISTS `" + mysqlTenantName(id) + "`")
++		if err := createMySQLTenantDB(id); err != nil {
++			t.Fatal(err)
++		}
++		defer admin.Exec("DROP DATABASE IF EXISTS `" + mysqlTenantName(id) + "`")
++	}
++	defer admin.Exec("DELETE FROM visit_history WHERE tenant_id IN (9910001,9910002)")
++	db, err := connectToTenantDB(9910001)
++	if err != nil {
++		t.Fatal(err)
++	}
++	other, err := connectToTenantDB(9910002)
++	if err != nil {
++		t.Fatal(err)
++	}
++	players := []PlayerRow{{ID: "p", TenantID: 9910001, DisplayName: "引用' / 日本語 / \\ / \x00"}, {ID: "q", TenantID: 9910001, DisplayName: "Q"}, {ID: "r", TenantID: 9910001, DisplayName: "R"}, {ID: "v", TenantID: 9910001, DisplayName: "visitor"}}
++	if err := insertPlayers(ctx, db.DB, players); err != nil {
++		t.Fatal(err)
++	}
++	if err := insertPlayers(ctx, other.DB, []PlayerRow{{ID: "p", TenantID: 9910002, DisplayName: "other tenant"}}); err != nil {
++		t.Fatal(err)
++	}
++	p, err := retrievePlayer(ctx, db, "p")
++	if err != nil || p.DisplayName != players[0].DisplayName {
++		t.Fatalf("text round trip: %+v %v", p, err)
++	}
++	p, err = retrievePlayer(ctx, other, "p")
++	if err != nil || p.DisplayName != "other tenant" {
++		t.Fatal("tenant isolation", err)
++	}
++	for _, id := range []string{"P", "p "} {
++		if _, err := retrievePlayer(ctx, db, id); !errors.Is(err, sql.ErrNoRows) {
++			t.Fatalf("binary NO PAD lookup %q: %v", id, err)
++		}
++	}
++	db.MustExec("INSERT INTO competition VALUES ('a',9910001,'A',100,1,1),('b',9910001,'B',NULL,2,2)")
++	rows := []PlayerScoreRow{{ID: "1", TenantID: 9910001, PlayerID: "p", CompetitionID: "a", Score: 100, RowNum: 1}, {ID: "2", TenantID: 9910001, PlayerID: "q", CompetitionID: "a", Score: 10, RowNum: 2}, {ID: "3", TenantID: 9910001, PlayerID: "r", CompetitionID: "a", Score: 20, RowNum: 3}, {ID: "4", TenantID: 9910001, PlayerID: "q", CompetitionID: "a", Score: 10, RowNum: 4}, {ID: "5", TenantID: 9910001, PlayerID: "p", CompetitionID: "a", Score: 10, RowNum: 5}}
++	if err := replaceCompetitionScores(ctx, db.DB, 9910001, "a", rows); err != nil {
++		t.Fatal(err)
++	}
++	ranks, err := competitionRanks(ctx, db.DB, 9910001, "a")
++	if err != nil || len(ranks) != 3 || ranks[0].PlayerID != "r" || ranks[1].PlayerID != "q" || ranks[2].PlayerID != "p" {
++		t.Fatalf("latest/ties: %+v %v", ranks, err)
++	}
++	if len(pageRanks(ranks, 1)) != 2 || pageRanks(ranks, 1)[0].Rank != 2 {
++		t.Fatal("pagination")
++	}
++	if _, err := recordFirstVisit(ctx, admin, 9910001, "a", "v", 99); err != nil {
++		t.Fatal(err)
++	}
++	bill, err := billingReportByCompetition(ctx, db, 9910001, "a")
++	if err != nil || bill.BillingYen != 310 {
++		t.Fatalf("billing: %+v %v", bill, err)
++	}
++	if err := replaceCompetitionScores(ctx, db.DB, 9910001, "b", []PlayerScoreRow{{ID: "other", TenantID: 9910001, PlayerID: "p", CompetitionID: "b", Score: 50, RowNum: 1}}); err != nil {
++		t.Fatal(err)
++	}
++	failed := make([]PlayerScoreRow, 205)
++	for i := range failed {
++		failed[i] = PlayerScoreRow{ID: "rollback" + strconv.Itoa(i), TenantID: 9910001, PlayerID: "p", CompetitionID: "a", Score: 999, RowNum: int64(i + 1)}
++	}
++	failed[len(failed)-1].ID = "other"
++	if err := replaceCompetitionScores(ctx, db.DB, 9910001, "a", failed); err == nil {
++		t.Fatal("expected rollback on duplicate key")
++	}
++	resetRankSnapshots()
++	resetLatestScores()
++	ranks, err = competitionRanks(ctx, db.DB, 9910001, "a")
++	if err != nil || len(ranks) != 3 || ranks[0].Score != 20 {
++		t.Fatalf("rollback/cold: %+v %v", ranks, err)
++	}
++	if err := replaceCompetitionScores(ctx, db.DB, 9910001, "a", nil); err != nil {
++		t.Fatal(err)
++	}
++	values, err := competitionScores(ctx, db, 9910001, "a")
++	if err != nil || len(values) != 0 {
++		t.Fatal("empty replacement", err)
++	}
++	var count int
++	if err := db.Get(&count, "SELECT COUNT(*) FROM player_score WHERE competition_id='b'"); err != nil || count != 1 {
++		t.Fatal("other competition changed", err)
++	}
++	db.MustExec("UPDATE player SET is_disqualified=1 WHERE id='p'")
++	if err := authorizePlayer(ctx, db, "p"); err == nil {
++		t.Fatal("disqualified player authorized")
++	}
++}

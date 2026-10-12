@@ -1,0 +1,34 @@
+File: main
+Build ID: 41940a85ba2efd633548641edcb216358c4369cd
+Type: cpu
+Time: Oct 12, 2026 at 6:40pm (JST)
+Duration: 30.17s, Total samples = 19.80s (65.63%)
+Showing nodes accounting for 12.95s, 65.40% of 19.80s total
+Dropped 477 nodes (cum <= 0.10s)
+Showing top 25 nodes out of 201
+      flat  flat%   sum%        cum   cum%
+         0     0%     0%     18.64s 94.14%  net/http.(*conn).serve
+         0     0%     0%     18.58s 93.84%  github.com/labstack/echo/v4.(*Echo).ServeHTTP
+         0     0%     0%     18.58s 93.84%  net/http.serverHandler.ServeHTTP
+         0     0%     0%     18.56s 93.74%  github.com/labstack/echo/v4/middleware.LoggerWithConfig.func2.1
+         0     0%     0%     18.55s 93.69%  github.com/labstack/echo/v4.(*Echo).add.func1
+         0     0%     0%     18.53s 93.59%  github.com/isucon/isucon12-qualify/webapp/go.SetCacheControlPrivate.func1
+         0     0%     0%     18.53s 93.59%  github.com/labstack/echo/v4/middleware.RecoverWithConfig.func1.1
+     0.01s 0.051% 0.051%     15.43s 77.93%  database/sql.withLock
+    12.80s 64.65% 64.70%     13.18s 66.57%  runtime.cgocall
+     0.02s   0.1% 64.80%     12.94s 65.35%  database/sql.(*Rows).Next
+         0     0% 64.80%     12.90s 65.15%  database/sql.(*Rows).Next.func1
+     0.01s 0.051% 64.85%     12.90s 65.15%  database/sql.(*Rows).nextLocked
+     0.02s   0.1% 64.95%     12.82s 64.75%  github.com/mattn/go-sqlite3.(*SQLiteRows).Next
+     0.07s  0.35% 65.30%     12.80s 64.65%  github.com/mattn/go-sqlite3.(*SQLiteRows).nextSyncLocked
+         0     0% 65.30%     11.98s 60.51%  github.com/jmoiron/sqlx.(*DB).SelectContext (partial-inline)
+         0     0% 65.30%     11.98s 60.51%  github.com/jmoiron/sqlx.SelectContext
+         0     0% 65.30%     11.77s 59.44%  github.com/jmoiron/sqlx.scanAll
+     0.01s 0.051% 65.35%     10.76s 54.34%  github.com/mattn/go-sqlite3.(*SQLiteRows).nextSyncLocked.func1
+         0     0% 65.35%     10.73s 54.19%  github.com/mattn/go-sqlite3._Cfunc__sqlite3_step_internal
+     0.01s 0.051% 65.40%      8.99s 45.40%  github.com/isucon/isucon12-qualify/webapp/go.billingReportByCompetition
+         0     0% 65.40%      7.32s 36.97%  github.com/isucon/isucon12-qualify/webapp/go.competitionRankingHandler
+         0     0% 65.40%      5.32s 26.87%  github.com/isucon/isucon12-qualify/webapp/go.tenantsBillingHandler
+         0     0% 65.40%      5.32s 26.87%  github.com/isucon/isucon12-qualify/webapp/go.tenantsBillingHandler.func1
+         0     0% 65.40%      4.89s 24.70%  github.com/jmoiron/sqlx.(*DB).GetContext
+         0     0% 65.40%      4.89s 24.70%  github.com/jmoiron/sqlx.GetContext

@@ -1,0 +1,398 @@
+[ADMIN] 10:05:04.115294 TargetURL: https://t.isucon.local, TargetAddr: 192.168.2.8:443, RequestTimeout: 30s, InitializeRequestTimeout: 30s, StrictPrepare: true, ReproduceMode: false
+[ADMIN] 10:05:05.444071 POST /initialize 200 初期化
+10:05:05.444114 初期化リクエストに成功しました 実装言語:go
+10:05:05.444120 整合性チェックを開始します
+[ADMIN] 10:05:05.571036 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 10:05:05.576522 POST /api/admin/tenants/add 401 新規テナント作成: 不正リクエスト(exp切れのJWT)
+[ADMIN] 10:05:05.578222 GET /index.html 200 /index.htmlを確認
+[ADMIN] 10:05:05.580199 GET /js/app.3a4ec98c.js 200 /js/app.3a4ec98c.jsを確認
+[ADMIN] 10:05:05.580708 GET /css/app.83b4c321.css 200 /css/app.83b4c321.cssを確認
+[ADMIN] 10:05:05.580739 staticFileCheck done
+[ADMIN] 10:05:05.604233 POST /api/admin/tenants/add 401 新規テナント作成: 不正リクエスト(不正なRSA鍵)
+[ADMIN] 10:05:05.609838 POST /api/admin/tenants/add 401 新規テナント作成: 不正リクエスト(不正な鍵認証方式)
+[ADMIN] 10:05:05.617609 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 10:05:05.632672 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 10:05:05.641537 POST /api/organizer/competitions/add 200 新規大会追加)
+[ADMIN] 10:05:05.643501 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 10:05:05.648047 POST /api/organizer/competitions/add 401 新規大会追加: 不正リクエスト(存在しないテナント)
+[ADMIN] 10:05:05.652567 GET /api/player/competitions 401 テナント内の大会情報取得: 不正なリクエスト(存在しないプレイヤー)
+[ADMIN] 10:05:05.652573 invalidJWTCheck done
+[ADMIN] 10:05:05.690895 GET /api/admin/tenants/billing 200 テナント別の請求ダッシュボード: 初期データチェック
+[ADMIN] 10:05:05.691064 billingAPISuccessCheck done
+[ADMIN] 10:05:05.907512 POST /api/organizer/players/add 200 テナントへプレイヤー追加
+[ADMIN] 10:05:05.909740 GET /api/organizer/players 200 テナントのプレイヤー一覧取得
+[ADMIN] 10:05:05.913916 POST /api/organizer/competitions/add 200 新規大会追加
+[ADMIN] 10:05:05.917651 POST /api/organizer/player/9fa52510/disqualified 200 プレイヤーを失格にする
+[ADMIN] 10:05:05.924853 POST /api/organizer/players/add 200 テナントへプレイヤー追加
+[ADMIN] 10:05:05.925449 POST /api/organizer/competition/9fa5251a/score 200 大会結果CSV入稿
+[ADMIN] 10:05:05.926440 POST /api/admin/tenants/add 400 新規テナント作成 不正リクエスト
+[ADMIN] 10:05:05.931593 POST /api/organizer/competition/9fa5251a/score 200 大会結果CSV入稿
+[ADMIN] 10:05:05.933364 POST /api/admin/tenants/add 400 新規テナント作成 不正リクエスト
+[ADMIN] 10:05:05.934809 POST /api/organizer/player/0000000000/disqualified 404 プレイヤーを失格にする: 不正リクエスト(存在しないプレイヤー)
+[ADMIN] 10:05:05.937346 GET /api/player/competition/9fa5251a/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 10:05:05.937783 GET /api/player/competition/9fa5251a/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 10:05:05.937966 GET /api/player/competition/9fa5251a/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 10:05:05.938871 GET /api/player/competition/9fa5251a/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 10:05:05.941198 POST /api/organizer/competitions/add 200 新規大会追加
+[ADMIN] 10:05:05.942808 POST /api/organizer/competition/0000000000/score 404 大会結果CSV入稿: 不正リクエスト(存在しない大会)
+[ADMIN] 10:05:05.944261 POST /api/organizer/competition/9fa525ea/score 400 大会結果CSV入稿: 不正リクエスト(存在しないプレイヤー)
+[ADMIN] 10:05:05.946064 GET /api/player/competition/9fa5251a/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 10:05:05.946884 POST /api/organizer/competition/9fa525ea/score 400 大会結果CSV入稿: 不正リクエスト(カラムの並び順が違う)
+[ADMIN] 10:05:05.947909 GET /api/player/competition/9fa5251a/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 10:05:05.948240 GET /api/player/competition/9fa5251a/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 10:05:05.949379 POST /api/organizer/competition/9fa525ea/score 400 大会結果CSV入稿: 不正リクエスト(余計なカラムがあるCSV)
+[ADMIN] 10:05:05.950166 GET /api/player/competition/9fa5251a/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 10:05:05.953097 GET /api/player/player/9fa52412 200 プレイヤーと戦績情報取得: 入稿後
+[ADMIN] 10:05:05.954257 GET /api/player/player/0000000000 404 プレイヤーと戦績情報取得
+[ADMIN] 10:05:05.955194 GET /api/player/competition/0000000000/ranking 404 大会内のランキング取得
+[ADMIN] 10:05:05.957183 GET /api/player/competition/9fa5251a/ranking 200 大会内のランキング取得: ページングなし
+[ADMIN] 10:05:05.960075 POST /api/organizer/player/9fa5251d/disqualified 200 プレイヤーを失格にする
+[ADMIN] 10:05:05.964093 GET /api/player/competition/9fa525ea/ranking 403 大会内のランキング取得: 失格済みプレイヤー
+[ADMIN] 10:05:05.965587 POST /api/organizer/competition/0000000000/finish 404 大会終了: 不正リクエスト(存在しない大会)
+[ADMIN] 10:05:05.965750 GET /api/player/competition/9fa5251a/ranking 200 大会内のランキング取得: スコア未登録プレイヤー
+[ADMIN] 10:05:05.969599 POST /api/organizer/competition/9fa525ea/finish 200 大会終了
+[ADMIN] 10:05:05.969951 POST /api/organizer/competition/9fa5251a/finish 200 大会終了
+[ADMIN] 10:05:05.969958 allAPISuccessCheck sleep 3s
+[ADMIN] 10:05:05.970626 POST /api/organizer/competition/9fa525ea/score 400 大会結果CSV入稿: 不正リクエスト(終了済みの大会)
+[ADMIN] 10:05:05.970630 badRequestCheck done
+[ADMIN] 10:05:05.975153 POST /api/organizer/players/add 200 テナントへプレイヤー101人追加
+[ADMIN] 10:05:05.979805 POST /api/organizer/competition/9fa52410/score 200 大会結果CSV入稿
+[ADMIN] 10:05:05.984241 GET /api/player/competition/9fa52410/ranking 200 大会内のランキング取得: ページングなし,上限100件
+[ADMIN] 10:05:05.986943 GET /api/player/competition/9fa52410/ranking 200 大会内のランキング取得: ページングあり
+[ADMIN] 10:05:05.987817 GET /api/player/player/9fa52478 200 プレイヤーと戦績情報取得
+[ADMIN] 10:05:05.991838 POST /api/organizer/competition/9fa52410/score 200 大会結果CSV入稿
+[ADMIN] 10:05:05.994760 GET /api/player/competition/9fa52410/ranking 200 大会内のランキング取得: ページングなし,上限100件
+[ADMIN] 10:05:05.996081 GET /api/player/player/9fa52478 200 プレイヤーと戦績情報取得
+[ADMIN] 10:05:06.001355 POST /api/organizer/competition/9fa52410/score 200 大会結果CSV入稿
+[ADMIN] 10:05:06.004526 GET /api/player/competition/9fa52410/ranking 200 大会内のランキング取得: ページングなし,上限100件
+[ADMIN] 10:05:06.004902 rankingCheck done
+[ADMIN] 10:05:09.074970 GET /api/player/competition/9fa5251a/ranking 200 大会内のランキング取得: ランキングが正しいことを確認
+[ADMIN] 10:05:09.079360 GET /api/organizer/billing 200 テナント内の請求情報
+[ADMIN] 10:05:09.081547 GET /api/player/competitions 200 テナント内の大会情報取得
+[ADMIN] 10:05:09.083229 GET /api/organizer/competitions 200 テナント管理者API テナント内の大会一覧取得
+[ADMIN] 10:05:09.125728 GET /api/admin/tenants/billing 200 テナント別の請求ダッシュボード(最大10件)
+[ADMIN] 10:05:09.133174 GET /api/organizer/billing 200 テナント内の請求情報
+[ADMIN] 10:05:09.133210 allAPISuccessCheck done
+10:05:09.133215 整合性チェックを終了します
+[ADMIN] 10:05:09.133218 Scenario:validation elapsed:3.68909663s
+10:05:09.133219 整合性チェックに成功しました
+10:05:09.133229 負荷走行を開始します
+[ADMIN] 10:05:09.133354 OrganizerPopularTenant dmbhy-b-29
+[ADMIN] 10:05:09.181696 [TenantBillingValidate] [tenant:wch-stq-1791799509] Playerを追加します players: 100
+[ADMIN] 10:05:10.485434 OrganizerPopularTenantHeavyTenant isucon
+10:05:14.147512 テナント「解体堂」を作成しました (類似のログ計10件)
+[ADMIN] 10:05:14.147516 workerを追加しました [PlayerValidateScenarioWorker](num:1)
+10:05:14.147541 大会「伝説の津田沼スターズ大会」を作成しました。参加者が増えます。 (類似のログ計22件)
+[ADMIN] 10:05:14.147978 workerを追加しました [PlayerScenarioWorker](num:115)
+10:05:14.147542 参加者が115人増えました
+[ADMIN] 10:05:14.147980 workerを追加しました [PopularTenantScenarioWorker](num:2)
+[ADMIN] 10:05:14.147982 workerを追加しました [AdminBillingScenarioWorker](num:1)
+[ADMIN] 10:05:14.147983 workerを追加しました [TenantBillingValidateWorker](num:1)
+[ADMIN] 10:05:14.147983 workerを追加しました [NewTenantScenarioWorker](num:10)
+[ADMIN] 10:05:14.147984 workerを追加しました [AdminBillingValidateWorker](num:1)
+10:05:19.156629 大会「はやくもドラゴンフルーツ穏健派 vol.9」を作成しました。参加者が増えます。 (類似のログ計43件)
+10:05:19.156648 テナント「チームカスタードゼロ」を作成しました (類似のログ計9件)
+[ADMIN] 10:05:19.156651 workerを追加しました [PlayerScenarioWorker](num:247)
+[ADMIN] 10:05:19.156654 workerを追加しました [NewTenantScenarioWorker](num:9)
+10:05:19.156655 参加者が247人増えました
+10:05:24.133882 大会「第6回 代々木と俺」を作成しました。参加者が増えます。 (類似のログ計53件)
+10:05:24.133898 テナント「チームふつうのカレー.rs」を作成しました (類似のログ計5件)
+[ADMIN] 10:05:24.133901 workerを追加しました [PlayerScenarioWorker](num:301)
+[ADMIN] 10:05:24.133904 workerを追加しました [NewTenantScenarioWorker](num:5)
+10:05:24.133905 参加者が301人増えました
+10:05:29.133708 大会「洋梨日記 #1」を作成しました。参加者が増えます。 (類似のログ計53件)
+10:05:29.133729 テナント「ミラ酒店」を作成しました (類似のログ計1件)
+[ADMIN] 10:05:29.133732 workerを追加しました [PlayerScenarioWorker](num:313)
+[ADMIN] 10:05:29.133734 workerを追加しました [NewTenantScenarioWorker](num:1)
+10:05:29.133736 参加者が313人増えました
+10:05:34.133627 大会「Dr.タゴ同盟杯」を作成しました。参加者が増えます。 (類似のログ計37件)
+10:05:34.133645 参加者が205人増えました
+10:05:34.133648 テナント「洋梨づくし」を作成しました (類似のログ計1件)
+[ADMIN] 10:05:34.133641 workerを追加しました [PlayerScenarioWorker](num:205)
+[ADMIN] 10:05:34.133660 workerを追加しました [NewTenantScenarioWorker](num:1)
+10:05:39.133432 大会「かためペットボトル乃月」を作成しました。参加者が増えます。 (類似のログ計23件)
+[ADMIN] 10:05:39.133592 workerを追加しました [PlayerScenarioWorker](num:133)
+10:05:39.133655 参加者が133人増えました
+10:05:44.133295 大会「本家ダッシュ丼大会」を作成しました。参加者が増えます。 (類似のログ計12件)
+[ADMIN] 10:05:44.133310 workerを追加しました [PlayerScenarioWorker](num:72)
+10:05:44.133313 参加者が72人増えました
+10:05:44.606797 error: 参加者と戦績情報取得 Get "https://eiq-vw-1791799517.t.isucon.local/api/player/player/9fa57486": read tcp 192.168.2.9:51594->192.168.2.8:443: read: connection reset by peer tenant:eiq-vw-1791799517 role:player playerID:9fa57f6d playerID:9fa57486
+[ADMIN] 10:05:44.606837 Normal Error
+10:05:44.606859 error: 参加者と戦績情報取得 Get "https://isucon.t.isucon.local/api/player/player/9fa55702": read tcp 192.168.2.9:51610->192.168.2.8:443: read: connection reset by peer tenant:isucon role:player playerID:9fa55350 playerID:9fa55702
+[ADMIN] 10:05:44.606870 Normal Error
+10:05:44.607100 error: 参加者と戦績情報取得 Get "https://moeot-x-1791799513.t.isucon.local/api/player/player/9fa547a9": read tcp 192.168.2.9:51614->192.168.2.8:443: read: connection reset by peer tenant:moeot-x-1791799513 role:player playerID:9fa54abb playerID:9fa547a9
+[ADMIN] 10:05:44.607193 Normal Error
+10:05:44.608115 error: 参加者と戦績情報取得 Get "https://uc-nwo-1791799509.t.isucon.local/api/player/player/9fa529c3": read tcp 192.168.2.9:51838->192.168.2.8:443: read: connection reset by peer tenant:uc-nwo-1791799509 role:player playerID:9fa528b7 playerID:9fa529c3
+10:05:44.608139 error: 参加者と戦績情報取得 Get "https://tq-lamda-1791799512.t.isucon.local/api/player/player/9fa54077": read tcp 192.168.2.9:51818->192.168.2.8:443: read: connection reset by peer tenant:tq-lamda-1791799512 role:player playerID:9fa54027 playerID:9fa54077
+10:05:44.608141 error: 参加者と戦績情報取得 Get "https://c-wkx-1791799516.t.isucon.local/api/player/player/9fa5775e": read tcp 192.168.2.9:51796->192.168.2.8:443: read: connection reset by peer tenant:c-wkx-1791799516 role:player playerID:9fa56e59 playerID:9fa5775e
+10:05:44.608164 error: 参加者と戦績情報取得 Get "https://lk-sm-1791799518.t.isucon.local/api/player/player/9fa58b17": read tcp 192.168.2.9:51910->192.168.2.8:443: read: connection reset by peer tenant:lk-sm-1791799518 role:player playerID:9fa58e14 playerID:9fa58b17
+10:05:44.608165 error: 参加者と戦績情報取得 Get "https://lfcb-auctck-1791799510.t.isucon.local/api/player/player/9fa53081": read tcp 192.168.2.9:51790->192.168.2.8:443: read: connection reset by peer tenant:lfcb-auctck-1791799510 role:player playerID:9fa52f54 playerID:9fa53081
+10:05:44.608173 error: 大会内のランキング取得 Get "https://rabo-vivz-1791799515.t.isucon.local/api/player/competition/9fa57cc0/ranking": read tcp 192.168.2.9:51828->192.168.2.8:443: read: connection reset by peer tenant:rabo-vivz-1791799515 role:player playerID:9fa55deb competitionID:9fa57cc0 rankAfter:
+10:05:44.608186 error: 参加者と戦績情報取得 Get "https://moeot-x-1791799513.t.isucon.local/api/player/player/9fa54ae4": read tcp 192.168.2.9:51780->192.168.2.8:443: read: connection reset by peer tenant:moeot-x-1791799513 role:player playerID:9fa54967 playerID:9fa54ae4
+10:05:44.608198 error: 参加者と戦績情報取得 Get "https://uc-nwo-1791799509.t.isucon.local/api/player/player/9fa52a2e": read tcp 192.168.2.9:51882->192.168.2.8:443: read: connection reset by peer tenant:uc-nwo-1791799509 role:player playerID:9fa528be playerID:9fa52a2e
+10:05:44.608179 error: 参加者と戦績情報取得 Get "https://l-x-1791799514.t.isucon.local/api/player/player/9fa5527e": read tcp 192.168.2.9:51810->192.168.2.8:443: read: connection reset by peer tenant:l-x-1791799514 role:player playerID:9fa5507d playerID:9fa5527e
+10:05:44.608207 error: 大会内のランキング取得 Get "https://fpe-q-1791799516.t.isucon.local/api/player/competition/9fa5c810/ranking": read tcp 192.168.2.9:51688->192.168.2.8:443: read: connection reset by peer tenant:fpe-q-1791799516 role:player playerID:9fa5661c competitionID:9fa5c810 rankAfter:
+10:05:44.608180 error: 参加者と戦績情報取得 Get "https://j-ia-1791799514.t.isucon.local/api/player/player/9fa55231": read tcp 192.168.2.9:51894->192.168.2.8:443: read: connection reset by peer tenant:j-ia-1791799514 role:player playerID:9fa5535e playerID:9fa55231
+10:05:44.608226 error: 参加者と戦績情報取得 Get "https://fkmli-lltb-1791799512.t.isucon.local/api/player/player/9fa53920": read tcp 192.168.2.9:51682->192.168.2.8:443: read: connection reset by peer tenant:fkmli-lltb-1791799512 role:player playerID:9fa5381b playerID:9fa53920
+10:05:44.608229 error: 大会内のランキング取得 Get "https://eiq-vw-1791799517.t.isucon.local/api/player/competition/9fa5a4b5/ranking": read tcp 192.168.2.9:51862->192.168.2.8:443: read: connection reset by peer tenant:eiq-vw-1791799517 role:player playerID:9fa57cc9 competitionID:9fa5a4b5 rankAfter:
+10:05:44.608217 error: 参加者と戦績情報取得 Get "https://tq-lamda-1791799512.t.isucon.local/api/player/player/9fa53f97": read tcp 192.168.2.9:51868->192.168.2.8:443: read: connection reset by peer tenant:tq-lamda-1791799512 role:player playerID:9fa54065 playerID:9fa53f97
+10:05:44.608247 error: 大会内のランキング取得 Get "https://fkmli-lltb-1791799512.t.isucon.local/api/player/competition/9fa5c21d/ranking": read tcp 192.168.2.9:51666->192.168.2.8:443: read: connection reset by peer tenant:fkmli-lltb-1791799512 role:player playerID:9fa53805 competitionID:9fa5c21d rankAfter:
+10:05:44.608247 error: 参加者と戦績情報取得 Get "https://lfcb-auctck-1791799510.t.isucon.local/api/player/player/9fa52fe9": read tcp 192.168.2.9:51860->192.168.2.8:443: read: connection reset by peer tenant:lfcb-auctck-1791799510 role:player playerID:9fa52f48 playerID:9fa52fe9
+10:05:44.608258 error: 大会内のランキング取得 Get "https://obeec-r-1791799515.t.isucon.local/api/player/competition/9fa5686d/ranking": read tcp 192.168.2.9:51846->192.168.2.8:443: read: connection reset by peer tenant:obeec-r-1791799515 role:player playerID:9fa5633f competitionID:9fa5686d rankAfter:
+10:05:44.608253 error: 参加者と戦績情報取得 Get "https://tq-lamda-1791799512.t.isucon.local/api/player/player/9fa53f3a": read tcp 192.168.2.9:51774->192.168.2.8:443: read: connection reset by peer tenant:tq-lamda-1791799512 role:player playerID:9fa5402a playerID:9fa53f3a
+10:05:44.608217 error: 参加者と戦績情報取得 Get "https://ndx-ldrz-1791799513.t.isucon.local/api/player/player/9fa54340": read tcp 192.168.2.9:51702->192.168.2.8:443: read: connection reset by peer tenant:ndx-ldrz-1791799513 role:player playerID:9fa5495e playerID:9fa54340
+10:05:44.608279 error: 参加者と戦績情報取得 Get "https://z-g-1791799511.t.isucon.local/api/player/player/9fa536b8": read tcp 192.168.2.9:51770->192.168.2.8:443: read: connection reset by peer tenant:z-g-1791799511 role:player playerID:9fa53646 playerID:9fa536b8
+10:05:44.608293 error: 参加者と戦績情報取得 Get "https://lfcb-auctck-1791799510.t.isucon.local/api/player/player/9fa53089": read tcp 192.168.2.9:51644->192.168.2.8:443: read: connection reset by peer tenant:lfcb-auctck-1791799510 role:player playerID:9fa52f55 playerID:9fa53089
+10:05:44.608294 error: 参加者と戦績情報取得 Get "https://ndx-ldrz-1791799513.t.isucon.local/api/player/player/9fa54301": read tcp 192.168.2.9:51730->192.168.2.8:443: read: connection reset by peer tenant:ndx-ldrz-1791799513 role:player playerID:9fa542ff playerID:9fa54301
+10:05:44.608280 error: 参加者と戦績情報取得 Get "https://eiq-vw-1791799517.t.isucon.local/api/player/player/9fa5755c": read tcp 192.168.2.9:51658->192.168.2.8:443: read: connection reset by peer tenant:eiq-vw-1791799517 role:player playerID:9fa57d03 playerID:9fa5755c
+10:05:44.608306 error: 参加者と戦績情報取得 Get "https://dj-tyfiau-1791799510.t.isucon.local/api/player/player/9fa52d63": read tcp 192.168.2.9:51764->192.168.2.8:443: read: connection reset by peer tenant:dj-tyfiau-1791799510 role:player playerID:9fa52d36 playerID:9fa52d63
+10:05:44.608315 error: 参加者と戦績情報取得 Get "https://z-g-1791799511.t.isucon.local/api/player/player/9fa53688": read tcp 192.168.2.9:51636->192.168.2.8:443: read: connection reset by peer tenant:z-g-1791799511 role:player playerID:9fa5366f playerID:9fa53688
+10:05:44.608323 error: 参加者と戦績情報取得 Get "https://isucon.t.isucon.local/api/player/player/9fa57b53": read tcp 192.168.2.9:51754->192.168.2.8:443: read: connection reset by peer tenant:isucon role:player playerID:9fa57cb4 playerID:9fa57b53
+10:05:44.608333 error: 参加者と戦績情報取得 Get "https://wiq-uommcm-1791799521.t.isucon.local/api/player/player/9fa5b945": read tcp 192.168.2.9:51626->192.168.2.8:443: read: connection reset by peer tenant:wiq-uommcm-1791799521 role:player playerID:9fa5cd32 playerID:9fa5b945
+10:05:44.608341 error: 参加者と戦績情報取得 Get "https://vwch-js-1791799511.t.isucon.local/api/player/player/9fa53079": read tcp 192.168.2.9:51744->192.168.2.8:443: read: connection reset by peer tenant:vwch-js-1791799511 role:player playerID:9fa52f74 playerID:9fa53079
+10:05:44.608343 error: 参加者と戦績情報取得 Get "https://lfcb-auctck-1791799510.t.isucon.local/api/player/player/9fa53015": read tcp 192.168.2.9:51726->192.168.2.8:443: read: connection reset by peer tenant:lfcb-auctck-1791799510 role:player playerID:9fa52f4e playerID:9fa53015
+10:05:44.608365 error: 参加者と戦績情報取得 Get "https://uc-nwo-1791799509.t.isucon.local/api/player/player/9fa528c4": read tcp 192.168.2.9:51742->192.168.2.8:443: read: connection reset by peer tenant:uc-nwo-1791799509 role:player playerID:9fa528d4 playerID:9fa528c4
+10:05:44.608366 error: 参加者と戦績情報取得 Get "https://awzac-za-1791799519.t.isucon.local/api/player/player/9fa5a74c": read tcp 192.168.2.9:51720->192.168.2.8:443: read: connection reset by peer tenant:awzac-za-1791799519 role:player playerID:9fa59e60 playerID:9fa5a74c
+10:05:44.608374 error: 大会内のランキング取得 GET /api/player/competition/9fa6113f/ranking : expected([200]) != actual(500) tenant:sw-wg-1791799512 role:player playerID:9fa54052 competitionID:9fa6113f rankAfter:
+[ADMIN] 10:05:44.608389 Normal Error
+[ADMIN] 10:05:44.608393 Normal Error
+[ADMIN] 10:05:44.608399 Normal Error
+10:05:44.608399 error: 参加者と戦績情報取得 Get "https://vwch-js-1791799511.t.isucon.local/api/player/player/9fa52fc9": read tcp 192.168.2.9:51718->192.168.2.8:443: read: connection reset by peer tenant:vwch-js-1791799511 role:player playerID:9fa52f70 playerID:9fa52fc9
+[ADMIN] 10:05:44.608402 Normal Error
+[ADMIN] 10:05:44.608407 Normal Error
+[ADMIN] 10:05:44.608410 Normal Error
+[ADMIN] 10:05:44.608415 Normal Error
+10:05:44.608416 error: 大会内のランキング取得 Get "https://dmbhy-b-29.t.isucon.local/api/player/competition/9fa54aef/ranking": read tcp 192.168.2.9:51716->192.168.2.8:443: read: connection reset by peer tenant:dmbhy-b-29 role:player playerID:9fa5492d competitionID:9fa54aef rankAfter:
+[ADMIN] 10:05:44.608418 Normal Error
+[ADMIN] 10:05:44.608424 Normal Error
+[ADMIN] 10:05:44.608428 Normal Error
+[ADMIN] 10:05:44.608432 Normal Error
+[ADMIN] 10:05:44.608436 Normal Error
+[ADMIN] 10:05:44.608441 Normal Error
+[ADMIN] 10:05:44.608444 Normal Error
+[ADMIN] 10:05:44.608448 Normal Error
+[ADMIN] 10:05:44.608452 Normal Error
+[ADMIN] 10:05:44.608456 Normal Error
+[ADMIN] 10:05:44.608459 Normal Error
+[ADMIN] 10:05:44.608465 Normal Error
+[ADMIN] 10:05:44.608468 Normal Error
+[ADMIN] 10:05:44.608472 Normal Error
+[ADMIN] 10:05:44.608475 Normal Error
+[ADMIN] 10:05:44.608480 Normal Error
+[ADMIN] 10:05:44.608483 Normal Error
+[ADMIN] 10:05:44.608488 Normal Error
+[ADMIN] 10:05:44.608491 Normal Error
+[ADMIN] 10:05:44.608494 Normal Error
+[ADMIN] 10:05:44.608497 Normal Error
+[ADMIN] 10:05:44.608501 Normal Error
+[ADMIN] 10:05:44.608504 Normal Error
+[ADMIN] 10:05:44.608507 Normal Error
+[ADMIN] 10:05:44.608511 Normal Error
+[ADMIN] 10:05:44.608514 Normal Error
+[ADMIN] 10:05:44.608517 Normal Error
+10:05:44.610062 error: 大会内のランキング取得 Get "https://wiq-uommcm-1791799521.t.isucon.local/api/player/competition/9fa5d3dc/ranking": read tcp 192.168.2.9:51922->192.168.2.8:443: read: connection reset by peer tenant:wiq-uommcm-1791799521 role:player playerID:9fa5ca9d competitionID:9fa5d3dc rankAfter:
+10:05:44.610064 error: 参加者と戦績情報取得 Get "https://fkmli-lltb-1791799512.t.isucon.local/api/player/player/9fa5394e": read tcp 192.168.2.9:51912->192.168.2.8:443: read: connection reset by peer tenant:fkmli-lltb-1791799512 role:player playerID:9fa53811 playerID:9fa5394e
+[ADMIN] 10:05:44.610081 Normal Error
+[ADMIN] 10:05:44.610085 Normal Error
+10:05:44.611361 error: 大会内のランキング取得 Get "https://uc-nwo-1791799509.t.isucon.local/api/player/competition/9fa6158b/ranking": read tcp 192.168.2.9:51930->192.168.2.8:443: read: connection reset by peer tenant:uc-nwo-1791799509 role:player playerID:9fa52946 competitionID:9fa6158b rankAfter:
+[ADMIN] 10:05:44.611447 Normal Error
+10:05:44.613045 error: 参加者と戦績情報取得 Get "https://vwch-js-1791799511.t.isucon.local/api/player/player/9fa52f8c": EOF tenant:vwch-js-1791799511 role:player playerID:9fa52f75 playerID:9fa52f8c
+[ADMIN] 10:05:44.613118 Normal Error
+10:05:44.648381 error: 参加者と戦績情報取得 GET /api/player/player/9fa552c9 : expected([200]) != actual(500) tenant:l-x-1791799514 role:player playerID:9fa5534b playerID:9fa552c9
+[ADMIN] 10:05:44.648412 Normal Error
+10:05:44.654317 error: 参加者と戦績情報取得 Get "https://l-x-1791799514.t.isucon.local/api/player/player/9fa55066": read tcp 192.168.2.9:52216->192.168.2.8:443: read: connection reset by peer tenant:l-x-1791799514 role:player playerID:9fa5508b playerID:9fa55066
+[ADMIN] 10:05:44.654338 Normal Error
+10:05:44.654682 error: 参加者と戦績情報取得 Get "https://sw-wg-1791799512.t.isucon.local/api/player/player/9fa53db6": read tcp 192.168.2.9:52220->192.168.2.8:443: read: connection reset by peer tenant:sw-wg-1791799512 role:player playerID:9fa54030 playerID:9fa53db6
+[ADMIN] 10:05:44.654698 Normal Error
+10:05:44.655868 error: 参加者と戦績情報取得 Get "https://zefi-bdi-1791799526.t.isucon.local/api/player/player/9fa60d68": read tcp 192.168.2.9:52232->192.168.2.8:443: read: connection reset by peer tenant:zefi-bdi-1791799526 role:player playerID:9fa60d7a playerID:9fa60d68
+10:05:44.655881 error: 参加者と戦績情報取得 Get "https://fpe-q-1791799516.t.isucon.local/api/player/player/9fa56b7b": read tcp 192.168.2.9:52234->192.168.2.8:443: read: connection reset by peer tenant:fpe-q-1791799516 role:player playerID:9fa565fe playerID:9fa56b7b
+[ADMIN] 10:05:44.655895 Normal Error
+[ADMIN] 10:05:44.655917 Normal Error
+10:05:49.133519 leaderboardの表示に1秒以上かかったため1人の参加者が離脱しました。
+10:05:49.133533 大会「第2回 ザ・みたらし軒」を作成しました。参加者が増えます。 (類似のログ計19件)
+[ADMIN] 10:05:49.133536 workerを追加しました [PlayerScenarioWorker](num:109)
+10:05:49.133539 参加者が109人増えました
+10:05:49.756748 error: 参加者と戦績情報取得 Get "https://z-g-1791799511.t.isucon.local/api/player/player/9fa536ba": read tcp 192.168.2.9:44996->192.168.2.8:443: read: connection reset by peer tenant:z-g-1791799511 role:player playerID:9fa5363a playerID:9fa536ba
+[ADMIN] 10:05:49.756779 Normal Error
+10:05:49.756791 error: 参加者と戦績情報取得 Get "https://z-g-1791799511.t.isucon.local/api/player/player/9fa536cf": read tcp 192.168.2.9:45010->192.168.2.8:443: read: connection reset by peer tenant:z-g-1791799511 role:player playerID:9fa53639 playerID:9fa536cf
+[ADMIN] 10:05:49.756801 Normal Error
+10:05:49.757275 error: 大会内のランキング取得 GET /api/player/competition/9fa66bf5/ranking : expected([200]) != actual(500) tenant:lk-sm-1791799518 role:player playerID:9fa58e1a competitionID:9fa66bf5 rankAfter:54
+[ADMIN] 10:05:49.757288 Normal Error
+10:05:49.757812 error: 参加者と戦績情報取得 GET /api/player/player/9fa53964 : expected([200]) != actual(500) tenant:fkmli-lltb-1791799512 role:player playerID:9fa5381d playerID:9fa53964
+[ADMIN] 10:05:49.757824 Normal Error
+10:05:49.758337 error: 参加者と戦績情報取得 GET /api/player/player/9fa53dbd : expected([200]) != actual(500) tenant:tq-lamda-1791799512 role:player playerID:9fa54024 playerID:9fa53dbd
+[ADMIN] 10:05:49.758349 Normal Error
+10:05:49.765449 error: 参加者と戦績情報取得 Get "https://wiq-uommcm-1791799521.t.isucon.local/api/player/player/9fa5cd13": read tcp 192.168.2.9:45052->192.168.2.8:443: read: connection reset by peer tenant:wiq-uommcm-1791799521 role:player playerID:9fa5ca9b playerID:9fa5cd13
+[ADMIN] 10:05:49.765487 Normal Error
+10:05:49.765966 error: 参加者と戦績情報取得 GET /api/player/player/9fa5299f : expected([200]) != actual(500) tenant:uc-nwo-1791799509 role:player playerID:9fa528ac playerID:9fa5299f
+[ADMIN] 10:05:49.765980 Normal Error
+10:05:49.766710 error: 参加者と戦績情報取得 GET /api/player/player/9fa52f68 : expected([200]) != actual(500) tenant:lfcb-auctck-1791799510 role:player playerID:9fa52f4c playerID:9fa52f68
+[ADMIN] 10:05:49.766728 Normal Error
+10:05:49.772571 error: 参加者と戦績情報取得 Get "https://isucon.t.isucon.local/api/player/player/9fa57f94": read tcp 192.168.2.9:45128->192.168.2.8:443: read: connection reset by peer tenant:isucon role:player playerID:9fa6721c playerID:9fa57f94
+10:05:49.772572 error: 参加者と戦績情報取得 Get "https://isucon.t.isucon.local/api/player/player/9fa62249": read tcp 192.168.2.9:45112->192.168.2.8:443: read: connection reset by peer tenant:isucon role:player playerID:9fa67220 playerID:9fa62249
+[ADMIN] 10:05:49.772603 Normal Error
+[ADMIN] 10:05:49.772607 Normal Error
+10:05:49.773200 error: 参加者と戦績情報取得 GET /api/player/player/9fa57743 : expected([200]) != actual(500) tenant:c-wkx-1791799516 role:player playerID:9fa570c9 playerID:9fa57743
+[ADMIN] 10:05:49.773213 Normal Error
+10:05:49.774487 error: 参加者と戦績情報取得 Get "https://dj-tyfiau-1791799510.t.isucon.local/api/player/player/9fa52d4e": EOF tenant:dj-tyfiau-1791799510 role:player playerID:9fa52d49 playerID:9fa52d4e
+[ADMIN] 10:05:49.774504 Normal Error
+10:05:49.774574 error: 参加者と戦績情報取得 Get "https://cwqp-vfeszt-53.t.isucon.local/api/player/player/278f533b7": read tcp 192.168.2.9:45156->192.168.2.8:443: read: connection reset by peer tenant:cwqp-vfeszt-53 role:player playerID:63c0f0151 playerID:278f533b7
+[ADMIN] 10:05:49.774629 Normal Error
+10:05:49.775394 error: 参加者と戦績情報取得 Get "https://uc-nwo-1791799509.t.isucon.local/api/player/player/9fa52a21": read tcp 192.168.2.9:45164->192.168.2.8:443: read: connection reset by peer tenant:uc-nwo-1791799509 role:player playerID:9fa528dc playerID:9fa52a21
+[ADMIN] 10:05:49.775408 Normal Error
+10:05:54.133379 leaderboardの表示に1秒以上かかったため4人の参加者が離脱しました。
+10:05:54.133387 大会「第8回 晩白柚百貨店」を作成しました。参加者が増えます。 (類似のログ計12件)
+10:05:54.133388 参加者が72人増えました
+[ADMIN] 10:05:54.133388 workerを追加しました [PlayerScenarioWorker](num:72)
+10:05:56.151894 error: 参加者と戦績情報取得 Get "https://fpe-q-1791799516.t.isucon.local/api/player/player/9fa56b85": read tcp 192.168.2.9:55414->192.168.2.8:443: read: connection reset by peer tenant:fpe-q-1791799516 role:player playerID:9fa56646 playerID:9fa56b85
+[ADMIN] 10:05:56.152012 Normal Error
+10:05:56.152073 error: 大会内のランキング取得 Get "https://l-x-1791799514.t.isucon.local/api/player/competition/9fa553f6/ranking": read tcp 192.168.2.9:55420->192.168.2.8:443: read: connection reset by peer tenant:l-x-1791799514 role:player playerID:9fa55351 competitionID:9fa553f6 rankAfter:
+[ADMIN] 10:05:56.152089 Normal Error
+10:05:56.152402 error: 参加者と戦績情報取得 GET /api/player/player/9fa64e15 : expected([200]) != actual(500) tenant:w-n-1791799533 role:player playerID:9fa65108 playerID:9fa64e15
+[ADMIN] 10:05:56.152448 Normal Error
+10:05:56.152723 error: 参加者と戦績情報取得 Get "https://fpe-q-1791799516.t.isucon.local/api/player/player/9fa56835": read tcp 192.168.2.9:55428->192.168.2.8:443: read: connection reset by peer tenant:fpe-q-1791799516 role:player playerID:9fa56e63 playerID:9fa56835
+[ADMIN] 10:05:56.152742 Normal Error
+10:05:56.153795 error: 参加者と戦績情報取得 Get "https://dvli-sce-1791799522.t.isucon.local/api/player/player/9fa5d8b4": read tcp 192.168.2.9:55566->192.168.2.8:443: read: connection reset by peer tenant:dvli-sce-1791799522 role:player playerID:9fa5d53b playerID:9fa5d8b4
+[ADMIN] 10:05:56.153809 Normal Error
+10:05:56.153815 error: 大会内のランキング取得 Get "https://isucon.t.isucon.local/api/player/competition/9fa53b41/ranking?rank_after=30": read tcp 192.168.2.9:55552->192.168.2.8:443: read: connection reset by peer tenant:isucon role:player playerID:9fa53a9e competitionID:9fa53b41 rankAfter:30
+10:05:56.153837 error: 大会内のランキング取得 Get "https://lfcb-auctck-1791799510.t.isucon.local/api/player/competition/9fa5f405/ranking": read tcp 192.168.2.9:55584->192.168.2.8:443: read: connection reset by peer tenant:lfcb-auctck-1791799510 role:player playerID:9fa52fb2 competitionID:9fa5f405 rankAfter:
+10:05:56.153851 error: 参加者と戦績情報取得 Get "https://ha-crizwe-1791799518.t.isucon.local/api/player/player/9fa58df6": read tcp 192.168.2.9:55594->192.168.2.8:443: read: connection reset by peer tenant:ha-crizwe-1791799518 role:player playerID:9fa58d34 playerID:9fa58df6
+10:05:56.153863 error: 参加者と戦績情報取得 Get "https://l-x-1791799514.t.isucon.local/api/player/player/9fa552e0": read tcp 192.168.2.9:55490->192.168.2.8:443: read: connection reset by peer tenant:l-x-1791799514 role:player playerID:9fa5536b playerID:9fa552e0
+10:05:56.153871 error: 参加者と戦績情報取得 Get "https://j-ia-1791799514.t.isucon.local/api/player/player/9fa554ac": read tcp 192.168.2.9:55478->192.168.2.8:443: read: connection reset by peer tenant:j-ia-1791799514 role:player playerID:9fa54e7d playerID:9fa554ac
+10:05:56.153877 error: 参加者と戦績情報取得 Get "https://uc-nwo-1791799509.t.isucon.local/api/player/player/9fa5293a": read tcp 192.168.2.9:55524->192.168.2.8:443: read: connection reset by peer tenant:uc-nwo-1791799509 role:player playerID:9fa528d9 playerID:9fa5293a
+10:05:56.153818 error: 大会内のランキング取得 Get "https://isucon.t.isucon.local/api/player/competition/9fa67520/ranking": read tcp 192.168.2.9:55540->192.168.2.8:443: read: connection reset by peer tenant:isucon role:player playerID:9fa6721d competitionID:9fa67520 rankAfter:
+10:05:56.153864 error: 大会内のランキング取得 Get "https://vwch-js-1791799511.t.isucon.local/api/player/competition/9fa5b8b9/ranking": read tcp 192.168.2.9:55508->192.168.2.8:443: read: connection reset by peer tenant:vwch-js-1791799511 role:player playerID:9fa52f97 competitionID:9fa5b8b9 rankAfter:
+10:05:56.153824 error: 参加者と戦績情報取得 Get "https://ndx-ldrz-1791799513.t.isucon.local/api/player/player/9fa5472e": read tcp 192.168.2.9:55538->192.168.2.8:443: read: connection reset by peer tenant:ndx-ldrz-1791799513 role:player playerID:9fa54316 playerID:9fa5472e
+10:05:56.153895 error: 参加者と戦績情報取得 Get "https://w-n-1791799533.t.isucon.local/api/player/player/9fa65295": read tcp 192.168.2.9:55464->192.168.2.8:443: read: connection reset by peer tenant:w-n-1791799533 role:player playerID:9fa6566f playerID:9fa65295
+10:05:56.153900 error: 参加者と戦績情報取得 Get "https://obeec-r-1791799515.t.isucon.local/api/player/player/9fa56675": read tcp 192.168.2.9:55580->192.168.2.8:443: read: connection reset by peer tenant:obeec-r-1791799515 role:player playerID:9fa565c7 playerID:9fa56675
+[ADMIN] 10:05:56.153908 Normal Error
+[ADMIN] 10:05:56.153926 Normal Error
+10:05:56.153926 error: 大会内のランキング取得 Get "https://lfcb-auctck-1791799510.t.isucon.local/api/player/competition/9fa5b4c3/ranking": read tcp 192.168.2.9:55494->192.168.2.8:443: read: connection reset by peer tenant:lfcb-auctck-1791799510 role:player playerID:9fa52f76 competitionID:9fa5b4c3 rankAfter:
+[ADMIN] 10:05:56.153930 Normal Error
+[ADMIN] 10:05:56.153934 Normal Error
+[ADMIN] 10:05:56.153938 Normal Error
+[ADMIN] 10:05:56.153943 Normal Error
+[ADMIN] 10:05:56.153946 Normal Error
+[ADMIN] 10:05:56.153950 Normal Error
+[ADMIN] 10:05:56.153953 Normal Error
+[ADMIN] 10:05:56.153956 Normal Error
+[ADMIN] 10:05:56.153959 Normal Error
+[ADMIN] 10:05:56.153962 Normal Error
+10:05:56.154477 error: 大会内のランキング取得 GET /api/player/competition/9fa57b66/ranking : expected([200]) != actual(500) tenant:c-wkx-1791799516 role:player playerID:9fa56e56 competitionID:9fa57b66 rankAfter:
+[ADMIN] 10:05:56.154490 Normal Error
+10:05:56.219233 error: 参加者と戦績情報取得 Get "https://vwch-js-1791799511.t.isucon.local/api/player/player/9fa52fc3": read tcp 192.168.2.9:56022->192.168.2.8:443: read: connection reset by peer tenant:vwch-js-1791799511 role:player playerID:9fa52f79 playerID:9fa52fc3
+[ADMIN] 10:05:56.219268 Normal Error
+10:05:58.513745 error: 参加者と戦績情報取得 GET /api/player/player/9fa52d92 : expected([200]) != actual(500) tenant:dj-tyfiau-1791799510 role:player playerID:9fa52d37 playerID:9fa52d92
+[ADMIN] 10:05:58.513837 Normal Error
+10:05:58.532189 error: 参加者と戦績情報取得 GET /api/player/player/9fa55276 : expected([200]) != actual(500) tenant:isucon role:player playerID:9fa5ac81 playerID:9fa55276
+[ADMIN] 10:05:58.532225 Normal Error
+10:05:58.536431 error: 参加者と戦績情報取得 Get "https://dj-tyfiau-1791799510.t.isucon.local/api/player/player/9fa52dbb": read tcp 192.168.2.9:60470->192.168.2.8:443: read: connection reset by peer tenant:dj-tyfiau-1791799510 role:player playerID:9fa52d52 playerID:9fa52dbb
+[ADMIN] 10:05:58.536456 Normal Error
+10:05:58.538594 error: 参加者と戦績情報取得 GET /api/player/player/9fa5b605 : expected([200]) != actual(500) tenant:wiq-uommcm-1791799521 role:player playerID:9fa5cd4c playerID:9fa5b605
+[ADMIN] 10:05:58.538669 Normal Error
+10:05:58.538724 error: 参加者と戦績情報取得 Get "https://vwch-js-1791799511.t.isucon.local/api/player/player/9fa53022": read tcp 192.168.2.9:60492->192.168.2.8:443: read: connection reset by peer tenant:vwch-js-1791799511 role:player playerID:9fa52fdd playerID:9fa53022
+[ADMIN] 10:05:58.538741 Normal Error
+10:05:58.539061 error: 参加者と戦績情報取得 Get "https://tq-lamda-1791799512.t.isucon.local/api/player/player/9fa5404a": read tcp 192.168.2.9:60494->192.168.2.8:443: read: connection reset by peer tenant:tq-lamda-1791799512 role:player playerID:9fa5408b playerID:9fa5404a
+[ADMIN] 10:05:58.539077 Normal Error
+10:05:58.541637 error: 大会内のランキング取得 Get "https://rabo-vivz-1791799515.t.isucon.local/api/player/competition/9fa6aadd/ranking?rank_after=1": EOF tenant:rabo-vivz-1791799515 role:player playerID:9fa5601c competitionID:9fa6aadd rankAfter:1
+[ADMIN] 10:05:58.541656 Normal Error
+10:05:58.551329 error: 大会内のランキング取得 Get "https://gvww-uwelm-1791799520.t.isucon.local/api/player/competition/9fa664d0/ranking": read tcp 192.168.2.9:60582->192.168.2.8:443: read: connection reset by peer tenant:gvww-uwelm-1791799520 role:player playerID:9fa5c09f competitionID:9fa664d0 rankAfter:
+[ADMIN] 10:05:58.551355 Normal Error
+10:05:58.551569 error: 参加者と戦績情報取得 Get "https://lfcb-auctck-1791799510.t.isucon.local/api/player/player/9fa52f6b": read tcp 192.168.2.9:60592->192.168.2.8:443: read: connection reset by peer tenant:lfcb-auctck-1791799510 role:player playerID:9fa52f5a playerID:9fa52f6b
+[ADMIN] 10:05:58.551586 Normal Error
+10:05:58.551591 error: 参加者と戦績情報取得 GET /api/player/player/9fa5944b : expected([200]) != actual(500) tenant:awzac-za-1791799519 role:player playerID:9fa59f9a playerID:9fa5944b
+[ADMIN] 10:05:58.551604 Normal Error
+10:05:58.552187 error: 参加者と戦績情報取得 Get "https://z-itwb-1791799523.t.isucon.local/api/player/player/9fa5d065": read tcp 192.168.2.9:60596->192.168.2.8:443: read: connection reset by peer tenant:z-itwb-1791799523 role:player playerID:9fa5f2dc playerID:9fa5d065
+[ADMIN] 10:05:58.552202 Normal Error
+10:05:58.558634 error: 参加者と戦績情報取得 GET /api/player/player/9fa62d3a : expected([200]) != actual(500) tenant:isucon role:player playerID:9fa63229 playerID:9fa62d3a
+[ADMIN] 10:05:58.558703 Normal Error
+10:05:58.561458 error: 参加者と戦績情報取得 GET /api/player/player/9fa5406b : expected([200]) != actual(500) tenant:tq-lamda-1791799512 role:player playerID:9fa54067 playerID:9fa5406b
+[ADMIN] 10:05:58.561478 Normal Error
+10:05:58.562559 error: 参加者と戦績情報取得 Get "https://fkmli-lltb-1791799512.t.isucon.local/api/player/player/9fa53951": read tcp 192.168.2.9:60692->192.168.2.8:443: read: connection reset by peer tenant:fkmli-lltb-1791799512 role:player playerID:9fa537e9 playerID:9fa53951
+10:05:58.562560 error: 参加者と戦績情報取得 Get "https://z-g-1791799511.t.isucon.local/api/player/player/9fa53662": read tcp 192.168.2.9:60698->192.168.2.8:443: read: connection reset by peer tenant:z-g-1791799511 role:player playerID:9fa53650 playerID:9fa53662
+[ADMIN] 10:05:58.562633 Normal Error
+[ADMIN] 10:05:58.562638 Normal Error
+10:05:58.562975 error: 大会内のランキング取得 Get "https://l-x-1791799514.t.isucon.local/api/player/competition/9fa57221/ranking": read tcp 192.168.2.9:60712->192.168.2.8:443: read: connection reset by peer tenant:l-x-1791799514 role:player playerID:9fa55088 competitionID:9fa57221 rankAfter:
+[ADMIN] 10:05:58.562988 Normal Error
+10:05:58.563009 error: 大会内のランキング取得 Get "https://awzac-za-1791799519.t.isucon.local/api/player/competition/9fa68f87/ranking": read tcp 192.168.2.9:60714->192.168.2.8:443: read: connection reset by peer tenant:awzac-za-1791799519 role:player playerID:9fa59fb8 competitionID:9fa68f87 rankAfter:
+[ADMIN] 10:05:58.563075 Normal Error
+10:05:58.565776 error: 参加者と戦績情報取得 Get "https://sw-wg-1791799512.t.isucon.local/api/player/player/9fa541a9": read tcp 192.168.2.9:60754->192.168.2.8:443: read: connection reset by peer tenant:sw-wg-1791799512 role:player playerID:9fa5408a playerID:9fa541a9
+[ADMIN] 10:05:58.565798 Normal Error
+10:05:58.565813 error: 大会内のランキング取得 Get "https://dj-tyfiau-1791799510.t.isucon.local/api/player/competition/9fa53dcf/ranking": read tcp 192.168.2.9:60742->192.168.2.8:443: read: connection reset by peer tenant:dj-tyfiau-1791799510 role:player playerID:9fa52b85 competitionID:9fa53dcf rankAfter:
+[ADMIN] 10:05:58.565823 Normal Error
+10:05:58.566590 error: 参加者と戦績情報取得 Get "https://vwch-js-1791799511.t.isucon.local/api/player/player/9fa53058": read tcp 192.168.2.9:60776->192.168.2.8:443: read: connection reset by peer tenant:vwch-js-1791799511 role:player playerID:9fa52f8d playerID:9fa53058
+[ADMIN] 10:05:58.566605 Normal Error
+10:05:58.567784 error: 大会内のランキング取得 Get "https://rabo-vivz-1791799515.t.isucon.local/api/player/competition/9fa65797/ranking": EOF tenant:rabo-vivz-1791799515 role:player playerID:9fa5600e competitionID:9fa65797 rankAfter:
+[ADMIN] 10:05:58.567797 Normal Error
+10:05:58.567798 エラーによる減点が100%になったので負荷走行を打ち切ります
+10:05:58.567802 負荷走行を終了します
+[ADMIN] 10:05:58.579303 負荷走行を終了しました
+10:05:59.569605 ERROR[0] load: load-validation: Get "https://eiq-vw-1791799517.t.isucon.local/api/player/player/9fa57486": read tcp 192.168.2.9:51594->192.168.2.8:443: read: connection reset by peer tenant:eiq-vw-1791799517 role:player playerID:9fa57f6d playerID:9fa57486
+10:05:59.569631 ERROR[1] load: load-validation: Get "https://isucon.t.isucon.local/api/player/player/9fa55702": read tcp 192.168.2.9:51610->192.168.2.8:443: read: connection reset by peer tenant:isucon role:player playerID:9fa55350 playerID:9fa55702
+10:05:59.569637 ERROR[2] load: load-validation: Get "https://moeot-x-1791799513.t.isucon.local/api/player/player/9fa547a9": read tcp 192.168.2.9:51614->192.168.2.8:443: read: connection reset by peer tenant:moeot-x-1791799513 role:player playerID:9fa54abb playerID:9fa547a9
+10:05:59.569641 ERROR[3] load: load-validation: Get "https://uc-nwo-1791799509.t.isucon.local/api/player/player/9fa529c3": read tcp 192.168.2.9:51838->192.168.2.8:443: read: connection reset by peer tenant:uc-nwo-1791799509 role:player playerID:9fa528b7 playerID:9fa529c3
+10:05:59.569644 ERROR[4] load: load-validation: Get "https://c-wkx-1791799516.t.isucon.local/api/player/player/9fa5775e": read tcp 192.168.2.9:51796->192.168.2.8:443: read: connection reset by peer tenant:c-wkx-1791799516 role:player playerID:9fa56e59 playerID:9fa5775e
+10:05:59.569646 ERROR[5] load: load-validation: Get "https://tq-lamda-1791799512.t.isucon.local/api/player/player/9fa54077": read tcp 192.168.2.9:51818->192.168.2.8:443: read: connection reset by peer tenant:tq-lamda-1791799512 role:player playerID:9fa54027 playerID:9fa54077
+10:05:59.569649 ERROR[6] load: load-validation: Get "https://lk-sm-1791799518.t.isucon.local/api/player/player/9fa58b17": read tcp 192.168.2.9:51910->192.168.2.8:443: read: connection reset by peer tenant:lk-sm-1791799518 role:player playerID:9fa58e14 playerID:9fa58b17
+10:05:59.569664 ERROR[7] load: load-validation: Get "https://lfcb-auctck-1791799510.t.isucon.local/api/player/player/9fa53081": read tcp 192.168.2.9:51790->192.168.2.8:443: read: connection reset by peer tenant:lfcb-auctck-1791799510 role:player playerID:9fa52f54 playerID:9fa53081
+10:05:59.569672 ERROR[8] load: load-validation: Get "https://moeot-x-1791799513.t.isucon.local/api/player/player/9fa54ae4": read tcp 192.168.2.9:51780->192.168.2.8:443: read: connection reset by peer tenant:moeot-x-1791799513 role:player playerID:9fa54967 playerID:9fa54ae4
+10:05:59.569678 ERROR[9] load: load-validation: Get "https://rabo-vivz-1791799515.t.isucon.local/api/player/competition/9fa57cc0/ranking": read tcp 192.168.2.9:51828->192.168.2.8:443: read: connection reset by peer tenant:rabo-vivz-1791799515 role:player playerID:9fa55deb competitionID:9fa57cc0 rankAfter:
+10:05:59.569681 ERROR[10] load: load-validation: Get "https://uc-nwo-1791799509.t.isucon.local/api/player/player/9fa52a2e": read tcp 192.168.2.9:51882->192.168.2.8:443: read: connection reset by peer tenant:uc-nwo-1791799509 role:player playerID:9fa528be playerID:9fa52a2e
+10:05:59.569684 ERROR[11] load: load-validation: Get "https://fpe-q-1791799516.t.isucon.local/api/player/competition/9fa5c810/ranking": read tcp 192.168.2.9:51688->192.168.2.8:443: read: connection reset by peer tenant:fpe-q-1791799516 role:player playerID:9fa5661c competitionID:9fa5c810 rankAfter:
+10:05:59.569688 ERROR[12] load: load-validation: Get "https://l-x-1791799514.t.isucon.local/api/player/player/9fa5527e": read tcp 192.168.2.9:51810->192.168.2.8:443: read: connection reset by peer tenant:l-x-1791799514 role:player playerID:9fa5507d playerID:9fa5527e
+10:05:59.569690 ERROR[13] load: load-validation: Get "https://j-ia-1791799514.t.isucon.local/api/player/player/9fa55231": read tcp 192.168.2.9:51894->192.168.2.8:443: read: connection reset by peer tenant:j-ia-1791799514 role:player playerID:9fa5535e playerID:9fa55231
+10:05:59.569693 ERROR[14] load: load-validation: Get "https://fkmli-lltb-1791799512.t.isucon.local/api/player/player/9fa53920": read tcp 192.168.2.9:51682->192.168.2.8:443: read: connection reset by peer tenant:fkmli-lltb-1791799512 role:player playerID:9fa5381b playerID:9fa53920
+10:05:59.569695 ERROR[15] load: load-validation: Get "https://eiq-vw-1791799517.t.isucon.local/api/player/competition/9fa5a4b5/ranking": read tcp 192.168.2.9:51862->192.168.2.8:443: read: connection reset by peer tenant:eiq-vw-1791799517 role:player playerID:9fa57cc9 competitionID:9fa5a4b5 rankAfter:
+10:05:59.569701 ERROR[16] load: load-validation: Get "https://fkmli-lltb-1791799512.t.isucon.local/api/player/competition/9fa5c21d/ranking": read tcp 192.168.2.9:51666->192.168.2.8:443: read: connection reset by peer tenant:fkmli-lltb-1791799512 role:player playerID:9fa53805 competitionID:9fa5c21d rankAfter:
+10:05:59.569704 ERROR[17] load: load-validation: Get "https://lfcb-auctck-1791799510.t.isucon.local/api/player/player/9fa52fe9": read tcp 192.168.2.9:51860->192.168.2.8:443: read: connection reset by peer tenant:lfcb-auctck-1791799510 role:player playerID:9fa52f48 playerID:9fa52fe9
+10:05:59.569707 ERROR[18] load: load-validation: Get "https://tq-lamda-1791799512.t.isucon.local/api/player/player/9fa53f3a": read tcp 192.168.2.9:51774->192.168.2.8:443: read: connection reset by peer tenant:tq-lamda-1791799512 role:player playerID:9fa5402a playerID:9fa53f3a
+10:05:59.569709 ERROR[19] load: load-validation: Get "https://tq-lamda-1791799512.t.isucon.local/api/player/player/9fa53f97": read tcp 192.168.2.9:51868->192.168.2.8:443: read: connection reset by peer tenant:tq-lamda-1791799512 role:player playerID:9fa54065 playerID:9fa53f97
+10:05:59.569712 ERROR[20] load: load-validation: Get "https://ndx-ldrz-1791799513.t.isucon.local/api/player/player/9fa54340": read tcp 192.168.2.9:51702->192.168.2.8:443: read: connection reset by peer tenant:ndx-ldrz-1791799513 role:player playerID:9fa5495e playerID:9fa54340
+10:05:59.569714 ERROR[21] load: load-validation: Get "https://lfcb-auctck-1791799510.t.isucon.local/api/player/player/9fa53089": read tcp 192.168.2.9:51644->192.168.2.8:443: read: connection reset by peer tenant:lfcb-auctck-1791799510 role:player playerID:9fa52f55 playerID:9fa53089
+10:05:59.569720 ERROR[22] load: load-validation: Get "https://z-g-1791799511.t.isucon.local/api/player/player/9fa536b8": read tcp 192.168.2.9:51770->192.168.2.8:443: read: connection reset by peer tenant:z-g-1791799511 role:player playerID:9fa53646 playerID:9fa536b8
+10:05:59.569723 ERROR[23] load: load-validation: Get "https://ndx-ldrz-1791799513.t.isucon.local/api/player/player/9fa54301": read tcp 192.168.2.9:51730->192.168.2.8:443: read: connection reset by peer tenant:ndx-ldrz-1791799513 role:player playerID:9fa542ff playerID:9fa54301
+10:05:59.569726 ERROR[24] load: load-validation: Get "https://obeec-r-1791799515.t.isucon.local/api/player/competition/9fa5686d/ranking": read tcp 192.168.2.9:51846->192.168.2.8:443: read: connection reset by peer tenant:obeec-r-1791799515 role:player playerID:9fa5633f competitionID:9fa5686d rankAfter:
+10:05:59.569731 ERROR[25] load: load-validation: Get "https://dj-tyfiau-1791799510.t.isucon.local/api/player/player/9fa52d63": read tcp 192.168.2.9:51764->192.168.2.8:443: read: connection reset by peer tenant:dj-tyfiau-1791799510 role:player playerID:9fa52d36 playerID:9fa52d63
+10:05:59.569734 ERROR[26] load: load-validation: Get "https://eiq-vw-1791799517.t.isucon.local/api/player/player/9fa5755c": read tcp 192.168.2.9:51658->192.168.2.8:443: read: connection reset by peer tenant:eiq-vw-1791799517 role:player playerID:9fa57d03 playerID:9fa5755c
+10:05:59.569737 ERROR[27] load: load-validation: Get "https://z-g-1791799511.t.isucon.local/api/player/player/9fa53688": read tcp 192.168.2.9:51636->192.168.2.8:443: read: connection reset by peer tenant:z-g-1791799511 role:player playerID:9fa5366f playerID:9fa53688
+10:05:59.569740 ERROR[28] load: load-validation: Get "https://isucon.t.isucon.local/api/player/player/9fa57b53": read tcp 192.168.2.9:51754->192.168.2.8:443: read: connection reset by peer tenant:isucon role:player playerID:9fa57cb4 playerID:9fa57b53
+10:05:59.569743 ERROR[29] load: load-validation: Get "https://wiq-uommcm-1791799521.t.isucon.local/api/player/player/9fa5b945": read tcp 192.168.2.9:51626->192.168.2.8:443: read: connection reset by peer tenant:wiq-uommcm-1791799521 role:player playerID:9fa5cd32 playerID:9fa5b945
+10:05:59.569745 ERRORは最大30件まで表示しています
+[ADMIN] 10:05:59.569868 ScenarioScoreMap: map[string]int64{
+  "AdminBilling":                      580,
+  "AdminBillingValidate":              370,
+  "OrganizerNewTenant":                12735,
+  "OrganizerPeacefulTenant":           0,
+  "OrganizerPopularTenant":            560,
+  "OrganizerPopularTenantHeavyTenant": 457,
+  "Player":                            32057,
+  "PlayerHeavyTenant":                 1090,
+  "PlayerValidate":                    549,
+  "TenantBillingValidate":             399,
+}
+[ADMIN] 10:05:59.569946 WorkerCount: map[string]int{
+  "AdminBillingScenarioWorker":   1,
+  "AdminBillingValidateWorker":   1,
+  "NewTenantScenarioWorker":      26,
+  "PlayerScenarioWorker":         1557,
+  "PlayerValidateScenarioWorker": 1,
+  "PopularTenantScenarioWorker":  2,
+  "TenantBillingValidateWorker":  1,
+}
+10:05:59.569960 Error 100 (Critical:0)
+10:05:59.569962 PASSED: false
+10:05:59.569965 SCORE: 0 (+48797 -48797(100%))
+[ADMIN] 10:05:59.570065 score.ScoreTable{
+  "GET /api/admin/tenants/billing":                         343,
+  "GET /api/organizer/billing":                             251,
+  "GET /api/organizer/players/list":                        290,
+  "GET /api/player/competition/:competition_id/ranking":    10833,
+  "GET /api/player/competitions":                           1728,
+  "GET /api/player/player/:player_name":                    23613,
+  "POST /api/admin/tenants/add":                            27,
+  "POST /api/organizer/competition/:competition_id/finish": 276,
+  "POST /api/organizer/competition/:competition_id/score":  304,
+  "POST /api/organizer/competitions/add":                   297,
+  "POST /api/organizer/player/:player_name/disqualified":   10,
+  "POST /api/organizer/players/add":                        43,
+}

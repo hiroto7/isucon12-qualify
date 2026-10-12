@@ -1,0 +1,11 @@
+SCHEMA_NAME	DIGEST_TEXT	COUNT_STAR	seconds	SUM_ROWS_EXAMINED
+isuports	DELETE FROM `visit_history` WHERE `created_at` >= ?	1	0.873	3226304
+isuports	SELECT * FROM `tenant` ORDER BY `id` DESC	18	0.009	1897
+NULL	TRUNCATE TABLE `performance_schema` . `events_statements_summary_by_digest`	1	0.005	0
+NULL	SELECT `DIGEST_TEXT` , `COUNT_STAR` , `ROUND` ( `SUM_TIMER_WAIT` / ?, ... ) AS `seconds` , `SUM_ROWS_EXAMINED` FROM `performance_schema` . `events_statements_summary_by_digest` WHERE SCHEMA_NAME = ? ORDER BY `SUM_TIMER_WAIT` DESC LIMIT ?	1	0.004	10
+isuports	DELETE FROM `tenant` WHERE `id` > ?	1	0.003	6
+isuports	ALTER TABLE `id_generator` AUTO_INCREMENT = ?	1	0.003	0
+isuports	UPDATE `id_generator` SET `id` = ? WHERE `stub` = ?	1	0.002	1
+NULL	SET GLOBAL `slow_query_log` = ON	1	0.001	0
+NULL	SELECT @@`version_comment` LIMIT ?	2	0	2
+NULL	SET GLOBAL `long_query_time` = ?	1	0	0

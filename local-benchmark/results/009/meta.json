@@ -1,0 +1,30 @@
+{
+  "id": 9,
+  "label": "sqlite-partition-index",
+  "kind": "scoring",
+  "started": "2026-10-12T09:33:42.802713+00:00",
+  "commit": "513f0393d887c9865c2feddf77c9272f4ee3f95c",
+  "dirty": "M webapp/sql/init.sh\n M webapp/sql/tenant/10_schema.sql",
+  "manifest": {
+    "webapp/go/cmd/isuports/main.go": "4a606dc3c00ceaedb4120b00ccfad5818e0ffa88af0abcd4c674de1c9edd93f2",
+    "webapp/go/isuports.go": "dbc2c31c3c85ba7dcf43dc150b0f44f5e5677eb0374f9e5b97f841c0e5f77337",
+    "webapp/go/profile.go": "26d03d194cc7ede9bdb9108ffb8aa6f93b48d0d31b4c24218856141d82150eea",
+    "webapp/go/scores.go": "a27763055a24a24bd0aa462aac7aecce86f75dd554076503777cf302d5f430e0",
+    "webapp/go/scores_test.go": "d98e63254eb14a29242b1fa70ed0a39e2ac412730b331b4876d5e85aafea542f",
+    "webapp/go/sqltrace.go": "ae24baeb6b39b4bee1d554ecc68c9f8fb129580225483d4f4202b32f1b4abf66",
+    "webapp/sql/init.sh": "41b7c1d5051b71c721592238c007f343b0314c65d748f8545ab026bd80d862a9",
+    "webapp/sql/tenant/10_schema.sql": "496f84f6af3cc2d1bc7d16f7e16f1f3cce5b7da9410ffa9df3ce1e31b936c7ad"
+  },
+  "target": "192.168.2.8",
+  "passed": true,
+  "score": 1450,
+  "reported_score": 1450,
+  "status": "pass",
+  "decision": "rejected-capacity",
+  "ended": "2026-10-12T09:34:49Z",
+  "failure_reason": "Official pass but 78 errors (1 critical), FD soft limit 1024 exhausted; no acceptance of reported raw improvement",
+  "errors": 78,
+  "critical_errors": 1,
+  "raw_score": 11148,
+  "deduction_percent": 87
+}

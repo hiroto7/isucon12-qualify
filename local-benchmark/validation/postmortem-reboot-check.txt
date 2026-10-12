@@ -1,0 +1,1 @@
+PASS: identical persisted API responses before initialize, cold caches, renewed blackauth authentication and new non-overlapping ID after normal VM restart

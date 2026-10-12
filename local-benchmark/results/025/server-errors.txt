@@ -1,0 +1,1 @@
+Oct 12 20:24:36 isucon12q-app docker[234150]: webapp-1  | {"time":"2026-10-12T11:24:36.613780945Z","level":"ERROR","prefix":"echo","file":"isuports.go","line":"176","message":"error at /api/organizer/competition/:competition_id/score: insert score row: UNIQUE constraint failed: player_score.id"}

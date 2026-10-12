@@ -1,0 +1,8 @@
+[Unit]
+Description=Guest-only verified MySQL snapshot initialization
+After=network.target mysql.service
+[Service]
+ExecStart=/usr/bin/python3 /usr/local/sbin/mysql-snapshot-service.py
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target

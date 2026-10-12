@@ -1,0 +1,24 @@
+2026/10/12 19:05:58 [alert] 98519#98519: *236781 768 worker_connections are not enough while connecting to upstream, client: 192.168.2.9, server: *.t.isucon.dev, request: "GET /api/player/player/9fa5406b HTTP/2.0", upstream: "http://127.0.0.1:3000/api/player/player/9fa5406b", host: "tq-lamda-1791799512.t.isucon.local"
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:05:58 [alert] 98519#98519: 768 worker_connections are not enough
+2026/10/12 19:13:33 [notice] 144467#144467: signal process started
+2026/10/12 19:19:54 [notice] 153104#153104: signal process started
+TcpExt: SyncookiesSent SyncookiesRecv SyncookiesFailed EmbryonicRsts PruneCalled RcvPruned OfoPruned OutOfWindowIcmps LockDroppedIcmps ArpFilter TW TWRecycled TWKilled PAWSActive PAWSEstab DelayedACKs DelayedACKLocked DelayedACKLost ListenOverflows ListenDrops TCPHPHits TCPPureAcks TCPHPAcks TCPRenoRecovery TCPSackRecovery TCPSACKReneging TCPSACKReorder TCPRenoReorder TCPTSReorder TCPFullUndo TCPPartialUndo TCPDSACKUndo TCPLossUndo TCPLostRetransmit TCPRenoFailures TCPSackFailures TCPLossFailures TCPFastRetrans TCPSlowStartRetrans TCPTimeouts TCPLossProbes TCPLossProbeRecovery TCPRenoRecoveryFail TCPSackRecoveryFail TCPRcvCollapsed TCPBacklogCoalesce TCPDSACKOldSent TCPDSACKOfoSent TCPDSACKRecv TCPDSACKOfoRecv TCPAbortOnData TCPAbortOnClose TCPAbortOnMemory TCPAbortOnTimeout TCPAbortOnLinger TCPAbortFailed TCPMemoryPressures TCPMemoryPressuresChrono TCPSACKDiscard TCPDSACKIgnoredOld TCPDSACKIgnoredNoUndo TCPSpuriousRTOs TCPMD5NotFound TCPMD5Unexpected TCPMD5Failure TCPSackShifted TCPSackMerged TCPSackShiftFallback TCPBacklogDrop PFMemallocDrop TCPMinTTLDrop TCPDeferAcceptDrop IPReversePathFilter TCPTimeWaitOverflow TCPReqQFullDoCookies TCPReqQFullDrop TCPRetransFail TCPRcvCoalesce TCPOFOQueue TCPOFODrop TCPOFOMerge TCPChallengeACK TCPSYNChallenge TCPFastOpenActive TCPFastOpenActiveFail TCPFastOpenPassive TCPFastOpenPassiveFail TCPFastOpenListenOverflow TCPFastOpenCookieReqd TCPFastOpenBlackhole TCPSpuriousRtxHostQueues BusyPollRxPackets TCPAutoCorking TCPFromZeroWindowAdv TCPToZeroWindowAdv TCPWantZeroWindowAdv TCPSynRetrans TCPOrigDataSent TCPHystartTrainDetect TCPHystartTrainCwnd TCPHystartDelayDetect TCPHystartDelayCwnd TCPACKSkippedSynRecv TCPACKSkippedPAWS TCPACKSkippedSeq TCPACKSkippedFinWait2 TCPACKSkippedTimeWait TCPACKSkippedChallenge TCPWinProbe TCPKeepAlive TCPMTUPFail TCPMTUPSuccess TCPDelivered TCPDeliveredCE TCPAckCompressed TCPZeroWindowDrop TCPRcvQDrop TCPWqueueTooBig TCPFastOpenPassiveAltKey TcpTimeoutRehash TcpDuplicateDataRehash TCPDSACKRecvSegs TCPDSACKIgnoredDubious TCPMigrateReqSuccess TCPMigrateReqFailure
+TcpExt: 0 0 0 0 0 0 0 0 0 0 208493 107423 0 0 2 137873 32 8665 0 0 6243125 2670015 4957540 0 2 0 4 0 0 0 0 0 335 0 0 0 0 41 0 336 5308 2 0 0 0 4301 8665 0 3355 0 13731 344 0 0 0 0 0 0 0 0 3220 0 0 0 0 0 2 7 0 0 0 0 0 1773 0 0 0 383190 3771 0 0 1 0 0 0 0 0 0 0 0 10 0 236541 117 117 351 1 9995995 1284 29642 1 58 0 1 0 0 0 0 0 436 0 0 10495070 0 2252 0 0 0 0 336 0 3355 0 0 0
+Total: 219
+TCP:   17 (estab 6, closed 0, orphaned 0, timewait 0)
+
+Transport Total     IP        IPv6
+RAW	  1         0         1        
+UDP	  3         2         1        
+TCP	  17        13        4        
+INET	  21        15        6        
+FRAG	  0         0         0        
+

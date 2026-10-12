@@ -1,0 +1,416 @@
+[ADMIN] 09:51:04.803021 TargetURL: https://t.isucon.local, TargetAddr: 192.168.2.8:443, RequestTimeout: 30s, InitializeRequestTimeout: 30s, StrictPrepare: true, ReproduceMode: false
+[ADMIN] 09:51:06.170693 POST /initialize 200 初期化
+09:51:06.170785 初期化リクエストに成功しました 実装言語:go
+09:51:06.170804 整合性チェックを開始します
+[ADMIN] 09:51:06.283851 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 09:51:06.287703 GET /index.html 200 /index.htmlを確認
+[ADMIN] 09:51:06.289305 GET /js/app.3a4ec98c.js 200 /js/app.3a4ec98c.jsを確認
+[ADMIN] 09:51:06.289328 POST /api/admin/tenants/add 401 新規テナント作成: 不正リクエスト(exp切れのJWT)
+[ADMIN] 09:51:06.290278 GET /css/app.83b4c321.css 200 /css/app.83b4c321.cssを確認
+[ADMIN] 09:51:06.290305 staticFileCheck done
+[ADMIN] 09:51:06.323969 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 09:51:06.324758 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 09:51:06.335397 POST /api/organizer/competitions/add 200 新規大会追加)
+[ADMIN] 09:51:06.357406 POST /api/admin/tenants/add 401 新規テナント作成: 不正リクエスト(不正なRSA鍵)
+[ADMIN] 09:51:06.362561 POST /api/admin/tenants/add 401 新規テナント作成: 不正リクエスト(不正な鍵認証方式)
+[ADMIN] 09:51:06.400028 POST /api/admin/tenants/add 200 新規テナント作成
+[ADMIN] 09:51:06.405903 POST /api/organizer/competitions/add 401 新規大会追加: 不正リクエスト(存在しないテナント)
+[ADMIN] 09:51:06.411716 GET /api/player/competitions 401 テナント内の大会情報取得: 不正なリクエスト(存在しないプレイヤー)
+[ADMIN] 09:51:06.411725 invalidJWTCheck done
+[ADMIN] 09:51:06.533111 GET /api/admin/tenants/billing 200 テナント別の請求ダッシュボード: 初期データチェック
+[ADMIN] 09:51:06.533247 billingAPISuccessCheck done
+[ADMIN] 09:51:06.581128 POST /api/organizer/players/add 200 テナントへプレイヤー追加
+[ADMIN] 09:51:06.597857 GET /api/organizer/players 200 テナントのプレイヤー一覧取得
+[ADMIN] 09:51:06.601177 POST /api/organizer/competitions/add 200 新規大会追加
+[ADMIN] 09:51:06.605879 POST /api/organizer/player/9fa52503/disqualified 200 プレイヤーを失格にする
+[ADMIN] 09:51:06.614020 POST /api/organizer/competition/9fa5251c/score 200 大会結果CSV入稿
+[ADMIN] 09:51:06.621247 POST /api/organizer/competition/9fa5251c/score 200 大会結果CSV入稿
+[ADMIN] 09:51:06.625547 GET /api/player/competition/9fa5251c/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:51:06.626655 GET /api/player/competition/9fa5251c/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:51:06.627715 GET /api/player/competition/9fa5251c/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:51:06.628564 GET /api/player/competition/9fa5251c/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:51:06.631018 GET /api/player/competition/9fa5251c/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:51:06.632140 POST /api/organizer/players/add 200 テナントへプレイヤー101人追加
+[ADMIN] 09:51:06.633527 GET /api/player/competition/9fa5251c/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:51:06.634861 GET /api/player/competition/9fa5251c/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:51:06.636591 GET /api/player/competition/9fa5251c/ranking 200 大会内のランキング取得: 入稿と同時
+[ADMIN] 09:51:06.638342 GET /api/player/player/9fa5240d 200 プレイヤーと戦績情報取得: 入稿後
+[ADMIN] 09:51:06.641405 POST /api/organizer/competition/9fa5240a/score 200 大会結果CSV入稿
+[ADMIN] 09:51:06.641747 GET /api/player/competition/9fa5251c/ranking 200 大会内のランキング取得: ページングなし
+[ADMIN] 09:51:06.644630 POST /api/organizer/players/add 200 テナントへプレイヤー追加
+[ADMIN] 09:51:06.645981 POST /api/admin/tenants/add 400 新規テナント作成 不正リクエスト
+[ADMIN] 09:51:06.647639 POST /api/admin/tenants/add 400 新規テナント作成 不正リクエスト
+[ADMIN] 09:51:06.648966 GET /api/player/competition/9fa5251c/ranking 200 大会内のランキング取得: スコア未登録プレイヤー
+[ADMIN] 09:51:06.649993 POST /api/organizer/player/0000000000/disqualified 404 プレイヤーを失格にする: 不正リクエスト(存在しないプレイヤー)
+[ADMIN] 09:51:06.650356 GET /api/player/competition/9fa5240a/ranking 200 大会内のランキング取得: ページングなし,上限100件
+[ADMIN] 09:51:06.654429 POST /api/organizer/competitions/add 200 新規大会追加
+[ADMIN] 09:51:06.654945 GET /api/player/competition/9fa5240a/ranking 200 大会内のランキング取得: ページングあり
+[ADMIN] 09:51:06.655065 POST /api/organizer/competition/9fa5251c/finish 200 大会終了
+[ADMIN] 09:51:06.655080 allAPISuccessCheck sleep 3s
+[ADMIN] 09:51:06.655514 POST /api/organizer/competition/0000000000/score 404 大会結果CSV入稿: 不正リクエスト(存在しない大会)
+[ADMIN] 09:51:06.656217 GET /api/player/player/9fa5246d 200 プレイヤーと戦績情報取得
+[ADMIN] 09:51:06.656840 POST /api/organizer/competition/9fa5265b/score 400 大会結果CSV入稿: 不正リクエスト(存在しないプレイヤー)
+[ADMIN] 09:51:06.657687 POST /api/organizer/competition/9fa5265b/score 400 大会結果CSV入稿: 不正リクエスト(カラムの並び順が違う)
+[ADMIN] 09:51:06.658506 POST /api/organizer/competition/9fa5265b/score 400 大会結果CSV入稿: 不正リクエスト(余計なカラムがあるCSV)
+[ADMIN] 09:51:06.662065 POST /api/organizer/competition/9fa5240a/score 200 大会結果CSV入稿
+[ADMIN] 09:51:06.663156 GET /api/player/player/0000000000 404 プレイヤーと戦績情報取得
+[ADMIN] 09:51:06.664503 GET /api/player/competition/0000000000/ranking 404 大会内のランキング取得
+[ADMIN] 09:51:06.665094 GET /api/player/competition/9fa5240a/ranking 200 大会内のランキング取得: ページングなし,上限100件
+[ADMIN] 09:51:06.666770 GET /api/player/player/9fa5246d 200 プレイヤーと戦績情報取得
+[ADMIN] 09:51:06.667720 POST /api/organizer/player/9fa52659/disqualified 200 プレイヤーを失格にする
+[ADMIN] 09:51:06.671298 GET /api/player/competition/9fa5265b/ranking 403 大会内のランキング取得: 失格済みプレイヤー
+[ADMIN] 09:51:06.672504 POST /api/organizer/competition/0000000000/finish 404 大会終了: 不正リクエスト(存在しない大会)
+[ADMIN] 09:51:06.673357 POST /api/organizer/competition/9fa5240a/score 200 大会結果CSV入稿
+[ADMIN] 09:51:06.675816 POST /api/organizer/competition/9fa5265b/finish 200 大会終了
+[ADMIN] 09:51:06.677209 POST /api/organizer/competition/9fa5265b/score 400 大会結果CSV入稿: 不正リクエスト(終了済みの大会)
+[ADMIN] 09:51:06.677212 badRequestCheck done
+[ADMIN] 09:51:06.677636 GET /api/player/competition/9fa5240a/ranking 200 大会内のランキング取得: ページングなし,上限100件
+[ADMIN] 09:51:06.677829 rankingCheck done
+[ADMIN] 09:51:09.666098 GET /api/player/competition/9fa5251c/ranking 200 大会内のランキング取得: ランキングが正しいことを確認
+[ADMIN] 09:51:09.669823 GET /api/organizer/billing 200 テナント内の請求情報
+[ADMIN] 09:51:09.671623 GET /api/player/competitions 200 テナント内の大会情報取得
+[ADMIN] 09:51:09.673335 GET /api/organizer/competitions 200 テナント管理者API テナント内の大会一覧取得
+[ADMIN] 09:51:09.764285 GET /api/admin/tenants/billing 200 テナント別の請求ダッシュボード(最大10件)
+[ADMIN] 09:51:09.783180 GET /api/organizer/billing 200 テナント内の請求情報
+[ADMIN] 09:51:09.783278 allAPISuccessCheck done
+09:51:09.783290 整合性チェックを終了します
+[ADMIN] 09:51:09.783298 Scenario:validation elapsed:3.612492467s
+09:51:09.783300 整合性チェックに成功しました
+09:51:09.783314 負荷走行を開始します
+[ADMIN] 09:51:09.784237 OrganizerPopularTenant j-jpeqh-28
+[ADMIN] 09:51:09.855550 [TenantBillingValidate] [tenant:fjeph-ijv-1791798669] Playerを追加します players: 100
+[ADMIN] 09:51:12.700279 OrganizerPopularTenantHeavyTenant isucon
+09:51:14.783969 大会「太麺がヤバい vol.9」を作成しました。参加者が増えます。 (類似のログ計11件)
+[ADMIN] 09:51:14.784038 workerを追加しました [TenantBillingValidateWorker](num:1)
+[ADMIN] 09:51:14.784047 workerを追加しました [PopularTenantScenarioWorker](num:2)
+[ADMIN] 09:51:14.784047 workerを追加しました [AdminBillingScenarioWorker](num:1)
+[ADMIN] 09:51:14.784048 workerを追加しました [NewTenantScenarioWorker](num:2)
+[ADMIN] 09:51:14.784049 workerを追加しました [PlayerValidateScenarioWorker](num:1)
+[ADMIN] 09:51:14.784050 workerを追加しました [PlayerScenarioWorker](num:49)
+[ADMIN] 09:51:14.784050 workerを追加しました [AdminBillingValidateWorker](num:1)
+09:51:14.784049 参加者が49人増えました
+09:51:14.784052 テナント「チームハイパーJSON色付け山」を作成しました (類似のログ計2件)
+09:51:19.783793 大会「たべられないパパイヤの楽園杯」を作成しました。参加者が増えます。 (類似のログ計12件)
+[ADMIN] 09:51:19.783803 workerを追加しました [NewTenantScenarioWorker](num:2)
+09:51:19.783812 参加者が61人増えました
+[ADMIN] 09:51:19.783814 workerを追加しました [PlayerScenarioWorker](num:61)
+09:51:19.783816 テナント「リリー物語」を作成しました (類似のログ計2件)
+09:51:24.784177 大会「池袋神社 vol.2」を作成しました。参加者が増えます。 (類似のログ計18件)
+09:51:24.784201 テナント「JSON色付けず」を作成しました (類似のログ計1件)
+[ADMIN] 09:51:24.784204 workerを追加しました [PlayerScenarioWorker](num:91)
+[ADMIN] 09:51:24.784206 workerを追加しました [NewTenantScenarioWorker](num:1)
+09:51:24.784207 参加者が91人増えました
+09:51:29.784006 大会「スパゲッティ整骨院」を作成しました。参加者が増えます。 (類似のログ計17件)
+09:51:29.784037 テナント「エール.java」を作成しました (類似のログ計1件)
+[ADMIN] 09:51:29.784041 workerを追加しました [PlayerScenarioWorker](num:91)
+[ADMIN] 09:51:29.784043 workerを追加しました [NewTenantScenarioWorker](num:1)
+09:51:29.784045 参加者が91人増えました
+[ADMIN] 09:51:34.784387 workerを追加しました [PlayerScenarioWorker](num:121)
+09:51:34.784281 大会「甘みシスターズ vol.1」を作成しました。参加者が増えます。 (類似のログ計23件)
+09:51:34.784398 参加者が121人増えました
+[ADMIN] 09:51:39.783356 workerを追加しました [PlayerScenarioWorker](num:115)
+09:51:39.783354 大会「第4回 自作キーボードの5秒前」を作成しました。参加者が増えます。 (類似のログ計21件)
+[ADMIN] 09:51:39.783375 workerを追加しました [NewTenantScenarioWorker](num:1)
+09:51:39.783366 テナント「THEミニトマトスターズ」を作成しました (類似のログ計1件)
+09:51:39.783469 参加者が115人増えました
+09:51:44.784342 大会「腹筋ブラザーズ大会」を作成しました。参加者が増えます。 (類似のログ計23件)
+[ADMIN] 09:51:44.784365 workerを追加しました [PlayerScenarioWorker](num:121)
+09:51:44.784368 参加者が121人増えました
+09:51:49.783402 大会「空から高学歴君」を作成しました。参加者が増えます。 (類似のログ計20件)
+09:51:49.783418 テナント「多重リリーメランコリー」を作成しました (類似のログ計1件)
+[ADMIN] 09:51:49.783421 workerを追加しました [PlayerScenarioWorker](num:114)
+[ADMIN] 09:51:49.783423 workerを追加しました [NewTenantScenarioWorker](num:1)
+09:51:49.783425 参加者が114人増えました
+09:51:51.511283 error: 大会内のランキング取得 Get "https://ult-zgayzx-35.t.isucon.local/api/player/competition/9fa6207d/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:ult-zgayzx-35 role:player playerID:1239d7971 competitionID:9fa6207d rankAfter:
+09:51:51.511392 error: 大会内のランキング取得 Get "https://ult-zgayzx-35.t.isucon.local/api/player/competition/9fa6207d/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:ult-zgayzx-35 role:player playerID:31b497243 competitionID:9fa6207d rankAfter:
+[ADMIN] 09:51:51.511445 Normal Error
+09:51:51.511952 error: 大会内のランキング取得 Get "https://ult-zgayzx-35.t.isucon.local/api/player/competition/9fa6207d/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:ult-zgayzx-35 role:player playerID:3821cfe1d competitionID:9fa6207d rankAfter:
+09:51:51.512104 error: 大会内のランキング取得 Get "https://ult-zgayzx-35.t.isucon.local/api/player/competition/9fa6207d/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:ult-zgayzx-35 role:player playerID:2c85e2e3c competitionID:9fa6207d rankAfter:
+[ADMIN] 09:51:51.512112 Normal Error
+[ADMIN] 09:51:51.512117 Normal Error
+[ADMIN] 09:51:51.512121 Normal Error
+09:51:51.512245 error: テナント内の大会情報取得 Get "https://ult-zgayzx-35.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:ult-zgayzx-35 role:player playerID:6244734aa 
+[ADMIN] 09:51:51.512257 Normal Error
+09:51:51.512859 error: 大会内のランキング取得 Get "https://ult-zgayzx-35.t.isucon.local/api/player/competition/9fa6207d/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:ult-zgayzx-35 role:player playerID:3fb53445f competitionID:9fa6207d rankAfter:
+[ADMIN] 09:51:51.512871 Normal Error
+09:51:51.512993 error: 大会内のランキング取得 Get "https://ult-zgayzx-35.t.isucon.local/api/player/competition/9fa6207d/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:ult-zgayzx-35 role:player playerID:5d7f082ee competitionID:9fa6207d rankAfter:
+[ADMIN] 09:51:51.513004 Normal Error
+09:51:51.724708 error: テナント内の大会情報取得 Get "https://cnng-kyv-1791798706.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:cnng-kyv-1791798706 role:player playerID:9fa60798 
+[ADMIN] 09:51:51.724793 Normal Error
+09:51:51.725236 error: 大会内のランキング取得 Get "https://cnng-kyv-1791798706.t.isucon.local/api/player/competition/9fa62289/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:cnng-kyv-1791798706 role:player playerID:9fa60795 competitionID:9fa62289 rankAfter:
+[ADMIN] 09:51:51.725252 Normal Error
+09:51:51.725620 error: テナント内の大会情報取得 Get "https://cnng-kyv-1791798706.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:cnng-kyv-1791798706 role:player playerID:9fa60797 
+[ADMIN] 09:51:51.725635 Normal Error
+09:51:52.132629 error: 大会内のランキング取得 Get "https://katic-oq-1791798683.t.isucon.local/api/player/competition/9fa623d4/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:katic-oq-1791798683 role:player playerID:9fa56c0d competitionID:9fa623d4 rankAfter:
+[ADMIN] 09:51:52.132654 Normal Error
+09:51:52.132932 error: 大会内のランキング取得 Get "https://katic-oq-1791798683.t.isucon.local/api/player/competition/9fa623d4/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:katic-oq-1791798683 role:player playerID:9fa56c0a competitionID:9fa623d4 rankAfter:
+[ADMIN] 09:51:52.133132 Normal Error
+09:51:52.133411 error: 大会内のランキング取得 Get "https://fjeph-ijv-1791798669.t.isucon.local/api/player/competition/9fa623b5/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:fjeph-ijv-1791798669 role:player playerID:9fa5294c competitionID:9fa623b5 rankAfter:
+[ADMIN] 09:51:52.133425 Normal Error
+09:51:52.133827 error: テナント内の大会情報取得 Get "https://katic-oq-1791798683.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:katic-oq-1791798683 role:player playerID:9fa56bf8 
+09:51:52.133850 error: テナント内の大会情報取得 Get "https://katic-oq-1791798683.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:katic-oq-1791798683 role:player playerID:9fa56bfc 
+[ADMIN] 09:51:52.133859 Normal Error
+[ADMIN] 09:51:52.133864 Normal Error
+09:51:52.134656 error: テナント内の大会情報取得 Get "https://katic-oq-1791798683.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:katic-oq-1791798683 role:player playerID:9fa56bf9 
+[ADMIN] 09:51:52.134667 Normal Error
+09:51:52.182173 error: テナント内の大会情報取得 Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa54141 
+09:51:52.182456 error: 大会内のランキング取得 Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competition/9fa623da/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa54179 competitionID:9fa623da rankAfter:
+09:51:52.182922 error: テナント内の大会情報取得 Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa5413d 
+09:51:52.182984 error: テナント内の大会情報取得 Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa5413e 
+09:51:52.183053 error: 大会内のランキング取得 Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competition/9fa623da/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa54150 competitionID:9fa623da rankAfter:
+09:51:52.183713 error: テナント内の大会情報取得 Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa5413c 
+09:51:52.183909 error: テナント内の大会情報取得 Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa5413f 
+[ADMIN] 09:51:52.183925 Normal Error
+[ADMIN] 09:51:52.183931 Normal Error
+[ADMIN] 09:51:52.183939 Normal Error
+[ADMIN] 09:51:52.183943 Normal Error
+[ADMIN] 09:51:52.183946 Normal Error
+[ADMIN] 09:51:52.183949 Normal Error
+[ADMIN] 09:51:52.183952 Normal Error
+09:51:52.184541 error: 大会内のランキング取得 Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competition/9fa623da/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa540d3 competitionID:9fa623da rankAfter:
+[ADMIN] 09:51:52.184553 Normal Error
+09:51:52.184664 error: テナント内の大会情報取得 Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa54140 
+[ADMIN] 09:51:52.184675 Normal Error
+09:51:52.185465 error: 大会内のランキング取得 Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competition/9fa623da/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa54155 competitionID:9fa623da rankAfter:
+[ADMIN] 09:51:52.185477 Normal Error
+09:51:52.187604 error: 大会内のランキング取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competition/9fa623db/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa55260 competitionID:9fa623db rankAfter:
+[ADMIN] 09:51:52.187618 Normal Error
+09:51:52.187657 error: テナント内の大会情報取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa552f6 
+09:51:52.187858 error: テナント内の大会情報取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa552ee 
+09:51:52.188387 error: 大会内のランキング取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competition/9fa623db/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa55274 competitionID:9fa623db rankAfter:
+09:51:52.188452 error: テナント内の大会情報取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa552f0 
+09:51:52.189234 error: 大会内のランキング取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competition/9fa623db/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa552de competitionID:9fa623db rankAfter:
+09:51:52.189305 error: テナント内の大会情報取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa552f1 
+[ADMIN] 09:51:52.189318 Normal Error
+[ADMIN] 09:51:52.189325 Normal Error
+[ADMIN] 09:51:52.189329 Normal Error
+[ADMIN] 09:51:52.189332 Normal Error
+[ADMIN] 09:51:52.189337 Normal Error
+[ADMIN] 09:51:52.189340 Normal Error
+09:51:52.189351 error: 大会内のランキング取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competition/9fa623db/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa5526b competitionID:9fa623db rankAfter:
+[ADMIN] 09:51:52.189359 Normal Error
+09:51:52.190069 error: テナント内の大会情報取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa552ec 
+09:51:52.190074 error: テナント内の大会情報取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa552f4 
+[ADMIN] 09:51:52.190207 Normal Error
+[ADMIN] 09:51:52.190339 Normal Error
+09:51:52.254119 error: テナント内の大会情報取得 Get "https://isucon.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:isucon role:player playerID:9fa61fd9 
+09:51:52.254227 error: 大会内のランキング取得 Get "https://isucon.t.isucon.local/api/player/competition/9fa623c4/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:isucon role:player playerID:9fa57e97 competitionID:9fa623c4 rankAfter:
+09:51:52.254566 error: 大会内のランキング取得 Get "https://isucon.t.isucon.local/api/player/competition/9fa623c4/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:isucon role:player playerID:9fa62060 competitionID:9fa623c4 rankAfter:
+[ADMIN] 09:51:52.254994 Normal Error
+09:51:52.255009 error: テナント内の大会情報取得 Get "https://isucon.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:isucon role:player playerID:9fa61fda 
+[ADMIN] 09:51:52.255019 Normal Error
+[ADMIN] 09:51:52.255023 Normal Error
+[ADMIN] 09:51:52.255027 Normal Error
+09:51:52.255068 error: テナント内の大会情報取得 Get "https://isucon.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:isucon role:player playerID:9fa61fd8 
+09:51:52.255499 error: 大会内のランキング取得 Get "https://isucon.t.isucon.local/api/player/competition/9fa623c4/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:isucon role:player playerID:9fa57e80 competitionID:9fa623c4 rankAfter:
+09:51:52.255682 error: 大会内のランキング取得 Get "https://isucon.t.isucon.local/api/player/competition/9fa623c4/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:isucon role:player playerID:9fa57e75 competitionID:9fa623c4 rankAfter:
+[ADMIN] 09:51:52.255697 Normal Error
+[ADMIN] 09:51:52.255701 Normal Error
+[ADMIN] 09:51:52.255704 Normal Error
+09:51:52.256316 error: テナント内の大会情報取得 Get "https://isucon.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:isucon role:player playerID:9fa61fd7 
+[ADMIN] 09:51:52.256332 Normal Error
+09:51:52.257613 error: テナント内の大会情報取得 Get "https://isucon.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:isucon role:player playerID:9fa61fd6 
+[ADMIN] 09:51:52.257626 Normal Error
+09:51:52.415111 error: 大会内のランキング取得 Get "https://qtosz-lzgs-1791798689.t.isucon.local/api/player/competition/9fa62a1a/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:qtosz-lzgs-1791798689 role:player playerID:9fa58fb2 competitionID:9fa62a1a rankAfter:
+[ADMIN] 09:51:52.415137 Normal Error
+09:51:52.415709 error: テナント内の大会情報取得 Get "https://qtosz-lzgs-1791798689.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:qtosz-lzgs-1791798689 role:player playerID:9fa58e03 
+[ADMIN] 09:51:52.415725 Normal Error
+09:51:52.415921 error: テナント内の大会情報取得 Get "https://qtosz-lzgs-1791798689.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:qtosz-lzgs-1791798689 role:player playerID:9fa58e02 
+[ADMIN] 09:51:52.415932 Normal Error
+09:51:52.416009 error: テナント内の大会情報取得 Get "https://qtosz-lzgs-1791798689.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:qtosz-lzgs-1791798689 role:player playerID:9fa58e01 
+[ADMIN] 09:51:52.416021 Normal Error
+[ADMIN] 09:51:53.339905 [TenantBillingValidate] [tenant:wfxc-uey-1791798713] Playerを追加します players: 100
+[ADMIN] 09:51:54.780386 OrganizerPopularTenantHeavyTenant isucon
+09:51:54.783345 大会「キウイ倶楽部」を作成しました。参加者が増えます。 (類似のログ計19件)
+[ADMIN] 09:51:54.783359 workerを追加しました [PlayerScenarioWorker](num:103)
+09:51:54.783362 参加者が103人増えました
+09:51:55.403575 error: 大会内のランキング取得 Get "https://vkjm-epxmbq-1791798672.t.isucon.local/api/player/competition/9fa63b58/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:vkjm-epxmbq-1791798672 role:player playerID:9fa53212 competitionID:9fa63b58 rankAfter:
+[ADMIN] 09:51:55.403624 Normal Error
+09:51:55.404132 error: 大会内のランキング取得 Get "https://vkjm-epxmbq-1791798672.t.isucon.local/api/player/competition/9fa63b58/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:vkjm-epxmbq-1791798672 role:player playerID:9fa531f7 competitionID:9fa63b58 rankAfter:
+09:51:55.404435 error: テナント内の大会情報取得 Get "https://vkjm-epxmbq-1791798672.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:vkjm-epxmbq-1791798672 role:player playerID:9fa531fc 
+09:51:55.404478 error: テナント内の大会情報取得 Get "https://vkjm-epxmbq-1791798672.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:vkjm-epxmbq-1791798672 role:player playerID:9fa531f7 
+[ADMIN] 09:51:55.404493 Normal Error
+09:51:55.405080 error: 大会内のランキング取得 Get "https://vkjm-epxmbq-1791798672.t.isucon.local/api/player/competition/9fa63b58/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:vkjm-epxmbq-1791798672 role:player playerID:9fa531ff competitionID:9fa63b58 rankAfter:
+[ADMIN] 09:51:55.405096 Normal Error
+09:51:55.405287 error: テナント内の大会情報取得 Get "https://vkjm-epxmbq-1791798672.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:vkjm-epxmbq-1791798672 role:player playerID:9fa531fa 
+[ADMIN] 09:51:55.405297 Normal Error
+[ADMIN] 09:51:55.405303 Normal Error
+[ADMIN] 09:51:55.405308 Normal Error
+09:51:55.405641 error: テナント内の大会情報取得 Get "https://vkjm-epxmbq-1791798672.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:vkjm-epxmbq-1791798672 role:player playerID:9fa531f9 
+09:51:55.405663 error: テナント内の大会情報取得 Get "https://vkjm-epxmbq-1791798672.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:vkjm-epxmbq-1791798672 role:player playerID:9fa531f8 
+[ADMIN] 09:51:55.405680 Normal Error
+[ADMIN] 09:51:55.405692 Normal Error
+09:51:55.406238 error: テナント内の大会情報取得 Get "https://vkjm-epxmbq-1791798672.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:vkjm-epxmbq-1791798672 role:player playerID:9fa531fb 
+[ADMIN] 09:51:55.406250 Normal Error
+09:51:57.420927 error: テナント内の大会情報取得 Get "https://katic-oq-1791798683.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:katic-oq-1791798683 role:player playerID:9fa64287 
+09:51:57.421606 error: テナント内の大会情報取得 Get "https://katic-oq-1791798683.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:katic-oq-1791798683 role:player playerID:9fa64296 
+09:51:57.421954 error: テナント内の大会情報取得 Get "https://katic-oq-1791798683.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:katic-oq-1791798683 role:player playerID:9fa6428d 
+[ADMIN] 09:51:57.421970 Normal Error
+[ADMIN] 09:51:57.421987 Normal Error
+[ADMIN] 09:51:57.421991 Normal Error
+09:51:57.422414 error: テナント内の大会情報取得 Get "https://katic-oq-1791798683.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:katic-oq-1791798683 role:player playerID:9fa6429a 
+[ADMIN] 09:51:57.422427 Normal Error
+09:51:57.422472 error: 大会内のランキング取得 Get "https://katic-oq-1791798683.t.isucon.local/api/player/competition/9fa64745/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:katic-oq-1791798683 role:player playerID:9fa642cd competitionID:9fa64745 rankAfter:
+[ADMIN] 09:51:57.422484 Normal Error
+09:51:57.422783 error: 大会内のランキング取得 Get "https://katic-oq-1791798683.t.isucon.local/api/player/competition/9fa64745/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:katic-oq-1791798683 role:player playerID:9fa56bc1 competitionID:9fa64745 rankAfter:
+[ADMIN] 09:51:57.422800 Normal Error
+09:51:57.619944 error: 大会内のランキング取得 Get "https://qtosz-lzgs-1791798689.t.isucon.local/api/player/competition/9fa64771/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:qtosz-lzgs-1791798689 role:player playerID:9fa64057 competitionID:9fa64771 rankAfter:
+[ADMIN] 09:51:57.620000 Normal Error
+09:51:57.620626 error: テナント内の大会情報取得 Get "https://qtosz-lzgs-1791798689.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:qtosz-lzgs-1791798689 role:player playerID:9fa6428a 
+09:51:57.620640 error: テナント内の大会情報取得 Get "https://qtosz-lzgs-1791798689.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:qtosz-lzgs-1791798689 role:player playerID:9fa64280 
+09:51:57.621440 error: テナント内の大会情報取得 Get "https://qtosz-lzgs-1791798689.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:qtosz-lzgs-1791798689 role:player playerID:9fa64285 
+[ADMIN] 09:51:57.621459 Normal Error
+[ADMIN] 09:51:57.621465 Normal Error
+[ADMIN] 09:51:57.621469 Normal Error
+09:51:57.621607 error: テナント内の大会情報取得 Get "https://qtosz-lzgs-1791798689.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:qtosz-lzgs-1791798689 role:player playerID:9fa64295 
+[ADMIN] 09:51:57.621618 Normal Error
+09:51:57.621719 error: テナント内の大会情報取得 Get "https://qtosz-lzgs-1791798689.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:qtosz-lzgs-1791798689 role:player playerID:9fa6429d 
+[ADMIN] 09:51:57.621731 Normal Error
+09:51:57.622242 error: テナント内の大会情報取得 Get "https://qtosz-lzgs-1791798689.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:qtosz-lzgs-1791798689 role:player playerID:9fa6428e 
+[ADMIN] 09:51:57.622254 Normal Error
+09:51:58.487394 error: テナント内の大会情報取得 Get "https://yqn-laxsec-1791798669.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:yqn-laxsec-1791798669 role:player playerID:9fa52b09 
+09:51:58.487489 error: 大会内のランキング取得 Get "https://yqn-laxsec-1791798669.t.isucon.local/api/player/competition/9fa6501e/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:yqn-laxsec-1791798669 role:player playerID:9fa5295d competitionID:9fa6501e rankAfter:
+09:51:58.487836 error: テナント内の大会情報取得 Get "https://yqn-laxsec-1791798669.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:yqn-laxsec-1791798669 role:player playerID:9fa52b0d 
+09:51:58.487880 error: テナント内の大会情報取得 Get "https://yqn-laxsec-1791798669.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:yqn-laxsec-1791798669 role:player playerID:9fa52b0b 
+[ADMIN] 09:51:58.487898 Normal Error
+[ADMIN] 09:51:58.487902 Normal Error
+[ADMIN] 09:51:58.487906 Normal Error
+[ADMIN] 09:51:58.487909 Normal Error
+09:51:58.488202 error: テナント内の大会情報取得 Get "https://yqn-laxsec-1791798669.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:yqn-laxsec-1791798669 role:player playerID:9fa52b06 
+[ADMIN] 09:51:58.488212 Normal Error
+09:51:58.489080 error: テナント内の大会情報取得 Get "https://yqn-laxsec-1791798669.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:yqn-laxsec-1791798669 role:player playerID:9fa52b08 
+[ADMIN] 09:51:58.489096 Normal Error
+09:51:58.489217 error: テナント内の大会情報取得 Get "https://yqn-laxsec-1791798669.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:yqn-laxsec-1791798669 role:player playerID:9fa52b0c 
+[ADMIN] 09:51:58.489229 Normal Error
+09:51:59.573993 error: 大会内のランキング取得 Get "https://cnng-kyv-1791798706.t.isucon.local/api/player/competition/9fa653c2/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:cnng-kyv-1791798706 role:player playerID:9fa63d8c competitionID:9fa653c2 rankAfter:
+09:51:59.574062 error: テナント内の大会情報取得 Get "https://cnng-kyv-1791798706.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:cnng-kyv-1791798706 role:player playerID:9fa64298 
+[ADMIN] 09:51:59.574263 Normal Error
+[ADMIN] 09:51:59.574271 Normal Error
+09:51:59.574286 error: 大会内のランキング取得 Get "https://cnng-kyv-1791798706.t.isucon.local/api/player/competition/9fa653c2/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:cnng-kyv-1791798706 role:player playerID:9fa64013 competitionID:9fa653c2 rankAfter:
+[ADMIN] 09:51:59.574295 Normal Error
+09:51:59.574770 error: 大会内のランキング取得 Get "https://cnng-kyv-1791798706.t.isucon.local/api/player/competition/9fa653c2/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:cnng-kyv-1791798706 role:player playerID:9fa63d28 competitionID:9fa653c2 rankAfter:
+[ADMIN] 09:51:59.574790 Normal Error
+09:51:59.574840 error: テナント内の大会情報取得 Get "https://cnng-kyv-1791798706.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:cnng-kyv-1791798706 role:player playerID:9fa6429c 
+[ADMIN] 09:51:59.574852 Normal Error
+09:51:59.575076 error: テナント内の大会情報取得 Get "https://cnng-kyv-1791798706.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:cnng-kyv-1791798706 role:player playerID:9fa642a3 
+[ADMIN] 09:51:59.575085 Normal Error
+09:51:59.575575 error: テナント内の大会情報取得 Get "https://cnng-kyv-1791798706.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:cnng-kyv-1791798706 role:player playerID:9fa642a5 
+[ADMIN] 09:51:59.575586 Normal Error
+09:51:59.576374 error: テナント内の大会情報取得 Get "https://cnng-kyv-1791798706.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:cnng-kyv-1791798706 role:player playerID:9fa6429f 
+[ADMIN] 09:51:59.576386 Normal Error
+09:51:59.625920 error: テナント内の大会情報取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa63e05 
+09:51:59.626524 error: 大会内のランキング取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competition/9fa653c3/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa639f8 competitionID:9fa653c3 rankAfter:
+09:51:59.626748 error: 大会内のランキング取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competition/9fa653c3/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa550a8 competitionID:9fa653c3 rankAfter:
+09:51:59.627308 error: 大会内のランキング取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competition/9fa653c3/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa63d1a competitionID:9fa653c3 rankAfter:
+09:51:59.628085 error: 大会内のランキング取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competition/9fa653c3/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa639f4 competitionID:9fa653c3 rankAfter:
+09:51:59.628204 error: 大会内のランキング取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competition/9fa653c3/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa552de competitionID:9fa653c3 rankAfter:
+09:51:59.628993 error: テナント内の大会情報取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa63dfd 
+09:51:59.629206 error: テナント内の大会情報取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa63df4 
+[ADMIN] 09:51:59.629566 Normal Error
+[ADMIN] 09:51:59.629571 Normal Error
+[ADMIN] 09:51:59.629575 Normal Error
+[ADMIN] 09:51:59.629578 Normal Error
+[ADMIN] 09:51:59.629581 Normal Error
+[ADMIN] 09:51:59.629585 Normal Error
+[ADMIN] 09:51:59.629588 Normal Error
+[ADMIN] 09:51:59.629591 Normal Error
+09:51:59.629604 error: テナント内の大会情報取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa63def 
+[ADMIN] 09:51:59.629618 Normal Error
+09:51:59.630384 error: テナント内の大会情報取得 Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa63df1 
+[ADMIN] 09:51:59.630432 Normal Error
+09:51:59.659943 error: 大会内のランキング取得 Get "https://vx-ssfnl-1791798695.t.isucon.local/api/player/competition/9fa655cf/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:vx-ssfnl-1791798695 role:player playerID:9fa5baf0 competitionID:9fa655cf rankAfter:
+[ADMIN] 09:51:59.659967 Normal Error
+09:51:59.660455 error: テナント内の大会情報取得 Get "https://vx-ssfnl-1791798695.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:vx-ssfnl-1791798695 role:player playerID:9fa5bc87 
+09:51:59.660576 error: 大会内のランキング取得 Get "https://vx-ssfnl-1791798695.t.isucon.local/api/player/competition/9fa655cf/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:vx-ssfnl-1791798695 role:player playerID:9fa5bd0b competitionID:9fa655cf rankAfter:
+09:51:59.660770 error: 大会内のランキング取得 Get "https://vx-ssfnl-1791798695.t.isucon.local/api/player/competition/9fa655cf/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:vx-ssfnl-1791798695 role:player playerID:9fa5c2d4 competitionID:9fa655cf rankAfter:
+09:51:59.661304 error: テナント内の大会情報取得 Get "https://vx-ssfnl-1791798695.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:vx-ssfnl-1791798695 role:player playerID:9fa5bc82 
+09:51:59.661741 error: テナント内の大会情報取得 Get "https://vx-ssfnl-1791798695.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:vx-ssfnl-1791798695 role:player playerID:9fa5bc83 
+09:51:59.662090 error: テナント内の大会情報取得 Get "https://vx-ssfnl-1791798695.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:vx-ssfnl-1791798695 role:player playerID:9fa5bc86 
+[ADMIN] 09:51:59.662101 Normal Error
+[ADMIN] 09:51:59.662105 Normal Error
+[ADMIN] 09:51:59.662108 Normal Error
+09:51:59.662110 エラーによる減点が100%になったので負荷走行を打ち切ります
+09:51:59.662113 負荷走行を終了します
+09:51:59.662125 error: 大会内のランキング取得 Get "https://vx-ssfnl-1791798695.t.isucon.local/api/player/competition/9fa655cf/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:vx-ssfnl-1791798695 role:player playerID:9fa5bd2b competitionID:9fa655cf rankAfter:
+[ADMIN] 09:51:59.668245 負荷走行を終了しました
+09:52:00.678492 ERROR[0] load: load-validation: Get "https://ult-zgayzx-35.t.isucon.local/api/player/competition/9fa6207d/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:ult-zgayzx-35 role:player playerID:1239d7971 competitionID:9fa6207d rankAfter:
+09:52:00.678507 ERROR[1] load: load-validation: Get "https://ult-zgayzx-35.t.isucon.local/api/player/competition/9fa6207d/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:ult-zgayzx-35 role:player playerID:31b497243 competitionID:9fa6207d rankAfter:
+09:52:00.678509 ERROR[2] load: load-validation: Get "https://ult-zgayzx-35.t.isucon.local/api/player/competition/9fa6207d/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:ult-zgayzx-35 role:player playerID:3821cfe1d competitionID:9fa6207d rankAfter:
+09:52:00.678510 ERROR[3] load: load-validation: Get "https://ult-zgayzx-35.t.isucon.local/api/player/competition/9fa6207d/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:ult-zgayzx-35 role:player playerID:2c85e2e3c competitionID:9fa6207d rankAfter:
+09:52:00.678514 ERROR[4] load: load-validation: Get "https://ult-zgayzx-35.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:ult-zgayzx-35 role:player playerID:6244734aa 
+09:52:00.678523 ERROR[5] load: load-validation: Get "https://ult-zgayzx-35.t.isucon.local/api/player/competition/9fa6207d/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:ult-zgayzx-35 role:player playerID:3fb53445f competitionID:9fa6207d rankAfter:
+09:52:00.678524 ERROR[6] load: load-validation: Get "https://ult-zgayzx-35.t.isucon.local/api/player/competition/9fa6207d/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:ult-zgayzx-35 role:player playerID:5d7f082ee competitionID:9fa6207d rankAfter:
+09:52:00.678529 ERROR[7] load: load-validation: Get "https://cnng-kyv-1791798706.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:cnng-kyv-1791798706 role:player playerID:9fa60798 
+09:52:00.678533 ERROR[8] load: load-validation: Get "https://cnng-kyv-1791798706.t.isucon.local/api/player/competition/9fa62289/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:cnng-kyv-1791798706 role:player playerID:9fa60795 competitionID:9fa62289 rankAfter:
+09:52:00.678534 ERROR[9] load: load-validation: Get "https://cnng-kyv-1791798706.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:cnng-kyv-1791798706 role:player playerID:9fa60797 
+09:52:00.678536 ERROR[10] load: load-validation: Get "https://katic-oq-1791798683.t.isucon.local/api/player/competition/9fa623d4/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:katic-oq-1791798683 role:player playerID:9fa56c0d competitionID:9fa623d4 rankAfter:
+09:52:00.678537 ERROR[11] load: load-validation: Get "https://katic-oq-1791798683.t.isucon.local/api/player/competition/9fa623d4/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:katic-oq-1791798683 role:player playerID:9fa56c0a competitionID:9fa623d4 rankAfter:
+09:52:00.678538 ERROR[12] load: load-validation: Get "https://fjeph-ijv-1791798669.t.isucon.local/api/player/competition/9fa623b5/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:fjeph-ijv-1791798669 role:player playerID:9fa5294c competitionID:9fa623b5 rankAfter:
+09:52:00.678539 ERROR[13] load: load-validation: Get "https://katic-oq-1791798683.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:katic-oq-1791798683 role:player playerID:9fa56bf8 
+09:52:00.678540 ERROR[14] load: load-validation: Get "https://katic-oq-1791798683.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:katic-oq-1791798683 role:player playerID:9fa56bfc 
+09:52:00.678541 ERROR[15] load: load-validation: Get "https://katic-oq-1791798683.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:katic-oq-1791798683 role:player playerID:9fa56bf9 
+09:52:00.678544 ERROR[16] load: load-validation: Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa54141 
+09:52:00.678546 ERROR[17] load: load-validation: Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competition/9fa623da/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa54179 competitionID:9fa623da rankAfter:
+09:52:00.678548 ERROR[18] load: load-validation: Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa5413d 
+09:52:00.678549 ERROR[19] load: load-validation: Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa5413e 
+09:52:00.678550 ERROR[20] load: load-validation: Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competition/9fa623da/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa54150 competitionID:9fa623da rankAfter:
+09:52:00.678557 ERROR[21] load: load-validation: Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa5413c 
+09:52:00.678559 ERROR[22] load: load-validation: Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa5413f 
+09:52:00.678560 ERROR[23] load: load-validation: Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competition/9fa623da/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa540d3 competitionID:9fa623da rankAfter:
+09:52:00.678561 ERROR[24] load: load-validation: Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa54140 
+09:52:00.678562 ERROR[25] load: load-validation: Get "https://d-xmlmwh-1791798676.t.isucon.local/api/player/competition/9fa623da/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:d-xmlmwh-1791798676 role:player playerID:9fa54155 competitionID:9fa623da rankAfter:
+09:52:00.678563 ERROR[26] load: load-validation: Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competition/9fa623db/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa55260 competitionID:9fa623db rankAfter:
+09:52:00.678621 ERROR[27] load: load-validation: Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa552f6 
+09:52:00.678643 ERROR[28] load: load-validation: Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competitions": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa552ee 
+09:52:00.678663 ERROR[29] load: load-validation: Get "https://m-aqjekg-1791798679.t.isucon.local/api/player/competition/9fa623db/ranking": dial tcp 192.168.2.8:443: socket: too many open files tenant:m-aqjekg-1791798679 role:player playerID:9fa55274 competitionID:9fa623db rankAfter:
+09:52:00.678665 ERRORは最大30件まで表示しています
+[ADMIN] 09:52:00.678765 ScenarioScoreMap: map[string]int64{
+  "AdminBilling":                      164,
+  "AdminBillingValidate":              453,
+  "OrganizerNewTenant":                6556,
+  "OrganizerPeacefulTenant":           0,
+  "OrganizerPopularTenant":            1064,
+  "OrganizerPopularTenantHeavyTenant": 430,
+  "Player":                            17926,
+  "PlayerHeavyTenant":                 979,
+  "PlayerValidate":                    876,
+  "TenantBillingValidate":             911,
+}
+[ADMIN] 09:52:00.678804 WorkerCount: map[string]int{
+  "AdminBillingScenarioWorker":   1,
+  "AdminBillingValidateWorker":   1,
+  "NewTenantScenarioWorker":      8,
+  "PlayerScenarioWorker":         915,
+  "PlayerValidateScenarioWorker": 1,
+  "PopularTenantScenarioWorker":  2,
+  "TenantBillingValidateWorker":  1,
+}
+09:52:00.678810 Error 104 (Critical:0)
+09:52:00.678811 PASSED: false
+09:52:00.678812 SCORE: 0 (+29359 -30533(104%))
+[ADMIN] 09:52:00.679000 ScenarioCount: map[bench.ScenarioTag]string{
+  "AdminBilling":                      "count: 8 (error: 0)",
+  "AdminBillingValidate":              "count: 9 (error: 1)",
+  "OrganizerNewTenant":                "count: 14 (error: 12)",
+  "OrganizerPeacefulTenant":           "count: 0 (error: 0)",
+  "OrganizerPopularTenant":            "count: 1 (error: 0)",
+  "OrganizerPopularTenantHeavyTenant": "count: 2 (error: 1)",
+  "Player":                            "count: 915 (error: 57)",
+  "PlayerHeavyTenant":                 "count: 48 (error: 5)",
+  "PlayerValidate":                    "count: 16 (error: 0)",
+  "TenantBillingValidate":             "count: 2 (error: 1)",
+}
+[ADMIN] 09:52:00.679084 score.ScoreTable{
+  "GET /api/admin/tenants/billing":                         110,
+  "GET /api/organizer/billing":                             156,
+  "GET /api/organizer/players/list":                        184,
+  "GET /api/player/competition/:competition_id/ranking":    6556,
+  "GET /api/player/competitions":                           972,
+  "GET /api/player/player/:player_name":                    13551,
+  "POST /api/admin/tenants/add":                            10,
+  "POST /api/organizer/competition/:competition_id/finish": 182,
+  "POST /api/organizer/competition/:competition_id/score":  212,
+  "POST /api/organizer/competitions/add":                   199,
+  "POST /api/organizer/player/:player_name/disqualified":   16,
+  "POST /api/organizer/players/add":                        38,
+}

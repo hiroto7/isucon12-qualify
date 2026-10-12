@@ -1,0 +1,14 @@
+4fac3dae-320a-4671-bb75-a72cf2fc5128
+2026-10-12 23:48:19
+active
+-N ISUCON_OUTPUT
+-A ISUCON_OUTPUT -o lo -j ACCEPT
+-A ISUCON_OUTPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+-A ISUCON_OUTPUT -d 192.168.2.8/32 -j ACCEPT
+-A ISUCON_OUTPUT -p udp -m udp --dport 53 -j ACCEPT
+-A ISUCON_OUTPUT -p udp -m udp --dport 67 -j ACCEPT
+-A ISUCON_OUTPUT -d 10.0.0.0/8 -j REJECT --reject-with icmp-port-unreachable
+-A ISUCON_OUTPUT -d 172.16.0.0/12 -j REJECT --reject-with icmp-port-unreachable
+-A ISUCON_OUTPUT -d 192.168.0.0/16 -j REJECT --reject-with icmp-port-unreachable
+-A ISUCON_OUTPUT -d 169.254.0.0/16 -j REJECT --reject-with icmp-port-unreachable
+net.ipv6.conf.all.disable_ipv6 = 1

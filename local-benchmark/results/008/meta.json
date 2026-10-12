@@ -1,0 +1,30 @@
+{
+  "id": 8,
+  "label": "billing-cover-index",
+  "kind": "scoring",
+  "started": "2026-10-12T09:30:30.663143+00:00",
+  "commit": "e36a4d5d356680c719e75c1f0b0b6bc02c99682f",
+  "dirty": "M webapp/sql/admin/10_schema.sql\n M webapp/sql/init.sh",
+  "manifest": {
+    "webapp/go/cmd/isuports/main.go": "4a606dc3c00ceaedb4120b00ccfad5818e0ffa88af0abcd4c674de1c9edd93f2",
+    "webapp/go/isuports.go": "dbc2c31c3c85ba7dcf43dc150b0f44f5e5677eb0374f9e5b97f841c0e5f77337",
+    "webapp/go/profile.go": "26d03d194cc7ede9bdb9108ffb8aa6f93b48d0d31b4c24218856141d82150eea",
+    "webapp/go/scores.go": "a27763055a24a24bd0aa462aac7aecce86f75dd554076503777cf302d5f430e0",
+    "webapp/go/scores_test.go": "d98e63254eb14a29242b1fa70ed0a39e2ac412730b331b4876d5e85aafea542f",
+    "webapp/go/sqltrace.go": "ae24baeb6b39b4bee1d554ecc68c9f8fb129580225483d4f4202b32f1b4abf66",
+    "webapp/sql/init.sh": "804e1a70e356dbb29b064f68b066b4bc0705ddea5672f7f728ef85f15af65ad1",
+    "webapp/sql/tenant/10_schema.sql": "550a2378b5a0c8762ade3590049b5337fca9d7f5ce704a3db1fc054811f19973"
+  },
+  "target": "192.168.2.8",
+  "passed": true,
+  "score": 11178,
+  "reported_score": 11178,
+  "status": "pass",
+  "decision": "accepted-provisional",
+  "ended": "2026-10-12T09:31:37Z",
+  "limitation": "One normal timeout on heavy-tenant billing after new heavy workload was enabled; next change must resolve it",
+  "errors": 1,
+  "critical_errors": 0,
+  "raw_score": 11290,
+  "deduction_percent": 1
+}

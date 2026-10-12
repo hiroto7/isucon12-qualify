@@ -1,0 +1,16 @@
+{
+  "id": 40,
+  "label": "compact-initial-preparation",
+  "kind": "scoring",
+  "started": "2026-10-12T15:53:36.449856+00:00",
+  "ended": "2026-10-12T15:53:36.449960+00:00",
+  "commit": "d37062273b535947f7719ab916c10fded6d76295",
+  "status": "fail",
+  "passed": false,
+  "score": null,
+  "reported_score": null,
+  "errors": null,
+  "critical_errors": null,
+  "decision": "preparation-failed",
+  "reason": "systemd active before compose build/container readiness; official benchmark did not start"
+}

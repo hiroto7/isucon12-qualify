@@ -1,0 +1,33 @@
+name: Local Go checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [codex/local-benchmark]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: local-go-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    if: github.repository == 'hiroto7/isucon12-qualify'
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: webapp/go
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
+        with:
+          go-version: '1.18.10'
+          cache-dependency-path: webapp/go/go.sum
+      - run: go test -race -timeout 30s ./...
+      - run: go vet ./...

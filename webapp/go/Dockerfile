@@ -2,11 +2,8 @@ FROM golang:1.18.4-bullseye
 
 WORKDIR /tmp
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && \
-  apt-get -y upgrade && \
+RUN sed -i -e 's|http://|https://|g' -e '/bullseye-security/d' -e '/bullseye-updates/d' /etc/apt/sources.list && apt-get update && \
   apt-get install -y wget gcc g++ make sqlite3 && \
-  wget -q https://dev.mysql.com/get/mysql-apt-config_0.8.29-1_all.deb && \
-  apt-get -y install ./mysql-apt-config_*_all.deb && \
   apt-get -y update && \
   apt-get -y install default-mysql-client
 

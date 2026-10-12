@@ -1,0 +1,27 @@
+{
+  "id": 4,
+  "label": "baseline-4",
+  "kind": "scoring",
+  "started": "2026-10-12T09:18:24.461846+00:00",
+  "commit": "25cb69cbca2af57ea80c123714951a449e995ae4",
+  "dirty": "",
+  "manifest": {
+    "webapp/go/cmd/isuports/main.go": "4a606dc3c00ceaedb4120b00ccfad5818e0ffa88af0abcd4c674de1c9edd93f2",
+    "webapp/go/isuports.go": "96cee9ad6a89b70f215a1b01c0fb3cf701b4f0eefb093f711d7a9e7a1896b143",
+    "webapp/go/profile.go": "26d03d194cc7ede9bdb9108ffb8aa6f93b48d0d31b4c24218856141d82150eea",
+    "webapp/go/sqltrace.go": "ae24baeb6b39b4bee1d554ecc68c9f8fb129580225483d4f4202b32f1b4abf66",
+    "webapp/sql/init.sh": "dab02f2a8c9e870aaa0c133d1e8702cdd56e26147ec0251bff4fd5e487a2cd6a",
+    "webapp/sql/tenant/10_schema.sql": "550a2378b5a0c8762ade3590049b5337fca9d7f5ce704a3db1fc054811f19973"
+  },
+  "target": "192.168.2.8",
+  "passed": true,
+  "score": 6365,
+  "reported_score": 6365,
+  "status": "pass",
+  "decision": "baseline",
+  "ended": "2026-10-12T09:19:33Z",
+  "errors": 0,
+  "critical_errors": 0,
+  "raw_score": 6365,
+  "deduction_percent": 0
+}
