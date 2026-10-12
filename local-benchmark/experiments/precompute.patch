@@ -1,0 +1,259 @@
+diff --git a/webapp/go/isuports.go b/webapp/go/isuports.go
+index 0e4e958..e8a5cb6 100644
+--- a/webapp/go/isuports.go
++++ b/webapp/go/isuports.go
+@@ -162,6 +162,10 @@ func Run() {
+ 	}
+ 	adminDB.SetMaxOpenConns(10)
+ 	defer adminDB.Close()
++	if err := warmDurableSnapshots(context.Background()); err != nil {
++		e.Logger.Fatalf("warm durable snapshots: %v", err)
++		return
++	}
+ 
+ 	port := getEnv("SERVER_APP_PORT", "3000")
+ 	e.Logger.Infof("starting isuports server on : %s ...", port)
+@@ -871,6 +875,7 @@ func competitionsAddHandler(c echo.Context) error {
+ 		)
+ 	}
+ 
++	newCompetitions.Store(competitionCacheKey{v.tenantID, id}, true)
+ 	res := CompetitionsAddHandlerResult{
+ 		Competition: CompetitionDetail{
+ 			ID:         id,
+@@ -924,6 +929,9 @@ func competitionFinishHandler(c echo.Context) error {
+ 		)
+ 	}
+ 	invalidateBilling(v.tenantID, id)
++	if _, err := billingReportByCompetition(ctx, tenantDB, v.tenantID, id); err != nil {
++		return err
++	}
+ 
+ 	return c.JSON(http.StatusOK, SuccessResult{Status: true})
+ }
+@@ -1425,6 +1433,10 @@ func initializeHandler(c echo.Context) error {
+ 	resetLatestScores()
+ 	resetScoreLocks()
+ 	resetTenantMetadata()
++	resetNewCompetitions()
++	if err := warmDurableSnapshots(context.Background()); err != nil {
++		return fmt.Errorf("warm durable snapshots: %w", err)
++	}
+ 	res := InitializeHandlerResult{
+ 		Lang: "go",
+ 	}
+diff --git a/webapp/go/score_snapshots_test.go b/webapp/go/score_snapshots_test.go
+index efc833d..1b57a54 100644
+--- a/webapp/go/score_snapshots_test.go
++++ b/webapp/go/score_snapshots_test.go
+@@ -13,6 +13,7 @@ func TestLatestScoreSnapshotCommitAndCold(t *testing.T) {
+ 	db.SetMaxOpenConns(1)
+ 	defer db.Close()
+ 	db.MustExec(`CREATE TABLE player_score(id TEXT PRIMARY KEY,tenant_id INTEGER,player_id TEXT,competition_id TEXT,score INTEGER,row_num INTEGER,created_at INTEGER,updated_at INTEGER)`)
++	db.MustExec("CREATE TABLE player(id TEXT PRIMARY KEY,display_name TEXT); INSERT INTO player VALUES ('p','P'),('q','Q')")
+ 	ctx := context.Background()
+ 	rows := []PlayerScoreRow{{ID: "1", TenantID: 1, PlayerID: "p", CompetitionID: "a", Score: 100, RowNum: 1}, {ID: "2", TenantID: 1, PlayerID: "p", CompetitionID: "a", Score: 10, RowNum: 2}}
+ 	if err := replaceCompetitionScores(ctx, db, 1, "a", rows); err != nil {
+diff --git a/webapp/go/scores.go b/webapp/go/scores.go
+index d98163b..035f2a3 100644
+--- a/webapp/go/scores.go
++++ b/webapp/go/scores.go
+@@ -31,11 +31,20 @@ func replaceCompetitionScores(ctx context.Context, db *sqlx.DB, tenantID int64,
+ 			return fmt.Errorf("insert score row: %w", err)
+ 		}
+ 	}
++	ranks := make([]CompetitionRank, 0, len(rows))
++	if err := tx.SelectContext(ctx, &ranks, `SELECT ps.player_id,p.display_name AS player_display_name,ps.score,ps.row_num
++FROM player_score ps JOIN player p ON p.id=ps.player_id
++WHERE ps.tenant_id=? AND ps.competition_id=? ORDER BY ps.score DESC,ps.row_num ASC`, tenantID, competitionID); err != nil {
++		return fmt.Errorf("precompute ranks: %w", err)
++	}
++	for i := range ranks {
++		ranks[i].Rank = int64(i + 1)
++	}
+ 	if err := tx.Commit(); err != nil {
+ 		return err
+ 	}
+ 	publishLatestScores(tenantID, competitionID, rows)
+ 	invalidateBilling(tenantID, competitionID)
+-	rankSnapshots.Delete(competitionCacheKey{tenantID, competitionID})
++	rankSnapshots.Store(competitionCacheKey{tenantID, competitionID}, ranks)
+ 	return nil
+ }
+diff --git a/webapp/go/scores_test.go b/webapp/go/scores_test.go
+index 6c8c47d..951402a 100644
+--- a/webapp/go/scores_test.go
++++ b/webapp/go/scores_test.go
+@@ -12,6 +12,7 @@ func TestReplaceScoresAtomic(t *testing.T) {
+ 	db.SetMaxOpenConns(1)
+ 	defer db.Close()
+ 	db.MustExec(`CREATE TABLE player_score (id TEXT PRIMARY KEY, tenant_id INTEGER, player_id TEXT, competition_id TEXT, score INTEGER, row_num INTEGER, created_at INTEGER, updated_at INTEGER)`)
++	db.MustExec("CREATE TABLE player(id TEXT PRIMARY KEY,display_name TEXT); INSERT INTO player VALUES ('p','P'),('q','Q')")
+ 	ctx := context.Background()
+ 	row := func(id, comp, player string, score, pos int64) PlayerScoreRow {
+ 		return PlayerScoreRow{ID: id, TenantID: 1, PlayerID: player, CompetitionID: comp, Score: score, RowNum: pos}
+diff --git a/webapp/go/visits.go b/webapp/go/visits.go
+index 0580163..294650c 100644
+--- a/webapp/go/visits.go
++++ b/webapp/go/visits.go
+@@ -30,7 +30,8 @@ func recordFirstVisit(ctx context.Context, db dbOrTx, tenantID int64, competitio
+ 	state := entry.(*firstVisit)
+ 	state.mu.Lock()
+ 	defer state.mu.Unlock()
+-	if !state.known {
++	_, fresh := newCompetitions.Load(competitionCacheKey{tenantID, competitionID})
++	if !state.known && !fresh {
+ 		var earliest sql.NullInt64
+ 		if err := db.GetContext(ctx, &earliest, "SELECT MIN(created_at) FROM visit_history WHERE tenant_id=? AND competition_id=? AND player_id=?", tenantID, competitionID, playerID); err != nil {
+ 			return false, err
+diff --git a/webapp/go/precompute.go b/webapp/go/precompute.go
+new file mode 100644
+index 0000000..6e78449
+--- /dev/null
++++ b/webapp/go/precompute.go
+@@ -0,0 +1,89 @@
++package isuports
++
++import (
++	"context"
++	"sync"
++)
++
++var newCompetitions sync.Map
++
++func resetNewCompetitions() {
++	newCompetitions.Range(func(key, _ interface{}) bool { newCompetitions.Delete(key); return true })
++}
++
++type seedVisit struct {
++	TenantID      int64  `db:"tenant_id"`
++	CompetitionID string `db:"competition_id"`
++	PlayerID      string `db:"player_id"`
++	CreatedAt     int64  `db:"created_at"`
++}
++
++func seededBilling(comp CompetitionRow, scores map[string]int64, visits []seedVisit) BillingReport {
++	var visitors int64
++	for _, visit := range visits {
++		if visit.CreatedAt <= comp.FinishedAt.Int64 {
++			if _, scored := scores[visit.PlayerID]; !scored {
++				visitors++
++			}
++		}
++	}
++	players := int64(len(scores))
++	return BillingReport{CompetitionID: comp.ID, CompetitionTitle: comp.Title,
++		PlayerCount: players, VisitorCount: visitors, BillingPlayerYen: players * 100,
++		BillingVisitorYen: visitors * 10, BillingYen: players*100 + visitors*10}
++}
++
++// Called only before listening, or during the benchmark's exclusive initialize.
++// Canonical durable rows remain the source of truth across process restarts.
++func warmDurableSnapshots(ctx context.Context) error {
++	var visits []seedVisit
++	if err := adminDB.SelectContext(ctx, &visits, "SELECT tenant_id,competition_id,player_id,MIN(created_at) AS created_at FROM visit_history GROUP BY tenant_id,competition_id,player_id"); err != nil {
++		return err
++	}
++	byCompetition := make(map[competitionCacheKey][]seedVisit)
++	for _, visit := range visits {
++		key := competitionCacheKey{visit.TenantID, visit.CompetitionID}
++		byCompetition[key] = append(byCompetition[key], visit)
++		firstVisits.Store(visitCacheKey{visit.TenantID, visit.CompetitionID, visit.PlayerID}, &firstVisit{known: true, at: visit.CreatedAt})
++	}
++	var tenants []TenantRow
++	if err := adminDB.SelectContext(ctx, &tenants, "SELECT * FROM tenant"); err != nil {
++		return err
++	}
++	for _, tenant := range tenants {
++		tenantsByName.Store(tenant.Name, tenant)
++		db, err := connectToTenantDB(tenant.ID)
++		if err != nil {
++			return err
++		}
++		var players []PlayerRow
++		if err := db.SelectContext(ctx, &players, "SELECT * FROM player"); err != nil {
++			return err
++		}
++		for _, player := range players {
++			db.metadata("SELECT * FROM player WHERE id = ?", player.ID).value = player
++		}
++		var competitions []CompetitionRow
++		if err := db.SelectContext(ctx, &competitions, "SELECT * FROM competition"); err != nil {
++			return err
++		}
++		for _, comp := range competitions {
++			db.metadata("SELECT * FROM competition WHERE id = ?", comp.ID).value = comp
++			if _, err := competitionRanks(ctx, db.DB, tenant.ID, comp.ID); err != nil {
++				return err
++			}
++			scores, err := competitionScores(ctx, db, tenant.ID, comp.ID)
++			if err != nil {
++				return err
++			}
++			if !comp.FinishedAt.Valid {
++				continue
++			}
++			report := seededBilling(comp, scores, byCompetition[competitionCacheKey{tenant.ID, comp.ID}])
++			state := billingState(competitionCacheKey{tenant.ID, comp.ID})
++			state.finishedAt = comp.FinishedAt.Int64
++			state.report = &report
++		}
++	}
++	return nil
++}
+diff --git a/webapp/go/precompute_test.go b/webapp/go/precompute_test.go
+new file mode 100644
+index 0000000..db2566c
+--- /dev/null
++++ b/webapp/go/precompute_test.go
+@@ -0,0 +1,50 @@
++package isuports
++
++import (
++	"context"
++	"database/sql"
++	"fmt"
++	"testing"
++
++	"github.com/jmoiron/sqlx"
++)
++
++func TestSeedBillingCutoffAndScorerPrecedence(t *testing.T) {
++	comp := CompetitionRow{ID: "c", Title: "C", FinishedAt: sql.NullInt64{Int64: 100, Valid: true}}
++	report := seededBilling(comp, map[string]int64{"p": 1, "q": 2}, []seedVisit{
++		{PlayerID: "p", CreatedAt: 10}, {PlayerID: "early", CreatedAt: 99},
++		{PlayerID: "equal", CreatedAt: 100}, {PlayerID: "late", CreatedAt: 101},
++	})
++	if report.PlayerCount != 2 || report.VisitorCount != 2 || report.BillingYen != 220 {
++		t.Fatal(report)
++	}
++}
++
++type noVisitLookup struct{ *sqlx.DB }
++
++func (db noVisitLookup) GetContext(context.Context, interface{}, string, ...interface{}) error {
++	return fmt.Errorf("unexpected historical lookup for new competition")
++}
++
++func TestNewCompetitionVisitSkipsOnlyHistoricalLookup(t *testing.T) {
++	db := sqlx.MustOpen("sqlite3", ":memory:")
++	db.SetMaxOpenConns(1)
++	defer db.Close()
++	db.MustExec("CREATE TABLE visit_history(player_id TEXT,tenant_id INTEGER,competition_id TEXT,created_at INTEGER,updated_at INTEGER)")
++	key := competitionCacheKey{702, "new"}
++	newCompetitions.Store(key, true)
++	defer newCompetitions.Delete(key)
++	changed, err := recordFirstVisit(context.Background(), noVisitLookup{db}, 702, "new", "p", 100)
++	if err != nil || !changed {
++		t.Fatal(changed, err)
++	}
++	var count int
++	db.Get(&count, "SELECT COUNT(*) FROM visit_history")
++	if count != 1 {
++		t.Fatal("durable first visit skipped")
++	}
++	changed, err = recordFirstVisit(context.Background(), noVisitLookup{db}, 702, "new", "p", 50)
++	if err != nil || !changed {
++		t.Fatal("earlier clock not recorded", changed, err)
++	}
++}
