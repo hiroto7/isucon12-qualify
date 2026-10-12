@@ -39,6 +39,8 @@ if a.action == 'start':
     trial.mkdir(parents=True)
     app_ip = json.loads(run('multipass', 'info', 'isucon12q-app', '--format', 'json'))['info']['isucon12q-app']['ipv4'][0]
     meta = dict(id=a.id, label=a.label, kind=a.kind, started=datetime.datetime.now(datetime.timezone.utc).isoformat(), commit=run('git', '-C', str(ROOT), 'rev-parse', 'HEAD'), dirty=run('git', '-C', str(ROOT), 'status', '--porcelain', '--', 'webapp'), manifest=manifest(), target=app_ip, passed=False, score=None, reported_score=None, status='running', decision='pending')
+    meta['runtime'] = remote('isucon12q-app', "pid=$(pgrep -x main | head -1); test -n \"$pid\"; sha256sum /proc/$pid/exe /etc/nginx/nginx.conf /home/isucon/webapp/docker-compose-go.yml; docker inspect --format '{{.Image}}' webapp-webapp-1")
+    meta['bench_nofile'] = 65536
     (trial / 'meta.json').write_text(json.dumps(meta, indent=2)+'\n')
     command = f'cd /home/ubuntu/isucon12-qualify/bench; date -u +%FT%TZ > {guest}/start; ./bench -target-addr {app_ip}:443 -exit-error-on-fail > {guest}/bench.log 2>&1; rc=$?; date -u +%FT%TZ > {guest}/end; echo $rc > {guest}/exit'
     remote('isucon12q-bench', f'mkdir -p {guest}; chown ubuntu:ubuntu {guest}; systemd-run --quiet --unit=isucon-trial-{a.id:03d} --uid=ubuntu --property=LimitNOFILE=65536 /bin/bash -lc {shlex.quote(command)}')

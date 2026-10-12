@@ -32,5 +32,5 @@ fi
 for db in ../../initial_data/*.db; do
   sqlite3 "$db" 'CREATE INDEX IF NOT EXISTS score_competition_player ON player_score (competition_id, player_id, row_num DESC);'
 done
-rm -f ../tenant_db/*.db
+rm -f ../tenant_db/*.db ../tenant_db/*.db-wal ../tenant_db/*.db-shm
 cp -r ../../initial_data/*.db ../tenant_db/

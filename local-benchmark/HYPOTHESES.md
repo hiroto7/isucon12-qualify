@@ -78,3 +78,21 @@ Eliminate the 352790 per-competition score queries and subsequent title refetche
 Profiler trial 025 passed with one critical score insertion error. Server log proves UNIQUE player_score.id; initial tenant 1 has existing ID 9fa74710 above old reset value 9fa52400. At higher volume the original reset seed itself enters provided IDs. Inspect every initial player/competition/score ID and reserve from 2^62, beyond their verified maximum while fitting signed BIGINT and preserving hexadecimal strings. Durable blocks remain authoritative; this is correctness repair, not a performance score claim.
 
 H12 validation: all 3,742,406 initial player/competition/score IDs inspected, max 26783990078 (63c73413e), invalid hex 0, far below 2^62. Trial 026 no critical/ID insertion error, 127980 after 6 ranking body decode errors. Keep namespace correctness fix; do not claim new performance record or classify remaining decode errors as officially allowed.
+
+## H13 — shared reader locks (rejected)
+
+Parallel readers with exclusive score/player/competition mutations preserved zero-error correctness in 027, but score dropped to 101702. No gain; revert the complete candidate. Do not tune this regression with repeated runs.
+
+## H14 — SQLite WAL with FULL synchronization
+
+Earlier diagnostics showed substantial cumulative write latency; durable transactions still force file synchronization. Try WAL to reduce rollback-journal work while retaining FULL synchronization, bounded pool and existing update locks. Initialization closes all pools before deleting database and WAL/SHM files, preventing stale sidecar recovery. A normal reboot and cold reopen must retain committed data.
+
+H14 outcome: 028 passed 115336 with zero errors, below the existing 137684 best and 127980 namespace validation. Rejected; restore rollback journaling and original initialization lifecycle.
+
+## H15 — remove per-request debug formatting/log output
+
+Profile 025: JSON encoder cumulative 13.19%, syscall writes 12.99%, json.Indent flat 6.39%. Disable Echo debug pretty-printing and routine request middleware logs, retaining error handling and error logs. JSON fields/status/headers and frontend assets remain unchanged. This removes repeated non-business output on every request, without relaxing validation or authentication. Measure once; do not chase marginal changes.
+
+H15 outcome: 029 official pass 100222 with 1 critical score insertion error. Investigation found leftover WAL/SHM files from rejected H14: initial template journal_mode=delete, restored tenant DB journal_mode=wal and residual high-ID rows. The initial rollback script deleted only *.db; stale WAL recovered old rows after restore. Therefore 029 is contaminated and cannot establish a performance effect. Revert H15 and keep explicit sidecar cleanup as a correctness fix. No logging optimization adopted.
+
+Remaining candidates reviewed: RSA signature verification, live authorization/metadata queries and response transport remain; 025 parseViewer CPU 22.92%, retrievePlayer 14.14%. They offer bounded CPU savings and introduce additional invalidation/security boundaries. The large repeated scoring/billing/transaction/setup work has been removed. Stop marginal exploration and validate the final adopted state, reference baseline and restart persistence; 100x is a target, not a result claim.

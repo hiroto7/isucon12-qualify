@@ -24,4 +24,7 @@ id,label,kind,started,ended,commit,status,passed,score,reported_score,errors,cri
 23,pooled-sqlite-read-statements,scoring,2026-10-12T11:11:08.318875+00:00,2026-10-12T11:12:14Z,927daa26442761e83eba1f4832cc99b6bbce0988,pass,True,120445,120445,0,0,accepted
 24,latest-score-snapshots,scoring,2026-10-12T11:19:10.657827+00:00,2026-10-12T11:20:16Z,4a9eed5523813b31d4223afaae96e5b08227b4cb,pass,True,137684,137684,0,0,accepted
 25,snapshot-profile,diagnostic,2026-10-12T11:24:04.623968+00:00,2026-10-12T11:25:10Z,b670437c5d14d69bfbe68326e5bab4a8235e9da3,pass,True,116512,116512,1,1,pending
-26,collision-free-id-namespace,scoring,2026-10-12T11:39:31.205742+00:00,2026-10-12T11:40:37Z,b670437c5d14d69bfbe68326e5bab4a8235e9da3,pass,True,127980,127980,6,0,pending
+26,collision-free-id-namespace,scoring,2026-10-12T11:39:31.205742+00:00,2026-10-12T11:40:37Z,b670437c5d14d69bfbe68326e5bab4a8235e9da3,pass,True,127980,127980,6,0,correctness-validation
+27,H13-shared-reader-locks,scoring,2026-10-12T14:27:10.883091+00:00,2026-10-12T14:28:18Z,28a6918678eb1e21d14104911840798cfc7bf8fd,pass,True,101702,101702,0,0,rejected-regression
+28,H14-WAL-FULL,scoring,2026-10-12T14:29:43.109360+00:00,2026-10-12T14:30:49Z,28a6918678eb1e21d14104911840798cfc7bf8fd,pass,True,115336,115336,0,0,rejected-regression
+29,H15-remove-request-debug-output,scoring,2026-10-12T14:32:03.803507+00:00,2026-10-12T14:33:10Z,28a6918678eb1e21d14104911840798cfc7bf8fd,pass,True,100222,100222,1,1,pending
